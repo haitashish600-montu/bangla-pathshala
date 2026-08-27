@@ -1,29 +1,1135 @@
-<!doctype html><html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#6c4ce6"><title>বাংলা পাঠশালা</title>
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>বাংলা পাঠশালা | আশিস হাইত</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;background:#f6f7fc;color:#20243a;font-family:"Noto Sans Bengali","Nirmala UI",system-ui,sans-serif}.app{max-width:520px;margin:auto;min-height:100vh}.hero{padding:30px 20px;background:linear-gradient(145deg,#6c4ce6,#8d6cf7);color:white;border-radius:0 0 30px 30px}.badge{font-size:12px;background:#ffffff22;padding:7px 12px;border-radius:99px}.hero h1{font-size:30px;margin:16px 0 4px}.hero p{margin:0;opacity:.9}.search{margin-top:20px;background:white;border-radius:16px;padding:12px;display:flex;gap:8px}.search input{border:0;outline:0;width:100%;font-size:14px}.main{padding:20px}.title{margin:5px 2px 12px;font-size:18px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.card,.item{border:1px solid #e9eaf2;background:#fff;border-radius:20px;padding:18px;box-shadow:0 8px 24px #24204d0a;cursor:pointer}.card{text-align:left}.icon{font-size:27px;margin-bottom:10px}.card b{display:block}.card small{color:#73778c}.view{display:none}.view.active{display:block}.top{position:sticky;top:0;background:#fff;padding:14px 18px;border-bottom:1px solid #e9eaf2;display:flex;gap:12px;align-items:center}.back{border:0;background:#f0effa;border-radius:12px;width:40px;height:40px}.list{display:grid;gap:10px}.item{display:flex;justify-content:space-between;align-items:center;border-radius:16px}.arrow{color:#6c4ce6;font-weight:bold}.note{background:#fff;border:1px solid #e9eaf2;border-radius:18px;padding:20px;line-height:1.9}.primary{border:0;background:#6c4ce6;color:#fff;border-radius:14px;padding:13px 18px;font-weight:bold}.opt{display:block;width:100%;margin-top:8px;padding:12px;text-align:left;border:1px solid #e9eaf2;background:#fafaff;border-radius:12px}.opt.sel{background:#eeeaff;border-color:#6c4ce6}
-</style></head><body><div class="app">
-<section id="home" class="view active"><header class="hero"><span class="badge">🎓 বাংলা শিক্ষা • ৯ম–১২শ</span><h1>বাংলা পাঠশালা</h1><p>শিক্ষক : আশিস স্যার</p><div class="search">🔎<input id="search" placeholder="নোট, অধ্যায় বা বিষয় খুঁজুন…"></div></header><main class="main"><h2 class="title">শ্রেণি নির্বাচন করুন</h2><div class="grid" id="classes"></div><h2 class="title" style="margin-top:26px">দ্রুত প্রবেশ</h2><div class="grid"><button class="card" onclick="openView('notes')">📚<b>অধ্যায়ভিত্তিক নোট</b><small>গুছিয়ে পড়ুন</small></button><button class="card" onclick="openView('grammar')">📘<b>বাংলা ব্যাকরণ</b><small>Practice</small></button><button class="card" onclick="openView('rachona')">✍️<b>রচনা</b><small>শ্রেণি অনুযায়ী</small></button><button class="card" onclick="openView('exam')">🧪<b>পরীক্ষা</b><small>নিজেকে যাচাই করুন</small></button></div></main></section>
-<section id="class" class="view"><div class="top"><button class="back" onclick="home()">←</button><h2 id="ct"></h2></div><main class="main"><div class="grid"><button class="card" onclick="openView('notes')">📖<b>বাংলা সাহিত্য</b><small>অধ্যায়ভিত্তিক নোট</small></button><button class="card" onclick="openView('grammar')">📘<b>বাংলা ব্যাকরণ</b><small>নিয়ম ও অনুশীলন</small></button><button class="card" onclick="openView('rachona')">✍️<b>রচনা</b><small>লিখিত প্রস্তুতি</small></button><button class="card" onclick="openView('exam')">🧪<b>অধ্যায়ভিত্তিক পরীক্ষা</b><small>MCQ ও ফলাফল</small></button><button class="card" onclick="openView('exam')">🎯<b>Model Test</b><small>সম্পূর্ণ প্রস্তুতি</small></button><button class="card" onclick="openView('result')">📊<b>ফলাফল</b><small>Score</small></button></div></main></section>
-<section id="notes" class="view"><div class="top"><button class="back" onclick="back()">←</button><h2>অধ্যায়ভিত্তিক নোট</h2></div><main class="main"><div class="list" id="chapters"></div></main></section>
-<section id="grammar" class="view"><div class="top"><button class="back" onclick="back()">←</button><h2>বাংলা ব্যাকরণ</h2></div><main class="main"><div class="list" id="grams"></div></main></section>
-<section id="rachona" class="view"><div class="top"><button class="back" onclick="back()">←</button><h2>রচনা</h2></div><main class="main"><div class="list" id="rach"></div></main></section>
-<section id="detail" class="view"><div class="top"><button class="back" onclick="back()">←</button><h2 id="dt"></h2></div><main class="main"><div class="note" id="db"></div></main></section>
-<section id="exam" class="view"><div class="top"><button class="back" onclick="back()">←</button><h2>অধ্যায়ভিত্তিক পরীক্ষা</h2></div><main class="main" id="examBody"></main></section>
-<section id="result" class="view"><div class="top"><button class="back" onclick="back()">←</button><h2>ফলাফল</h2></div><main class="main"><div class="note" style="text-align:center">এখনও কোনো পরীক্ষা দেওয়া হয়নি।</div></main></section>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:"Noto Sans Bengali","Hind Siliguri",Arial,sans-serif;
+  background:#f5f7fb;
+  color:#20243a;
+}
+
+button{
+  font-family:inherit;
+  cursor:pointer;
+}
+
+.header{
+  background:linear-gradient(135deg,#6c35e8,#9b5cff);
+  color:white;
+  padding:28px 18px 35px;
+  border-radius:0 0 32px 32px;
+}
+
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:0 16px 40px;
+}
+
+.badge{
+  display:inline-block;
+  background:rgba(255,255,255,.18);
+  padding:8px 14px;
+  border-radius:20px;
+  font-size:14px;
+  margin-bottom:12px;
+}
+
+.header h1{
+  font-size:32px;
+  margin-bottom:5px;
+}
+
+.teacher{
+  font-size:17px;
+  margin-bottom:20px;
+}
+
+.search{
+  width:100%;
+  border:0;
+  outline:0;
+  padding:15px 18px;
+  border-radius:25px;
+  font-size:16px;
+  box-shadow:0 5px 20px rgba(0,0,0,.12);
+}
+
+.section-title{
+  margin:28px 0 15px;
+  font-size:21px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+
+.card{
+  background:white;
+  padding:20px;
+  border-radius:22px;
+  box-shadow:0 5px 20px rgba(30,40,80,.08);
+  transition:.2s;
+  border:1px solid #eee;
+}
+
+.card:active{
+  transform:scale(.98);
+}
+
+.icon{
+  font-size:30px;
+  margin-bottom:8px;
+}
+
+.card h3{
+  font-size:18px;
+  margin-bottom:4px;
+}
+
+.card p{
+  color:#777;
+  font-size:14px;
+}
+
+.view{
+  display:none;
+}
+
+.view.active{
+  display:block;
+}
+
+.top{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:20px 0;
+}
+
+.back{
+  background:#eee;
+  border:0;
+  border-radius:50%;
+  width:40px;
+  height:40px;
+  font-size:20px;
+}
+
+.lesson{
+  background:white;
+  padding:17px;
+  margin:10px 0;
+  border-radius:16px;
+  box-shadow:0 3px 12px rgba(0,0,0,.06);
+}
+
+.lesson h3{
+  margin-bottom:6px;
+}
+
+.small{
+  color:#777;
+  font-size:13px;
+}
+
+.action{
+  display:inline-block;
+  margin-top:10px;
+  border:0;
+  padding:10px 14px;
+  border-radius:12px;
+  background:#7040e8;
+  color:white;
+  font-size:14px;
+}
+
+.whatsapp{
+  background:#25D366;
+}
+
+.note{
+  background:#fff8df;
+  border-left:5px solid #ffb400;
+  padding:15px;
+  border-radius:12px;
+  margin:10px 0;
+}
+
+.question{
+  background:white;
+  padding:18px;
+  border-radius:17px;
+  margin:13px 0;
+  box-shadow:0 3px 12px rgba(0,0,0,.06);
+}
+
+.option{
+  display:block;
+  width:100%;
+  text-align:left;
+  margin-top:8px;
+  padding:11px;
+  border:1px solid #ddd;
+  border-radius:10px;
+  background:#fafafa;
+}
+
+.option.selected{
+  background:#e8ddff;
+  border-color:#7040e8;
+}
+
+.score{
+  background:linear-gradient(135deg,#7040e8,#a15cff);
+  color:white;
+  padding:30px;
+  border-radius:25px;
+  text-align:center;
+  margin:20px 0;
+}
+
+.score-number{
+  font-size:42px;
+  font-weight:bold;
+}
+
+.video-box{
+  background:#111;
+  color:white;
+  padding:25px;
+  border-radius:18px;
+  text-align:center;
+  margin-top:12px;
+}
+
+.footer{
+  text-align:center;
+  padding:30px 10px;
+  color:#777;
+  font-size:14px;
+}
+
+@media(max-width:600px){
+  .grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .header h1{
+    font-size:28px;
+  }
+
+  .card{
+    padding:16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HOME -->
+<section id="home" class="view active">
+
+<header class="header">
+<div class="container">
+
+<div class="badge">🎓 বাংলা শিক্ষা • নবম–দ্বাদশ</div>
+
+<h1>বাংলা পাঠশালা</h1>
+
+<div class="teacher">শিক্ষক : আশিস হাইত</div>
+
+<input
+class="search"
+id="search"
+placeholder="🔎 নোট, অধ্যায় বা বিষয় খুঁজুন..."
+oninput="searchContent()">
+
 </div>
+</header>
+
+<div class="container">
+
+<h2 class="section-title">📚 শ্রেণি নির্বাচন করুন</h2>
+
+<div class="grid">
+
+<div class="card" onclick="openClass(9)">
+<div class="icon">📘</div>
+<h3>নবম শ্রেণি</h3>
+<p>বাংলা প্রস্তুতি</p>
+</div>
+
+<div class="card" onclick="openClass(10)">
+<div class="icon">📗</div>
+<h3>দশম শ্রেণি</h3>
+<p>বাংলা প্রস্তুতি</p>
+</div>
+
+<div class="card" onclick="openClass(11)">
+<div class="icon">📙</div>
+<h3>একাদশ শ্রেণি</h3>
+<p>বাংলা প্রস্তুতি</p>
+</div>
+
+<div class="card" onclick="openClass(12)">
+<div class="icon">📕</div>
+<h3>দ্বাদশ শ্রেণি</h3>
+<p>বাংলা প্রস্তুতি</p>
+</div>
+
+</div>
+
+
+<h2 class="section-title">⚡ দ্রুত প্রবেশ</h2>
+
+<div class="grid">
+
+<div class="card" onclick="openNotes()">
+<div class="icon">📚</div>
+<h3>অধ্যায়ভিত্তিক নোট</h3>
+<p>গুরুত্বপূর্ণ পড়া</p>
+</div>
+
+<div class="card" onclick="openGrammar()">
+<div class="icon">📘</div>
+<h3>বাংলা ব্যাকরণ</h3>
+<p>Practice</p>
+</div>
+
+<div class="card" onclick="openWriting()">
+<div class="icon">✍️</div>
+<h3>রচনা</h3>
+<p>শ্রেণি অনুযায়ী</p>
+</div>
+
+<div class="card" onclick="openMockMenu()">
+<div class="icon">📝</div>
+<h3>মক টেস্ট</h3>
+<p>নিজেকে যাচাই করুন</p>
+</div>
+
+</div>
+
+
+<h2 class="section-title">🏫 কলেজ বাংলা</h2>
+
+<div class="grid">
+
+<div class="card" onclick="openCollege('novel')">
+<div class="icon">📕</div>
+<h3>উপন্যাস</h3>
+<p>আলোচনা ও নোট</p>
+</div>
+
+<div class="card" onclick="openCollege('story')">
+<div class="icon">📗</div>
+<h3>ছোটগল্প</h3>
+<p>আলোচনা ও নোট</p>
+</div>
+
+<div class="card" onclick="openCollege('suggestion')">
+<div class="icon">💡</div>
+<h3>কলেজ সাজেশন</h3>
+<p>গুরুত্বপূর্ণ বিষয়</p>
+</div>
+
+<div class="card" onclick="openCollege('notes')">
+<div class="icon">📄</div>
+<h3>কলেজ নোট</h3>
+<p>পরীক্ষার প্রস্তুতি</p>
+</div>
+
+</div>
+
+
+<h2 class="section-title">📞 যোগাযোগ</h2>
+
+<div class="card">
+<h3>শিক্ষক : আশিস হাইত</h3>
+<p>বাংলা পাঠশালা সংক্রান্ত যোগাযোগ</p>
+
+<a
+class="action whatsapp"
+href="https://wa.me/919614659848"
+target="_blank"
+style="text-decoration:none">
+💬 অফিসিয়াল WhatsApp
+</a>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CLASS -->
+<section id="class" class="view">
+<div class="container">
+
+<div class="top">
+<button class="back" onclick="home()">←</button>
+<h2 id="classTitle">শ্রেণি</h2>
+</div>
+
+<div id="chapters"></div>
+
+</div>
+</section>
+
+
+<!-- CHAPTER -->
+<section id="chapter" class="view">
+<div class="container">
+
+<div class="top">
+<button class="back" onclick="backToClass()">←</button>
+<h2 id="chapterTitle">অধ্যায়</h2>
+</div>
+
+<div class="lesson">
+<h3>📚 অধ্যায়ের নোট</h3>
+<p id="chapterNote">
+এই অধ্যায়ের বিস্তারিত নোট এখানে যোগ করা যাবে।
+</p>
+</div>
+
+<div class="lesson">
+<h3>🎥 ভিডিও ক্লাস</h3>
+
+<div class="video-box">
+<p>এই অধ্যায়ের ভিডিও এখানে যোগ করা যাবে।</p>
+
+<button class="action" onclick="openVideo()">
+▶️ ভিডিও দেখুন
+</button>
+</div>
+</div>
+
+<div class="lesson">
+<h3>📝 অধ্যায়ভিত্তিক Mock Test</h3>
+<p>এই অধ্যায়ের প্রশ্ন দিয়ে পরীক্ষা দিন।</p>
+
+<button class="action" onclick="startChapterTest()">
+পরীক্ষা শুরু করুন
+</button>
+</div>
+
+<div class="lesson">
+<h3>📄 গুরুত্বপূর্ণ প্রশ্ন</h3>
+<div class="note">
+গুরুত্বপূর্ণ প্রশ্ন ও উত্তর এখানে যোগ করা যাবে।
+</div>
+</div>
+
+</div>
+</section>
+
+
+<!-- MOCK MENU -->
+<section id="mockMenu" class="view">
+<div class="container">
+
+<div class="top">
+<button class="back" onclick="home()">←</button>
+<h2>📝 মক টেস্ট</h2>
+</div>
+
+<div class="card" onclick="startMock('chapter')">
+<div class="icon">📚</div>
+<h3>অধ্যায়ভিত্তিক মক</h3>
+<p>নির্দিষ্ট অধ্যায়ের পরীক্ষা</p>
+</div>
+
+<br>
+
+<div class="card" onclick="startMock('full')">
+<div class="icon">📖</div>
+<h3>সমগ্র সিলেবাস মক</h3>
+<p>সম্পূর্ণ সিলেবাস যাচাই করুন</p>
+</div>
+
+<br>
+
+<div class="card" onclick="startMock('grammar')">
+<div class="icon">✍️</div>
+<h3>ব্যাকরণ মক</h3>
+<p>বাংলা ব্যাকরণ Practice</p>
+</div>
+
+</div>
+</section>
+
+
+<!-- TEST -->
+<section id="test" class="view">
+<div class="container">
+
+<div class="top">
+<button class="back" onclick="openMockMenu()">←</button>
+<h2 id="testTitle">মক টেস্ট</h2>
+</div>
+
+<div id="examBody"></div>
+
+<button class="action" onclick="submitTest()" style="width:100%;margin-top:15px">
+✅ পরীক্ষা জমা দিন
+</button>
+
+<div id="resultBox"></div>
+
+</div>
+</section>
+
+
+<!-- NOTES -->
+<section id="notes" class="view">
+<div class="container">
+
+<div class="top">
+<button class="back" onclick="home()">←</button>
+<h2>📚 অধ্যায়ভিত্তিক নোট</h2>
+</div>
+
+<div id="notesList"></div>
+
+</div>
+</section>
+
+
+<!-- GRAMMAR -->
+<section id="grammar" class="view">
+<div class="container">
+
+<div class="top">
+<button class="back" onclick="home()">←</button>
+<h2>📘 বাংলা ব্যাকরণ</h2>
+</div>
+
+<div class="lesson">
+<h3>সন্ধি</h3>
+<p class="small">নোট ও অনুশীলন</p>
+</div>
+
+<div class="lesson">
+<h3>সমাস</h3>
+<p class="small">নোট ও অনুশীলন</p>
+</div>
+
+<div class="lesson">
+<h3>কারক ও বিভক্তি</h3>
+<p class="small">নোট ও অনুশীলন</p>
+</div>
+
+<div class="lesson">
+<h3>বাক্য পরিবর্তন</h3>
+<p class="small">Practice</p>
+</div>
+
+</div>
+</section>
+
+
+<!-- WRITING -->
+<section id="writing" class="view">
+<div class="container">
+
+<div class="top">
+<button class="back" onclick="home()">←</button>
+<h2>✍️ রচনা</h2>
+</div>
+
+<div class="lesson">
+<h3>প্রবন্ধ রচনা</h3>
+<p>গুরুত্বপূর্ণ বিষয় ও নমুনা উত্তর।</p>
+</div>
+
+<div class="lesson">
+<h3>ভাবসম্প্রসারণ</h3>
+<p>পরীক্ষার উপযোগী প্রস্তুতি।</p>
+</div>
+
+<div class="lesson">
+<h3>পত্র ও প্রতিবেদন</h3>
+<p>লেখার নিয়ম ও নমুনা।</p>
+</div>
+
+</div>
+</section>
+
+
+<!-- COLLEGE -->
+<section id="college" class="view">
+<div class="container">
+
+<div class="top">
+<button class="back" onclick="home()">←</button>
+<h2 id="collegeTitle">কলেজ বাংলা</h2>
+</div>
+
+<div id="collegeList"></div>
+
+</div>
+</section>
+
+
+<footer class="footer">
+বাংলা পাঠশালা<br>
+শিক্ষক : আশিস হাইত
+</footer>
+
+
 <script>
-const cls=[['9','📘','নবম শ্রেণি'],['10','📗','দশম শ্রেণি'],['11','📙','একাদশ শ্রেণি'],['12','📕','দ্বাদশ শ্রেণি']];let current='9';
-document.getElementById('classes').innerHTML=cls.map(x=>`<button class="card" onclick="selectClass('${x[0]}')"><div class="icon">${x[1]}</div><b>${x[2]}</b><small>বাংলা প্রস্তুতি</small></button>`).join('');
-document.getElementById('chapters').innerHTML=['অধ্যায় ১','অধ্যায় ২','অধ্যায় ৩'].map((x,i)=>`<div class="item" onclick="detail('${x}')"><div>${x}</div><span class="arrow">›</span></div>`).join('');
-document.getElementById('grams').innerHTML=['সন্ধি','সমাস','কারক ও বিভক্তি','প্রত্যয়','উপসর্গ','বাক্য','অলংকার','ছন্দ'].map(x=>`<div class="item" onclick="detail('${x}')"><div>${x}</div><span class="arrow">›</span></div>`).join('');
-document.getElementById('rach').innerHTML=cls.map(x=>`<div class="item" onclick="detail('${x[2]}-র রচনা')"><div>${x[2]}-র প্রবন্ধ রচনা</div><span class="arrow">›</span></div>`).join('');
-function openView(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id).classList.add('active')}
-function selectClass(id){current=id;document.getElementById('ct').textContent=cls.find(x=>x[0]===id)[2];openView('class')}
-function home(){openView('home')}function back(){openView('class')}
-function detail(t){document.getElementById('dt').textContent=t;document.getElementById('db').innerHTML=`<h2>${t}</h2><p>এখানে আপনার নির্দিষ্ট পাঠ্যসূচি অনুযায়ী বিস্তারিত নোট, গুরুত্বপূর্ণ প্রশ্নোত্তর এবং অনুশীলনী যোগ করা যাবে।</p><p>নতুন content পরে যোগ করা যাবে—মূল design পরিবর্তন করার দরকার হবে না।</p>`;openView('detail')}
-const qs=[['বাংলা পাঠশালার মূল বিষয় কী?',['বাংলা শিক্ষা','গণিত','ইতিহাস','বিজ্ঞান'],0],['অধ্যায়ভিত্তিক পরীক্ষায় কী থাকবে?',['শুধু নোট','MCQ ও ফলাফল','শুধু ভিডিও','শুধু রচনা'],1]];
-let ans={};function renderExam(){document.getElementById('examBody').innerHTML=qs.map((q,i)=>`<div class="note" style="margin-bottom:12px"><b>${i+1}. ${q[0]}</b>${q[1].map((o,j)=>`<button class="opt" onclick="pick(${i},${j},this)">${o}</button>`).join('')}</div>`).join('')+'<button class="primary" onclick="submit()">পরীক্ষা জমা দিন</button>'}
-function pick(i,j,e){ans[i]=j;e.parentNode.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));e.classList.add('sel')}
-function submit(){let s=qs.reduce((n,q,i)=>n+(ans[i]===q[2]?1:0),0);document.getElementById('examBody').innerHTML=`<div class="note" style="text-align:center"><h2>পরীক্ষা সম্পন্ন 🎉</h2><h1>${s}/${qs.length}</h1><p>${Math.round(s/qs.length*100)}%</p><button class="primary" onclick="openView('result')">ফলাফল দেখুন</button></div>`;ans={}}
-document.getElementById('search').oninput=e=>{let q=e.target.value.trim().toLowerCase();if(!q)return;let a=['অধ্যায় ১','অধ্যায় ২','অধ্যায় ৩',...['সন্ধি','সমাস','কারক ও বিভক্তি','প্রত্যয়','উপসর্গ','বাক্য','অলংকার','ছন্দ'],'রচনা','বাংলা সাহিত্য','বাংলা ব্যাকরণ'].filter(x=>x.toLowerCase().includes(q));document.getElementById('chapters').innerHTML=(a.length?a:['কোনো ফল পাওয়া যায়নি']).map(x=>`<div class="item"><div>${x}</div></div>`).join('');openView('notes')};renderExam();
-</script></body></html>
+
+/* =========================
+   শ্রেণির অধ্যায়
+========================= */
+
+const classData = {
+
+9:[
+"প্রথম অধ্যায়",
+"দ্বিতীয় অধ্যায়",
+"তৃতীয় অধ্যায়",
+"চতুর্থ অধ্যায়",
+"পঞ্চম অধ্যায়"
+],
+
+10:[
+"প্রথম অধ্যায়",
+"দ্বিতীয় অধ্যায়",
+"তৃতীয় অধ্যায়",
+"চতুর্থ অধ্যায়",
+"পঞ্চম অধ্যায়"
+],
+
+11:[
+"প্রথম অধ্যায়",
+"দ্বিতীয় অধ্যায়",
+"তৃতীয় অধ্যায়",
+"চতুর্থ অধ্যায়",
+"পঞ্চম অধ্যায়"
+],
+
+12:[
+"প্রথম অধ্যায়",
+"দ্বিতীয় অধ্যায়",
+"তৃতীয় অধ্যায়",
+"চতুর্থ অধ্যায়",
+"পঞ্চম অধ্যায়"
+]
+
+};
+
+
+/* =========================
+   নোট
+========================= */
+
+const notesData=[
+"বাংলা সাহিত্যের ইতিহাস",
+"কবিতা",
+"গল্প",
+"প্রবন্ধ",
+"নাটক",
+"বাংলা ব্যাকরণ"
+];
+
+
+/* =========================
+   কলেজ বিভাগ
+========================= */
+
+const collegeData={
+
+novel:[
+"উপন্যাসের পরিচয়",
+"উপন্যাসের গুরুত্বপূর্ণ আলোচনা",
+"চরিত্র আলোচনা",
+"গুরুত্বপূর্ণ প্রশ্ন ও উত্তর"
+],
+
+story:[
+"ছোটগল্পের আলোচনা",
+"গল্পের মূলভাব",
+"চরিত্র বিশ্লেষণ",
+"গুরুত্বপূর্ণ প্রশ্ন ও উত্তর"
+],
+
+suggestion:[
+"প্রথম সেমেস্টার সাজেশন",
+"দ্বিতীয় সেমেস্টার সাজেশন",
+"তৃতীয় সেমেস্টার সাজেশন",
+"চতুর্থ সেমেস্টার সাজেশন"
+],
+
+notes:[
+"উপন্যাসের নোট",
+"ছোটগল্পের নোট",
+"কবিতার নোট",
+"প্রবন্ধের নোট",
+"পরীক্ষার গুরুত্বপূর্ণ নোট"
+]
+
+};
+
+
+/* =========================
+   Mock Questions
+========================= */
+
+const questions=[
+
+{
+q:"বাংলা ভাষা কোন ভাষাগোষ্ঠীর অন্তর্গত?",
+a:["ইন্দো-ইউরোপীয়","দ্রাবিড়","চীনা-তিব্বতি","অস্ট্রিক"],
+correct:0
+},
+
+{
+q:"বাংলা সাহিত্যের প্রাচীনতম নিদর্শন কোনটি?",
+a:["চর্যাপদ","শ্রীকৃষ্ণকীর্তন","মঙ্গলকাব্য","গীতাঞ্জলি"],
+correct:0
+},
+
+{
+q:"রবীন্দ্রনাথ ঠাকুর কোন গ্রন্থের জন্য নোবেল পুরস্কার পান?",
+a:["গীতাঞ্জলি","সোনার তরী","বলাকা","মানসী"],
+correct:0
+},
+
+{
+q:"বাংলা ব্যাকরণের একটি গুরুত্বপূর্ণ অংশ কোনটি?",
+a:["সন্ধি","জ্যামিতি","বীজগণিত","পদার্থবিদ্যা"],
+correct:0
+}
+
+];
+
+let currentClass=9;
+let currentChapter="";
+let currentQuestions=[];
+let selectedAnswers=[];
+
+
+/* =========================
+   View Control
+========================= */
+
+function show(id){
+
+document.querySelectorAll(".view")
+.forEach(v=>v.classList.remove("active"));
+
+document.getElementById(id)
+.classList.add("active");
+
+window.scrollTo(0,0);
+}
+
+function home(){
+show("home");
+}
+
+function backToClass(){
+openClass(currentClass);
+}
+
+
+/* =========================
+   Class
+========================= */
+
+function openClass(cls){
+
+currentClass=cls;
+
+document.getElementById("classTitle").innerText=
+cls+" শ্রেণি • বাংলা";
+
+let box=document.getElementById("chapters");
+
+box.innerHTML="";
+
+classData[cls].forEach((chapter,index)=>{
+
+let div=document.createElement("div");
+
+div.className="lesson";
+
+div.innerHTML=`
+<h3>📖 ${chapter}</h3>
+<p class="small">নোট • ভিডিও • প্রশ্ন • মক টেস্ট</p>
+
+<button class="action"
+onclick="openChapter('${chapter}')">
+অধ্যায় খুলুন
+</button>
+`;
+
+box.appendChild(div);
+
+});
+
+show("class");
+}
+
+
+/* =========================
+   Chapter
+========================= */
+
+function openChapter(name){
+
+currentChapter=name;
+
+document.getElementById("chapterTitle")
+.innerText=name;
+
+document.getElementById("chapterNote")
+.innerText=
+name+" অধ্যায়ের বিস্তারিত নোট, গুরুত্বপূর্ণ প্রশ্ন এবং প্রস্তুতির উপকরণ এখানে থাকবে।";
+
+show("chapter");
+}
+
+
+/* =========================
+   Video
+========================= */
+
+function openVideo(){
+
+alert(
+"ভিডিও লিংক এখানে যোগ করতে হবে।\n\n"+
+"আপনি YouTube ভিডিওর লিংক দিলে সেটি এই অধ্যায়ের ভিডিও হিসেবে বসানো যাবে।"
+);
+
+}
+
+
+/* =========================
+   Chapter Test
+========================= */
+
+function startChapterTest(){
+
+startMock("chapter");
+
+}
+
+
+/* =========================
+   Mock Menu
+========================= */
+
+function openMockMenu(){
+
+show("mockMenu");
+
+}
+
+
+/* =========================
+   Start Test
+========================= */
+
+function startMock(type){
+
+currentQuestions=questions;
+selectedAnswers=[];
+
+let title="";
+
+if(type==="chapter"){
+title=currentChapter?
+currentChapter+" • মক টেস্ট":
+"অধ্যায়ভিত্তিক মক টেস্ট";
+}
+
+if(type==="full"){
+title="সমগ্র সিলেবাস • মক টেস্ট";
+}
+
+if(type==="grammar"){
+title="বাংলা ব্যাকরণ • মক টেস্ট";
+}
+
+document.getElementById("testTitle").innerText=title;
+
+let body=document.getElementById("examBody");
+
+body.innerHTML="";
+
+currentQuestions.forEach((item,i)=>{
+
+let q=document.createElement("div");
+
+q.className="question";
+
+q.innerHTML=
+`<h3>${i+1}. ${item.q}</h3>`;
+
+item.a.forEach((option,j)=>{
+
+q.innerHTML+=`
+<button class="option"
+onclick="selectAnswer(${i},${j},this)">
+${option}
+</button>
+`;
+
+});
+
+body.appendChild(q);
+
+});
+
+document.getElementById("resultBox").innerHTML="";
+
+show("test");
+
+}
+
+
+/* =========================
+   Select Answer
+========================= */
+
+function selectAnswer(q,a,button){
+
+selectedAnswers[q]=a;
+
+let parent=button.parentElement;
+
+parent.querySelectorAll(".option")
+.forEach(b=>b.classList.remove("selected"));
+
+button.classList.add("selected");
+
+}
+
+
+/* =========================
+   Submit
+========================= */
+
+function submitTest(){
+
+let score=0;
+
+currentQuestions.forEach((q,i)=>{
+
+if(selectedAnswers[i]===q.correct){
+score++;
+}
+
+});
+
+let total=currentQuestions.length;
+
+let percent=Math.round((score/total)*100);
+
+document.getElementById("resultBox").innerHTML=`
+
+<div class="score">
+
+<div>🎉 আপনার ফলাফল</div>
+
+<div class="score-number">
+${score}/${total}
+</div>
+
+<div>
+স্কোর : ${percent}%
+</div>
+
+</div>
+
+<div class="lesson">
+<h3>📊 ফলাফল বিশ্লেষণ</h3>
+<p>সঠিক উত্তর : ${score}</p>
+<p>ভুল/উত্তরহীন : ${total-score}</p>
+<p>মোট প্রশ্ন : ${total}</p>
+</div>
+`;
+
+}
+
+
+/* =========================
+   Notes
+========================= */
+
+function openNotes(){
+
+let box=document.getElementById("notesList");
+
+box.innerHTML="";
+
+notesData.forEach(n=>{
+
+box.innerHTML+=`
+
+<div class="lesson">
+<h3>📚 ${n}</h3>
+<p class="small">
+এই অংশের বিস্তারিত নোট এখানে যোগ করা যাবে।
+</p>
+
+<button class="action">
+নোট পড়ুন
+</button>
+
+</div>
+
+`;
+
+});
+
+show("notes");
+
+}
+
+
+/* =========================
+   Grammar
+========================= */
+
+function openGrammar(){
+
+show("grammar");
+
+}
+
+
+/* =========================
+   Writing
+========================= */
+
+function openWriting(){
+
+show("writing");
+
+}
+
+
+/* =========================
+   College
+========================= */
+
+function openCollege(type){
+
+let titles={
+novel:"📕 উপন্যাস",
+story:"📗 ছোটগল্প",
+suggestion:"💡 কলেজ সাজেশন",
+notes:"📄 কলেজ নোট"
+};
+
+document.getElementById("collegeTitle")
+.innerText=titles[type];
+
+let box=document.getElementById("collegeList");
+
+box.innerHTML="";
+
+collegeData[type].forEach(item=>{
+
+box.innerHTML+=`
+
+<div class="lesson">
+
+<h3>${item}</h3>
+
+<p class="small">
+আলোচনা • নোট • গুরুত্বপূর্ণ প্রশ্ন
+</p>
+
+<button class="action">
+খুলুন
+</button>
+
+</div>
+
+`;
+
+});
+
+show("college");
+
+}
+
+
+/* =========================
+   Search
+========================= */
+
+function searchContent(){
+
+let value=
+document.getElementById("search")
+.value
+.toLowerCase()
+.trim();
+
+if(!value){
+return;
+}
+
+let found=[];
+
+for(let cls in classData){
+
+classData[cls].forEach(ch=>{
+
+if(ch.toLowerCase().includes(value)){
+found.push(
+`${cls} শ্রেণি — ${ch}`
+);
+}
+
+});
+
+}
+
+notesData.forEach(n=>{
+
+if(n.toLowerCase().includes(value)){
+found.push(n);
+}
+
+});
+
+if(found.length){
+
+alert(
+"খুঁজে পাওয়া বিষয়:\n\n"+
+found.join("\n")
+);
+
+}else{
+
+alert("কোনো বিষয় পাওয়া যায়নি।");
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
