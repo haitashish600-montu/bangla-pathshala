@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>বাংলা পাঠশালা | আশিস হাইত</title>
+<title>বাংলা পাঠশালা | আশিষ হাইত</title>
 
 <style>
 *{
@@ -1130,6 +1130,319 @@ alert("কোনো বিষয় পাওয়া যায়নি।");
 }
 
 </script>
+<style>
+#loginOverlay{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  background:#f5f7fb;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
 
+.loginBox{
+  width:100%;
+  max-width:420px;
+  background:white;
+  border-radius:24px;
+  padding:28px 22px;
+  box-shadow:0 10px 35px rgba(0,0,0,.12);
+  box-sizing:border-box;
+}
+
+.loginLogo{
+  text-align:center;
+  font-size:42px;
+}
+
+.loginTitle{
+  text-align:center;
+  font-size:25px;
+  font-weight:700;
+  color:#5b21b6;
+}
+
+.loginSub{
+  text-align:center;
+  color:#777;
+  margin:5px 0 22px;
+}
+
+.loginTabs{
+  display:flex;
+  gap:8px;
+  margin-bottom:18px;
+}
+
+.loginTab{
+  flex:1;
+  border:0;
+  padding:11px;
+  border-radius:12px;
+  background:#eee;
+  font-weight:600;
+}
+
+.loginTab.active{
+  background:linear-gradient(135deg,#6c35e8,#9b5cff);
+  color:white;
+}
+
+.loginForm{
+  display:none;
+}
+
+.loginForm.active{
+  display:block;
+}
+
+.loginInput{
+  width:100%;
+  box-sizing:border-box;
+  padding:14px;
+  margin-bottom:12px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  font-size:15px;
+}
+
+.loginBtn{
+  width:100%;
+  border:0;
+  padding:14px;
+  border-radius:12px;
+  background:linear-gradient(135deg,#6c35e8,#9b5cff);
+  color:white;
+  font-size:16px;
+  font-weight:700;
+}
+
+.loginSecondary{
+  background:#eee;
+  color:#333;
+  margin-top:10px;
+}
+
+.loginMessage{
+  text-align:center;
+  margin-top:12px;
+  font-size:14px;
+}
+</style>
+
+<div id="loginOverlay">
+
+  <div class="loginBox">
+
+    <div class="loginLogo">📚</div>
+
+    <div class="loginTitle">
+      বাংলা পাঠশালা
+    </div>
+
+    <div class="loginSub">
+      শিক্ষক : আশিষ হাইত
+    </div>
+
+    <div class="loginTabs">
+
+      <button
+        id="emailTab"
+        class="loginTab active"
+        type="button">
+        📧 Email
+      </button>
+
+      <button
+        id="phoneTab"
+        class="loginTab"
+        type="button">
+        📱 Phone
+      </button>
+
+    </div>
+
+    <div id="emailForm" class="loginForm active">
+
+      <input
+        id="emailInput"
+        class="loginInput"
+        type="email"
+        placeholder="আপনার Email লিখুন">
+
+      <input
+        id="passwordInput"
+        class="loginInput"
+        type="password"
+        placeholder="Password লিখুন">
+
+      <button
+        id="emailLoginBtn"
+        class="loginBtn"
+        type="button">
+        Login
+      </button>
+
+      <button
+        id="emailRegisterBtn"
+        class="loginBtn loginSecondary"
+        type="button">
+        নতুন Account তৈরি করুন
+      </button>
+
+    </div>
+
+    <div id="phoneForm" class="loginForm">
+
+      <input
+        id="phoneInput"
+        class="loginInput"
+        type="tel"
+        placeholder="+91XXXXXXXXXX">
+
+      <div id="recaptcha-container"></div>
+
+      <button
+        id="sendOtpBtn"
+        class="loginBtn"
+        type="button">
+        OTP পাঠান
+      </button>
+
+      <div id="otpArea" style="display:none;margin-top:12px;">
+
+        <input
+          id="otpInput"
+          class="loginInput"
+          type="number"
+          placeholder="6 digit OTP লিখুন">
+
+        <button
+          id="verifyOtpBtn"
+          class="loginBtn"
+          type="button">
+          OTP Verify করুন
+        </button>
+
+      </div>
+
+    </div>
+
+    <div id="loginMessage" class="loginMessage"></div>
+
+  </div>
+
+</div>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+  import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    RecaptchaVerifier,
+    signInWithPhoneNumber
+  } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDhpZJ1z2j74khtWMo9hIpo1WHgAaFzwCc",
+    authDomain: "bangla-pathsala.firebaseapp.com",
+    projectId: "bangla-pathsala",
+    storageBucket: "bangla-pathsala.firebasestorage.app",
+    messagingSenderId: "179169472629",
+    appId: "1:179169472629:web:74d0a999c7c07a6147c83c"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // Email Login
+  document.getElementById("emailLoginBtn").addEventListener("click", async () => {
+    const email = document.getElementById("emailInput").value.trim();
+    const password = document.getElementById("passwordInput").value;
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      document.getElementById("loginMessage").innerText =
+        "Login সফল হয়েছে।";
+    } catch (error) {
+      document.getElementById("loginMessage").innerText =
+        "Email বা Password সঠিক নয়।";
+    }
+  });
+
+  // Email Registration
+  document.getElementById("emailRegisterBtn").addEventListener("click", async () => {
+    const email = document.getElementById("emailInput").value.trim();
+    const password = document.getElementById("passwordInput").value;
+
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      document.getElementById("loginMessage").innerText =
+        "Account সফলভাবে তৈরি হয়েছে।";
+    } catch (error) {
+      document.getElementById("loginMessage").innerText =
+        "Account তৈরি করা যায়নি। Password কমপক্ষে 6 অক্ষরের দিন।";
+    }
+  });
+
+  // Phone OTP
+  window.recaptchaVerifier = new RecaptchaVerifier(
+    auth,
+    "recaptcha-container",
+    {
+      size: "normal"
+    }
+  );
+
+  let confirmationResult;
+
+  document.getElementById("sendOtpBtn").addEventListener("click", async () => {
+    const phone = document.getElementById("phoneInput").value.trim();
+
+    if (!phone) {
+      document.getElementById("loginMessage").innerText =
+        "Phone Number দিন।";
+      return;
+    }
+
+    try {
+      confirmationResult = await signInWithPhoneNumber(
+        auth,
+        phone,
+        window.recaptchaVerifier
+      );
+
+      document.getElementById("otpArea").style.display = "block";
+      document.getElementById("loginMessage").innerText =
+        "OTP পাঠানো হয়েছে।";
+    } catch (error) {
+      document.getElementById("loginMessage").innerText =
+        "OTP পাঠানো যায়নি। Phone Number সঠিক আছে কিনা দেখুন।";
+    }
+  });
+
+  // OTP Verify
+  document.getElementById("verifyOtpBtn").addEventListener("click", async () => {
+    const otp = document.getElementById("otpInput").value.trim();
+
+    if (!confirmationResult) {
+      document.getElementById("loginMessage").innerText =
+        "আগে OTP পাঠান।";
+      return;
+    }
+
+    try {
+      await confirmationResult.confirm(otp);
+      document.getElementById("loginMessage").innerText =
+        "Phone Login সফল হয়েছে।";
+    } catch (error) {
+      document.getElementById("loginMessage").innerText =
+        "OTP সঠিক নয়।";
+    }
+  });
+        </script>
 </body>
 </html>
