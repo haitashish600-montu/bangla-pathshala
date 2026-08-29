@@ -1197,7 +1197,13 @@ alert("কোনো বিষয় পাওয়া যায়নি।");
 .loginForm.active{
   display:block;
 }
+#registerForm{
+  display:none;
+}
 
+#registerForm.active{
+  display:block;
+}
 .loginInput{
   width:100%;
   box-sizing:border-box;
@@ -1293,7 +1299,41 @@ alert("কোনো বিষয় পাওয়া যায়নি।");
       </button>
 
     </div>
+<div id="registerForm" class="loginForm">
 
+  <input
+    id="registerName"
+    class="loginInput"
+    type="text"
+    placeholder="আপনার নাম লিখুন">
+
+  <input
+    id="registerEmail"
+    class="loginInput"
+    type="email"
+    placeholder="আপনার Email লিখুন">
+
+  <input
+    id="registerPassword"
+    class="loginInput"
+    type="password"
+    placeholder="Password লিখুন">
+
+  <button
+    id="createAccountBtn"
+    class="loginBtn"
+    type="button">
+    Account তৈরি করুন
+  </button>
+
+  <button
+    id="backToLoginBtn"
+    class="loginBtn loginSecondary"
+    type="button">
+    Login-এ ফিরে যান
+  </button>
+
+</div>
     <div id="phoneForm" class="loginForm">
 
       <input
@@ -1373,20 +1413,48 @@ alert("কোনো বিষয় পাওয়া যায়নি।");
     }
   });
 
-  // Email Registration
-  document.getElementById("emailRegisterBtn").addEventListener("click", async () => {
-    const email = document.getElementById("emailInput").value.trim();
-    const password = document.getElementById("passwordInput").value;
+// Email Registration
+document.getElementById("emailRegisterBtn").addEventListener("click", () => {
+  document.getElementById("emailForm").classList.remove("active");
+  document.getElementById("registerForm").classList.add("active");
+});
 
-    try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      document.getElementById("loginMessage").innerText =
-        "Account সফলভাবে তৈরি হয়েছে।";
-    } catch (error) {
-      document.getElementById("loginMessage").innerText =
-        "Account তৈরি করা যায়নি। Password কমপক্ষে 6 অক্ষরের দিন।";
-    }
-  });
+document.getElementById("backToLoginBtn").addEventListener("click", () => {
+  document.getElementById("registerForm").classList.remove("active");
+  document.getElementById("emailForm").classList.add("active");
+});
+
+document.getElementById("createAccountBtn").addEventListener("click", async () => {
+  const name = document.getElementById("registerName").value.trim();
+  const email = document.getElementById("registerEmail").value.trim();
+  const password = document.getElementById("registerPassword").value;
+
+  if (!name || !email || !password) {
+    document.getElementById("loginMessage").innerText =
+      "সব তথ্য পূরণ করুন";
+    return;
+  }
+
+  if (password.length < 6) {
+    document.getElementById("loginMessage").innerText =
+      "Password কমপক্ষে 6 অক্ষরের দিন";
+    return;
+  }
+
+  try {
+    await createUserWithEmailAndPassword(auth, email, password);
+
+    document.getElementById("loginMessage").innerText =
+      "Account সফলভাবে তৈরি হয়েছে";
+
+    document.getElementById("registerForm").classList.remove("active");
+    document.getElementById("emailForm").classList.add("active");
+
+  } catch (error) {
+    document.getElementById("loginMessage").innerText =
+      "Account তৈরি করা যায়নি";
+  }
+});
 
   // Phone OTP
   window.recaptchaVerifier = new RecaptchaVerifier(
