@@ -860,52 +860,61 @@ function openClass(cls){
 
   const data = classData[cls];
 
-  if(Array.isArray(data)){
+if (!data){
+  box.innerHTML = `
+    <div class="lesson">
+      <h3>কোনো তথ্য পাওয়া যায়নি</h3>
+    </div>
+  `;
+}else if(Array.isArray(data)){
 
-    data.forEach((chapter,index)=>{
+  data.forEach((chapter,index)=>{
 
-      let div = document.createElement("div");
+    let div = document.createElement("div");
 
-      div.className = "lesson";
+    div.className = "lesson";
 
-      div.innerHTML = `
-        <h3>📖 ${chapter}</h3>
-        <p class="small">নোট • ভিডিও • প্রশ্ন • Mock Test</p>
+    div.innerHTML = `
+      <h3>📚 ${chapter}</h3>
+      <p class="small">নোট • ভিডিও • অধ্যায়ভিত্তিক Mock Test</p>
+      <button class="action" type="button">
+        অধ্যায় খুলুন
+      </button>
+    `;
 
-        <button class="action"
-          onclick="openChapter('${chapter}')">
-          অধ্যায় খুলুন
-        </button>
-      `;
-
-      box.appendChild(div);
-
+    div.querySelector("button").addEventListener("click",()=>{
+      openChapter(chapter);
     });
 
-  }else{
+    box.appendChild(div);
 
-    Object.keys(data).forEach(semester=>{
+  });
 
-      let div = document.createElement("div");
+}else{
 
-      div.className = "lesson";
+  Object.keys(data).forEach((semester)=>{
 
-      div.innerHTML = `
-        <h3>📚 ${semester}</h3>
-        <p class="small">সেমিস্টারের বিষয় ও অধ্যায় দেখুন</p>
+    let div = document.createElement("div");
 
-        <button class="action"
-          onclick='openSemester(${JSON.stringify(cls)}, ${JSON.stringify(semester)})'>
-          সেমিস্টার খুলুন
-        </button>
-      `;
+    div.className = "lesson";
 
-      box.appendChild(div);
+    div.innerHTML = `
+      <h3>📚 ${semester}</h3>
+      <p class="small">সেমিস্টারের বিষয় ও অধ্যায় দেখুন</p>
+      <button class="action" type="button">
+        সেমিস্টার খুলুন
+      </button>
+    `;
 
+    div.querySelector("button").addEventListener("click",()=>{
+      openSemester(cls, JSON.stringify(data[semester]));
     });
 
-  }
+    box.appendChild(div);
 
+  });
+
+}
   show("class");
 
 }
