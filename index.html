@@ -1406,6 +1406,7 @@ alert("কোনো বিষয় পাওয়া যায়নি।");
     try {
       await signInWithEmailAndPassword(auth, email, password);
       document.getElementById("loginOverlay").style.display = "none";
+      home();
       document.getElementById("loginMessage").innerText =
         "Login সফল হয়েছে।";
     } catch (error) {
