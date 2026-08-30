@@ -1049,10 +1049,12 @@ function openSemester(cls, semesterJson){
 
   const semesterData = JSON.parse(semesterJson);
 
-  document.getElementById("chapterTitle").innerText =
-    cls + " - সেমিস্টার";
+  currentClass = cls;
 
-  let box = document.getElementById("classchapters");
+  document.getElementById("classTitle").innerText =
+    cls + " শ্রেণি • বাংলা";
+
+  let box = document.getElementById("classChapters");
 
   box.innerHTML = "";
 
@@ -1063,23 +1065,22 @@ function openSemester(cls, semesterJson){
     div.className = "lesson";
 
     div.innerHTML = `
-      <h3>📖 ${topic}</h3>
-
-      <p class="small">
-        বিষয়, লেখক/কবি ও প্রয়োজনীয় তথ্য এখানে থাকবে
-      </p>
-
-      <button class="action"
-        onclick='openChapter(${JSON.stringify(topic)})'>
-        অধ্যায় খুলুন
+      <h3>📚 ${topic}</h3>
+      <p class="small">নোট • ভিডিও • অধ্যায়ভিত্তিক Mock Test</p>
+      <button class="action" type="button">
+        অধ্যায় খুলুন
       </button>
     `;
+
+    div.querySelector("button").addEventListener("click", () => {
+      openChapter(topic);
+    });
 
     box.appendChild(div);
 
   });
 
-  show("chapter");
+  show("class");
 }
 function openChapter(name){
 
