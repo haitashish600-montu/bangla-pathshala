@@ -2,1967 +2,1791 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#102a56">
+
 <title>বাংলা পাঠশালা | আশিষ হাইত</title>
 
 <style>
 *{
   box-sizing:border-box;
   margin:0;
-  padding:0;
+  padding:0
+}
+
+:root{
+  --navy:#102a56;
+  --blue:#1458b8;
+  --gold:#f3b900;
+  --purple:#6632c8;
+  --bg:#f5f7fb;
+  --text:#17233c;
+  --muted:#6c7484;
+  --card:#fff
+}
+
+html{
+  scroll-behavior:smooth
 }
 
 body{
-  font-family:"Noto Sans Bengali","Noto Sans","Hind Siliguri",Arial,sans-serif;
-  background:#f4f6fb;
-  color:#17233c;
-  -webkit-tap-highlight-color:transparent;
+  font-family:"Noto Sans Bengali","Nirmala UI","Hind Siliguri",Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.55
 }
 
-button,input{
-  font-family:inherit;
+button,
+input{
+  font:inherit
 }
 
 button{
-  cursor:pointer;
+  cursor:pointer
 }
 
-/* ================= LOGIN ================= */
-
-#loginPage{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
-  background:
-    radial-gradient(circle at top,#eef1ff,#f7f8fc 55%,#e8ecf8);
+.hidden{
+  display:none!important
 }
 
-.login-box{
-  width:100%;
-  max-width:430px;
-  background:white;
-  border-radius:28px;
-  padding:30px 24px;
-  box-shadow:0 18px 50px rgba(30,45,90,.14);
-  text-align:center;
-}
-
-.login-icon{
-  width:78px;
-  height:78px;
-  border-radius:50%;
-  margin:0 auto 12px;
-  object-fit:cover;
-}
-
-.login-title{
-  color:#5124b8;
-  font-size:31px;
-  font-weight:800;
-  margin-bottom:4px;
-}
-
-.login-teacher{
-  color:#777;
-  font-size:17px;
-  margin-bottom:22px;
-}
-
-.login-tabs{
-  display:flex;
-  gap:10px;
-  margin-bottom:15px;
-}
-
-.login-tabs button{
-  flex:1;
-  border:0;
-  padding:14px;
-  border-radius:16px;
-  background:#eee;
-  font-size:17px;
-}
-
-.login-tabs .active{
-  background:linear-gradient(135deg,#7b2ff7,#a64bf4);
-  color:white;
-}
-
-.input{
-  width:100%;
-  border:1px solid #ddd;
-  border-radius:17px;
-  padding:16px;
-  margin:7px 0;
-  font-size:17px;
-  outline:none;
-}
-
-.input:focus{
-  border-color:#7b2ff7;
-  box-shadow:0 0 0 3px rgba(123,47,247,.1);
-}
-
-.primary-btn{
-  width:100%;
-  border:0;
-  padding:16px;
-  margin-top:10px;
-  border-radius:17px;
-  background:linear-gradient(135deg,#7429f4,#ad4bf4);
-  color:white;
-  font-size:18px;
-  font-weight:700;
-}
-
-.secondary-btn{
-  width:100%;
-  border:0;
-  padding:15px;
-  margin-top:10px;
-  border-radius:17px;
-  background:#eeeeee;
-  color:#333;
-  font-size:17px;
-  font-weight:600;
-}
-
-.login-message{
-  min-height:25px;
-  margin-top:12px;
-  color:#d12c2c;
-  font-size:14px;
-}
-
-/* ================= APP ================= */
-
-#app{
-  display:none;
-  min-height:100vh;
-  padding-bottom:85px;
-}
-
-/* TOP BAR */
+/* =========================
+   TOP BAR
+========================= */
 
 .topbar{
-  height:65px;
-  background:white;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 16px;
+  height:64px;
+  background:var(--navy);
+  color:#fff;
   position:sticky;
   top:0;
-  z-index:50;
-  box-shadow:0 2px 12px rgba(0,0,0,.07);
-}
-
-.brand-small{
-  font-weight:800;
-  color:#182b67;
-  font-size:18px;
-}
-
-.top-actions{
-  display:flex;
-  gap:8px;
-}
-
-.top-btn{
-  width:42px;
-  height:42px;
-  border:0;
-  border-radius:13px;
-  background:#f1f3f8;
-  font-size:20px;
-}
-
-/* BANNER */
-
-.banner-wrap{
-  width:100%;
-  background:#111c3d;
-  overflow:hidden;
-}
-
-.banner{
-  width:100%;
-  display:block;
-  max-height:360px;
-  object-fit:cover;
-}
-
-/* MAIN */
-
-.container{
-  width:min(1180px,94%);
-  margin:auto;
-}
-
-.welcome{
-  margin:22px 0 15px;
-  background:white;
-  border-radius:20px;
-  padding:18px;
-  box-shadow:0 5px 18px rgba(30,40,80,.07);
-}
-
-.welcome h2{
-  font-size:23px;
-  color:#172c67;
-  margin-bottom:5px;
-}
-
-.welcome p{
-  color:#6b7280;
-}
-
-/* QUICK CARDS */
-
-.quick-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-  margin:15px 0 25px;
-}
-
-.quick-card{
-  background:white;
-  border-radius:20px;
-  padding:20px 15px;
-  text-align:center;
-  border-left:6px solid #2856c8;
-  box-shadow:0 5px 18px rgba(30,40,80,.08);
-  transition:.2s;
-}
-
-.quick-card:active{
-  transform:scale(.98);
-}
-
-.quick-icon{
-  font-size:38px;
-  margin-bottom:8px;
-}
-
-.quick-card h3{
-  font-size:18px;
-  margin-bottom:4px;
-}
-
-.quick-card p{
-  color:#777;
-  font-size:14px;
-}
-
-/* SECTION */
-
-.section-title{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin:28px 0 14px;
-}
-
-.section-title h2{
-  font-size:23px;
-}
-
-.section-title span{
-  color:#6b7280;
-  font-size:14px;
-}
-
-/* CLASS CARDS */
-
-.class-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:16px;
-}
-
-.class-card{
-  background:white;
-  border-radius:22px;
-  padding:20px;
-  box-shadow:0 6px 22px rgba(30,40,80,.09);
-  border-top:5px solid #315dcc;
-}
-
-.class-card:nth-child(2){
-  border-color:#f39a16;
-}
-
-.class-card:nth-child(3){
-  border-color:#24a861;
-}
-
-.class-card:nth-child(4){
-  border-color:#8134c8;
-}
-
-.class-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-}
-
-.class-name{
-  font-size:25px;
-  font-weight:800;
-}
-
-.class-tag{
-  background:#edf2ff;
-  color:#294fb0;
-  padding:7px 10px;
-  border-radius:12px;
-  font-size:12px;
-  white-space:nowrap;
-}
-
-.class-desc{
-  color:#707070;
-  margin:8px 0 15px;
-}
-
-.chapter-list{
-  display:grid;
-  gap:8px;
-}
-
-.chapter-btn{
-  width:100%;
-  border:0;
-  background:#f7f8fb;
-  padding:13px 14px;
-  border-radius:13px;
-  text-align:left;
-  font-size:15px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.chapter-btn:hover{
-  background:#edf1ff;
-}
-
-/* MODEL SET */
-
-.model-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:13px;
-}
-
-.model-card{
-  background:white;
-  border-radius:18px;
-  padding:17px;
-  box-shadow:0 5px 18px rgba(30,40,80,.07);
-}
-
-.model-card h3{
-  font-size:17px;
-  margin-bottom:6px;
-}
-
-.model-count{
-  color:#6c4bd8;
-  font-weight:700;
-  margin-bottom:12px;
-}
-
-.open-btn{
-  border:0;
-  width:100%;
-  padding:11px;
-  border-radius:12px;
-  background:#edf1ff;
-  color:#263f91;
-  font-weight:700;
-}
-
-/* STUDY MATERIAL */
-
-.material{
-  background:white;
-  border-radius:22px;
-  padding:20px;
-  margin-top:25px;
-  box-shadow:0 6px 22px rgba(30,40,80,.08);
-}
-
-.material-item{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  padding:14px 0;
-  border-bottom:1px solid #eee;
-}
-
-.material-item:last-child{
-  border-bottom:0;
-}
-
-.material-name{
-  font-weight:700;
-}
-
-.material-type{
-  color:#888;
-  font-size:13px;
-}
-
-.view-pdf{
-  border:0;
-  background:#5b2bd8;
-  color:white;
-  border-radius:11px;
-  padding:9px 13px;
-}
-
-/* FOOTER NAV */
-
-.bottom-nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  height:72px;
-  background:white;
-  box-shadow:0 -4px 18px rgba(0,0,0,.1);
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
   z-index:100;
+  box-shadow:0 3px 15px #0002
 }
 
-.nav-btn{
-  border:0;
-  background:none;
-  color:#26304c;
+.topbar-inner{
+  max-width:1200px;
+  margin:auto;
+  height:100%;
   display:flex;
-  flex-direction:column;
   align-items:center;
-  gap:3px;
-  font-size:12px;
-}
-
-.nav-btn span{
-  font-size:25px;
-}
-
-.nav-btn.active{
-  color:#173b9b;
-  font-weight:700;
-}
-
-/* MODAL */
-
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.55);
-  z-index:200;
-  align-items:center;
-  justify-content:center;
-  padding:15px;
-}
-
-.modal-box{
-  background:white;
-  width:min(700px,100%);
-  max-height:90vh;
-  overflow:auto;
-  border-radius:22px;
-  padding:20px;
-}
-
-.modal-head{
-  display:flex;
   justify-content:space-between;
-  align-items:center;
-  margin-bottom:15px;
+  padding:0 14px
 }
 
-.close{
+.brand{
+  font-weight:900;
+  font-size:20px
+}
+
+.brand span{
+  color:#ffd21b
+}
+
+.menu-btn{
   border:0;
-  background:#eee;
-  width:40px;
-  height:40px;
+  background:#fff1;
+  color:#fff;
   border-radius:12px;
-  font-size:20px;
+  padding:8px 11px;
+  font-size:24px
 }
 
-.pdf-frame{
-  width:100%;
-  height:65vh;
+.nav{
+  display:flex;
+  gap:8px;
+  align-items:center
+}
+
+.nav button{
   border:0;
-  border-radius:12px;
-  background:#f1f1f1;
+  background:transparent;
+  color:#fff;
+  padding:9px 12px;
+  border-radius:10px
 }
 
-/* PROFILE */
-
-.profile{
-  text-align:center;
-  padding:30px 15px;
-}
-
-.profile-avatar{
-  width:100px;
-  height:100px;
-  border-radius:50%;
-  object-fit:cover;
-  border:5px solid #eee;
-  margin-bottom:12px;
+.nav button:hover{
+  background:#ffffff18
 }
 
 .logout{
-  margin-top:20px;
-  background:#e53935;
+  background:#e84b4b!important
 }
 
-/* RESPONSIVE */
+/* =========================
+   HOME BANNER
+========================= */
 
-@media(max-width:800px){
-  .quick-grid{
-    grid-template-columns:repeat(2,1fr);
+.hero-banner{
+  max-width:1200px;
+  margin:14px auto 0;
+  border-radius:0 0 28px 28px;
+  overflow:hidden;
+  background:
+    linear-gradient(
+      120deg,
+      #e98925 0 34%,
+      #102a56 34% 100%
+    );
+  min-height:245px;
+  position:relative;
+  color:#fff;
+  box-shadow:0 7px 25px #102a5622
+}
+
+.hero-banner:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(
+      circle at 80% 25%,
+      #ffffff15,
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 70% 90%,
+      #f3b90022,
+      transparent 30%
+    )
+}
+
+.banner-content{
+  position:relative;
+  display:grid;
+  grid-template-columns:34% 66%;
+  min-height:245px;
+  align-items:center
+}
+
+.teacher-photo{
+  height:245px;
+  display:flex;
+  align-items:end;
+  justify-content:center;
+  overflow:hidden
+}
+
+.teacher-photo .photo-placeholder{
+  width:88%;
+  height:88%;
+  border-radius:120px 120px 0 0;
+  background:linear-gradient(
+    145deg,
+    #f3c7a0,
+    #d98a61
+  );
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:62px;
+  box-shadow:inset 0 0 0 4px #ffffff22
+}
+
+.banner-copy{
+  text-align:center;
+  padding:24px 22px
+}
+
+.banner-copy h1{
+  font-size:clamp(34px,5vw,62px);
+  font-weight:900;
+  line-height:1.1;
+  text-shadow:0 3px 8px #0005
+}
+
+.banner-copy h1 span{
+  color:#ffd21b
+}
+
+.banner-copy h2{
+  margin:12px auto 8px;
+  background:#fff;
+  color:#14294f;
+  border-radius:13px;
+  padding:8px 18px;
+  display:inline-block;
+  font-size:clamp(17px,2.4vw,28px)
+}
+
+.banner-copy p{
+  font-size:18px;
+  color:#fff
+}
+
+/* =========================
+   NOTICE
+========================= */
+
+.notice{
+  max-width:1200px;
+  margin:14px auto 0;
+  padding:11px 15px;
+  background:#fff;
+  border-left:5px solid var(--gold);
+  border-radius:12px;
+  box-shadow:0 3px 15px #0000000b
+}
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:18px 14px 100px
+}
+
+.section-title{
+  margin:28px 0 14px;
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:12px
+}
+
+.section-title h2{
+  font-size:28px;
+  color:var(--navy)
+}
+
+.section-title p{
+  color:var(--muted)
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px
+}
+
+.card{
+  background:var(--card);
+  border-radius:20px;
+  padding:20px;
+  border:1px solid #e7ebf2;
+  box-shadow:0 6px 22px #102a5610
+}
+
+.card h3{
+  font-size:21px;
+  color:var(--navy);
+  margin-bottom:6px
+}
+
+.card p{
+  color:var(--muted);
+  font-size:14px
+}
+
+.icon{
+  width:58px;
+  height:58px;
+  border-radius:16px;
+  display:grid;
+  place-items:center;
+  font-size:30px;
+  background:#e9f0ff;
+  margin-bottom:11px
+}
+
+.grade-card{
+  position:relative;
+  overflow:hidden
+}
+
+.grade-card:after{
+  content:"";
+  position:absolute;
+  right:-25px;
+  top:-25px;
+  width:85px;
+  height:85px;
+  border-radius:50%;
+  background:#ffd21b33
+}
+
+.grade9 .icon{
+  background:#e8f0ff
+}
+
+.grade10 .icon{
+  background:#fff0cf
+}
+
+.grade11 .icon{
+  background:#eee6ff
+}
+
+.grade12 .icon{
+  background:#e0f6ea
+}
+
+.pill{
+  display:inline-block;
+  margin-top:10px;
+  padding:6px 10px;
+  border-radius:20px;
+  background:#eef3ff;
+  color:#1b55a9;
+  font-size:12px;
+  font-weight:800
+}
+
+.action{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border:0;
+  text-decoration:none;
+  margin-top:14px;
+  padding:10px 14px;
+  border-radius:11px;
+  background:var(--blue);
+  color:#fff;
+  font-weight:800
+}
+
+.action.alt{
+  background:#f0f2f6;
+  color:var(--navy)
+}
+
+/* =========================
+   MODEL SET
+========================= */
+
+.model-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px
+}
+
+.model{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  background:#fff;
+  border:1px solid #e5e9f0;
+  border-radius:16px;
+  padding:16px;
+  box-shadow:0 4px 15px #00000008
+}
+
+.model strong{
+  font-size:17px
+}
+
+.count{
+  background:#fff2c7;
+  color:#805e00;
+  border-radius:20px;
+  padding:6px 10px;
+  font-weight:900;
+  white-space:nowrap
+}
+
+/* =========================
+   CHAPTERS
+========================= */
+
+.chapter-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-top:12px
+}
+
+.chapter{
+  background:#f8faff;
+  border:1px solid #e3e9f4;
+  border-radius:13px;
+  padding:12px 14px;
+  font-weight:700
+}
+
+/* =========================
+   LOGIN
+========================= */
+
+.login-wrap{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:25px 15px;
+  background:
+    radial-gradient(
+      circle at 10% 15%,
+      #e5edff,
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 90% 85%,
+      #f5e7ff,
+      transparent 35%
+    )
+}
+
+.login-box{
+  width:min(450px,100%);
+  background:#fff;
+  border-radius:28px;
+  padding:28px 22px;
+  box-shadow:0 18px 60px #102a5630;
+  text-align:center
+}
+
+.login-logo{
+  width:84px;
+  height:84px;
+  border-radius:50%;
+  margin:0 auto 10px;
+  display:grid;
+  place-items:center;
+  background:#eef3ff;
+  font-size:42px
+}
+
+.login-box h1{
+  font-size:30px;
+  color:var(--purple)
+}
+
+.login-box .sub{
+  color:#777;
+  margin-bottom:18px
+}
+
+.tabs{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-bottom:14px
+}
+
+.tabs button{
+  border:0;
+  padding:12px;
+  border-radius:12px;
+  background:#eee
+}
+
+.tabs .active{
+  background:
+    linear-gradient(
+      90deg,
+      #7130e5,
+      #9b4cff
+    );
+  color:#fff
+}
+
+.field{
+  text-align:left;
+  margin:11px 0
+}
+
+.field label{
+  font-size:13px;
+  color:#606979
+}
+
+.field input{
+  width:100%;
+  padding:13px;
+  border:1px solid #d9dfe9;
+  border-radius:12px;
+  outline:none
+}
+
+.field input:focus{
+  border-color:#7130e5;
+  box-shadow:0 0 0 3px #7130e51a
+}
+
+.login-submit{
+  width:100%;
+  padding:13px;
+  border:0;
+  border-radius:13px;
+  background:
+    linear-gradient(
+      90deg,
+      #7130e5,
+      #9b4cff
+    );
+  color:#fff;
+  font-weight:900;
+  margin-top:8px
+}
+
+.demo{
+  margin-top:12px;
+  padding:10px;
+  border-radius:11px;
+  background:#fff8dc;
+  color:#765800;
+  font-size:12px
+}
+
+/* =========================
+   PROFILE
+========================= */
+
+.profile{
+  background:#fff;
+  border-radius:20px;
+  padding:20px;
+  display:flex;
+  align-items:center;
+  gap:18px
+}
+
+.avatar{
+  width:72px;
+  height:72px;
+  border-radius:50%;
+  background:#eef3ff;
+  display:grid;
+  place-items:center;
+  font-size:32px
+}
+
+/* =========================
+   STUDY MATERIAL
+========================= */
+
+.pdf-box{
+  background:
+    linear-gradient(
+      135deg,
+      #112b58,
+      #1c5cb4
+    );
+  color:#fff;
+  border-radius:22px;
+  padding:22px
+}
+
+.pdf-row{
+  background:#ffffff12;
+  border:1px solid #ffffff22;
+  border-radius:14px;
+  padding:13px;
+  margin-top:10px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px
+}
+
+/* =========================
+   BOTTOM MOBILE NAV
+========================= */
+
+.bottom{
+  display:none
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  background:#102a56;
+  color:#fff;
+  text-align:center;
+  padding:25px 15px
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media(max-width:850px){
+
+  .grid{
+    grid-template-columns:repeat(2,1fr)
   }
 
-  .model-grid{
-    grid-template-columns:repeat(2,1fr);
+  .nav{
+    display:none
   }
 
-  .class-grid{
-    grid-template-columns:1fr;
+  .bottom{
+    display:grid;
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    height:64px;
+    background:#fff;
+    border-top:1px solid #ddd;
+    grid-template-columns:repeat(4,1fr);
+    z-index:120
+  }
+
+  .bottom button{
+    border:0;
+    background:#fff;
+    color:#27344e;
+    font-size:12px
+  }
+
+  .bottom button span{
+    display:block;
+    font-size:22px
+  }
+
+  .hero-banner{
+    margin-top:0;
+    border-radius:0 0 22px 22px
   }
 }
 
-@media(max-width:520px){
-  .quick-grid{
-    grid-template-columns:1fr;
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:560px){
+
+  .grid{
+    grid-template-columns:1fr
   }
 
-  .model-grid{
-    grid-template-columns:1fr;
+  .banner-content{
+    grid-template-columns:1fr
   }
 
-  .banner{
-    max-height:250px;
+  .teacher-photo{
+    display:none
   }
 
-  .welcome h2{
-    font-size:20px;
+  .hero-banner{
+    min-height:250px
   }
+
+  .banner-content{
+    min-height:250px
+  }
+
+  .banner-copy h1{
+    font-size:38px
+  }
+
+  .banner-copy h2{
+    font-size:18px
+  }
+
+  .banner-copy p{
+    font-size:15px
+  }
+
+  .container{
+    padding-left:11px;
+    padding-right:11px
+  }
+
+  .card{
+    padding:17px
+  }
+
+  .chapter-grid{
+    grid-template-columns:1fr
+  }
+
+  .section-title{
+    align-items:start;
+    flex-direction:column
+  }
+
+  .login-box{
+    padding:25px 17px
+  }
+
+  .login-box h1{
+    font-size:27px
+  }
+
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= LOGIN PAGE ================= -->
+<!-- =========================
+     LOGIN PAGE
+========================= -->
 
-<section id="loginPage">
+<div id="loginPage">
 
-  <div class="login-box">
+  <div class="login-wrap">
 
-    <img src="assets/banner.png"
-         class="login-icon"
-         alt="বাংলা পাঠশালা">
+    <div class="login-box">
 
-    <div class="login-title">বাংলা পাঠশালা</div>
-
-    <div class="login-teacher">
-      শিক্ষক : আশিষ হাইত
-    </div>
-
-    <div class="login-tabs">
-      <button id="emailTab" class="active" onclick="setLoginMode('email')">
-        ✉️ Email
-      </button>
-
-      <button id="phoneTab" onclick="setLoginMode('phone')">
-        📱 Phone
-      </button>
-    </div>
-
-    <input
-      id="loginUser"
-      class="input"
-      type="text"
-      placeholder="আপনার Email লিখুন"
-    >
-
-    <input
-      id="loginPassword"
-      class="input"
-      type="password"
-      placeholder="Password লিখুন"
-    >
-
-    <button class="primary-btn" onclick="login()">
-      Login
-    </button>
-
-    <button class="secondary-btn" onclick="showRegister()">
-      নতুন Account তৈরি করুন
-    </button>
-
-    <div id="loginMessage" class="login-message"></div>
-
-  </div>
-
-</section>
-
-
-<!-- ================= MAIN APP ================= -->
-
-<section id="app">
-
-  <!-- TOP BAR -->
-
-  <header class="topbar">
-
-    <div class="brand-small">
-      📚 বাংলা পাঠশালা
-    </div>
-
-    <div class="top-actions">
-
-      <button class="top-btn" onclick="showHome()">
-        🏠
-      </button>
-
-      <button class="top-btn" onclick="showProfile()">
-        👤
-      </button>
-
-    </div>
-
-  </header>
-
-
-  <!-- BANNER -->
-
-  <div class="banner-wrap">
-
-    <img
-      src="assets/banner.png"
-      class="banner"
-      alt="বাংলা পাঠশালা ব্যানার"
-    >
-
-  </div>
-
-
-  <main class="container">
-
-    <!-- WELCOME -->
-
-    <div class="welcome">
-
-      <h2 id="welcomeText">
-        স্বাগতম, ছাত্রছাত্রী
-      </h2>
-
-      <p>
-        শিখব, গড়ব — বাংলা পাঠশালার সঙ্গে এগিয়ে চলুন।
-      </p>
-
-    </div>
-
-
-    <!-- QUICK MENU -->
-
-    <div class="quick-grid">
-
-      <div class="quick-card"
-           onclick="scrollToSection('classes')">
-
-        <div class="quick-icon">📚</div>
-
-        <h3>All Courses</h3>
-
-        <p>সমস্ত কোর্স দেখুন</p>
-
+      <div class="login-logo">
+        📚
       </div>
 
-
-      <div class="quick-card"
-           onclick="showNotice()"
-           style="border-color:#f39a16">
-
-        <div class="quick-icon">📋</div>
-
-        <h3>Notice Board</h3>
-
-        <p>নোটিশ দেখুন</p>
-
-      </div>
-
-
-      <div class="quick-card"
-           onclick="showFreeClass()"
-           style="border-color:#26a95d">
-
-        <div class="quick-icon">🎓</div>
-
-        <h3>Free Class</h3>
-
-        <p>ফ্রি ক্লাস দেখুন</p>
-
-      </div>
-
-
-      <div class="quick-card"
-           onclick="scrollToSection('models')"
-           style="border-color:#7b21b7">
-
-        <div class="quick-icon">📝</div>
-
-        <h3>Free MCQ Test</h3>
-
-        <p>ফ্রি MCQ টেস্ট দিন</p>
-
-      </div>
-
-
-      <div class="quick-card"
-           onclick="scrollToSection('materials')"
-           style="border-color:#e62e2e">
-
-        <div class="quick-icon">📄</div>
-
-        <h3>Free PDF</h3>
-
-        <p>স্টাডি ম্যাটেরিয়াল</p>
-
-      </div>
-
-
-      <div class="quick-card"
-           onclick="showLinks()"
-           style="border-color:#164ab3">
-
-        <div class="quick-icon">🔗</div>
-
-        <h3>Important Links</h3>
-
-        <p>গুরুত্বপূর্ণ লিঙ্কসমূহ</p>
-
-      </div>
-
-    </div>
-
-
-    <!-- CLASSES -->
-
-    <section id="classes">
-
-      <div class="section-title">
-
-        <h2>📚 শ্রেণি নির্বাচন করুন</h2>
-
-        <span>Courses</span>
-
-      </div>
-
-
-      <div class="class-grid">
-
-
-        <!-- CLASS 9 -->
-
-        <div class="class-card">
-
-          <div class="class-head">
-
-            <div class="class-name">
-              নবম শ্রেণি
-            </div>
-
-            <div class="class-tag">
-              CLASS 9
-            </div>
-
-          </div>
-
-          <div class="class-desc">
-            নবম শ্রেণির বাংলা অধ্যায় ও গুরুত্বপূর্ণ বিষয়
-          </div>
-
-          <div class="chapter-list">
-
-            <button class="chapter-btn"
-                    onclick="openChapter('নবম শ্রেণি','অধ্যায় ১')">
-              অধ্যায় ১
-              <span>›</span>
-            </button>
-
-            <button class="chapter-btn"
-                    onclick="openChapter('নবম শ্রেণি','অধ্যায় ২')">
-              অধ্যায় ২
-              <span>›</span>
-            </button>
-
-            <button class="chapter-btn"
-                    onclick="openChapter('নবম শ্রেণি','অধ্যায় ৩')">
-              অধ্যায় ৩
-              <span>›</span>
-            </button>
-
-            <button class="chapter-btn"
-                    onclick="openChapter('নবম শ্রেণি','সমস্ত অধ্যায়')">
-              সমস্ত অধ্যায়
-              <span>›</span>
-            </button>
-
-          </div>
-
-        </div>
-
-
-        <!-- CLASS 10 -->
-
-        <div class="class-card">
-
-          <div class="class-head">
-
-            <div class="class-name">
-              দশম শ্রেণি
-            </div>
-
-            <div class="class-tag">
-              CLASS 10
-            </div>
-
-          </div>
-
-          <div class="class-desc">
-            মাধ্যমিক পরীক্ষার প্রস্তুতি ও গুরুত্বপূর্ণ অধ্যায়
-          </div>
-
-          <div class="chapter-list">
-
-            <button class="chapter-btn"
-                    onclick="openChapter('দশম শ্রেণি','অধ্যায় ১')">
-              অধ্যায় ১
-              <span>›</span>
-            </button>
-
-            <button class="chapter-btn"
-                    onclick="openChapter('দশম শ্রেণি','অধ্যায় ২')">
-              অধ্যায় ২
-              <span>›</span>
-            </button>
-
-            <button class="chapter-btn"
-                    onclick="openChapter('দশম শ্রেণি','অধ্যায় ৩')">
-              অধ্যায় ৩
-              <span>›</span>
-            </button>
-
-            <button class="chapter-btn"
-                    onclick="openChapter('দশম শ্রেণি','সমস্ত অধ্যায়')">
-              সমস্ত অধ্যায়
-              <span>›</span>
-            </button>
-
-          </div>
-
-        </div>
-
-
-        <!-- CLASS 11 -->
-
-        <div class="class-card">
-
-          <div class="class-head">
-
-            <div class="class-name">
-              একাদশ শ্রেণি
-            </div>
-
-            <div class="class-tag">
-              CLASS 11
-            </div>
-
-          </div>
-
-          <div class="class-desc">
-            প্রথম ও দ্বিতীয় সেমিস্টারের বাংলা
-          </div>
-
-          <div class="chapter-list">
-
-            <button class="chapter-btn"
-                    onclick="openChapter('একাদশ শ্রেণি','প্রথম সেমিস্টার')">
-              প্রথম সেমিস্টার
-              <span>›</span>
-            </button>
-
-            <button class="chapter-btn"
-                    onclick="openChapter('একাদশ শ্রেণি','দ্বিতীয় সেমিস্টার')">
-              দ্বিতীয় সেমিস্টার
-              <span>›</span>
-            </button>
-
-            <button class="chapter-btn"
-                    onclick="openChapter('একাদশ শ্রেণি','অধ্যায়সমূহ')">
-              অধ্যায়সমূহ
-              <span>›</span>
-            </button>
-
-          </div>
-
-        </div>
-
-
-        <!-- CLASS 12 -->
-
-        <div class="class-card">
-
-          <div class="class-head">
-
-            <div class="class-name">
-              দ্বাদশ শ্রেণি
-            </div>
-
-            <div class="class-tag">
-              CLASS 12
-            </div>
-
-          </div>
-
-          <div class="class-desc">
-            তৃতীয় ও চতুর্থ সেমিস্টারের বাংলা
-          </div>
-
-          <div class="chapter-list">
-
-            <button class="chapter-btn"
-                    onclick="openChapter('দ্বাদশ শ্রেণি','তৃতীয় সেমিস্টার')">
-              তৃতীয় সেমিস্টার
-              <span>›</span>
-            </button>
-
-            <button class="chapter-btn"
-                    onclick="openChapter('দ্বাদশ শ্রেণি','চতুর্থ সেমিস্টার')">
-              চতুর্থ সেমিস্টার
-              <span>›</span>
-            </button>
-
-            <button class="chapter-btn"
-                    onclick="openChapter('দ্বাদশ শ্রেণি','অধ্যায়সমূহ')">
-              অধ্যায়সমূহ
-              <span>›</span>
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- MODEL SET -->
-
-    <section id="models">
-
-      <div class="section-title">
-
-        <h2>📝 গুরুত্বপূর্ণ Model Set</h2>
-
-        <span>Practice</span>
-
-      </div>
-
-
-      <div class="model-grid">
-
-
-        <div class="model-card">
-
-          <h3>নবম শ্রেণি</h3>
-
-          <div class="model-count">
-            ১০টি Model Set
-          </div>
-
-          <button class="open-btn"
-                  onclick="openModels('নবম শ্রেণি',10)">
-            Model Set দেখুন
-          </button>
-
-        </div>
-
-
-        <div class="model-card">
-
-          <h3>দশম শ্রেণি</h3>
-
-          <div class="model-count">
-            ২০টি Model Set
-          </div>
-
-          <button class="open-btn"
-                  onclick="openModels('দশম শ্রেণি',20)">
-            Model Set দেখুন
-          </button>
-
-        </div>
-
-
-        <div class="model-card">
-
-          <h3>একাদশ — ১ম সেমিস্টার</h3>
-
-          <div class="model-count">
-            ১০টি Model Set
-          </div>
-
-          <button class="open-btn"
-                  onclick="openModels('একাদশ শ্রেণি — প্রথম সেমিস্টার',10)">
-            Model Set দেখুন
-          </button>
-
-        </div>
-
-
-        <div class="model-card">
-
-          <h3>একাদশ — ২য় সেমিস্টার</h3>
-
-          <div class="model-count">
-            ৫টি Model Set
-          </div>
-
-          <button class="open-btn"
-                  onclick="openModels('একাদশ শ্রেণি — দ্বিতীয় সেমিস্টার',5)">
-            Model Set দেখুন
-          </button>
-
-        </div>
-
-
-        <div class="model-card">
-
-          <h3>দ্বাদশ — ৩য় সেমিস্টার</h3>
-
-          <div class="model-count">
-            ১৫টি Model Set
-          </div>
-
-          <button class="open-btn"
-                  onclick="openModels('দ্বাদশ শ্রেণি — তৃতীয় সেমিস্টার',15)">
-            Model Set দেখুন
-          </button>
-
-        </div>
-
-
-        <div class="model-card">
-
-          <h3>দ্বাদশ — ৪র্থ সেমিস্টার</h3>
-
-          <div class="model-count">
-            ১০টি Model Set
-          </div>
-
-          <button class="open-btn"
-                  onclick="openModels('দ্বাদশ শ্রেণি — চতুর্থ সেমিস্টার',10)">
-            Model Set দেখুন
-          </button>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- STUDY MATERIAL -->
-
-    <section id="materials">
-
-      <div class="section-title">
-
-        <h2>📄 Study Material</h2>
-
-        <span>Students Only</span>
-
-      </div>
-
-
-      <div class="material">
-
-        <div class="material-item">
-
-          <div>
-            <div class="material-name">
-              নবম শ্রেণির বাংলা নোট
-            </div>
-            <div class="material-type">
-              PDF • Login Required
-            </div>
-          </div>
-
-          <button class="view-pdf"
-                  onclick="openPDF('assets/pdfs/class9-notes.pdf','নবম শ্রেণির বাংলা নোট')">
-            দেখুন
-          </button>
-
-        </div>
-
-
-        <div class="material-item">
-
-          <div>
-            <div class="material-name">
-              দশম শ্রেণির বাংলা নোট
-            </div>
-            <div class="material-type">
-              PDF • Login Required
-            </div>
-          </div>
-
-          <button class="view-pdf"
-                  onclick="openPDF('assets/pdfs/class10-notes.pdf','দশম শ্রেণির বাংলা নোট')">
-            দেখুন
-          </button>
-
-        </div>
-
-
-        <div class="material-item">
-
-          <div>
-            <div class="material-name">
-              একাদশ শ্রেণির বাংলা নোট
-            </div>
-            <div class="material-type">
-              PDF • Login Required
-            </div>
-          </div>
-
-          <button class="view-pdf"
-                  onclick="openPDF('assets/pdfs/class11-notes.pdf','একাদশ শ্রেণির বাংলা নোট')">
-            দেখুন
-          </button>
-
-        </div>
-
-
-        <div class="material-item">
-
-          <div>
-            <div class="material-name">
-              দ্বাদশ শ্রেণির বাংলা নোট
-            </div>
-            <div class="material-type">
-              PDF • Login Required
-            </div>
-          </div>
-
-          <button class="view-pdf"
-                  onclick="openPDF('assets/pdfs/class12-notes.pdf','দ্বাদশ শ্রেণির বাংলা নোট')">
-            দেখুন
-          </button>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- PROFILE -->
-
-    <section id="profileSection"
-             class="profile"
-             style="display:none">
-
-      <img
-        src="assets/banner.png"
-        class="profile-avatar"
-        alt="বাংলা পাঠশালা"
-      >
-
-      <h2>বাংলা পাঠশালা</h2>
-
-      <p style="margin-top:5px;color:#777">
-        শিক্ষক : আশিষ হাইত
-      </p>
-
-      <p id="profileUser"
-         style="margin-top:15px">
-      </p>
-
-      <button class="primary-btn logout"
-              onclick="logout()">
-        Logout
-      </button>
-
-    </section>
-
-  </main>
-
-
-  <!-- BOTTOM NAV -->
-
-  <nav class="bottom-nav">
-
-    <button class="nav-btn active"
-            onclick="showHome()">
-      <span>🏠</span>
-      Home
-    </button>
-
-    <button class="nav-btn"
-            onclick="showHelp()">
-      <span>❓</span>
-      Help
-    </button>
-
-    <button class="nav-btn"
-            onclick="scrollToSection('classes')">
-      <span>📖</span>
-      My Courses
-    </button>
-
-    <button class="nav-btn"
-            onclick="openWhatsApp()">
-      <span>🟢</span>
-      WhatsApp
-    </button>
-
-    <button class="nav-btn"
-            onclick="showChat()">
-      <span>💬</span>
-      Chat
-    </button>
-
-  </nav>
-
-</section>
-
-
-<!-- ================= MODAL ================= -->
-
-<div id="modal"
-     class="modal"
-     onclick="closeModalOutside(event)">
-
-  <div class="modal-box">
-
-    <div class="modal-head">
-
-      <h2 id="modalTitle">
+      <h1>
         বাংলা পাঠশালা
-      </h2>
+      </h1>
 
-      <button class="close"
-              onclick="closeModal()">
-        ✕
+      <div class="sub">
+        শিক্ষক : আশিষ হাইত
+      </div>
+
+      <div class="tabs">
+
+        <button
+          id="emailTab"
+          class="active"
+          onclick="setLoginMode('email')">
+          ✉️ Email
+        </button>
+
+        <button
+          id="phoneTab"
+          onclick="setLoginMode('phone')">
+          📱 Phone
+        </button>
+
+      </div>
+
+      <form onsubmit="login(event)">
+
+        <div
+          class="field"
+          id="emailField">
+
+          <label>
+            Email
+          </label>
+
+          <input
+            id="email"
+            type="email"
+            placeholder="আপনার Email লিখুন">
+
+        </div>
+
+        <div
+          class="field hidden"
+          id="phoneField">
+
+          <label>
+            Phone
+          </label>
+
+          <input
+            id="phone"
+            type="tel"
+            placeholder="আপনার Phone নম্বর লিখুন">
+
+        </div>
+
+        <div class="field">
+
+          <label>
+            Password
+          </label>
+
+          <input
+            id="password"
+            type="password"
+            placeholder="Password লিখুন"
+            required>
+
+        </div>
+
+        <button
+          class="login-submit">
+          Login
+        </button>
+
+      </form>
+
+      <button
+        class="action alt"
+        style="width:100%"
+        onclick="register()">
+
+        নতুন Account তৈরি করুন
+
       </button>
 
-    </div>
+      <div class="demo">
 
-    <div id="modalContent"></div>
+        ডেমো মোড: যেকোনো Email/Phone ও Password
+        দিয়ে প্রবেশ করা যাবে।
+
+        আসল ছাত্র-লগইন পরে Firebase/Supabase
+        backend দিয়ে নিরাপদ করা হবে।
+
+      </div>
+
+    </div>
 
   </div>
 
 </div>
 
 
+<!-- =========================
+     MAIN APP
+========================= -->
+
+<div id="appPage" class="hidden">
+
+<header class="topbar">
+
+  <div class="topbar-inner">
+
+    <div class="brand">
+      বাংলা <span>পাঠশালা</span>
+    </div>
+
+    <button
+      class="menu-btn"
+      onclick="scrollToId('home')">
+      ⌂
+    </button>
+
+    <div class="nav">
+
+      <button onclick="scrollToId('home')">
+        হোম
+      </button>
+
+      <button onclick="scrollToId('classes')">
+        শ্রেণি
+      </button>
+
+      <button onclick="scrollToId('models')">
+        মডেল সেট
+      </button>
+
+      <button onclick="scrollToId('materials')">
+        নোটস
+      </button>
+
+      <button
+        class="logout"
+        onclick="logout()">
+        Logout
+      </button>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- =========================
+     BANNER
+========================= -->
+
+<section
+  id="home"
+  class="hero-banner">
+
+  <div class="banner-content">
+
+    <div class="teacher-photo">
+
+      <div class="photo-placeholder">
+        👨‍🏫
+      </div>
+
+    </div>
+
+    <div class="banner-copy">
+
+      <h1>
+        বাংলা
+        <span>পাঠশালা</span>
+      </h1>
+
+      <h2>
+        শিক্ষক : আশিষ হাইত
+      </h2>
+
+      <p>
+        শিখব, গড়ব • পরীক্ষার প্রস্তুতি হবে আরও সহজ
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- NOTICE -->
+
+<div class="notice">
+
+  📢
+  <strong>স্বাগতম!</strong>
+
+  নবম থেকে দ্বাদশ শ্রেণির বাংলা পড়াশোনা,
+  অধ্যায়, মডেল সেট ও স্টাডি ম্যাটেরিয়াল
+  এক জায়গায়।
+
+</div>
+
+
+<main class="container">
+
+
+<!-- =========================
+     CLASSES
+========================= -->
+
+<section id="classes">
+
+  <div class="section-title">
+
+    <div>
+
+      <h2>
+        📚 শ্রেণি অনুযায়ী পড়াশোনা
+      </h2>
+
+      <p>
+        অধ্যায়গুলো বড় ও স্পষ্ট কার্ডে সাজানো
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="grid">
+
+
+    <div class="card grade-card grade9">
+
+      <div class="icon">
+        9️⃣
+      </div>
+
+      <h3>
+        নবম শ্রেণি
+      </h3>
+
+      <p>
+        বাংলা অধ্যায়, গুরুত্বপূর্ণ প্রশ্ন
+        ও অনুশীলন
+      </p>
+
+      <span class="pill">
+        Model Set: ১০টি
+      </span>
+
+    </div>
+
+
+    <div class="card grade-card grade10">
+
+      <div class="icon">
+        🔟
+      </div>
+
+      <h3>
+        দশম শ্রেণি
+      </h3>
+
+      <p>
+        টেস্ট টেস্ট ও মাধ্যমিক পরীক্ষার প্রস্তুতি
+      </p>
+
+      <span class="pill">
+        Model Set: ২০টি
+      </span>
+
+    </div>
+
+
+    <div class="card grade-card grade11">
+
+      <div class="icon">
+        1️⃣1️⃣
+      </div>
+
+      <h3>
+        একাদশ শ্রেণি
+      </h3>
+
+      <p>
+        প্রথম ও দ্বিতীয় সেমিস্টারের প্রস্তুতি
+      </p>
+
+      <span class="pill">
+        ১ম: ১০টি • ২য়: ৫টি
+      </span>
+
+    </div>
+
+
+    <div class="card grade-card grade12">
+
+      <div class="icon">
+        1️⃣2️⃣
+      </div>
+
+      <h3>
+        দ্বাদশ শ্রেণি
+      </h3>
+
+      <p>
+        তৃতীয় ও চতুর্থ সেমিস্টারের প্রস্তুতি
+      </p>
+
+      <span class="pill">
+        ৩য়: ১৫টি • ৪র্থ: ১০টি
+      </span>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     CHAPTERS
+========================= -->
+
+<section id="chapters">
+
+  <div class="section-title">
+
+    <div>
+
+      <h2>
+        📖 অধ্যায়সমূহ
+      </h2>
+
+      <p>
+        আপনার আসল অধ্যায়ের নাম এখানে বসানো যাবে
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="grid">
+
+
+    <div class="card">
+
+      <h3>
+        নবম শ্রেণি — বাংলা
+      </h3>
+
+      <div class="chapter-grid">
+
+        <div class="chapter">
+          অধ্যায় ১
+        </div>
+
+        <div class="chapter">
+          অধ্যায় ২
+        </div>
+
+        <div class="chapter">
+          অধ্যায় ৩
+        </div>
+
+        <div class="chapter">
+          অধ্যায় ৪
+        </div>
+
+        <div class="chapter">
+          অধ্যায় ৫
+        </div>
+
+        <div class="chapter">
+          অধ্যায় ৬
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>
+        দশম শ্রেণি — বাংলা
+      </h3>
+
+      <div class="chapter-grid">
+
+        <div class="chapter">
+          অধ্যায় ১
+        </div>
+
+        <div class="chapter">
+          অধ্যায় ২
+        </div>
+
+        <div class="chapter">
+          অধ্যায় ৩
+        </div>
+
+        <div class="chapter">
+          অধ্যায় ৪
+        </div>
+
+        <div class="chapter">
+          অধ্যায় ৫
+        </div>
+
+        <div class="chapter">
+          অধ্যায় ৬
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>
+        একাদশ — সেমিস্টার ১
+      </h3>
+
+      <div class="chapter-grid">
+
+        <div class="chapter">
+          অধ্যায় ১
+        </div>
+
+        <div class="chapter">
+          অধ্যায় ২
+        </div>
+
+        <div class="chapter">
+          অধ্যায় ৩
+        </div>
+
+        <div class="chapter">
+          অধ্যায় ৪
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>
+        একাদশ — সেমিস্টার ২
+      </h3>
+
+      <div class="chapter-grid">
+
+        <div class="chapter">
+          অধ্যায় ১
+        </div>
+
+        <div class="chapter">
+          অধ্যায় ২
+        </div>
+
+        <div class="chapter">
+          অধ্যায় ৩
+        </div>
+
+        <div class="chapter">
+          অধ্যায় ৪
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>
+        দ্বাদশ — সেমিস্টার ৩
+      </h3>
+
+      <div class="chapter-grid">
+
+        <div class="chapter">
+          অধ্যায় ১
+        </div>
+
+        <div class="chapter">
+          অধ্যায় ২
+        </div>
+
+        <div class="chapter">
+          অধ্যায় ৩
+        </div>
+
+        <div class="chapter">
+          অধ্যায় ৪
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>
+        দ্বাদশ — সেমিস্টার ৪
+      </h3>
+
+      <div class="chapter-grid">
+
+        <div class="chapter">
+          অধ্যায় ১
+        </div>
+
+        <div class="chapter">
+          অধ্যায় ২
+        </div>
+
+        <div class="chapter">
+          অধ্যায় ৩
+        </div>
+
+        <div class="chapter">
+          অধ্যায় ৪
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     MODEL SET
+========================= -->
+
+<section id="models">
+
+  <div class="section-title">
+
+    <div>
+
+      <h2>
+        📝 গুরুত্বপূর্ণ মডেল সেট
+      </h2>
+
+      <p>
+        আপনার নির্ধারিত সংখ্যাগুলো রাখা হয়েছে
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="model-grid">
+
+
+    <div class="model">
+
+      <strong>
+        নবম শ্রেণি — গুরুত্বপূর্ণ মডেল সেট
+      </strong>
+
+      <span class="count">
+        ১০টি
+      </span>
+
+    </div>
+
+
+    <div class="model">
+
+      <strong>
+        দশম — টেস্ট টেস্ট ও মাধ্যমিক মডেল সেট
+      </strong>
+
+      <span class="count">
+        ২০টি
+      </span>
+
+    </div>
+
+
+    <div class="model">
+
+      <strong>
+        একাদশ — প্রথম সেমিস্টার
+      </strong>
+
+      <span class="count">
+        ১০টি
+      </span>
+
+    </div>
+
+
+    <div class="model">
+
+      <strong>
+        একাদশ — দ্বিতীয় সেমিস্টার
+      </strong>
+
+      <span class="count">
+        ৫টি
+      </span>
+
+    </div>
+
+
+    <div class="model">
+
+      <strong>
+        দ্বাদশ — তৃতীয় সেমিস্টার
+      </strong>
+
+      <span class="count">
+        ১৫টি
+      </span>
+
+    </div>
+
+
+    <div class="model">
+
+      <strong>
+        দ্বাদশ — চতুর্থ সেমিস্টার
+      </strong>
+
+      <span class="count">
+        ১০টি
+      </span>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     STUDY MATERIAL
+========================= -->
+
+<section id="materials">
+
+  <div class="section-title">
+
+    <div>
+
+      <h2>
+        📑 স্টাডি ম্যাটেরিয়াল
+      </h2>
+
+      <p>
+        শুধু লগইন করা ছাত্রদের জন্য
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="pdf-box">
+
+    <h3>
+      🔐 Protected Study Material
+    </h3>
+
+    <p>
+
+      এখানে আপনার PDF নোটের তালিকা থাকবে।
+      এখন ডেমো আইটেম রাখা হয়েছে।
+
+    </p>
+
+
+    <div class="pdf-row">
+
+      <span>
+        📘 নবম শ্রেণির নোট
+      </span>
+
+      <button
+        class="action"
+        onclick="openPdf()">
+
+        দেখুন
+
+      </button>
+
+    </div>
+
+
+    <div class="pdf-row">
+
+      <span>
+        📗 দশম শ্রেণির নোট
+      </span>
+
+      <button
+        class="action"
+        onclick="openPdf()">
+
+        দেখুন
+
+      </button>
+
+    </div>
+
+
+    <div class="pdf-row">
+
+      <span>
+        📙 একাদশ-দ্বাদশ নোট
+      </span>
+
+      <button
+        class="action"
+        onclick="openPdf()">
+
+        দেখুন
+
+      </button>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     PROFILE
+========================= -->
+
+<section id="profile">
+
+  <div class="section-title">
+
+    <div>
+
+      <h2>
+        👤 Profile
+      </h2>
+
+      <p>
+        লগইন করা ছাত্রের তথ্য
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="profile">
+
+    <div class="avatar">
+      👨‍🎓
+    </div>
+
+    <div>
+
+      <h3 id="profileName">
+        Student
+      </h3>
+
+      <p id="profileContact">
+        Logged in student
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <button
+    class="action logout"
+    onclick="logout()">
+
+    Logout
+
+  </button>
+
+</section>
+
+
+</main>
+
+
+<!-- =========================
+     MOBILE BOTTOM NAV
+========================= -->
+
+<div class="bottom">
+
+  <button
+    onclick="scrollToId('home')">
+
+    <span>
+      🏠
+    </span>
+
+    Home
+
+  </button>
+
+
+  <button
+    onclick="scrollToId('classes')">
+
+    <span>
+      📚
+    </span>
+
+    Classes
+
+  </button>
+
+
+  <button
+    onclick="scrollToId('models')">
+
+    <span>
+      📝
+    </span>
+
+    Model Set
+
+  </button>
+
+
+  <button
+    onclick="logout()">
+
+    <span>
+      🚪
+    </span>
+
+    Logout
+
+  </button>
+
+</div>
+
+
+<footer>
+
+  © 2026 বাংলা পাঠশালা |
+  শিক্ষক : আশিষ হাইত
+
+</footer>
+
+
+</div>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
 <script>
 
-/* ================= LOGIN SYSTEM ================= */
-
 let loginMode = "email";
+
 
 function setLoginMode(mode){
 
   loginMode = mode;
 
-  const emailTab = document.getElementById("emailTab");
-  const phoneTab = document.getElementById("phoneTab");
+  document
+    .getElementById("emailTab")
+    .classList
+    .toggle(
+      "active",
+      mode === "email"
+    );
 
-  if(mode === "email"){
+  document
+    .getElementById("phoneTab")
+    .classList
+    .toggle(
+      "active",
+      mode === "phone"
+    );
 
-    emailTab.classList.add("active");
-    phoneTab.classList.remove("active");
+  document
+    .getElementById("emailField")
+    .classList
+    .toggle(
+      "hidden",
+      mode !== "email"
+    );
 
-    document.getElementById("loginUser").placeholder =
-      "আপনার Email লিখুন";
+  document
+    .getElementById("phoneField")
+    .classList
+    .toggle(
+      "hidden",
+      mode !== "phone"
+    );
 
-  }else{
-
-    phoneTab.classList.add("active");
-    emailTab.classList.remove("active");
-
-    document.getElementById("loginUser").placeholder =
-      "আপনার Phone Number লিখুন";
-
-  }
 }
 
 
-function showRegister(){
+function login(e){
 
-  const content = `
-    <h2 style="margin-bottom:8px">নতুন Account তৈরি করুন</h2>
+  e.preventDefault();
 
-    <p style="color:#777;margin-bottom:15px">
-      ছাত্রছাত্রীদের জন্য Registration
-    </p>
+  const contact =
+    loginMode === "email"
+    ? document.getElementById("email").value
+    : document.getElementById("phone").value;
 
-    <input id="regName"
-           class="input"
-           placeholder="আপনার নাম">
+  if(!contact){
 
-    <input id="regUser"
-           class="input"
-           placeholder="Email / Phone">
-
-    <input id="regPassword"
-           class="input"
-           type="password"
-           placeholder="Password">
-
-    <button class="primary-btn"
-            onclick="registerUser()">
-      Register
-    </button>
-
-    <button class="secondary-btn"
-            onclick="closeModal()">
-      Login-এ ফিরে যান
-    </button>
-
-    <div id="registerMessage"
-         style="margin-top:10px;color:#d12c2c">
-    </div>
-  `;
-
-  openModal("নতুন Account",content);
-}
-
-
-function registerUser(){
-
-  const name =
-    document.getElementById("regName").value.trim();
-
-  const user =
-    document.getElementById("regUser").value.trim();
-
-  const password =
-    document.getElementById("regPassword").value;
-
-  if(!name || !user || !password){
-
-    document.getElementById("registerMessage").innerText =
-      "সব তথ্য পূরণ করুন।";
+    alert(
+      "Email/Phone দিন।"
+    );
 
     return;
   }
 
-  const account = {
-    name:name,
-    user:user,
-    password:password
-  };
-
   localStorage.setItem(
-    "banglaPathshalaAccount",
-    JSON.stringify(account)
-  );
-
-  closeModal();
-
-  document.getElementById("loginUser").value = user;
-
-  document.getElementById("loginMessage").style.color =
-    "#1a8d4a";
-
-  document.getElementById("loginMessage").innerText =
-    "Registration সফল। এখন Login করুন।";
-}
-
-
-function login(){
-
-  const user =
-    document.getElementById("loginUser").value.trim();
-
-  const password =
-    document.getElementById("loginPassword").value;
-
-  const account =
-    JSON.parse(
-      localStorage.getItem("banglaPathshalaAccount")
-    );
-
-  if(!user || !password){
-
-    showLoginMessage("Email/Phone এবং Password দিন।");
-    return;
-  }
-
-  /*
-    Demo login:
-    প্রথমবার account না থাকলে পরীক্ষার জন্য
-    একটি temporary account তৈরি করা হচ্ছে।
-  */
-
-  if(!account){
-
-    const demoAccount = {
-      name:"Student",
-      user:user,
-      password:password
-    };
-
-    localStorage.setItem(
-      "banglaPathshalaAccount",
-      JSON.stringify(demoAccount)
-    );
-
-    enterApp(demoAccount);
-
-    return;
-  }
-
-  if(account.user === user &&
-     account.password === password){
-
-    enterApp(account);
-
-  }else{
-
-    showLoginMessage(
-      "Login তথ্য সঠিক নয়। আবার চেষ্টা করুন।"
-    );
-
-  }
-}
-
-
-function showLoginMessage(message){
-
-  const box =
-    document.getElementById("loginMessage");
-
-  box.style.color = "#d12c2c";
-  box.innerText = message;
-}
-
-
-function enterApp(account){
-
-  localStorage.setItem(
-    "banglaPathshalaLoggedIn",
-    "true"
+    "bp_logged_in",
+    "1"
   );
 
   localStorage.setItem(
-    "banglaPathshalaCurrentUser",
-    JSON.stringify(account)
+    "bp_contact",
+    contact
   );
 
-  document.getElementById("loginPage").style.display =
-    "none";
+  showApp();
 
-  document.getElementById("app").style.display =
-    "block";
+}
 
-  document.getElementById("welcomeText").innerText =
-    "স্বাগতম, " + account.name;
 
-  document.getElementById("profileUser").innerText =
-    "Logged in as: " + account.user;
+function register(){
 
-  window.scrollTo(0,0);
+  alert(
+    "নতুন Account তৈরির আসল ব্যবস্থা backend যুক্ত করার ধাপে করা হবে। এখন ডেমোভাবে Login ব্যবহার করুন।"
+  );
+
+}
+
+
+function showApp(){
+
+  document
+    .getElementById("loginPage")
+    .classList
+    .add("hidden");
+
+  document
+    .getElementById("appPage")
+    .classList
+    .remove("hidden");
+
+  const c =
+    localStorage.getItem("bp_contact")
+    || "Student";
+
+  document
+    .getElementById("profileName")
+    .textContent =
+    "Student";
+
+  document
+    .getElementById("profileContact")
+    .textContent =
+    c;
+
 }
 
 
 function logout(){
 
   localStorage.removeItem(
-    "banglaPathshalaLoggedIn"
+    "bp_logged_in"
   );
 
   localStorage.removeItem(
-    "banglaPathshalaCurrentUser"
+    "bp_contact"
   );
 
-  document.getElementById("app").style.display =
-    "none";
+  document
+    .getElementById("appPage")
+    .classList
+    .add("hidden");
 
-  document.getElementById("loginPage").style.display =
-    "flex";
+  document
+    .getElementById("loginPage")
+    .classList
+    .remove("hidden");
 
-  document.getElementById("loginPassword").value = "";
+  window.scrollTo(
+    0,
+    0
+  );
 
-  document.getElementById("loginMessage").innerText =
-    "";
-
-  window.scrollTo(0,0);
 }
 
 
-/* ================= STARTUP ================= */
+function scrollToId(id){
 
-window.addEventListener("load",function(){
-
-  const logged =
-    localStorage.getItem(
-      "banglaPathshalaLoggedIn"
-    );
-
-  const account =
-    JSON.parse(
-      localStorage.getItem(
-        "banglaPathshalaCurrentUser"
-      )
-    );
-
-  if(logged === "true" && account){
-
-    enterApp(account);
-
-  }
-
-});
-
-
-/* ================= HOME ================= */
-
-function showHome(){
-
-  document.getElementById("profileSection").style.display =
-    "none";
-
-  document.getElementById("classes").style.display =
-    "block";
-
-  document.getElementById("models").style.display =
-    "block";
-
-  document.getElementById("materials").style.display =
-    "block";
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-}
-
-
-function showProfile(){
-
-  document.getElementById("profileSection").style.display =
-    "block";
-
-  document.getElementById("classes").style.display =
-    "none";
-
-  document.getElementById("models").style.display =
-    "none";
-
-  document.getElementById("materials").style.display =
-    "none";
-
-  document.getElementById("profileSection")
-    .scrollIntoView({
-      behavior:"smooth"
+  document
+    .getElementById(id)
+    ?.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
     });
-}
-
-
-function scrollToSection(id){
-
-  showHome();
-
-  setTimeout(function(){
-
-    const element =
-      document.getElementById(id);
-
-    if(element){
-
-      element.scrollIntoView({
-        behavior:"smooth"
-      });
-
-    }
-
-  },100);
 
 }
 
 
-/* ================= CHAPTER ================= */
+function openPdf(){
 
-function openChapter(className,chapter){
-
-  const content = `
-
-    <div style="
-      background:#f5f7ff;
-      padding:18px;
-      border-radius:16px;
-    ">
-
-      <h3 style="font-size:23px;margin-bottom:8px">
-        ${className}
-      </h3>
-
-      <p style="font-size:18px;font-weight:700">
-        ${chapter}
-      </p>
-
-      <p style="margin-top:12px;color:#777">
-        এই অংশে সংশ্লিষ্ট অধ্যায়ের
-        Study Material, Notes, MCQ এবং Model Test
-        পরে যোগ করা যাবে।
-      </p>
-
-    </div>
-
-  `;
-
-  openModal(
-    className + " — " + chapter,
-    content
-  );
-}
-
-
-/* ================= MODEL SET ================= */
-
-function openModels(className,count){
-
-  let html = `
-    <div style="
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:10px;
-    ">
-  `;
-
-  for(let i=1;i<=count;i++){
-
-    html += `
-
-      <button
-        class="chapter-btn"
-        onclick="openModel('${className}','Model Set ${i}')">
-
-        📝 Model Set ${i}
-
-        <span>›</span>
-
-      </button>
-
-    `;
-
-  }
-
-  html += "</div>";
-
-  openModal(
-    className + " — Model Sets",
-    html
-  );
-}
-
-
-function openModel(className,setName){
-
-  const content = `
-
-    <div style="
-      background:#f7f8ff;
-      padding:20px;
-      border-radius:16px;
-    ">
-
-      <h3 style="font-size:22px">
-        ${className}
-      </h3>
-
-      <h4 style="
-        margin-top:8px;
-        color:#5930c9;
-        font-size:20px;
-      ">
-        ${setName}
-      </h4>
-
-      <p style="
-        margin-top:15px;
-        color:#777;
-      ">
-        এখানে Model Set-এর প্রশ্নপত্র
-        পরে যুক্ত করা যাবে।
-      </p>
-
-      <button
-        class="primary-btn"
-        style="margin-top:18px"
-        onclick="closeModal()">
-
-        শুরু করুন
-
-      </button>
-
-    </div>
-
-  `;
-
-  openModal(setName,content);
-}
-
-
-/* ================= PDF ================= */
-
-function openPDF(path,title){
-
-  /*
-    Login ছাড়া এই function-এ আসা যাবে না,
-    কারণ app নিজেই Login page থেকে শুরু হয়।
-  */
-
-  const content = `
-
-    <p style="
-      background:#fff5e8;
-      padding:12px;
-      border-radius:12px;
-      margin-bottom:12px;
-      color:#875400;
-    ">
-      📌 এই PDF শুধু লগইন করা ছাত্রছাত্রীদের জন্য।
-    </p>
-
-    <iframe
-      class="pdf-frame"
-      src="${path}"
-      title="${title}">
-    </iframe>
-
-    <p style="
-      margin-top:10px;
-      color:#777;
-      font-size:13px;
-    ">
-      PDF খুলতে সমস্যা হলে সংশ্লিষ্ট PDF ফাইলটি
-      assets/pdfs/ folder-এ রাখতে হবে।
-    </p>
-
-  `;
-
-  openModal(title,content);
-
-}
-
-
-/* ================= OTHER ================= */
-
-function showNotice(){
-
-  openModal(
-    "📋 Notice Board",
-    `
-      <div style="
-        padding:20px;
-        background:#fff8e8;
-        border-radius:16px;
-      ">
-        <h3>বর্তমানে কোনো নতুন নোটিশ নেই।</h3>
-        <p style="margin-top:8px;color:#777">
-          নতুন নোটিশ এখানে প্রকাশ করা হবে।
-        </p>
-      </div>
-    `
+  alert(
+    "PDF যুক্ত করার পর এখানে খুলবে। Protected PDF-এর নিরাপত্তা backend দিয়ে করা হবে।"
   );
 
 }
 
 
-function showFreeClass(){
+if(
+  localStorage.getItem(
+    "bp_logged_in"
+  ) === "1"
+){
 
-  openModal(
-    "🎓 Free Class",
-    `
-      <div style="
-        padding:20px;
-        background:#eefaf3;
-        border-radius:16px;
-      ">
-        <h3>Free Class</h3>
-        <p style="margin-top:10px;color:#777">
-          আপনার YouTube Free Class-এর
-          ভিডিও লিঙ্ক এখানে যোগ করা যাবে।
-        </p>
-      </div>
-    `
-  );
+  showApp();
 
 }
-
-
-function showLinks(){
-
-  openModal(
-    "🔗 Important Links",
-    `
-      <div style="display:grid;gap:10px">
-
-        <button class="chapter-btn">
-          YouTube Channel
-          <span>›</span>
-        </button>
-
-        <button class="chapter-btn">
-          WhatsApp
-          <span>›</span>
-        </button>
-
-        <button class="chapter-btn">
-          Facebook Page
-          <span>›</span>
-        </button>
-
-      </div>
-    `
-  );
-
-}
-
-
-function showHelp(){
-
-  openModal(
-    "❓ Help",
-    `
-      <h3>বাংলা পাঠশালা ব্যবহার</h3>
-
-      <p style="
-        margin-top:12px;
-        line-height:1.8;
-        color:#666;
-      ">
-        শ্রেণি নির্বাচন করুন → অধ্যায় নির্বাচন করুন
-        → Study Material বা Model Set খুলুন।
-        কোনো সমস্যা হলে শিক্ষককে যোগাযোগ করুন।
-      </p>
-    `
-  );
-
-}
-
-
-function showChat(){
-
-  openModal(
-    "💬 Chat",
-    `
-      <div style="
-        padding:20px;
-        background:#f5f7ff;
-        border-radius:15px;
-      ">
-        <h3>বাংলা পাঠশালা Chat</h3>
-
-        <p style="margin-top:10px;color:#777">
-          Chat ব্যবস্থা পরবর্তী ধাপে যুক্ত করা হবে।
-        </p>
-      </div>
-    `
-  );
-
-}
-
-
-function openWhatsApp(){
-
-  /*
-    এখানে পরে আপনার WhatsApp number বসাবেন।
-    উদাহরণ:
-    window.open("https://wa.me/91XXXXXXXXXX");
-  */
-
-  showLinks();
-
-}
-
-
-/* ================= MODAL ================= */
-
-function openModal(title,content){
-
-  document.getElementById("modalTitle").innerText =
-    title;
-
-  document.getElementById("modalContent").innerHTML =
-    content;
-
-  document.getElementById("modal").style.display =
-    "flex";
-}
-
-
-function closeModal(){
-
-  document.getElementById("modal").style.display =
-    "none";
-
-  document.getElementById("modalContent").innerHTML =
-    "";
-
-}
-
-
-function closeModalOutside(event){
-
-  if(event.target.id === "modal"){
-
-    closeModal();
-
-  }
-
-}
-
-
-/* ================= BASIC COPY PROTECTION ================= */
-
-/*
-  এটি শুধু সাধারণ copy/right-click আটকায়।
-  আসল PDF download বা screenshot আটকানো সম্ভব নয়
-  শুধু HTML/CSS/JavaScript দিয়ে।
-*/
-
-document.addEventListener(
-  "contextmenu",
-  function(event){
-
-    event.preventDefault();
-
-  }
-);
 
 </script>
 
