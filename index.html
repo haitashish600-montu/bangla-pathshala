@@ -13,1845 +13,1958 @@
 }
 
 body{
-  font-family:"Noto Sans Bengali","Hind Siliguri",Arial,sans-serif;
-  background:#f5f7fb;
-  color:#20243a;
+  font-family:"Noto Sans Bengali","Noto Sans","Hind Siliguri",Arial,sans-serif;
+  background:#f4f6fb;
+  color:#17233c;
+  -webkit-tap-highlight-color:transparent;
+}
+
+button,input{
+  font-family:inherit;
 }
 
 button{
-  font-family:inherit;
   cursor:pointer;
 }
 
-.header{
-  background:linear-gradient(135deg,#6c35e8,#9b5cff);
-  color:white;
-  padding:28px 18px 35px;
-  border-radius:0 0 32px 32px;
+/* ================= LOGIN ================= */
+
+#loginPage{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  background:
+    radial-gradient(circle at top,#eef1ff,#f7f8fc 55%,#e8ecf8);
 }
+
+.login-box{
+  width:100%;
+  max-width:430px;
+  background:white;
+  border-radius:28px;
+  padding:30px 24px;
+  box-shadow:0 18px 50px rgba(30,45,90,.14);
+  text-align:center;
+}
+
+.login-icon{
+  width:78px;
+  height:78px;
+  border-radius:50%;
+  margin:0 auto 12px;
+  object-fit:cover;
+}
+
+.login-title{
+  color:#5124b8;
+  font-size:31px;
+  font-weight:800;
+  margin-bottom:4px;
+}
+
+.login-teacher{
+  color:#777;
+  font-size:17px;
+  margin-bottom:22px;
+}
+
+.login-tabs{
+  display:flex;
+  gap:10px;
+  margin-bottom:15px;
+}
+
+.login-tabs button{
+  flex:1;
+  border:0;
+  padding:14px;
+  border-radius:16px;
+  background:#eee;
+  font-size:17px;
+}
+
+.login-tabs .active{
+  background:linear-gradient(135deg,#7b2ff7,#a64bf4);
+  color:white;
+}
+
+.input{
+  width:100%;
+  border:1px solid #ddd;
+  border-radius:17px;
+  padding:16px;
+  margin:7px 0;
+  font-size:17px;
+  outline:none;
+}
+
+.input:focus{
+  border-color:#7b2ff7;
+  box-shadow:0 0 0 3px rgba(123,47,247,.1);
+}
+
+.primary-btn{
+  width:100%;
+  border:0;
+  padding:16px;
+  margin-top:10px;
+  border-radius:17px;
+  background:linear-gradient(135deg,#7429f4,#ad4bf4);
+  color:white;
+  font-size:18px;
+  font-weight:700;
+}
+
+.secondary-btn{
+  width:100%;
+  border:0;
+  padding:15px;
+  margin-top:10px;
+  border-radius:17px;
+  background:#eeeeee;
+  color:#333;
+  font-size:17px;
+  font-weight:600;
+}
+
+.login-message{
+  min-height:25px;
+  margin-top:12px;
+  color:#d12c2c;
+  font-size:14px;
+}
+
+/* ================= APP ================= */
+
+#app{
+  display:none;
+  min-height:100vh;
+  padding-bottom:85px;
+}
+
+/* TOP BAR */
+
+.topbar{
+  height:65px;
+  background:white;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 16px;
+  position:sticky;
+  top:0;
+  z-index:50;
+  box-shadow:0 2px 12px rgba(0,0,0,.07);
+}
+
+.brand-small{
+  font-weight:800;
+  color:#182b67;
+  font-size:18px;
+}
+
+.top-actions{
+  display:flex;
+  gap:8px;
+}
+
+.top-btn{
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:13px;
+  background:#f1f3f8;
+  font-size:20px;
+}
+
+/* BANNER */
+
+.banner-wrap{
+  width:100%;
+  background:#111c3d;
+  overflow:hidden;
+}
+
+.banner{
+  width:100%;
+  display:block;
+  max-height:360px;
+  object-fit:cover;
+}
+
+/* MAIN */
 
 .container{
-  max-width:900px;
+  width:min(1180px,94%);
   margin:auto;
-  padding:0 16px 40px;
 }
 
-.badge{
-  display:inline-block;
-  background:rgba(255,255,255,.18);
-  padding:8px 14px;
+.welcome{
+  margin:22px 0 15px;
+  background:white;
   border-radius:20px;
-  font-size:14px;
-  margin-bottom:12px;
+  padding:18px;
+  box-shadow:0 5px 18px rgba(30,40,80,.07);
 }
 
-.header h1{
-  font-size:32px;
+.welcome h2{
+  font-size:23px;
+  color:#172c67;
   margin-bottom:5px;
 }
 
-.teacher{
-  font-size:17px;
-  margin-bottom:20px;
+.welcome p{
+  color:#6b7280;
 }
 
-.search{
-  width:100%;
-  border:0;
-  outline:0;
-  padding:15px 18px;
-  border-radius:25px;
-  font-size:16px;
-  box-shadow:0 5px 20px rgba(0,0,0,.12);
-}
+/* QUICK CARDS */
 
-.section-title{
-  margin:28px 0 15px;
-  font-size:21px;
-}
-
-.grid{
+.quick-grid{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:14px;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  margin:15px 0 25px;
 }
 
-.card{
+.quick-card{
   background:white;
-  padding:20px;
-  border-radius:22px;
-  box-shadow:0 5px 20px rgba(30,40,80,.08);
+  border-radius:20px;
+  padding:20px 15px;
+  text-align:center;
+  border-left:6px solid #2856c8;
+  box-shadow:0 5px 18px rgba(30,40,80,.08);
   transition:.2s;
-  border:1px solid #eee;
 }
 
-.card:active{
+.quick-card:active{
   transform:scale(.98);
 }
 
-.icon{
-  font-size:30px;
+.quick-icon{
+  font-size:38px;
   margin-bottom:8px;
 }
 
-.card h3{
+.quick-card h3{
   font-size:18px;
   margin-bottom:4px;
 }
 
-.card p{
+.quick-card p{
   color:#777;
   font-size:14px;
 }
 
-.view{
-  display:none;
-}
+/* SECTION */
 
-.view.active{
-  display:block;
-}
-
-.top{
+.section-title{
   display:flex;
   align-items:center;
-  gap:10px;
-  margin:20px 0;
+  justify-content:space-between;
+  margin:28px 0 14px;
 }
 
-.back{
-  background:#eee;
-  border:0;
-  border-radius:50%;
-  width:40px;
-  height:40px;
-  font-size:20px;
+.section-title h2{
+  font-size:23px;
 }
 
-.lesson{
+.section-title span{
+  color:#6b7280;
+  font-size:14px;
+}
+
+/* CLASS CARDS */
+
+.class-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+}
+
+.class-card{
   background:white;
-  padding:17px;
-  margin:10px 0;
-  border-radius:16px;
-  box-shadow:0 3px 12px rgba(0,0,0,.06);
+  border-radius:22px;
+  padding:20px;
+  box-shadow:0 6px 22px rgba(30,40,80,.09);
+  border-top:5px solid #315dcc;
 }
 
-.lesson h3{
+.class-card:nth-child(2){
+  border-color:#f39a16;
+}
+
+.class-card:nth-child(3){
+  border-color:#24a861;
+}
+
+.class-card:nth-child(4){
+  border-color:#8134c8;
+}
+
+.class-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.class-name{
+  font-size:25px;
+  font-weight:800;
+}
+
+.class-tag{
+  background:#edf2ff;
+  color:#294fb0;
+  padding:7px 10px;
+  border-radius:12px;
+  font-size:12px;
+  white-space:nowrap;
+}
+
+.class-desc{
+  color:#707070;
+  margin:8px 0 15px;
+}
+
+.chapter-list{
+  display:grid;
+  gap:8px;
+}
+
+.chapter-btn{
+  width:100%;
+  border:0;
+  background:#f7f8fb;
+  padding:13px 14px;
+  border-radius:13px;
+  text-align:left;
+  font-size:15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.chapter-btn:hover{
+  background:#edf1ff;
+}
+
+/* MODEL SET */
+
+.model-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:13px;
+}
+
+.model-card{
+  background:white;
+  border-radius:18px;
+  padding:17px;
+  box-shadow:0 5px 18px rgba(30,40,80,.07);
+}
+
+.model-card h3{
+  font-size:17px;
   margin-bottom:6px;
 }
 
-.small{
-  color:#777;
+.model-count{
+  color:#6c4bd8;
+  font-weight:700;
+  margin-bottom:12px;
+}
+
+.open-btn{
+  border:0;
+  width:100%;
+  padding:11px;
+  border-radius:12px;
+  background:#edf1ff;
+  color:#263f91;
+  font-weight:700;
+}
+
+/* STUDY MATERIAL */
+
+.material{
+  background:white;
+  border-radius:22px;
+  padding:20px;
+  margin-top:25px;
+  box-shadow:0 6px 22px rgba(30,40,80,.08);
+}
+
+.material-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  padding:14px 0;
+  border-bottom:1px solid #eee;
+}
+
+.material-item:last-child{
+  border-bottom:0;
+}
+
+.material-name{
+  font-weight:700;
+}
+
+.material-type{
+  color:#888;
   font-size:13px;
 }
 
-.action{
-  display:inline-block;
-  margin-top:10px;
+.view-pdf{
   border:0;
-  padding:10px 14px;
-  border-radius:12px;
-  background:#7040e8;
+  background:#5b2bd8;
   color:white;
-  font-size:14px;
+  border-radius:11px;
+  padding:9px 13px;
 }
 
-.whatsapp{
-  background:#25D366;
+/* FOOTER NAV */
+
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:72px;
+  background:white;
+  box-shadow:0 -4px 18px rgba(0,0,0,.1);
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  z-index:100;
 }
 
-.note{
-  background:#fff8df;
-  border-left:5px solid #ffb400;
+.nav-btn{
+  border:0;
+  background:none;
+  color:#26304c;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:3px;
+  font-size:12px;
+}
+
+.nav-btn span{
+  font-size:25px;
+}
+
+.nav-btn.active{
+  color:#173b9b;
+  font-weight:700;
+}
+
+/* MODAL */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  z-index:200;
+  align-items:center;
+  justify-content:center;
   padding:15px;
-  border-radius:12px;
-  margin:10px 0;
 }
 
-.question{
+.modal-box{
   background:white;
-  padding:18px;
-  border-radius:17px;
-  margin:13px 0;
-  box-shadow:0 3px 12px rgba(0,0,0,.06);
+  width:min(700px,100%);
+  max-height:90vh;
+  overflow:auto;
+  border-radius:22px;
+  padding:20px;
 }
 
-.option{
-  display:block;
+.modal-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:15px;
+}
+
+.close{
+  border:0;
+  background:#eee;
+  width:40px;
+  height:40px;
+  border-radius:12px;
+  font-size:20px;
+}
+
+.pdf-frame{
   width:100%;
-  text-align:left;
-  margin-top:8px;
-  padding:11px;
-  border:1px solid #ddd;
-  border-radius:10px;
-  background:#fafafa;
-}
-
-.option.selected{
-  background:#e8ddff;
-  border-color:#7040e8;
-}
-
-.score{
-  background:linear-gradient(135deg,#7040e8,#a15cff);
-  color:white;
-  padding:30px;
-  border-radius:25px;
-  text-align:center;
-  margin:20px 0;
-}
-
-.score-number{
-  font-size:42px;
-  font-weight:bold;
-}
-
-.video-box{
-  background:#111;
-  color:white;
-  padding:25px;
-  border-radius:18px;
-  text-align:center;
-  margin-top:12px;
-}
-
-.footer{
-  text-align:center;
-  padding:30px 10px;
-  color:#777;
-  font-size:14px;
-}
-
-@media(max-width:600px){
-  .grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .header h1{
-    font-size:28px;
-  }
-
-  .card{
-    padding:16px;
-  }
-}
-/* ✨ Stylish Bangla Pathshala Design */
-.section-title{
-  font-size:24px;
-  font-weight:800;
-  letter-spacing:.3px;
-  background:linear-gradient(90deg,#6c35e8,#a855f7);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-.card h3{
-  font-size:18px;
-  font-weight:800;
-  line-height:1.5;
-  color:#29233d;
-}
-
-.card p{
-  font-size:14px;
-  line-height:1.6;
-  color:#777;
-}
-
-.card .action{
+  height:65vh;
   border:0;
   border-radius:12px;
-  padding:9px 16px;
-  font-size:14px;
-  font-weight:700;
-  color:white;
-  background:linear-gradient(135deg,#6c35e8,#a855f7);
-  box-shadow:0 5px 12px rgba(108,53,232,.25);
-  transition:.2s;
+  background:#f1f1f1;
 }
 
-.card .action:active{
-  transform:scale(.96);
+/* PROFILE */
+
+.profile{
+  text-align:center;
+  padding:30px 15px;
 }
 
-.back{
-  border:0;
-  border-radius:12px;
-  padding:9px 15px;
-  font-weight:700;
-  background:white;
-  color:#6c35e8;
-  box-shadow:0 3px 10px rgba(0,0,0,.10);
+.profile-avatar{
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  object-fit:cover;
+  border:5px solid #eee;
+  margin-bottom:12px;
+}
+
+.logout{
+  margin-top:20px;
+  background:#e53935;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:800px){
+  .quick-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .model-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .class-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:520px){
+  .quick-grid{
+    grid-template-columns:1fr;
+  }
+
+  .model-grid{
+    grid-template-columns:1fr;
+  }
+
+  .banner{
+    max-height:250px;
+  }
+
+  .welcome h2{
+    font-size:20px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- HOME -->
-<section id="home" class="view active">
+<!-- ================= LOGIN PAGE ================= -->
 
-<header class="header">
-<div class="container">
+<section id="loginPage">
 
-<div class="badge">🎓 বাংলা শিক্ষা • নবম–দ্বাদশ</div>
+  <div class="login-box">
 
-<h1>বাংলা পাঠশালা</h1>
+    <img src="assets/banner.png"
+         class="login-icon"
+         alt="বাংলা পাঠশালা">
 
-<div class="teacher">শিক্ষক : আশিষ হাইত</div>
+    <div class="login-title">বাংলা পাঠশালা</div>
 
-<input
-class="search"
-id="search"
-placeholder="🔎 নোট, অধ্যায় বা বিষয় খুঁজুন..."
-oninput="searchContent()">
-
-</div>
-</header>
-
-<div class="container">
-
-<h2 class="section-title">📚 শ্রেণি নির্বাচন করুন</h2>
-
-<div class="grid">
-<div class="card" onclick="openClass(9)">
-<div class="icon">📘</div>
-<h3>নবম শ্রেণি</h3>
-<p>বাংলা প্রস্তুতি</p>
-</div>
-
-<div class="card" onclick="openClass(10)">
-<div class="icon">📗</div>
-<h3>দশম শ্রেণি</h3>
-<p>বাংলা প্রস্তুতি</p>
-</div>
-
-<div class="card" onclick="openClass(11)">
-<div class="icon">📙</div>
-<h3>একাদশ শ্রেণি</h3>
-<p>বাংলা প্রস্তুতি</p>
-</div>
-
-<div class="card" onclick="openClass(12)">
-<div class="icon">📕</div>
-<h3>দ্বাদশ শ্রেণি</h3>
-<p>বাংলা প্রস্তুতি</p>
-</div>
-
-</div>
-
-
-<h2 class="section-title">⚡ দ্রুত প্রবেশ</h2>
-
-<div class="grid">
-
-<div class="card" onclick="openNotes()">
-<div class="icon">📚</div>
-<h3>অধ্যায়ভিত্তিক নোট</h3>
-<p>গুরুত্বপূর্ণ পড়া</p>
-</div>
-
-<div class="card" onclick="openGrammar()">
-<div class="icon">📘</div>
-<h3>বাংলা ব্যাকরণ</h3>
-<p>Practice</p>
-</div>
-
-<div class="card" onclick="openWriting()">
-<div class="icon">✍️</div>
-<h3>রচনা</h3>
-<p>শ্রেণি অনুযায়ী</p>
-</div>
-
-<div class="card" onclick="openMockMenu()">
-<div class="icon">📝</div>
-<h3>মক টেস্ট</h3>
-<p>নিজেকে যাচাই করুন</p>
-</div>
-
-</div>
-
-
-<h2 class="section-title">🏫 কলেজ বাংলা</h2>
-
-<div class="grid">
-
-<div class="card" onclick="openCollege('novel')">
-<div class="icon">📕</div>
-<h3>উপন্যাস</h3>
-<p>আলোচনা ও নোট</p>
-</div>
-
-<div class="card" onclick="openCollege('story')">
-<div class="icon">📗</div>
-<h3>ছোটগল্প</h3>
-<p>আলোচনা ও নোট</p>
-</div>
-
-<div class="card" onclick="openCollege('suggestion')">
-<div class="icon">💡</div>
-<h3>কলেজ সাজেশন</h3>
-<p>গুরুত্বপূর্ণ বিষয়</p>
-</div>
-
-<div class="card" onclick="openCollege('notes')">
-<div class="icon">📄</div>
-<h3>কলেজ নোট</h3>
-<p>পরীক্ষার প্রস্তুতি</p>
-</div>
-
-</div>
-
-
-<h2 class="section-title">📞 যোগাযোগ</h2>
-
-<div class="card">
-<h3>শিক্ষক : আশিষ হাইত</h3>
-<p>বাংলা পাঠশালা সংক্রান্ত যোগাযোগ</p>
-
-<a
-class="action whatsapp"
-href="https://wa.me/919614659848"
-target="_blank"
-style="text-decoration:none">
-💬 অফিসিয়াল WhatsApp
-</a>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- CLASS -->
-<section id="class" class="view">
-<div class="container">
-
-<div class="top">
-<button class="back" onclick="home()">←</button>
-<h2 id="classTitle">শ্রেণি</h2>
-</div>
-<div id="classChapters"></div>
-
-
-</div>
-</section>
-
-
-<!-- CHAPTER -->
-<section id="chapter" class="view">
-<div class="container">
-
-<div class="top">
-<button class="back" onclick="backToClass()">←</button>
-<h2 id="chapterTitle">অধ্যায়</h2>
-</div><div id="chapters"></div>
-
-<div class="lesson">
-<h3>📚 অধ্যায়ের নোট</h3>
-<p id="chapterNote">
-এই অধ্যায়ের বিস্তারিত নোট এখানে যোগ করা যাবে।
-</p>
-</div>
-
-<div class="lesson">
-<h3>🎥 ভিডিও ক্লাস</h3>
-
-<div class="video-box">
-<p>এই অধ্যায়ের ভিডিও এখানে যোগ করা যাবে।</p>
-
-<button class="action" onclick="openVideo()">
-▶️ ভিডিও দেখুন
-</button>
-</div>
-</div>
-
-<div class="lesson">
-<h3>📝 অধ্যায়ভিত্তিক Mock Test</h3>
-<p>এই অধ্যায়ের প্রশ্ন দিয়ে পরীক্ষা দিন।</p>
-
-<button class="action" onclick="startChapterTest()">
-পরীক্ষা শুরু করুন
-</button>
-</div>
-
-<div class="lesson">
-<h3>📄 গুরুত্বপূর্ণ প্রশ্ন</h3>
-<div class="note">
-গুরুত্বপূর্ণ প্রশ্ন ও উত্তর এখানে যোগ করা যাবে।
-</div>
-</div>
-
-</div>
-</section>
-
-
-<!-- MOCK MENU -->
-<section id="mockMenu" class="view">
-<div class="container">
-
-<div class="top">
-<button class="back" onclick="home()">←</button>
-<h2>📝 মক টেস্ট</h2>
-</div>
-
-<div class="card" onclick="startMock('chapter')">
-<div class="icon">📚</div>
-<h3>অধ্যায়ভিত্তিক মক</h3>
-<p>নির্দিষ্ট অধ্যায়ের পরীক্ষা</p>
-</div>
-
-<br>
-
-<div class="card" onclick="startMock('full')">
-<div class="icon">📖</div>
-<h3>সমগ্র সিলেবাস মক</h3>
-<p>সম্পূর্ণ সিলেবাস যাচাই করুন</p>
-</div>
-
-<br>
-
-<div class="card" onclick="startMock('grammar')">
-<div class="icon">✍️</div>
-<h3>ব্যাকরণ মক</h3>
-<p>বাংলা ব্যাকরণ Practice</p>
-</div>
-
-</div>
-</section>
-
-
-<!-- TEST -->
-<section id="test" class="view">
-<div class="container">
-
-<div class="top">
-<button class="back" onclick="openMockMenu()">←</button>
-<h2 id="testTitle">মক টেস্ট</h2>
-</div>
-
-<div id="examBody"></div>
-
-<button class="action" onclick="submitTest()" style="width:100%;margin-top:15px">
-✅ পরীক্ষা জমা দিন
-</button>
-
-<div id="resultBox"></div>
-
-</div>
-</section>
-
-
-<!-- NOTES -->
-<section id="notes" class="view">
-<div class="container">
-
-<div class="top">
-<button class="back" onclick="home()">←</button>
-<h2>📚 অধ্যায়ভিত্তিক নোট</h2>
-</div>
-
-<div id="notesList"></div>
-
-</div>
-</section>
-
-
-<!-- GRAMMAR -->
-<section id="grammar" class="view">
-<div class="container">
-
-<div class="top">
-<button class="back" onclick="home()">←</button>
-<h2>📘 বাংলা ব্যাকরণ</h2>
-</div>
-
-<div class="lesson">
-<h3>সন্ধি</h3>
-<p class="small">নোট ও অনুশীলন</p>
-</div>
-
-<div class="lesson">
-<h3>সমাস</h3>
-<p class="small">নোট ও অনুশীলন</p>
-</div>
-
-<div class="lesson">
-<h3>কারক ও বিভক্তি</h3>
-<p class="small">নোট ও অনুশীলন</p>
-</div>
-
-<div class="lesson">
-<h3>বাক্য পরিবর্তন</h3>
-<p class="small">Practice</p>
-</div>
-
-</div>
-</section>
-
-
-<!-- WRITING -->
-<section id="writing" class="view">
-<div class="container">
-
-<div class="top">
-<button class="back" onclick="home()">←</button>
-<h2>✍️ রচনা</h2>
-</div>
-
-<div class="lesson">
-<h3>প্রবন্ধ রচনা</h3>
-<p>গুরুত্বপূর্ণ বিষয় ও নমুনা উত্তর।</p>
-</div>
-
-<div class="lesson">
-<h3>ভাবসম্প্রসারণ</h3>
-<p>পরীক্ষার উপযোগী প্রস্তুতি।</p>
-</div>
-
-<div class="lesson">
-<h3>পত্র ও প্রতিবেদন</h3>
-<p>লেখার নিয়ম ও নমুনা।</p>
-</div>
-
-</div>
-</section>
-
-
-<!-- COLLEGE -->
-<section id="college" class="view">
-<div class="container">
-
-<div class="top">
-<button class="back" onclick="home()">←</button>
-<h2 id="collegeTitle">কলেজ বাংলা</h2>
-</div>
-
-<div id="collegeList"></div>
-
-</div>
-</section>
-
-
-<footer class="footer">
-বাংলা পাঠশালা<br>
-শিক্ষক : আশিষ হাইত
-</footer>
-
-
-<script>
-
-/* =========================
-   শ্রেণির অধ্যায়
-========================= */
-
-const classData = {
-    9: {
-
-    "১ম পর্যায়ক্রমিক মূল্যায়ন": [
-
-      "পদ্য → কলিঙ্গদেশে ঝড়-বৃষ্টি — মুকুন্দরাম চক্রবর্তী",
-
-      "গদ্য → ধীবর-বৃত্তান্ত — কালিদাস",
-
-      "গদ্য → ইলিয়াস — লিও তলস্তয়",
-
-      "গদ্য → দাম — নারায়ণ বন্দ্যোপাধ্যায়",
-
-      "পদ্য → নোঙর — অজিত দত্ত",
-
-      "সহায়ক পাঠ → প্রফেসর শঙ্কুর ডায়রি : ব্যোমযাত্রীর ডায়রি",
-
-      "ব্যাকরণ → ধ্বনি ও ধ্বনি পরিবর্তন",
-
-      "শব্দ গঠন → উপসর্গ ও অনুসর্গ, ধাতু ও প্রত্যয়",
-
-      "নির্মিতি → ভাবসম্প্রসারণ"
-
-    ],
-
-    "২য় পর্যায়ক্রমিক মূল্যায়ন": [
-
-      "গদ্য → নব নব সৃষ্টি",
-
-      "পদ্য → আকাশে সাতটি তারা",
-
-      "গদ্য → চিঠি",
-
-      "পদ্য → আবহমান",
-
-      "গদ্য → রাধারাণী",
-
-      "সহায়ক পাঠ → প্রফেসর শঙ্কুর ডায়রি : কর্ভাস",
-
-      "ব্যাকরণ → বাংলা শব্দভাণ্ডার",
-
-      "ব্যাকরণ → শব্দ ও পদ",
-
-      "ব্যাকরণ → বিশেষ্য, বিশেষণ ও সর্বনাম",
-
-      "নির্মিতি → ভাবার্থ",
-
-      "নির্মিতি → সারাংশ"
-
-    ],
-
-    "৩য় পর্যায়ক্রমিক / নির্বাচনী মূল্যায়ন": [
-
-      "গদ্য → হিমালয় দর্শন",
-
-      "পদ্য → খেয়া",
-
-      "পদ্য → নিন্দুকেরা",
-
-      "পদ্য → ভাঙার গান",
-
-      "পদ্য → ছন্দপাঠ",
-
-      "গদ্য → আমরা",
-
-      "সহায়ক পাঠ → প্রফেসর শঙ্কুর ডায়রি",
-
-      "প্রথম ও দ্বিতীয় পর্যায়ের নির্ধারিত পাঠ",
-
-      "প্রথম ও দ্বিতীয় পর্যায়ের নির্ধারিত ব্যাকরণ ও নির্মিতি"
-
-    ]
-
-  },
-  10: {
-
-    "১ম পর্যায়ক্রমিক মূল্যায়ন": [
-
-      "গল্প → জ্ঞানচক্ষু — আশাপূর্ণা দেবী",
-
-      "কবিতা → অসুখী একজন — পাবলো নেরুদা",
-
-      "কবিতা → আয় আরো বেঁধে বেঁধে থাকি — শঙ্খ ঘোষ",
-
-      "কবিতা → আফ্রিকা — রবীন্দ্রনাথ ঠাকুর",
-
-      "প্রবন্ধ → হারিয়ে যাওয়া কালি কলম — শ্রীপান্থ",
-
-      "সহায়ক পাঠ → কোনি — ১–৩১ পৃষ্ঠা"
-
-    ],
-
-    "২য় পর্যায়ক্রমিক মূল্যায়ন": [
-
-      "গল্প → বহুরূপী — সুবোধ ঘোষ",
-
-      "গল্প → পথের দাবী — শরৎচন্দ্র চট্টোপাধ্যায়",
-
-      "কবিতা → অভিষেক — মাইকেল মধুসূদন দত্ত",
-
-      "কবিতা → প্রলয়োল্লাস — কাজী নজরুল ইসলাম",
-
-      "নাটক → সিরাজদ্দৌলা",
-
-      "সহায়ক পাঠ → কোনি — ৩২–৫০ পৃষ্ঠা"
-
-    ],
-
-    "৩য় পর্যায়ক্রমিক / নির্বাচনী মূল্যায়ন": [
-
-      "গল্প → অদলবদল — পান্নালাল প্যাটেল",
-
-      "গল্প → নদীর বিদ্রোহ — মানিক বন্দ্যোপাধ্যায়",
-
-      "কবিতা → সিন্ধুতীরে — সৈয়দ আলাওল",
-
-      "কবিতা → অস্ত্রের বিরুদ্ধে গান — জয় গোস্বামী",
-
-      "প্রবন্ধ → বাংলা ভাষায় বিজ্ঞান — রাজশেখর বসু",
-
-      "সহায়ক পাঠ → কোনি — সম্পূর্ণ বই"
-
-    ]
-
-  },
-  11: {
-
-    "১ম সেমিস্টার": [
-
-      "গল্প → পুঁইমাচা — বিভূতিভূষণ বন্দ্যোপাধ্যায়",
-
-      "প্রবন্ধ → বিড়াল — বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
-
-      "কবিতা → ঈশ্বরচন্দ্র বিদ্যাসাগর — মাইকেল মধুসূদন দত্ত",
-
-      "কবিতা → সাম্যবাদী — কাজী নজরুল ইসলাম",
-
-      "আন্তর্জাতিক গল্প → বিশাল ডানাওয়ালা এক থুরথুরে বুড়ো — গ্যাব্রিয়েল গার্সিয়া মার্কেজ (অনুবাদ: মানবেন্দ্র বন্দ্যোপাধ্যায়)",
-
-      "ভারতীয় কবিতা → চারণ কবি — ভারভারা রাও (অনুবাদ: শঙ্খ ঘোষ)",
-
-      "ভাষা → বিশ্বের ভাষা ও ভাষা পরিবার",
-
-      "ভাষা → বাংলা ভাষার উদ্ভব ও ক্রমবিকাশ",
-
-      "ভাষা → ভারতে প্রচলিত ভাষা পরিবার",
-
-      "ভাষা → বাংলা ভাষার বৈচিত্র্য",
-
-      "বাংলা শিল্প-সাহিত্য ও সংস্কৃতির ইতিহাস → পর্ব ১ — প্রাচীন বাংলা : সমাজ ও সাহিত্য",
-
-      "বাংলা শিল্প-সাহিত্য ও সংস্কৃতির ইতিহাস → পর্ব ২ — মধ্যযুগের বাংলা সমাজ ও সাহিত্যের প্রধান ধারা : শ্রীকৃষ্ণকীর্তন, বৈষ্ণব পদাবলি, চৈতন্য ও চৈতন্য জীবনী, মঙ্গলকাব্য, অনুবাদ, ইসলামীয় ধারা, শাক্ত পদাবলি"
-
-    ],
-
-
-    "২য় সেমিস্টার": [
-
-      "গল্প → ছুটি — রবীন্দ্রনাথ ঠাকুর",
-
-      "গল্প → তেলেনাপোতা আবিষ্কার — প্রেমেন্দ্র মিত্র",
-
-      "কবিতা → ভাব সম্মিলন — বিদ্যাপতি",
-
-      "কবিতা → লালনশাহ ফকিরের গান — লালনশাহ",
-
-      "কবিতা → নুন — জয় গোস্বামী",
-
-      "নাটক → আষাঢ় — বিজন ভট্টাচার্য",
-
-      "পূর্ণাঙ্গ সহায়ক গ্রন্থ → পঞ্চতন্ত্র — সৈয়দ মুজতবা আলি",
-
-      "পূর্ণাঙ্গ সহায়ক গ্রন্থ → বই কেনা",
-
-      "পূর্ণাঙ্গ সহায়ক গ্রন্থ → আজব শহর কলকাতা",
-
-      "পূর্ণাঙ্গ সহায়ক গ্রন্থ → পটিচলে বৈশাখ",
-
-      "পূর্ণাঙ্গ সহায়ক গ্রন্থ → আড্ডা",
-
-      "বাংলা শিল্প-সাহিত্য ও সংস্কৃতির ইতিহাস → আধুনিক বাংলা সাহিত্য : যুগের আধুনিকতা ও ঔপনিবেশিক বাংলার সামাজিক ও ধর্মীয় আন্দোলন, শিক্ষা-সংস্কার, গদ্যের উদ্ভব, কবিতা, উপন্যাস ও ছোটগল্প, নাটক, যাত্রা ও নাট্যমঞ্চ, প্রবন্ধ (সত্তরের দশক পর্যন্ত)",
-
-      "বাংলা শিল্প-সাহিত্য ও সংস্কৃতির ইতিহাস → লোকিক সাহিত্য : ছড়া, ধাঁধা, প্রবাদ, কথা",
-
-      "বাংলা শিল্প-সাহিত্য ও সংস্কৃতির ইতিহাস → কবিতায় মহাকাব্য, আখ্যানকাব্য, গীতিকবিতার ধারা",
-
-      "বাংলা শিল্প-সাহিত্য ও সংস্কৃতির ইতিহাস → কবিতা : মধুসূদন দত্ত, রবীন্দ্রনাথ ঠাকুর, কাজী নজরুল ইসলাম, জীবনানন্দ দাশ ও পরবর্তী ধারা",
-
-      "বাংলা শিল্প-সাহিত্য ও সংস্কৃতির ইতিহাস → কথাসাহিত্য : বঙ্কিমচন্দ্র চট্টোপাধ্যায়, রবীন্দ্রনাথ ঠাকুর, শরৎচন্দ্র চট্টোপাধ্যায়, মানিক বন্দ্যোপাধ্যায়, বিভূতিভূষণ বন্দ্যোপাধ্যায়, তারাশঙ্কর বন্দ্যোপাধ্যায় ও পরবর্তী ধারা",
-
-      "বাংলা শিল্প-সাহিত্য ও সংস্কৃতির ইতিহাস → নাটক : মধুসূদন দত্ত, দীনবন্ধু মিত্র, গিরিশচন্দ্র ঘোষ, রবীন্দ্রনাথ ঠাকুর, দ্বিজেন্দ্রলাল রায়, বিজন ভট্টাচার্য ও পরবর্তী ধারা"
-
-    ]
-
-  },
-
-
-  12: {
-
-    "৩য় সেমিস্টার": [
-
-      "গল্প → আদরিণী — প্রভাতকুমার মুখোপাধ্যায়",
-
-      "কবিতা → অন্ধকার লেখাগুচ্ছ — শ্রীজাত",
-
-      "কবিতা → দ্বিধাগ্রস্ত রূপকথা — নবনীতা দেবসেন",
-
-      "প্রবন্ধ → বাংলা ভাষা — স্বামী বিবেকানন্দ",
-
-      "ভারতীয় গল্প → পোস্টার — শঙ্কর রাও খারাত (অনুবাদ: সুন্দরম চক্রবর্তী)",
-
-      "আন্তর্জাতিক কবিতা → তার সঙ্গে — পাবলো নেরুদা (অনুবাদ: শক্তি চট্টোপাধ্যায়)",
-
-      "ভাষা → প্রথম অধ্যায় : ভাষাবিজ্ঞান ও তার শাখা-প্রশাখা",
-
-      "ভাষা → দ্বিতীয় অধ্যায় : ধ্বনিতত্ত্ব",
-
-      "ভাষা → তৃতীয় অধ্যায় : শব্দার্থতত্ত্ব",
-
-      "বাংলা ভাষা ও সংস্কৃতি → প্রথম অধ্যায় : বাঙালিদের ইতিহাস — সংক্ষিপ্ত রূপরেখা",
-
-      "বাংলা ভাষা ও সংস্কৃতি → দ্বিতীয় অধ্যায় : বাঙালির বিজ্ঞানচর্চার সংক্ষিপ্ত পরিচিতি",
-
-      "বাংলা ভাষা ও সংস্কৃতি → তৃতীয় অধ্যায় : বাঙালির ক্রীড়া সংস্কৃতি — সংক্ষিপ্ত পরিচিতি"
-
-    ],
-
-
-    "৪র্থ সেমিস্টার": [
-
-      "গল্প → হলুদ পোড়া — মানিক বন্দ্যোপাধ্যায়",
-
-      "গল্প → হারুন সালেমের মাসি — মহাশ্বেতা দেবী",
-
-      "কবিতা → প্রার্থনা — রবীন্দ্রনাথ ঠাকুর",
-
-      "কবিতা → তিমির হননের গান — জীবনানন্দ দাশ",
-
-      "কবিতা → কেন এল না — সুভাষ মুখোপাধ্যায়",
-
-      "নাটক → নানা রঙের দিন — অজিতেশ বন্দ্যোপাধ্যায়",
-
-      "পূর্ণাঙ্গ সহায়ক গ্রন্থ → ডাকঘর — রবীন্দ্রনাথ ঠাকুর",
-
-      "বাংলা ভাষা ও সংস্কৃতি → চতুর্থ অধ্যায় : বাংলা চিত্রকলার ইতিহাস — সংক্ষিপ্ত রূপরেখা",
-
-      "বাংলা ভাষা ও সংস্কৃতি → পঞ্চম অধ্যায় : বাঙালির চলচ্চিত্রের ইতিহাস — সংক্ষিপ্ত রূপরেখা"
-
-    ]
-
-  }
-
-};
-
-/* =========================
-   নোট
-========================= */
-
-const notesData=[
-"বাংলা সাহিত্যের ইতিহাস",
-"কবিতা",
-"গল্প",
-"প্রবন্ধ",
-"নাটক",
-"বাংলা ব্যাকরণ"
-];
-
-
-/* =========================
-   কলেজ বিভাগ
-========================= */
-
-const collegeData={
-
-novel:[
-"উপন্যাসের পরিচয়",
-"উপন্যাসের গুরুত্বপূর্ণ আলোচনা",
-"চরিত্র আলোচনা",
-"গুরুত্বপূর্ণ প্রশ্ন ও উত্তর"
-],
-
-story:[
-"ছোটগল্পের আলোচনা",
-"গল্পের মূলভাব",
-"চরিত্র বিশ্লেষণ",
-"গুরুত্বপূর্ণ প্রশ্ন ও উত্তর"
-],
-
-suggestion:[
-"প্রথম সেমেস্টার সাজেশন",
-"দ্বিতীয় সেমেস্টার সাজেশন",
-"তৃতীয় সেমেস্টার সাজেশন",
-"চতুর্থ সেমেস্টার সাজেশন"
-],
-
-notes:[
-"উপন্যাসের নোট",
-"ছোটগল্পের নোট",
-"কবিতার নোট",
-"প্রবন্ধের নোট",
-"পরীক্ষার গুরুত্বপূর্ণ নোট"
-]
-
-};
-
-
-/* =========================
-   Mock Questions
-========================= */
-
-const questions=[
-
-{
-q:"বাংলা ভাষা কোন ভাষাগোষ্ঠীর অন্তর্গত?",
-a:["ইন্দো-ইউরোপীয়","দ্রাবিড়","চীনা-তিব্বতি","অস্ট্রিক"],
-correct:0
-},
-
-{
-q:"বাংলা সাহিত্যের প্রাচীনতম নিদর্শন কোনটি?",
-a:["চর্যাপদ","শ্রীকৃষ্ণকীর্তন","মঙ্গলকাব্য","গীতাঞ্জলি"],
-correct:0
-},
-
-{
-q:"রবীন্দ্রনাথ ঠাকুর কোন গ্রন্থের জন্য নোবেল পুরস্কার পান?",
-a:["গীতাঞ্জলি","সোনার তরী","বলাকা","মানসী"],
-correct:0
-},
-
-{
-q:"বাংলা ব্যাকরণের একটি গুরুত্বপূর্ণ অংশ কোনটি?",
-a:["সন্ধি","জ্যামিতি","বীজগণিত","পদার্থবিদ্যা"],
-correct:0
-}
-
-];
-
-let currentClass=9;
-let currentChapter="";
-let currentQuestions=[];
-let selectedAnswers=[];
-
-
-/* =========================
-   View Control
-========================= */
-
-function show(id){
-
-document.querySelectorAll(".view")
-.forEach(v=>v.classList.remove("active"));
-
-document.getElementById(id)
-.classList.add("active");
-
-window.scrollTo(0,0);
-}
-
-function home(){
-show("home");
-}
-
-function backToClass(){
-openClass(currentClass);
-}
-
-
-/* =========================
-   Class
-========================= */
-
-function openClass(cls){
-
-  currentClass = cls;
-
-  document.getElementById("classTitle").innerText =
-    cls + " শ্রেণি • বাংলা";
-
-  let box = document.getElementById("classChapters");
-
-  box.innerHTML = "";
-
-  const data = classData[cls];
-
-if (!data){
-  box.innerHTML = `
-    <div class="lesson">
-      <h3>কোনো তথ্য পাওয়া যায়নি</h3>
-    </div>
-  `;
-}else if(Array.isArray(data)){
-
-  data.forEach((chapter,index)=>{
-
-    let div = document.createElement("div");
-
-    div.className = "lesson";
-
-    div.innerHTML = `
-      <h3>📚 ${chapter}</h3>
-      <p class="small">নোট • ভিডিও • অধ্যায়ভিত্তিক Mock Test</p>
-      <button class="action" type="button">
-        অধ্যায় খুলুন
-      </button>
-    `;
-
-    div.querySelector("button").addEventListener("click",()=>{
-      openChapter(chapter);
-    });
-
-    box.appendChild(div);
-
-  });
-
-}else{
-
-  Object.keys(data).forEach((semester)=>{
-
-    let div = document.createElement("div");
-
-    div.className = "lesson";
-
-    div.innerHTML = `
-      <h3>📚 ${semester}</h3>
-      <p class="small">সেমিস্টারের বিষয় ও অধ্যায় দেখুন</p>
-      <button class="action" type="button">
-        সেমিস্টার খুলুন
-      </button>
-    `;
-
-    div.querySelector("button").addEventListener("click",()=>{
-      openSemester(cls, JSON.stringify(data[semester]));
-    });
-
-    box.appendChild(div);
-
-  });
-
-}
-  show("class");
-
-}
-
-
-/* =========================
-   Chapter
-========================= */
-function openSemester(cls, semesterJson){
-
-  const semesterData = JSON.parse(semesterJson);
-
-  currentClass = cls;
-
-  document.getElementById("classTitle").innerText =
-    cls + " শ্রেণি • বাংলা";
-
-  let box = document.getElementById("classChapters");
-
-  box.innerHTML = "";
-
-  semesterData.forEach((topic) => {
-
-    let div = document.createElement("div");
-
-    div.className = "lesson";
-
-    div.innerHTML = `
-      <h3>📚 ${topic}</h3>
-      <p class="small">নোট • ভিডিও • অধ্যায়ভিত্তিক Mock Test</p>
-      <button class="action" type="button">
-        অধ্যায় খুলুন
-      </button>
-    `;
-
-    div.querySelector("button").addEventListener("click", () => {
-      openChapter(topic);
-    });
-
-    box.appendChild(div);
-
-  });
-
-  show("class");
-}
-function openChapter(name){
-
-currentChapter=name;
-
-document.getElementById("chapterTitle")
-.innerText=name;
-
-document.getElementById("chapterNote")
-.innerText=
-name+" অধ্যায়ের বিস্তারিত নোট, গুরুত্বপূর্ণ প্রশ্ন এবং প্রস্তুতির উপকরণ এখানে থাকবে।";
-
-show("chapter");
-}
-
-
-/* =========================
-   Video
-========================= */
-
-function openVideo(){
-
-alert(
-"ভিডিও লিংক এখানে যোগ করতে হবে।\n\n"+
-"আপনি YouTube ভিডিওর লিংক দিলে সেটি এই অধ্যায়ের ভিডিও হিসেবে বসানো যাবে।"
-);
-
-}
-
-
-/* =========================
-   Chapter Test
-========================= */
-
-function startChapterTest(){
-
-startMock("chapter");
-
-}
-
-
-/* =========================
-   Mock Menu
-========================= */
-
-function openMockMenu(){
-
-show("mockMenu");
-
-}
-
-
-/* =========================
-   Start Test
-========================= */
-
-function startMock(type){
-
-currentQuestions=questions;
-selectedAnswers=[];
-
-let title="";
-
-if(type==="chapter"){
-title=currentChapter?
-currentChapter+" • মক টেস্ট":
-"অধ্যায়ভিত্তিক মক টেস্ট";
-}
-
-if(type==="full"){
-title="সমগ্র সিলেবাস • মক টেস্ট";
-}
-
-if(type==="grammar"){
-title="বাংলা ব্যাকরণ • মক টেস্ট";
-}
-
-document.getElementById("testTitle").innerText=title;
-
-let body=document.getElementById("examBody");
-
-body.innerHTML="";
-
-currentQuestions.forEach((item,i)=>{
-
-let q=document.createElement("div");
-
-q.className="question";
-
-q.innerHTML=
-`<h3>${i+1}. ${item.q}</h3>`;
-
-item.a.forEach((option,j)=>{
-
-q.innerHTML+=`
-<button class="option"
-onclick="selectAnswer(${i},${j},this)">
-${option}
-</button>
-`;
-
-});
-
-body.appendChild(q);
-
-});
-
-document.getElementById("resultBox").innerHTML="";
-
-show("test");
-
-}
-
-
-/* =========================
-   Select Answer
-========================= */
-
-function selectAnswer(q,a,button){
-
-selectedAnswers[q]=a;
-
-let parent=button.parentElement;
-
-parent.querySelectorAll(".option")
-.forEach(b=>b.classList.remove("selected"));
-
-button.classList.add("selected");
-
-}
-
-
-/* =========================
-   Submit
-========================= */
-
-function submitTest(){
-
-let score=0;
-
-currentQuestions.forEach((q,i)=>{
-
-if(selectedAnswers[i]===q.correct){
-score++;
-}
-
-});
-
-let total=currentQuestions.length;
-
-let percent=Math.round((score/total)*100);
-
-document.getElementById("resultBox").innerHTML=`
-
-<div class="score">
-
-<div>🎉 আপনার ফলাফল</div>
-
-<div class="score-number">
-${score}/${total}
-</div>
-
-<div>
-স্কোর : ${percent}%
-</div>
-
-</div>
-
-<div class="lesson">
-<h3>📊 ফলাফল বিশ্লেষণ</h3>
-<p>সঠিক উত্তর : ${score}</p>
-<p>ভুল/উত্তরহীন : ${total-score}</p>
-<p>মোট প্রশ্ন : ${total}</p>
-</div>
-`;
-
-}
-
-
-/* =========================
-   Notes
-========================= */
-
-function openNotes(){
-
-let box=document.getElementById("notesList");
-
-box.innerHTML="";
-
-notesData.forEach(n=>{
-
-box.innerHTML+=`
-
-<div class="lesson">
-<h3>📚 ${n}</h3>
-<p class="small">
-এই অংশের বিস্তারিত নোট এখানে যোগ করা যাবে।
-</p>
-
-<button class="action">
-নোট পড়ুন
-</button>
-
-</div>
-
-`;
-
-});
-
-show("notes");
-
-}
-
-
-/* =========================
-   Grammar
-========================= */
-
-function openGrammar(){
-
-show("grammar");
-
-}
-
-
-/* =========================
-   Writing
-========================= */
-
-function openWriting(){
-
-show("writing");
-
-}
-
-
-/* =========================
-   College
-========================= */
-
-function openCollege(type){
-
-let titles={
-novel:"📕 উপন্যাস",
-story:"📗 ছোটগল্প",
-suggestion:"💡 কলেজ সাজেশন",
-notes:"📄 কলেজ নোট"
-};
-
-document.getElementById("collegeTitle")
-.innerText=titles[type];
-
-let box=document.getElementById("collegeList");
-
-box.innerHTML="";
-
-collegeData[type].forEach(item=>{
-
-box.innerHTML+=`
-
-<div class="lesson">
-
-<h3>${item}</h3>
-
-<p class="small">
-আলোচনা • নোট • গুরুত্বপূর্ণ প্রশ্ন
-</p>
-
-<button class="action">
-খুলুন
-</button>
-
-</div>
-
-`;
-
-});
-
-show("college");
-
-}
-
-
-/* =========================
-   Search
-========================= */
-
-function searchContent(){
-
-let value=
-document.getElementById("search")
-.value
-.toLowerCase()
-.trim();
-
-if(!value){
-return;
-}
-
-let found=[];
-
-for(let cls in classData){
-
-classData[cls].forEach(ch=>{
-
-if(ch.toLowerCase().includes(value)){
-found.push(
-`${cls} শ্রেণি — ${ch}`
-);
-}
-
-});
-
-}
-
-notesData.forEach(n=>{
-
-if(n.toLowerCase().includes(value)){
-found.push(n);
-}
-
-});
-
-if(found.length){
-
-alert(
-"খুঁজে পাওয়া বিষয়:\n\n"+
-found.join("\n")
-);
-
-}else{
-
-alert("কোনো বিষয় পাওয়া যায়নি।");
-
-}
-
-}
-
-</script>
-<style>
-#loginOverlay{
-  position:fixed;
-  inset:0;
-  z-index:99999;
-  background:#f5f7fb;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-}
-
-.loginBox{
-  width:100%;
-  max-width:420px;
-  background:white;
-  border-radius:24px;
-  padding:28px 22px;
-  box-shadow:0 10px 35px rgba(0,0,0,.12);
-  box-sizing:border-box;
-}
-
-.loginLogo{
-  text-align:center;
-  font-size:42px;
-}
-
-.loginTitle{
-  text-align:center;
-  font-size:25px;
-  font-weight:700;
-  color:#5b21b6;
-}
-
-.loginSub{
-  text-align:center;
-  color:#777;
-  margin:5px 0 22px;
-}
-
-.loginTabs{
-  display:flex;
-  gap:8px;
-  margin-bottom:18px;
-}
-
-.loginTab{
-  flex:1;
-  border:0;
-  padding:11px;
-  border-radius:12px;
-  background:#eee;
-  font-weight:600;
-}
-
-.loginTab.active{
-  background:linear-gradient(135deg,#6c35e8,#9b5cff);
-  color:white;
-}
-
-.loginForm{
-  display:none;
-}
-
-.loginForm.active{
-  display:block;
-}
-#registerForm{
-  display:none;
-}
-
-#registerForm.active{
-  display:block;
-}
-.loginInput{
-  width:100%;
-  box-sizing:border-box;
-  padding:14px;
-  margin-bottom:12px;
-  border:1px solid #ddd;
-  border-radius:12px;
-  font-size:15px;
-}
-
-.loginBtn{
-  width:100%;
-  border:0;
-  padding:14px;
-  border-radius:12px;
-  background:linear-gradient(135deg,#6c35e8,#9b5cff);
-  color:white;
-  font-size:16px;
-  font-weight:700;
-}
-
-.loginSecondary{
-  background:#eee;
-  color:#333;
-  margin-top:10px;
-}
-
-.loginMessage{
-  text-align:center;
-  margin-top:12px;
-  font-size:14px;
-}
-</style>
-
-<div id="loginOverlay">
-
-  <div class="loginBox">
-
-    <div class="loginLogo">📚</div>
-
-    <div class="loginTitle">
-      বাংলা পাঠশালা
-    </div>
-
-    <div class="loginSub">
+    <div class="login-teacher">
       শিক্ষক : আশিষ হাইত
     </div>
 
-    <div class="loginTabs">
-
-      <button
-        id="emailTab"
-        class="loginTab active"
-        type="button">
-        📧 Email
+    <div class="login-tabs">
+      <button id="emailTab" class="active" onclick="setLoginMode('email')">
+        ✉️ Email
       </button>
 
-      <button
-        id="phoneTab"
-        class="loginTab"
-        type="button">
+      <button id="phoneTab" onclick="setLoginMode('phone')">
         📱 Phone
       </button>
+    </div>
+
+    <input
+      id="loginUser"
+      class="input"
+      type="text"
+      placeholder="আপনার Email লিখুন"
+    >
+
+    <input
+      id="loginPassword"
+      class="input"
+      type="password"
+      placeholder="Password লিখুন"
+    >
+
+    <button class="primary-btn" onclick="login()">
+      Login
+    </button>
+
+    <button class="secondary-btn" onclick="showRegister()">
+      নতুন Account তৈরি করুন
+    </button>
+
+    <div id="loginMessage" class="login-message"></div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= MAIN APP ================= -->
+
+<section id="app">
+
+  <!-- TOP BAR -->
+
+  <header class="topbar">
+
+    <div class="brand-small">
+      📚 বাংলা পাঠশালা
+    </div>
+
+    <div class="top-actions">
+
+      <button class="top-btn" onclick="showHome()">
+        🏠
+      </button>
+
+      <button class="top-btn" onclick="showProfile()">
+        👤
+      </button>
 
     </div>
 
-    <div id="emailForm" class="loginForm active">
+  </header>
 
-      <input
-        id="emailInput"
-        class="loginInput"
-        type="email"
-        placeholder="আপনার Email লিখুন">
 
-      <input
-        id="passwordInput"
-        class="loginInput"
-        type="password"
-        placeholder="Password লিখুন">
+  <!-- BANNER -->
 
-      <button
-        id="emailLoginBtn"
-        class="loginBtn"
-        type="button">
-        Login
-      </button>
+  <div class="banner-wrap">
 
-      <button
-        id="emailRegisterBtn"
-        class="loginBtn loginSecondary"
-        type="button">
-        নতুন Account তৈরি করুন
-      </button>
+    <img
+      src="assets/banner.png"
+      class="banner"
+      alt="বাংলা পাঠশালা ব্যানার"
+    >
+
+  </div>
+
+
+  <main class="container">
+
+    <!-- WELCOME -->
+
+    <div class="welcome">
+
+      <h2 id="welcomeText">
+        স্বাগতম, ছাত্রছাত্রী
+      </h2>
+
+      <p>
+        শিখব, গড়ব — বাংলা পাঠশালার সঙ্গে এগিয়ে চলুন।
+      </p>
 
     </div>
-<div id="registerForm" class="loginForm">
 
-  <input
-    id="registerName"
-    class="loginInput"
-    type="text"
-    placeholder="আপনার নাম লিখুন">
 
-  <input
-    id="registerEmail"
-    class="loginInput"
-    type="email"
-    placeholder="আপনার Email লিখুন">
+    <!-- QUICK MENU -->
 
-  <input
-    id="registerPassword"
-    class="loginInput"
-    type="password"
-    placeholder="Password লিখুন">
+    <div class="quick-grid">
 
-  <button
-    id="createAccountBtn"
-    class="loginBtn"
-    type="button">
-    Account তৈরি করুন
-  </button>
+      <div class="quick-card"
+           onclick="scrollToSection('classes')">
 
-  <button
-    id="backToLoginBtn"
-    class="loginBtn loginSecondary"
-    type="button">
-    Login-এ ফিরে যান
-  </button>
+        <div class="quick-icon">📚</div>
 
-</div>
-    <div id="phoneForm" class="loginForm">
+        <h3>All Courses</h3>
 
-      <input
-        id="phoneInput"
-        class="loginInput"
-        type="tel"
-        placeholder="+91XXXXXXXXXX">
+        <p>সমস্ত কোর্স দেখুন</p>
 
-      <div id="recaptcha-container"></div>
+      </div>
 
-      <button
-        id="sendOtpBtn"
-        class="loginBtn"
-        type="button">
-        OTP পাঠান
-      </button>
 
-      <div id="otpArea" style="display:none;margin-top:12px;">
+      <div class="quick-card"
+           onclick="showNotice()"
+           style="border-color:#f39a16">
 
-        <input
-          id="otpInput"
-          class="loginInput"
-          type="number"
-          placeholder="6 digit OTP লিখুন">
+        <div class="quick-icon">📋</div>
 
-        <button
-          id="verifyOtpBtn"
-          class="loginBtn"
-          type="button">
-          OTP Verify করুন
-        </button>
+        <h3>Notice Board</h3>
+
+        <p>নোটিশ দেখুন</p>
+
+      </div>
+
+
+      <div class="quick-card"
+           onclick="showFreeClass()"
+           style="border-color:#26a95d">
+
+        <div class="quick-icon">🎓</div>
+
+        <h3>Free Class</h3>
+
+        <p>ফ্রি ক্লাস দেখুন</p>
+
+      </div>
+
+
+      <div class="quick-card"
+           onclick="scrollToSection('models')"
+           style="border-color:#7b21b7">
+
+        <div class="quick-icon">📝</div>
+
+        <h3>Free MCQ Test</h3>
+
+        <p>ফ্রি MCQ টেস্ট দিন</p>
+
+      </div>
+
+
+      <div class="quick-card"
+           onclick="scrollToSection('materials')"
+           style="border-color:#e62e2e">
+
+        <div class="quick-icon">📄</div>
+
+        <h3>Free PDF</h3>
+
+        <p>স্টাডি ম্যাটেরিয়াল</p>
+
+      </div>
+
+
+      <div class="quick-card"
+           onclick="showLinks()"
+           style="border-color:#164ab3">
+
+        <div class="quick-icon">🔗</div>
+
+        <h3>Important Links</h3>
+
+        <p>গুরুত্বপূর্ণ লিঙ্কসমূহ</p>
 
       </div>
 
     </div>
 
-    <div id="loginMessage" class="loginMessage"></div>
+
+    <!-- CLASSES -->
+
+    <section id="classes">
+
+      <div class="section-title">
+
+        <h2>📚 শ্রেণি নির্বাচন করুন</h2>
+
+        <span>Courses</span>
+
+      </div>
+
+
+      <div class="class-grid">
+
+
+        <!-- CLASS 9 -->
+
+        <div class="class-card">
+
+          <div class="class-head">
+
+            <div class="class-name">
+              নবম শ্রেণি
+            </div>
+
+            <div class="class-tag">
+              CLASS 9
+            </div>
+
+          </div>
+
+          <div class="class-desc">
+            নবম শ্রেণির বাংলা অধ্যায় ও গুরুত্বপূর্ণ বিষয়
+          </div>
+
+          <div class="chapter-list">
+
+            <button class="chapter-btn"
+                    onclick="openChapter('নবম শ্রেণি','অধ্যায় ১')">
+              অধ্যায় ১
+              <span>›</span>
+            </button>
+
+            <button class="chapter-btn"
+                    onclick="openChapter('নবম শ্রেণি','অধ্যায় ২')">
+              অধ্যায় ২
+              <span>›</span>
+            </button>
+
+            <button class="chapter-btn"
+                    onclick="openChapter('নবম শ্রেণি','অধ্যায় ৩')">
+              অধ্যায় ৩
+              <span>›</span>
+            </button>
+
+            <button class="chapter-btn"
+                    onclick="openChapter('নবম শ্রেণি','সমস্ত অধ্যায়')">
+              সমস্ত অধ্যায়
+              <span>›</span>
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- CLASS 10 -->
+
+        <div class="class-card">
+
+          <div class="class-head">
+
+            <div class="class-name">
+              দশম শ্রেণি
+            </div>
+
+            <div class="class-tag">
+              CLASS 10
+            </div>
+
+          </div>
+
+          <div class="class-desc">
+            মাধ্যমিক পরীক্ষার প্রস্তুতি ও গুরুত্বপূর্ণ অধ্যায়
+          </div>
+
+          <div class="chapter-list">
+
+            <button class="chapter-btn"
+                    onclick="openChapter('দশম শ্রেণি','অধ্যায় ১')">
+              অধ্যায় ১
+              <span>›</span>
+            </button>
+
+            <button class="chapter-btn"
+                    onclick="openChapter('দশম শ্রেণি','অধ্যায় ২')">
+              অধ্যায় ২
+              <span>›</span>
+            </button>
+
+            <button class="chapter-btn"
+                    onclick="openChapter('দশম শ্রেণি','অধ্যায় ৩')">
+              অধ্যায় ৩
+              <span>›</span>
+            </button>
+
+            <button class="chapter-btn"
+                    onclick="openChapter('দশম শ্রেণি','সমস্ত অধ্যায়')">
+              সমস্ত অধ্যায়
+              <span>›</span>
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- CLASS 11 -->
+
+        <div class="class-card">
+
+          <div class="class-head">
+
+            <div class="class-name">
+              একাদশ শ্রেণি
+            </div>
+
+            <div class="class-tag">
+              CLASS 11
+            </div>
+
+          </div>
+
+          <div class="class-desc">
+            প্রথম ও দ্বিতীয় সেমিস্টারের বাংলা
+          </div>
+
+          <div class="chapter-list">
+
+            <button class="chapter-btn"
+                    onclick="openChapter('একাদশ শ্রেণি','প্রথম সেমিস্টার')">
+              প্রথম সেমিস্টার
+              <span>›</span>
+            </button>
+
+            <button class="chapter-btn"
+                    onclick="openChapter('একাদশ শ্রেণি','দ্বিতীয় সেমিস্টার')">
+              দ্বিতীয় সেমিস্টার
+              <span>›</span>
+            </button>
+
+            <button class="chapter-btn"
+                    onclick="openChapter('একাদশ শ্রেণি','অধ্যায়সমূহ')">
+              অধ্যায়সমূহ
+              <span>›</span>
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- CLASS 12 -->
+
+        <div class="class-card">
+
+          <div class="class-head">
+
+            <div class="class-name">
+              দ্বাদশ শ্রেণি
+            </div>
+
+            <div class="class-tag">
+              CLASS 12
+            </div>
+
+          </div>
+
+          <div class="class-desc">
+            তৃতীয় ও চতুর্থ সেমিস্টারের বাংলা
+          </div>
+
+          <div class="chapter-list">
+
+            <button class="chapter-btn"
+                    onclick="openChapter('দ্বাদশ শ্রেণি','তৃতীয় সেমিস্টার')">
+              তৃতীয় সেমিস্টার
+              <span>›</span>
+            </button>
+
+            <button class="chapter-btn"
+                    onclick="openChapter('দ্বাদশ শ্রেণি','চতুর্থ সেমিস্টার')">
+              চতুর্থ সেমিস্টার
+              <span>›</span>
+            </button>
+
+            <button class="chapter-btn"
+                    onclick="openChapter('দ্বাদশ শ্রেণি','অধ্যায়সমূহ')">
+              অধ্যায়সমূহ
+              <span>›</span>
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- MODEL SET -->
+
+    <section id="models">
+
+      <div class="section-title">
+
+        <h2>📝 গুরুত্বপূর্ণ Model Set</h2>
+
+        <span>Practice</span>
+
+      </div>
+
+
+      <div class="model-grid">
+
+
+        <div class="model-card">
+
+          <h3>নবম শ্রেণি</h3>
+
+          <div class="model-count">
+            ১০টি Model Set
+          </div>
+
+          <button class="open-btn"
+                  onclick="openModels('নবম শ্রেণি',10)">
+            Model Set দেখুন
+          </button>
+
+        </div>
+
+
+        <div class="model-card">
+
+          <h3>দশম শ্রেণি</h3>
+
+          <div class="model-count">
+            ২০টি Model Set
+          </div>
+
+          <button class="open-btn"
+                  onclick="openModels('দশম শ্রেণি',20)">
+            Model Set দেখুন
+          </button>
+
+        </div>
+
+
+        <div class="model-card">
+
+          <h3>একাদশ — ১ম সেমিস্টার</h3>
+
+          <div class="model-count">
+            ১০টি Model Set
+          </div>
+
+          <button class="open-btn"
+                  onclick="openModels('একাদশ শ্রেণি — প্রথম সেমিস্টার',10)">
+            Model Set দেখুন
+          </button>
+
+        </div>
+
+
+        <div class="model-card">
+
+          <h3>একাদশ — ২য় সেমিস্টার</h3>
+
+          <div class="model-count">
+            ৫টি Model Set
+          </div>
+
+          <button class="open-btn"
+                  onclick="openModels('একাদশ শ্রেণি — দ্বিতীয় সেমিস্টার',5)">
+            Model Set দেখুন
+          </button>
+
+        </div>
+
+
+        <div class="model-card">
+
+          <h3>দ্বাদশ — ৩য় সেমিস্টার</h3>
+
+          <div class="model-count">
+            ১৫টি Model Set
+          </div>
+
+          <button class="open-btn"
+                  onclick="openModels('দ্বাদশ শ্রেণি — তৃতীয় সেমিস্টার',15)">
+            Model Set দেখুন
+          </button>
+
+        </div>
+
+
+        <div class="model-card">
+
+          <h3>দ্বাদশ — ৪র্থ সেমিস্টার</h3>
+
+          <div class="model-count">
+            ১০টি Model Set
+          </div>
+
+          <button class="open-btn"
+                  onclick="openModels('দ্বাদশ শ্রেণি — চতুর্থ সেমিস্টার',10)">
+            Model Set দেখুন
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- STUDY MATERIAL -->
+
+    <section id="materials">
+
+      <div class="section-title">
+
+        <h2>📄 Study Material</h2>
+
+        <span>Students Only</span>
+
+      </div>
+
+
+      <div class="material">
+
+        <div class="material-item">
+
+          <div>
+            <div class="material-name">
+              নবম শ্রেণির বাংলা নোট
+            </div>
+            <div class="material-type">
+              PDF • Login Required
+            </div>
+          </div>
+
+          <button class="view-pdf"
+                  onclick="openPDF('assets/pdfs/class9-notes.pdf','নবম শ্রেণির বাংলা নোট')">
+            দেখুন
+          </button>
+
+        </div>
+
+
+        <div class="material-item">
+
+          <div>
+            <div class="material-name">
+              দশম শ্রেণির বাংলা নোট
+            </div>
+            <div class="material-type">
+              PDF • Login Required
+            </div>
+          </div>
+
+          <button class="view-pdf"
+                  onclick="openPDF('assets/pdfs/class10-notes.pdf','দশম শ্রেণির বাংলা নোট')">
+            দেখুন
+          </button>
+
+        </div>
+
+
+        <div class="material-item">
+
+          <div>
+            <div class="material-name">
+              একাদশ শ্রেণির বাংলা নোট
+            </div>
+            <div class="material-type">
+              PDF • Login Required
+            </div>
+          </div>
+
+          <button class="view-pdf"
+                  onclick="openPDF('assets/pdfs/class11-notes.pdf','একাদশ শ্রেণির বাংলা নোট')">
+            দেখুন
+          </button>
+
+        </div>
+
+
+        <div class="material-item">
+
+          <div>
+            <div class="material-name">
+              দ্বাদশ শ্রেণির বাংলা নোট
+            </div>
+            <div class="material-type">
+              PDF • Login Required
+            </div>
+          </div>
+
+          <button class="view-pdf"
+                  onclick="openPDF('assets/pdfs/class12-notes.pdf','দ্বাদশ শ্রেণির বাংলা নোট')">
+            দেখুন
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- PROFILE -->
+
+    <section id="profileSection"
+             class="profile"
+             style="display:none">
+
+      <img
+        src="assets/banner.png"
+        class="profile-avatar"
+        alt="বাংলা পাঠশালা"
+      >
+
+      <h2>বাংলা পাঠশালা</h2>
+
+      <p style="margin-top:5px;color:#777">
+        শিক্ষক : আশিষ হাইত
+      </p>
+
+      <p id="profileUser"
+         style="margin-top:15px">
+      </p>
+
+      <button class="primary-btn logout"
+              onclick="logout()">
+        Logout
+      </button>
+
+    </section>
+
+  </main>
+
+
+  <!-- BOTTOM NAV -->
+
+  <nav class="bottom-nav">
+
+    <button class="nav-btn active"
+            onclick="showHome()">
+      <span>🏠</span>
+      Home
+    </button>
+
+    <button class="nav-btn"
+            onclick="showHelp()">
+      <span>❓</span>
+      Help
+    </button>
+
+    <button class="nav-btn"
+            onclick="scrollToSection('classes')">
+      <span>📖</span>
+      My Courses
+    </button>
+
+    <button class="nav-btn"
+            onclick="openWhatsApp()">
+      <span>🟢</span>
+      WhatsApp
+    </button>
+
+    <button class="nav-btn"
+            onclick="showChat()">
+      <span>💬</span>
+      Chat
+    </button>
+
+  </nav>
+
+</section>
+
+
+<!-- ================= MODAL ================= -->
+
+<div id="modal"
+     class="modal"
+     onclick="closeModalOutside(event)">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+
+      <h2 id="modalTitle">
+        বাংলা পাঠশালা
+      </h2>
+
+      <button class="close"
+              onclick="closeModal()">
+        ✕
+      </button>
+
+    </div>
+
+    <div id="modalContent"></div>
 
   </div>
 
 </div>
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
-  import {
-    getAuth,
-    signOut,
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    RecaptchaVerifier,
-    signInWithPhoneNumber
-  } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyDhpZJ1z2j74khtWMo9hIpo1WHgAaFzwCc",
-    authDomain: "bangla-pathsala.firebaseapp.com",
-    projectId: "bangla-pathsala",
-    storageBucket: "bangla-pathsala.firebasestorage.app",
-    messagingSenderId: "179169472629",
-    appId: "1:179169472629:web:74d0a999c7c07a6147c83c"
+<script>
+
+/* ================= LOGIN SYSTEM ================= */
+
+let loginMode = "email";
+
+function setLoginMode(mode){
+
+  loginMode = mode;
+
+  const emailTab = document.getElementById("emailTab");
+  const phoneTab = document.getElementById("phoneTab");
+
+  if(mode === "email"){
+
+    emailTab.classList.add("active");
+    phoneTab.classList.remove("active");
+
+    document.getElementById("loginUser").placeholder =
+      "আপনার Email লিখুন";
+
+  }else{
+
+    phoneTab.classList.add("active");
+    emailTab.classList.remove("active");
+
+    document.getElementById("loginUser").placeholder =
+      "আপনার Phone Number লিখুন";
+
+  }
+}
+
+
+function showRegister(){
+
+  const content = `
+    <h2 style="margin-bottom:8px">নতুন Account তৈরি করুন</h2>
+
+    <p style="color:#777;margin-bottom:15px">
+      ছাত্রছাত্রীদের জন্য Registration
+    </p>
+
+    <input id="regName"
+           class="input"
+           placeholder="আপনার নাম">
+
+    <input id="regUser"
+           class="input"
+           placeholder="Email / Phone">
+
+    <input id="regPassword"
+           class="input"
+           type="password"
+           placeholder="Password">
+
+    <button class="primary-btn"
+            onclick="registerUser()">
+      Register
+    </button>
+
+    <button class="secondary-btn"
+            onclick="closeModal()">
+      Login-এ ফিরে যান
+    </button>
+
+    <div id="registerMessage"
+         style="margin-top:10px;color:#d12c2c">
+    </div>
+  `;
+
+  openModal("নতুন Account",content);
+}
+
+
+function registerUser(){
+
+  const name =
+    document.getElementById("regName").value.trim();
+
+  const user =
+    document.getElementById("regUser").value.trim();
+
+  const password =
+    document.getElementById("regPassword").value;
+
+  if(!name || !user || !password){
+
+    document.getElementById("registerMessage").innerText =
+      "সব তথ্য পূরণ করুন।";
+
+    return;
+  }
+
+  const account = {
+    name:name,
+    user:user,
+    password:password
   };
 
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-
-  // Email Login
-  document.getElementById("emailLoginBtn").addEventListener("click", async () => {
-    const email = document.getElementById("emailInput").value.trim();
-    const password = document.getElementById("passwordInput").value;
-
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      document.getElementById("loginOverlay").style.display = "none";
-      home();
-      document.getElementById("loginMessage").innerText =
-        "Login সফল হয়েছে।";
-    } catch (error) {
-      document.getElementById("loginMessage").innerText =
-        "Email বা Password সঠিক নয়।";
-    }
-  });
-
-// Email Registration
-document.getElementById("emailRegisterBtn").addEventListener("click", () => {
-  document.getElementById("emailForm").classList.remove("active");
-  document.getElementById("registerForm").classList.add("active");
-});
-
-document.getElementById("backToLoginBtn").addEventListener("click", () => {
-  document.getElementById("registerForm").classList.remove("active");
-  document.getElementById("emailForm").classList.add("active");
-});
-
-document.getElementById("createAccountBtn").addEventListener("click", async () => {
-  const name = document.getElementById("registerName").value.trim();
-  const email = document.getElementById("registerEmail").value.trim();
-  const password = document.getElementById("registerPassword").value;
-
-  if (!name || !email || !password) {
-    document.getElementById("loginMessage").innerText =
-      "সব তথ্য পূরণ করুন";
-    return;
-  }
-
-  if (password.length < 6) {
-    document.getElementById("loginMessage").innerText =
-      "Password কমপক্ষে 6 অক্ষরের দিন";
-    return;
-  }
-
-  try {
-    await createUserWithEmailAndPassword(auth, email, password);
-
-    document.getElementById("loginMessage").innerText =
-      "Account সফলভাবে তৈরি হয়েছে";
-
-    document.getElementById("registerForm").classList.remove("active");
-    document.getElementById("emailForm").classList.add("active");
-
-  } catch (error) {
-    document.getElementById("loginMessage").innerText =
-      "Account তৈরি করা যায়নি";
-  }
-});
-
-  // Phone OTP
-  window.recaptchaVerifier = new RecaptchaVerifier(
-    auth,
-    "recaptcha-container",
-    {
-      size: "normal"
-    }
+  localStorage.setItem(
+    "banglaPathshalaAccount",
+    JSON.stringify(account)
   );
 
-  let confirmationResult;
+  closeModal();
 
-  document.getElementById("sendOtpBtn").addEventListener("click", async () => {
-    const phone = document.getElementById("phoneInput").value.trim();
+  document.getElementById("loginUser").value = user;
 
-    if (!phone) {
-      document.getElementById("loginMessage").innerText =
-        "Phone Number দিন।";
-      return;
-    }
+  document.getElementById("loginMessage").style.color =
+    "#1a8d4a";
 
-    try {
-      confirmationResult = await signInWithPhoneNumber(
-        auth,
-        phone,
-        window.recaptchaVerifier
-      );
+  document.getElementById("loginMessage").innerText =
+    "Registration সফল। এখন Login করুন।";
+}
 
-      document.getElementById("otpArea").style.display = "block";
-      document.getElementById("loginMessage").innerText =
-        "OTP পাঠানো হয়েছে।";
-    } catch (error) {
-      document.getElementById("loginMessage").innerText =
-        "OTP পাঠানো যায়নি। Phone Number সঠিক আছে কিনা দেখুন।";
-    }
+
+function login(){
+
+  const user =
+    document.getElementById("loginUser").value.trim();
+
+  const password =
+    document.getElementById("loginPassword").value;
+
+  const account =
+    JSON.parse(
+      localStorage.getItem("banglaPathshalaAccount")
+    );
+
+  if(!user || !password){
+
+    showLoginMessage("Email/Phone এবং Password দিন।");
+    return;
+  }
+
+  /*
+    Demo login:
+    প্রথমবার account না থাকলে পরীক্ষার জন্য
+    একটি temporary account তৈরি করা হচ্ছে।
+  */
+
+  if(!account){
+
+    const demoAccount = {
+      name:"Student",
+      user:user,
+      password:password
+    };
+
+    localStorage.setItem(
+      "banglaPathshalaAccount",
+      JSON.stringify(demoAccount)
+    );
+
+    enterApp(demoAccount);
+
+    return;
+  }
+
+  if(account.user === user &&
+     account.password === password){
+
+    enterApp(account);
+
+  }else{
+
+    showLoginMessage(
+      "Login তথ্য সঠিক নয়। আবার চেষ্টা করুন।"
+    );
+
+  }
+}
+
+
+function showLoginMessage(message){
+
+  const box =
+    document.getElementById("loginMessage");
+
+  box.style.color = "#d12c2c";
+  box.innerText = message;
+}
+
+
+function enterApp(account){
+
+  localStorage.setItem(
+    "banglaPathshalaLoggedIn",
+    "true"
+  );
+
+  localStorage.setItem(
+    "banglaPathshalaCurrentUser",
+    JSON.stringify(account)
+  );
+
+  document.getElementById("loginPage").style.display =
+    "none";
+
+  document.getElementById("app").style.display =
+    "block";
+
+  document.getElementById("welcomeText").innerText =
+    "স্বাগতম, " + account.name;
+
+  document.getElementById("profileUser").innerText =
+    "Logged in as: " + account.user;
+
+  window.scrollTo(0,0);
+}
+
+
+function logout(){
+
+  localStorage.removeItem(
+    "banglaPathshalaLoggedIn"
+  );
+
+  localStorage.removeItem(
+    "banglaPathshalaCurrentUser"
+  );
+
+  document.getElementById("app").style.display =
+    "none";
+
+  document.getElementById("loginPage").style.display =
+    "flex";
+
+  document.getElementById("loginPassword").value = "";
+
+  document.getElementById("loginMessage").innerText =
+    "";
+
+  window.scrollTo(0,0);
+}
+
+
+/* ================= STARTUP ================= */
+
+window.addEventListener("load",function(){
+
+  const logged =
+    localStorage.getItem(
+      "banglaPathshalaLoggedIn"
+    );
+
+  const account =
+    JSON.parse(
+      localStorage.getItem(
+        "banglaPathshalaCurrentUser"
+      )
+    );
+
+  if(logged === "true" && account){
+
+    enterApp(account);
+
+  }
+
+});
+
+
+/* ================= HOME ================= */
+
+function showHome(){
+
+  document.getElementById("profileSection").style.display =
+    "none";
+
+  document.getElementById("classes").style.display =
+    "block";
+
+  document.getElementById("models").style.display =
+    "block";
+
+  document.getElementById("materials").style.display =
+    "block";
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
   });
+}
 
-  // OTP Verify
-  document.getElementById("verifyOtpBtn").addEventListener("click", async () => {
-    const otp = document.getElementById("otpInput").value.trim();
 
-    if (!confirmationResult) {
-      document.getElementById("loginMessage").innerText =
-        "আগে OTP পাঠান।";
-      return;
+function showProfile(){
+
+  document.getElementById("profileSection").style.display =
+    "block";
+
+  document.getElementById("classes").style.display =
+    "none";
+
+  document.getElementById("models").style.display =
+    "none";
+
+  document.getElementById("materials").style.display =
+    "none";
+
+  document.getElementById("profileSection")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+}
+
+
+function scrollToSection(id){
+
+  showHome();
+
+  setTimeout(function(){
+
+    const element =
+      document.getElementById(id);
+
+    if(element){
+
+      element.scrollIntoView({
+        behavior:"smooth"
+      });
+
     }
 
-    try {
-      await confirmationResult.confirm(otp);
-      document.getElementById("loginMessage").innerText =
-        "Phone Login সফল হয়েছে।";
-    } catch (error) {
-      document.getElementById("loginMessage").innerText =
-        "OTP সঠিক নয়।";
-    }
-  });
-        </script>
+  },100);
+
+}
+
+
+/* ================= CHAPTER ================= */
+
+function openChapter(className,chapter){
+
+  const content = `
+
+    <div style="
+      background:#f5f7ff;
+      padding:18px;
+      border-radius:16px;
+    ">
+
+      <h3 style="font-size:23px;margin-bottom:8px">
+        ${className}
+      </h3>
+
+      <p style="font-size:18px;font-weight:700">
+        ${chapter}
+      </p>
+
+      <p style="margin-top:12px;color:#777">
+        এই অংশে সংশ্লিষ্ট অধ্যায়ের
+        Study Material, Notes, MCQ এবং Model Test
+        পরে যোগ করা যাবে।
+      </p>
+
+    </div>
+
+  `;
+
+  openModal(
+    className + " — " + chapter,
+    content
+  );
+}
+
+
+/* ================= MODEL SET ================= */
+
+function openModels(className,count){
+
+  let html = `
+    <div style="
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:10px;
+    ">
+  `;
+
+  for(let i=1;i<=count;i++){
+
+    html += `
+
+      <button
+        class="chapter-btn"
+        onclick="openModel('${className}','Model Set ${i}')">
+
+        📝 Model Set ${i}
+
+        <span>›</span>
+
+      </button>
+
+    `;
+
+  }
+
+  html += "</div>";
+
+  openModal(
+    className + " — Model Sets",
+    html
+  );
+}
+
+
+function openModel(className,setName){
+
+  const content = `
+
+    <div style="
+      background:#f7f8ff;
+      padding:20px;
+      border-radius:16px;
+    ">
+
+      <h3 style="font-size:22px">
+        ${className}
+      </h3>
+
+      <h4 style="
+        margin-top:8px;
+        color:#5930c9;
+        font-size:20px;
+      ">
+        ${setName}
+      </h4>
+
+      <p style="
+        margin-top:15px;
+        color:#777;
+      ">
+        এখানে Model Set-এর প্রশ্নপত্র
+        পরে যুক্ত করা যাবে।
+      </p>
+
+      <button
+        class="primary-btn"
+        style="margin-top:18px"
+        onclick="closeModal()">
+
+        শুরু করুন
+
+      </button>
+
+    </div>
+
+  `;
+
+  openModal(setName,content);
+}
+
+
+/* ================= PDF ================= */
+
+function openPDF(path,title){
+
+  /*
+    Login ছাড়া এই function-এ আসা যাবে না,
+    কারণ app নিজেই Login page থেকে শুরু হয়।
+  */
+
+  const content = `
+
+    <p style="
+      background:#fff5e8;
+      padding:12px;
+      border-radius:12px;
+      margin-bottom:12px;
+      color:#875400;
+    ">
+      📌 এই PDF শুধু লগইন করা ছাত্রছাত্রীদের জন্য।
+    </p>
+
+    <iframe
+      class="pdf-frame"
+      src="${path}"
+      title="${title}">
+    </iframe>
+
+    <p style="
+      margin-top:10px;
+      color:#777;
+      font-size:13px;
+    ">
+      PDF খুলতে সমস্যা হলে সংশ্লিষ্ট PDF ফাইলটি
+      assets/pdfs/ folder-এ রাখতে হবে।
+    </p>
+
+  `;
+
+  openModal(title,content);
+
+}
+
+
+/* ================= OTHER ================= */
+
+function showNotice(){
+
+  openModal(
+    "📋 Notice Board",
+    `
+      <div style="
+        padding:20px;
+        background:#fff8e8;
+        border-radius:16px;
+      ">
+        <h3>বর্তমানে কোনো নতুন নোটিশ নেই।</h3>
+        <p style="margin-top:8px;color:#777">
+          নতুন নোটিশ এখানে প্রকাশ করা হবে।
+        </p>
+      </div>
+    `
+  );
+
+}
+
+
+function showFreeClass(){
+
+  openModal(
+    "🎓 Free Class",
+    `
+      <div style="
+        padding:20px;
+        background:#eefaf3;
+        border-radius:16px;
+      ">
+        <h3>Free Class</h3>
+        <p style="margin-top:10px;color:#777">
+          আপনার YouTube Free Class-এর
+          ভিডিও লিঙ্ক এখানে যোগ করা যাবে।
+        </p>
+      </div>
+    `
+  );
+
+}
+
+
+function showLinks(){
+
+  openModal(
+    "🔗 Important Links",
+    `
+      <div style="display:grid;gap:10px">
+
+        <button class="chapter-btn">
+          YouTube Channel
+          <span>›</span>
+        </button>
+
+        <button class="chapter-btn">
+          WhatsApp
+          <span>›</span>
+        </button>
+
+        <button class="chapter-btn">
+          Facebook Page
+          <span>›</span>
+        </button>
+
+      </div>
+    `
+  );
+
+}
+
+
+function showHelp(){
+
+  openModal(
+    "❓ Help",
+    `
+      <h3>বাংলা পাঠশালা ব্যবহার</h3>
+
+      <p style="
+        margin-top:12px;
+        line-height:1.8;
+        color:#666;
+      ">
+        শ্রেণি নির্বাচন করুন → অধ্যায় নির্বাচন করুন
+        → Study Material বা Model Set খুলুন।
+        কোনো সমস্যা হলে শিক্ষককে যোগাযোগ করুন।
+      </p>
+    `
+  );
+
+}
+
+
+function showChat(){
+
+  openModal(
+    "💬 Chat",
+    `
+      <div style="
+        padding:20px;
+        background:#f5f7ff;
+        border-radius:15px;
+      ">
+        <h3>বাংলা পাঠশালা Chat</h3>
+
+        <p style="margin-top:10px;color:#777">
+          Chat ব্যবস্থা পরবর্তী ধাপে যুক্ত করা হবে।
+        </p>
+      </div>
+    `
+  );
+
+}
+
+
+function openWhatsApp(){
+
+  /*
+    এখানে পরে আপনার WhatsApp number বসাবেন।
+    উদাহরণ:
+    window.open("https://wa.me/91XXXXXXXXXX");
+  */
+
+  showLinks();
+
+}
+
+
+/* ================= MODAL ================= */
+
+function openModal(title,content){
+
+  document.getElementById("modalTitle").innerText =
+    title;
+
+  document.getElementById("modalContent").innerHTML =
+    content;
+
+  document.getElementById("modal").style.display =
+    "flex";
+}
+
+
+function closeModal(){
+
+  document.getElementById("modal").style.display =
+    "none";
+
+  document.getElementById("modalContent").innerHTML =
+    "";
+
+}
+
+
+function closeModalOutside(event){
+
+  if(event.target.id === "modal"){
+
+    closeModal();
+
+  }
+
+}
+
+
+/* ================= BASIC COPY PROTECTION ================= */
+
+/*
+  এটি শুধু সাধারণ copy/right-click আটকায়।
+  আসল PDF download বা screenshot আটকানো সম্ভব নয়
+  শুধু HTML/CSS/JavaScript দিয়ে।
+*/
+
+document.addEventListener(
+  "contextmenu",
+  function(event){
+
+    event.preventDefault();
+
+  }
+);
+
+</script>
+
 </body>
 </html>
