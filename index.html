@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#082f5f">
+<meta name="theme-color" content="#062f5f">
 <title>বাংলা পাঠশালা | আশিষ হাইত</title>
 
 <style>
@@ -11,10 +11,11 @@
 html{scroll-behavior:smooth}
 body{
 font-family:"Noto Sans Bengali","Nirmala UI","Hind Siliguri",Arial,sans-serif;
-background:#f4f7fb;color:#102d4d;line-height:1.65
+background:#f4f7fb;color:#142d48;line-height:1.65;
 }
 button,input,textarea,select{font:inherit}
 button{cursor:pointer}
+a{text-decoration:none;color:inherit}
 .hidden{display:none!important}
 
 :root{
@@ -22,425 +23,457 @@ button{cursor:pointer}
 --blue:#087bd3;
 --yellow:#ffd21a;
 --purple:#7b2ff7;
---green:#16a85a;
+--green:#19a85a;
 --red:#ef3e4a;
 --card:#fff;
---muted:#6d7785;
+--muted:#697785;
 }
 
 /* TOP NAV */
 .topbar{
-height:64px;background:var(--nav);color:#fff;
+height:64px;background:var(--nav);color:white;
 position:sticky;top:0;z-index:1000;
-box-shadow:0 3px 18px #001d3d44
+box-shadow:0 3px 15px #001d3d44;
 }
-.top-inner{
-height:100%;max-width:1500px;margin:auto;
-display:flex;align-items:center;justify-content:space-between;
-padding:0 18px
+.topinner{
+max-width:1500px;height:100%;margin:auto;
+display:flex;align-items:center;gap:12px;padding:0 14px;
 }
-.brand{font-size:21px;font-weight:900}
+.brand{
+font-size:21px;font-weight:900;white-space:nowrap;
+}
 .brand span{color:var(--yellow)}
-.nav-actions{display:flex;align-items:center;gap:7px}
-.nav-actions button{
-border:0;background:transparent;color:white;
-padding:9px 12px;border-radius:9px;font-weight:700
+.menuBtn{
+width:45px;height:45px;border:0;border-radius:12px;
+background:#ffffff18;color:white;font-size:27px;
+margin-left:auto;
 }
-.nav-actions button:hover{background:#ffffff18}
-.menu-btn{
-font-size:25px!important;background:#ffffff16!important
+.navlinks{display:flex;gap:5px;align-items:center}
+.navlinks button{
+border:0;background:transparent;color:#fff;
+padding:9px 12px;border-radius:9px;font-weight:700;
 }
-.logout-btn{background:#ef3e4a!important}
-.hamburger{
-font-size:25px;border:0;background:transparent;color:white
+.navlinks button:hover{background:#ffffff18}
+.loginBtn{background:#18a85b!important}
+.logoutBtn{background:#ef3e4a!important}
+
+@media(max-width:700px){
+.topbar{height:58px}
+.brand{font-size:16px}
+.navlinks{display:none}
+.menuBtn{margin-left:auto}
 }
 
 /* DRAWER */
 .overlay{
-position:fixed;inset:0;background:#0008;z-index:1500
+position:fixed;inset:0;background:#0008;
+z-index:1500;display:none;
 }
+.overlay.show{display:block}
 .drawer{
-position:fixed;left:0;top:0;bottom:0;width:min(340px,88vw);
-background:white;z-index:1600;
+position:fixed;left:0;top:0;bottom:0;width:330px;
+max-width:88vw;background:#fff;z-index:1600;
 transform:translateX(-105%);transition:.25s;
-box-shadow:8px 0 30px #0004;
-overflow:auto
+box-shadow:8px 0 30px #0005;overflow:auto;
 }
 .drawer.open{transform:translateX(0)}
-.drawer-head{
-background:linear-gradient(135deg,#062f5f,#0a5da8);
-color:white;padding:30px 20px
+.drawerHead{
+background:linear-gradient(135deg,#062f5f,#075da8);
+color:white;padding:25px 20px;
 }
-.logo-circle{
+.closeDrawer{
+float:right;background:#ffffff22;color:#fff;
+border:0;border-radius:8px;font-size:22px;padding:4px 10px;
+}
+.logoCircle{
 width:65px;height:65px;border-radius:50%;
-background:#fff2;display:flex;align-items:center;
-justify-content:center;font-size:32px;margin-bottom:10px
+background:#fff;display:flex;align-items:center;
+justify-content:center;font-size:35px;margin-bottom:10px;
 }
-.drawer-head h2{font-size:24px}
-.drawer-head p{opacity:.9}
+.drawerHead h2{font-size:23px}
+.drawerHead p{opacity:.9}
+.drawer nav{padding:12px}
 .drawer nav button{
-width:100%;text-align:left;border:0;background:white;
-padding:14px 20px;font-weight:700;color:#173451;
-border-bottom:1px solid #edf0f5
+width:100%;text-align:left;border:0;background:#fff;
+padding:13px 12px;border-radius:10px;font-weight:700;
+color:#18344e;margin:3px 0;
 }
-.drawer nav button:hover{background:#f0f6ff}
-.drawer-contact{
-padding:18px;background:#f7f9fc;margin:15px;border-radius:15px
+.drawer nav button:hover{background:#eef5ff}
+.drawerContact{
+margin:14px;padding:15px;background:#f4f8ff;
+border-radius:12px;font-size:14px;
 }
 
-/* HOME */
+/* HERO */
 .hero{
-position:relative;width:100%;overflow:hidden;background:#082f5f
+position:relative;width:100%;overflow:hidden;
+background:#062f5f;
 }
 .hero img{
-display:block;width:100%;height:auto;max-height:520px;
-object-fit:cover
+display:block;width:100%;height:auto;
+max-height:520px;object-fit:cover;
+}
+.heroFallback{
+display:none;min-height:260px;
+background:linear-gradient(135deg,#062f5f,#0a5ba8);
+color:white;align-items:center;justify-content:center;
+text-align:center;padding:40px;
+}
+.heroFallback h1{font-size:45px}
+.heroFallback span{color:#ffd21a}
+
+/* NOTICE */
+.notice{
+background:#fff;margin:10px auto;padding:10px 15px;
+border-radius:14px;max-width:1500px;
+box-shadow:0 3px 15px #1231;
+overflow:hidden;white-space:nowrap;
+}
+.notice b{color:#e9a400}
+
+/* CONTAINER */
+.container{
+max-width:1500px;margin:auto;padding:18px 20px 50px;
+}
+.sectionTitle{
+font-size:30px;font-weight:900;color:#073963;
+margin:28px 0 5px;
+}
+.sectionSub{color:#718091;margin-bottom:16px}
+
+/* QUICK GRID */
+.quickGrid{
+display:grid;grid-template-columns:repeat(3,1fr);
+gap:18px;margin-bottom:28px;
+}
+.quickCard{
+background:#fff;border-radius:18px;padding:22px;
+min-height:120px;display:flex;align-items:center;
+gap:20px;box-shadow:0 5px 20px #173b5c12;
+border-left:6px solid var(--blue);
+transition:.2s;
+}
+.quickCard:hover{transform:translateY(-3px)}
+.quickIcon{font-size:50px}
+.quickCard h3{font-size:22px}
+.quickCard p{color:#718091}
+.quickCard:nth-child(2){border-color:#ff9e00}
+.quickCard:nth-child(3){border-color:#1caf61}
+.quickCard:nth-child(4){border-color:#853be4}
+.quickCard:nth-child(5){border-color:#ef3e4a}
+.quickCard:nth-child(6){border-color:#0754b9}
+
+@media(max-width:850px){
+.quickGrid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+.container{padding:12px 12px 40px}
+.quickGrid{grid-template-columns:1fr 1fr;gap:12px}
+.quickCard{padding:15px;min-height:105px;gap:10px}
+.quickIcon{font-size:32px}
+.quickCard h3{font-size:17px}
+.quickCard p{font-size:12px}
+.sectionTitle{font-size:24px}
 }
 
-/* QUICK CARDS */
-.quick-wrap{
-max-width:1480px;margin:22px auto;padding:0 22px
+/* CLASS CARDS */
+.classGrid{
+display:grid;grid-template-columns:repeat(4,1fr);
+gap:18px;
 }
-.quick-grid{
-display:grid;grid-template-columns:repeat(3,1fr);gap:20px
-}
-.quick-card{
-background:white;border-radius:20px;min-height:145px;
-display:flex;align-items:center;gap:22px;padding:20px;
-box-shadow:0 8px 25px #193b5b12;
-border-left:7px solid var(--blue);
-transition:.2s
-}
-.quick-card:hover{transform:translateY(-3px)}
-.quick-card.orange{border-left-color:#ff9e00}
-.quick-card.green{border-left-color:#19ad60}
-.quick-card.purple{border-left-color:#8c42dc}
-.quick-card.red{border-left-color:#ef4050}
-.quick-card .bigicon{font-size:55px;min-width:70px;text-align:center}
-.quick-card h2{font-size:25px;color:#082f5f}
-.quick-card p{color:#687789;font-size:16px}
-.section{
-max-width:1480px;margin:30px auto;padding:0 22px
-}
-.section-title{
-font-size:32px;color:#07335e;margin-bottom:8px;
-font-weight:900
-}
-.section-sub{color:#748091;margin-bottom:20px}
-
-/* COURSE CARDS */
-.course-grid{
-display:grid;grid-template-columns:repeat(4,1fr);gap:20px
-}
-.course-card{
+.classCard{
 background:white;border-radius:20px;padding:24px;
-box-shadow:0 8px 24px #193b5b13;
-border-top:5px solid var(--blue);
-cursor:pointer;position:relative;overflow:hidden
+min-height:190px;position:relative;
+box-shadow:0 5px 20px #173b5c12;
+border:1px solid #e8edf3;
+overflow:hidden;
+cursor:pointer;
 }
-.course-card:nth-child(2){border-top-color:#65b73a}
-.course-card:nth-child(3){border-top-color:#f0a000}
-.course-card:nth-child(4){border-top-color:#ef4454}
-.course-card .class-icon{
-font-size:48px;margin-bottom:10px
+.classCard:after{
+content:"";position:absolute;width:75px;height:75px;
+right:-12px;top:-12px;background:#ffe77a;
+border-radius:50%;
+opacity:.65;
 }
-.course-card h3{font-size:24px}
-.course-card p{color:#737f8e}
+.classNumber{
+width:55px;height:55px;border-radius:10px;
+background:#e5f2ff;display:flex;align-items:center;
+justify-content:center;font-size:30px;font-weight:900;
+color:#075da8;margin-bottom:12px;
+}
+.classCard:nth-child(2) .classNumber{background:#fff1c9}
+.classCard:nth-child(3) .classNumber{background:#eee5ff}
+.classCard:nth-child(4) .classNumber{background:#dff8ec}
+.classCard h3{font-size:22px}
+.classCard p{color:#718091;font-size:14px}
 .badge{
-display:inline-block;background:#eaf4ff;color:#1265a3;
-padding:4px 10px;border-radius:20px;font-size:13px;
-font-weight:700;margin-top:10px
+display:inline-block;margin-top:10px;padding:4px 10px;
+border-radius:20px;background:#eaf5ff;color:#075da8;
+font-size:12px;font-weight:800;
 }
 
-/* PAGE */
-.page{
-max-width:1200px;margin:25px auto;padding:0 18px
+@media(max-width:850px){
+.classGrid{grid-template-columns:repeat(2,1fr)}
 }
-.back{
-border:0;background:#e9f1fa;color:#073e6e;
-padding:9px 16px;border-radius:10px;font-weight:800;
-margin-bottom:15px
-}
-.page-head{
-background:linear-gradient(135deg,#06386d,#087bd3);
-color:white;padding:28px;border-radius:20px;
-margin-bottom:20px
-}
-.page-head h1{font-size:32px}
-.page-head p{opacity:.9}
-
-/* CHAPTERS */
-.chapter-grid{
-display:grid;grid-template-columns:repeat(2,1fr);gap:15px
-}
-.chapter{
-background:white;border-radius:16px;padding:20px;
-box-shadow:0 6px 20px #173c5b12;
-border-left:5px solid #0b79cf;
-cursor:pointer
-}
-.chapter h3{font-size:21px}
-.chapter p{color:#75808c;font-size:14px}
-.chapter:hover{background:#f7fbff}
-
-/* CHAPTER PAGE OPTIONS */
-.option-grid{
-display:grid;grid-template-columns:repeat(4,1fr);gap:15px;
-margin:20px 0
-}
-.option{
-background:white;border-radius:17px;padding:20px;
-box-shadow:0 7px 20px #173c5b14
-}
-.option .ico{font-size:35px}
-.option h3{margin-top:5px}
-.option p{color:#727e8b;font-size:14px;margin-bottom:12px}
-.btn{
-border:0;background:#7b2ff7;color:white;
-padding:9px 16px;border-radius:10px;font-weight:800
-}
-.btn.blue{background:#087bd3}
-.btn.green{background:#16a85a}
-.btn.red{background:#ef3e4a}
-.btn.dark{background:#07335e}
-.btn.light{background:#edf3fa;color:#123d62}
-
-/* CONTENT */
-.content-box{
-background:white;border-radius:20px;padding:25px;
-box-shadow:0 7px 25px #173c5b12;margin-top:18px
-}
-.content-box h2{font-size:27px;margin-bottom:12px}
-.note-text{
-font-size:18px;white-space:pre-wrap;
-line-height:2;color:#24384d
+@media(max-width:500px){
+.classGrid{grid-template-columns:1fr 1fr;gap:12px}
+.classCard{padding:15px;min-height:165px}
+.classCard h3{font-size:18px}
 }
 
-/* MODEL */
-.model-list{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-.model{
-background:white;border-radius:15px;padding:17px 20px;
-display:flex;align-items:center;justify-content:space-between;
-box-shadow:0 5px 18px #193b5b12
+/* MODEL SET */
+.modelGrid{
+display:grid;grid-template-columns:1fr 1fr;gap:12px;
+}
+.modelItem{
+background:#fff;border-radius:14px;padding:15px 18px;
+display:flex;justify-content:space-between;align-items:center;
+box-shadow:0 4px 15px #173b5c10;
+cursor:pointer;
+}
+.modelItem:hover{background:#f6fbff}
+.mark{
+background:#fff0ad;color:#775c00;
+border-radius:20px;padding:5px 12px;font-weight:900;
+white-space:nowrap;
+}
+@media(max-width:600px){
+.modelGrid{grid-template-columns:1fr}
+}
+
+/* STUDY */
+.studyBox{
+background:linear-gradient(135deg,#075da8,#0069bd);
+border-radius:20px;padding:20px;color:#fff;
+}
+.studyItem{
+background:#ffffff15;border:1px solid #ffffff22;
+padding:15px;border-radius:12px;margin:9px 0;
+display:flex;justify-content:space-between;align-items:center;
+}
+.studyItem button{
+border:0;background:#ffffff18;color:#fff;
+padding:7px 13px;border-radius:8px;
 }
 
 /* CONTACT */
-.contact-card{
-background:white;border-radius:20px;padding:25px;
-box-shadow:0 8px 25px #173c5b12
+.contactCard{
+background:#fff;border-radius:18px;padding:22px;
+box-shadow:0 5px 20px #173b5c12;
 }
-.contact-row{
-display:flex;gap:15px;flex-wrap:wrap;margin-top:15px
+.contactBtns{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.contactBtns a{
+padding:10px 16px;border-radius:10px;
+font-weight:800;color:#fff;
 }
-.contact-btn{
-text-decoration:none;color:white;padding:12px 20px;
-border-radius:12px;font-weight:800;display:inline-block
+.whatsapp{background:#16c86b}
+.email{background:#2463d6}
+.phone{background:#ef3e4a}
+
+/* PAGE */
+.page{animation:fade .2s ease}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1}}
+.pageHead{
+display:flex;align-items:center;gap:12px;margin-bottom:20px;
 }
-.whatsapp{background:#18b957}
-.email{background:#7b2ff7}
-.phone{background:#087bd3}
+.back{
+border:0;background:#e7f1fb;color:#075da8;
+padding:8px 14px;border-radius:10px;font-weight:800;
+}
+.pageHead h1{font-size:31px}
+.chapterGrid{
+display:grid;grid-template-columns:repeat(2,1fr);gap:15px;
+}
+.chapter{
+background:#fff;padding:20px;border-radius:16px;
+box-shadow:0 4px 18px #173b5c12;
+cursor:pointer;border-left:5px solid #087bd3;
+}
+.chapter:hover{transform:translateY(-2px)}
+.chapter h3{font-size:20px}
+.chapter p{color:#718091;font-size:14px}
+@media(max-width:600px){
+.chapterGrid{grid-template-columns:1fr}
+.pageHead h1{font-size:24px}
+}
+
+/* CHAPTER PAGE */
+.chapterHero{
+background:linear-gradient(135deg,#062f5f,#087bd3);
+color:#fff;border-radius:20px;padding:25px;
+margin-bottom:18px;
+}
+.chapterHero h1{font-size:30px}
+.options{
+display:grid;grid-template-columns:repeat(3,1fr);gap:15px;
+}
+.option{
+background:#fff;border-radius:18px;padding:20px;
+box-shadow:0 5px 20px #173b5c12;
+}
+.option .ico{font-size:34px}
+.option h3{font-size:20px}
+.option small{color:#718091}
+.btn{
+border:0;background:#7b2ff7;color:#fff;
+padding:9px 14px;border-radius:9px;font-weight:800;
+margin-top:10px;
+}
+.btn.blue{background:#087bd3}
+.btn.green{background:#19a85a}
+.btn.red{background:#ef3e4a}
+@media(max-width:700px){
+.options{grid-template-columns:1fr}
+}
+
+/* COLLEGE */
+.collegeGrid{
+display:grid;grid-template-columns:repeat(2,1fr);gap:15px;
+}
+.collegeCard{
+background:#fff;border-radius:17px;padding:20px;
+box-shadow:0 4px 16px #173b5c12;
+}
+.collegeCard h3{font-size:21px}
+@media(max-width:600px){
+.collegeGrid{grid-template-columns:1fr}
+}
+
+/* TEST */
+.testBox{
+background:#fff;border-radius:20px;padding:22px;
+box-shadow:0 5px 20px #173b5c12;
+}
+.testTop{
+display:flex;justify-content:space-between;gap:10px;
+align-items:center;border-bottom:1px solid #e8edf3;
+padding-bottom:12px;margin-bottom:15px;
+}
+.question{
+padding:18px;background:#f8fbff;border-radius:14px;
+margin-bottom:14px;
+}
+.question h3{font-size:18px;margin-bottom:10px}
+.answers label{
+display:block;background:#fff;border:1px solid #dfe7ef;
+padding:10px;border-radius:9px;margin:7px 0;
+cursor:pointer;
+}
+.answers label:hover{background:#eef7ff}
+.result{
+padding:18px;border-radius:15px;background:#eef9f2;
+margin-top:15px;
+}
+.correct{color:#108348;font-weight:900}
+.wrong{color:#d62839;font-weight:900}
+.answerReview{
+margin-top:8px;padding:10px;background:#fff;
+border-radius:10px;
+}
 
 /* LOGIN */
-.login-screen{
-min-height:calc(100vh - 64px);display:flex;
-align-items:center;justify-content:center;padding:25px;
-background:linear-gradient(135deg,#eef5ff,#f8f0ff)
+.loginWrap{
+min-height:65vh;display:flex;align-items:center;
+justify-content:center;padding:30px;
 }
-.login-box{
-background:white;width:min(460px,100%);padding:35px;
-border-radius:25px;box-shadow:0 15px 50px #173c5b25
+.loginCard{
+background:#fff;width:100%;max-width:430px;
+border-radius:22px;padding:30px;
+box-shadow:0 8px 35px #173b5c18;
 }
-.login-logo{font-size:55px;text-align:center}
-.login-box h1{text-align:center;color:#6828c7;font-size:31px}
-.login-box .teacher{text-align:center;color:#777;margin-bottom:25px}
-.login-tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.login-tabs button{
-border:0;padding:12px;border-radius:12px;background:#eee
+.loginCard h1{font-size:30px;text-align:center}
+.input{
+width:100%;padding:13px;border:1px solid #d8e0e8;
+border-radius:10px;margin:7px 0 13px;
+outline:none;
 }
-.login-tabs .active{background:#8b35f5;color:white}
-.field{
-width:100%;padding:14px;border:1px solid #d7dce4;
-border-radius:12px;margin-top:12px;outline:0
-}
-.field:focus{border-color:#7b2ff7}
-.login-btn{
-width:100%;margin-top:15px;padding:14px;
-border:0;border-radius:12px;background:#8434f5;color:white;
-font-size:18px;font-weight:900
-}
-.demo{
-background:#f5f7fb;padding:12px;border-radius:12px;
-margin-top:15px;font-size:14px;color:#617082
+.input:focus{border-color:#087bd3}
+.loginDemo{
+background:#f2f7fd;padding:12px;border-radius:10px;
+font-size:13px;margin-top:15px;
 }
 
-/* MCQ */
-.quiz-question{
-font-size:21px;font-weight:800;margin-bottom:18px
+/* PROFILE */
+.profile{
+background:#fff;border-radius:18px;padding:20px;
+box-shadow:0 5px 20px #173b5c12;
 }
-.answers{display:grid;gap:10px}
-.answer{
-padding:13px 16px;border:1px solid #dce2e9;
-background:white;border-radius:12px;text-align:left
-}
-.answer:hover{background:#f4f8ff}
-.answer.selected{background:#e9f1ff;border-color:#087bd3}
-.answer.correct{background:#dff8e9;border-color:#16a85a}
-.answer.wrong{background:#ffe2e2;border-color:#ef3e4a}
-.result{
-padding:18px;background:#f3f7fb;border-radius:15px;
-margin-top:20px
-}
-.result strong{font-size:25px}
-
-/* ADMIN */
-.admin-box{
-background:#fff;border-radius:20px;padding:25px;
-box-shadow:0 8px 25px #173c5b12
-}
-textarea.field{min-height:130px;resize:vertical}
-.admin-item{
-padding:12px;background:#f6f8fb;border-radius:10px;
-margin-top:10px
-}
-
-/* BOTTOM NAV */
-.bottom-nav{
-position:sticky;bottom:0;z-index:900;
-background:white;border-top:1px solid #e1e6ed;
-display:flex;justify-content:center;gap:50px;
-padding:9px 10px;box-shadow:0 -4px 20px #173c5b12
-}
-.bottom-nav button{
-border:0;background:white;color:#183b5c;
-display:flex;flex-direction:column;align-items:center;
-font-size:13px;font-weight:700
-}
-.bottom-nav .bico{font-size:25px}
-.bottom-nav button.active{color:#073d88}
 
 /* FOOTER */
 footer{
-background:#062f5f;color:white;text-align:center;
-padding:25px;margin-top:35px
+background:#062f5f;color:#dceaff;
+padding:25px;text-align:center;margin-top:30px;
 }
 
-/* RESPONSIVE */
-@media(max-width:950px){
-.quick-grid{grid-template-columns:repeat(2,1fr)}
-.course-grid{grid-template-columns:repeat(2,1fr)}
-.option-grid{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:650px){
-.topbar{height:56px}
-.brand{font-size:16px}
-.nav-actions button:not(.menu-btn){display:none}
-.hero img{min-height:190px;object-fit:cover}
-.quick-wrap,.section{padding:0 12px}
-.quick-grid{grid-template-columns:1fr}
-.quick-card{min-height:115px;padding:15px}
-.quick-card .bigicon{font-size:42px;min-width:55px}
-.quick-card h2{font-size:21px}
-.quick-card p{font-size:14px}
-.section-title{font-size:26px}
-.course-grid{grid-template-columns:1fr 1fr;gap:10px}
-.course-card{padding:15px}
-.course-card h3{font-size:19px}
-.course-card .class-icon{font-size:36px}
-.chapter-grid{grid-template-columns:1fr}
-.option-grid{grid-template-columns:1fr 1fr}
-.option{padding:15px}
-.option .ico{font-size:28px}
-.option h3{font-size:17px}
-.model-list{grid-template-columns:1fr}
-.page-head h1{font-size:25px}
-.note-text{font-size:17px}
-.bottom-nav{gap:18px}
-.bottom-nav .bico{font-size:22px}
-.login-box{padding:25px}
+/* COPY PROTECTION */
+.protected{
+user-select:none;
+-webkit-user-select:none;
 }
 </style>
 </head>
 
 <body>
 
-<!-- TOP BAR -->
+<!-- TOP NAV -->
 <header class="topbar">
-<div class="top-inner">
-<button class="hamburger" onclick="openMenu()">☰</button>
+<div class="topinner">
 <div class="brand">বাংলা <span>পাঠশালা</span></div>
-<div class="nav-actions">
-<button onclick="goHome()">হোম</button>
+
+<button class="menuBtn" onclick="openDrawer()">☰</button>
+
+<nav class="navlinks">
+<button onclick="home()">হোম</button>
 <button onclick="showCourses()">ক্লাস</button>
 <button onclick="showModels()">মডেল সেট</button>
 <button onclick="showNotice()">নোটিশ</button>
-<button id="logoutTop" class="logout-btn hidden" onclick="logout()">Logout</button>
-</div>
+<span id="authNav"></span>
+</nav>
 </div>
 </header>
 
+<div id="overlay" class="overlay" onclick="closeDrawer()"></div>
+
 <!-- DRAWER -->
-<div id="overlay" class="overlay hidden" onclick="closeMenu()"></div>
 <aside id="drawer" class="drawer">
-<div class="drawer-head">
-<div class="logo-circle">📚</div>
+<div class="drawerHead">
+<button class="closeDrawer" onclick="closeDrawer()">×</button>
+<div class="logoCircle">📚</div>
 <h2>বাংলা পাঠশালা</h2>
 <p>শিক্ষক : আশিষ হাইত</p>
 </div>
 
 <nav>
-<button onclick="goHome()">🏠 Home</button>
-<button onclick="showCourses()">📚 All Courses</button>
-<button onclick="showNotice()">📢 Notice Board</button>
-<button onclick="showFreeClass()">🎬 Free Class</button>
-<button onclick="showFreeMCQ()">📝 Free MCQ Test</button>
-<button onclick="showPDF()">📄 Free PDF</button>
-<button onclick="showLinks()">🔗 Important Links</button>
-<button onclick="showModels()">📋 Model Set</button>
-<button onclick="showGrammar()">📖 বাংলা ব্যাকরণ</button>
-<button onclick="showCollege()">🏫 কলেজ বাংলা</button>
-<button onclick="showContact()">📞 যোগাযোগ</button>
-<button onclick="showProfile()">👤 Profile</button>
-<button onclick="showAdmin()">⚙️ Content Manager</button>
+<button onclick="home();closeDrawer()">🏠 হোম</button>
+<button onclick="showCourses();closeDrawer()">📚 All Courses</button>
+<button onclick="showModels();closeDrawer()">📝 Model Set</button>
+<button onclick="showNotice();closeDrawer()">📢 Notice Board</button>
+<button onclick="showStudy();closeDrawer()">📄 Study Material</button>
+<button onclick="showCollege();closeDrawer()">🏫 কলেজ বাংলা</button>
+<button onclick="showGrammar();closeDrawer()">📘 বাংলা ব্যাকরণ</button>
+<button onclick="showWriting();closeDrawer()">✍️ নির্মিতি</button>
+<button onclick="showProfile();closeDrawer()">👤 Profile</button>
+<button onclick="showContact();closeDrawer()">📞 যোগাযোগ</button>
+<div id="drawerAuth"></div>
 </nav>
 
-<div class="drawer-contact">
+<div class="drawerContact">
 <b>যোগাযোগ</b><br>
 📱 9775746579<br>
 ✉️ haitashishbengali@gmail.com
 </div>
 </aside>
 
-<!-- APP -->
 <main id="app"></main>
-
-<!-- BOTTOM NAV -->
-<nav class="bottom-nav">
-<button class="active" onclick="goHome()">
-<span class="bico">🏠</span>Home
-</button>
-<button onclick="showCourses()">
-<span class="bico">📖</span>My Courses
-</button>
-<button onclick="showHelp()">
-<span class="bico">❓</span>Help
-</button>
-<button onclick="openWhatsApp()">
-<span class="bico">🟢</span>WhatsApp
-</button>
-<button onclick="showContact()">
-<span class="bico">💬</span>Chat
-</button>
-</nav>
 
 <footer>
 © 2026 বাংলা পাঠশালা | শিক্ষক : আশিষ হাইত
 </footer>
 
 <script>
+
 /* =========================================================
-   বাংলা পাঠশালা
-   সমস্ত content এই DATA object-এ রাখা হয়েছে।
-   ভবিষ্যতে নতুন প্রশ্ন/নোট যোগ করা সহজ।
+   BASIC SETTINGS
 ========================================================= */
 
 const CONTACT={
@@ -448,43 +481,102 @@ phone:"9775746579",
 email:"haitashishbengali@gmail.com"
 };
 
+const DEMO={
+username:"student",
+password:"1234"
+};
+
+let current={
+classId:null,
+chapter:null,
+test:null
+};
+
+
+/* =========================================================
+   DATA
+   নতুন অধ্যায় যোগ করতে chapters-এ নতুন object যোগ করবেন।
+========================================================= */
+
 const DATA={
 
 classes:{
+
 "9":{
 name:"নবম শ্রেণি",
-desc:"বাংলা সাহিত্য, ব্যাকরণ ও নির্মিতি",
+short:"৯",
+desc:"WBBSE বাংলা — সাহিত্য, ব্যাকরণ ও নির্মিতি",
 chapters:[
-{title:"পাঠ্য সাহিত্য",type:"literature",desc:"পাঠ্য সাহিত্য অংশ"},
-{title:"ব্যাকরণ ও নির্মিতি",type:"grammar",desc:"নবম শ্রেণির নির্ধারিত ব্যাকরণ ও নির্মিতি"}
+["কলিঙ্গদেশে ঝড়-বৃষ্টি","পদ্য"],
+["ধীবর-বৃত্তান্ত","নাটক"],
+["ইলিয়াস","গদ্য"],
+["দাম","গদ্য"],
+["নব নব সৃষ্টি","গদ্য"],
+["হিমালয় দর্শন","গদ্য"],
+["নোঙর","পদ্য"],
+["খেয়া","পদ্য"],
+["আকাশে সাতটি তারা","পদ্য"],
+["আবহমান","পদ্য"],
+["ভাঙার গান","পদ্য"],
+["চিঠি","গদ্য"],
+["আমরা","পদ্য"],
+["নিরুদ্দেশ","গল্প"],
+["রাধারাণী","গল্প"],
+["চন্দ্রনাথ","গল্প"]
 ]
-},
-"10":{
-name:"দশম শ্রেণি",
-desc:"মাধ্যমিক বাংলা প্রস্তুতি",
-chapters:[
-{title:"পাঠ্য সাহিত্য",type:"literature",desc:"পাঠ্য সাহিত্য অংশ"},
-{title:"ব্যাকরণ ও নির্মিতি",type:"grammar",desc:"দশম শ্রেণির নির্ধারিত ব্যাকরণ ও নির্মিতি"}
-]
-},
-"11":{
-name:"একাদশ শ্রেণি",
-desc:"WBCHSE Semester 1 ও Semester 2",
-chapters:[
-{title:"Semester 1",type:"sem1",desc:"WBCHSE Bengali"},
-{title:"Semester 2",type:"sem2",desc:"WBCHSE Bengali"}
-]
-},
-"12":{
-name:"দ্বাদশ শ্রেণি",
-desc:"WBCHSE Semester 3 ও Semester 4",
-chapters:[
-{title:"Semester 3",type:"sem3",desc:"WBCHSE Bengali"},
-{title:"Semester 4",type:"sem4",desc:"WBCHSE Bengali"}
-]
-}
 },
 
+"10":{
+name:"দশম শ্রেণি",
+short:"১০",
+desc:"WBBSE মাধ্যমিক বাংলা — সম্পূর্ণ প্রস্তুতি",
+chapters:[
+["জ্ঞানচক্ষু","গল্প"],
+["হারিয়ে যাওয়া কালিকলম","প্রবন্ধ"],
+["আয় আরো বেঁধে বেঁধে থাকি","কবিতা"],
+["আফ্রিকা","কবিতা"],
+["অসুখী একজন","কবিতা"],
+["বহুরূপী","গল্প"],
+["সিরাজদ্দৌলা","নাটক"],
+["পথের দাবী","গল্প"],
+["অভিষেক","কবিতা"],
+["প্রলয়োল্লাস","কবিতা"],
+["অদল বদল","গল্প"],
+["বাংলা ভাষায় বিজ্ঞান","প্রবন্ধ"],
+["নদীর বিদ্রোহ","গল্প"],
+["সিন্ধুতীরে","কবিতা"],
+["অস্ত্রের বিরুদ্ধে গান","কবিতা"],
+["কোনি","সহায়ক পাঠ"]
+]
+},
+
+"11":{
+name:"একাদশ শ্রেণি",
+short:"১১",
+desc:"WBCHSE বাংলা-A — Semester I ও II",
+chapters:[
+["Semester I — বাংলা সাহিত্য","সেমিস্টার ১"],
+["Semester I — বাংলা ভাষা ও নির্মিতি","সেমিস্টার ১"],
+["Semester II — বাংলা সাহিত্য","সেমিস্টার ২"],
+["Semester II — বাংলা ভাষা ও নির্মিতি","সেমিস্টার ২"]
+]
+},
+
+"12":{
+name:"দ্বাদশ শ্রেণি",
+short:"১২",
+desc:"WBCHSE বাংলা-A — Semester III ও IV",
+chapters:[
+["Semester III — বাংলা সাহিত্য","সেমিস্টার ৩"],
+["Semester III — বাংলা ভাষা ও নির্মিতি","সেমিস্টার ৩"],
+["Semester IV — বাংলা সাহিত্য","সেমিস্টার ৪"],
+["Semester IV — বাংলা ভাষা ও নির্মিতি","সেমিস্টার ৪"]
+]
+}
+
+},
+
+/* নবম ব্যাকরণ */
 grammar9:[
 "ধ্বনি ও ধ্বনি পরিবর্তনের কারণ ও ধারা",
 "সন্ধি",
@@ -495,6 +587,7 @@ grammar9:[
 "ধাতু ও ক্রিয়া"
 ],
 
+/* দশম ব্যাকরণ */
 grammar10:[
 "কারক ও বিভক্তি",
 "সমাস পরিচয়",
@@ -502,325 +595,271 @@ grammar10:[
 "বাচ্য ও বাচ্য পরিবর্তন"
 ],
 
-nirmiti9:[
+/* নবম নির্মিতি */
+writing9:[
 "ভাবসম্প্রসারণ",
 "ভাবার্থ",
 "সারাংশ",
 "গল্প লিখন"
 ],
 
-nirmiti10:[
+/* দশম নির্মিতি */
+writing10:[
 "ইংরেজি থেকে বাংলায় অনুবাদ (E TO B)",
 "প্রতিবেদন রচনা",
 "সংলাপ রচনা"
 ],
 
-essay:[
-"নবম ও দশম শ্রেণির জন্য",
-"একাদশ শ্রেণির জন্য",
-"দ্বাদশ শ্রেণির জন্য"
-],
-
+/* কলেজ বাংলা */
 college:[
-"উপন্যাস",
-"ছোটগল্প",
-"নাটক",
-"প্রবন্ধ",
-"কলেজ নোট"
+["উপন্যাস","আলোচনা ও নোট"],
+["ছোটগল্প","আলোচনা ও নোট"],
+["নাটক","আলোচনা ও নোট"],
+["প্রবন্ধ","আলোচনা ও নোট"],
+["কলেজ সাজেশন","গুরুত্বপূর্ণ বিষয়"],
+["কলেজ নোট","পরীক্ষার প্রস্তুতি"]
 ],
 
+/* Model Sets */
 models:[
-"নবম শ্রেণি – গুরুত্বপূর্ণ মডেল সেট",
-"দশম শ্রেণি – মাধ্যমিক মডেল সেট",
-"একাদশ – প্রথম সেমিস্টার",
-"একাদশ – দ্বিতীয় সেমিস্টার",
-"দ্বাদশ – তৃতীয় সেমিস্টার",
-"দ্বাদশ – চতুর্থ সেমিস্টার"
+["নবম শ্রেণি — গুরুত্বপূর্ণ মডেল সেট","১০টি"],
+["দশম শ্রেণি — টেস্ট টেস্ট ও মাধ্যমিক মডেল সেট","২০টি"],
+["একাদশ — প্রথম সেমিস্টার","১০টি"],
+["একাদশ — দ্বিতীয় সেমিস্টার","৫টি"],
+["দ্বাদশ — তৃতীয় সেমিস্টার","১৫টি"],
+["দ্বাদশ — চতুর্থ সেমিস্টার","১০টি"]
+],
+
+/* STUDY MATERIAL */
+study:[
+["নবম শ্রেণির নোট","class9"],
+["দশম শ্রেণির নোট","class10"],
+["একাদশ-দ্বাদশ নোট","hs"]
 ],
 
 /*
-  এখানে নিজের প্রশ্ন যোগ করবেন।
-  answer: 0 মানে প্রথম option,
-  answer: 1 মানে দ্বিতীয় option ইত্যাদি।
+=========================================================
+MOCK TEST QUESTIONS
+
+প্রশ্ন যোগ করার নিয়ম:
+
+{
+ q:"প্রশ্ন",
+ options:["ক","খ","গ","ঘ"],
+ answer:1
+}
+
+answer হলো সঠিক option-এর index:
+0 = প্রথম
+1 = দ্বিতীয়
+2 = তৃতীয়
+3 = চতুর্থ
+=========================================================
 */
-questions:[
+
+tests:{
+
+"9-কল্লিঙ্গদেশে ঝড়-বৃষ্টি":[
 {
-chapter:"grammar9",
-q:"‘সন্ধি’ কীসের সঙ্গে সম্পর্কিত?",
-options:["শব্দের মিলন","বাক্যের পরিবর্তন","কারক","বাচ্য"],
+q:"‘কলিঙ্গদেশে ঝড়-বৃষ্টি’ কাব্যাংশটির রচয়িতা কে?",
+options:["মুকুন্দরাম চক্রবর্তী","রবীন্দ্রনাথ ঠাকুর","কাজী নজরুল ইসলাম","জীবনানন্দ দাশ"],
 answer:0
 },
 {
-chapter:"grammar9",
-q:"‘প্রত্যয়’ কোথায় যুক্ত হয়?",
-options:["শব্দের সঙ্গে","শুধু বাক্যের শেষে","শুধু ক্রিয়ায়","শুধু সর্বনামে"],
+q:"‘কলিঙ্গদেশে ঝড়-বৃষ্টি’ কোন কাব্যের অংশ?",
+options:["চণ্ডীমঙ্গল","মনসামঙ্গল","অন্নদামঙ্গল","পদ্মাবতী"],
 answer:0
 },
 {
-chapter:"grammar10",
-q:"কারক কোনটির সঙ্গে সম্পর্ক নির্দেশ করে?",
-options:["ক্রিয়ার সঙ্গে পদের","শুধু শব্দের","শুধু বর্ণের","শুধু ধ্বনির"],
-answer:0
-},
-{
-chapter:"grammar10",
-q:"বাচ্য পরিবর্তন কোন বিষয়ের সঙ্গে সম্পর্কিত?",
-options:["ক্রিয়ার প্রকাশভঙ্গি","শব্দভাণ্ডার","সন্ধি","প্রত্যয়"],
-answer:0
+q:"‘ঈশান’ বলতে কোন দিক বোঝায়?",
+options:["দক্ষিণ-পশ্চিম","উত্তর-পূর্ব","দক্ষিণ-পূর্ব","উত্তর-পশ্চিম"],
+answer:1
 }
 ],
 
-notes:{
-"grammar9":"নবম শ্রেণির ব্যাকরণ অংশের নোট এখানে যোগ করা যাবে।",
-"grammar10":"দশম শ্রেণির ব্যাকরণ অংশের নোট এখানে যোগ করা যাবে।",
-"college":"কলেজ বাংলার নোট এখানে যোগ করা যাবে।"
+"10-জ্ঞানচক্ষু":[
+{
+q:"‘জ্ঞানচক্ষু’ গল্পটির লেখক কে?",
+options:["আশাপূর্ণা দেবী","সুবোধ ঘোষ","মানিক বন্দ্যোপাধ্যায়","শরৎচন্দ্র চট্টোপাধ্যায়"],
+answer:0
 },
+{
+q:"‘জ্ঞানচক্ষু’ কোন ধরনের রচনা?",
+options:["কবিতা","গল্প","নাটক","প্রবন্ধ"],
+answer:1
+}
+],
 
-videos:{},
-materials:{}
+"10-অসুখী একজন":[
+{
+q:"‘অসুখী একজন’ কবিতার কবি কে?",
+options:["পাবলো নেরুদা","সঙ্খ ঘোষ","জয় গোস্বামী","মাইকেল মধুসূদন দত্ত"],
+answer:0
+}
+]
+
+}
+
 };
 
 
-/* ---------- BASIC ---------- */
+/* =========================================================
+   AUTH
+========================================================= */
 
-function app(){
-return document.getElementById("app");
+function isLogged(){
+return localStorage.getItem("bp_logged")==="1";
 }
 
-function closeMenu(){
-document.getElementById("drawer").classList.remove("open");
-document.getElementById("overlay").classList.add("hidden");
+function loginUser(){
+const u=document.getElementById("loginUser").value.trim();
+const p=document.getElementById("loginPass").value;
+
+if(u===DEMO.username && p===DEMO.password){
+localStorage.setItem("bp_logged","1");
+localStorage.setItem("bp_user","Student");
+home();
+}else{
+document.getElementById("loginError").textContent=
+"Username অথবা Password সঠিক নয়।";
+}
 }
 
-function openMenu(){
+function logout(){
+localStorage.removeItem("bp_logged");
+localStorage.removeItem("bp_user");
+home();
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function openDrawer(){
 document.getElementById("drawer").classList.add("open");
-document.getElementById("overlay").classList.remove("hidden");
+document.getElementById("overlay").classList.add("show");
+}
+
+function closeDrawer(){
+document.getElementById("drawer").classList.remove("open");
+document.getElementById("overlay").classList.remove("show");
 }
 
 function setPage(html){
-closeMenu();
-app().innerHTML=html;
-window.scrollTo(0,0);
+document.getElementById("app").innerHTML=html;
+window.scrollTo({top:0,behavior:"smooth"});
+updateAuth();
 }
 
-function goHome(){
-setPage(homeHTML());
+function updateAuth(){
+
+let html="";
+
+if(isLogged()){
+html=
+`<button class="logoutBtn" onclick="logout()">Logout</button>`;
+}else{
+html=
+`<button class="loginBtn" onclick="showLogin()">Login</button>`;
 }
 
-function isLogged(){
-return localStorage.getItem("bp_logged_in")==="1";
+document.getElementById("authNav").innerHTML=html;
+
+document.getElementById("drawerAuth").innerHTML=isLogged()
+?
+`<button onclick="logout();closeDrawer()">🚪 Logout</button>`
+:
+`<button onclick="showLogin();closeDrawer()">🔐 Login</button>`;
 }
 
-function updateLoginButton(){
-const b=document.getElementById("logoutTop");
-if(b)b.classList.toggle("hidden",!isLogged());
-}
 
+/* =========================================================
+   HOME
+========================================================= */
 
-/* ---------- HOME ---------- */
+function home(){
 
-function homeHTML(){
+setPage(`
 
-return `
+<!-- HERO -->
 <section class="hero">
-<img src="assets/banner.png"
-alt="বাংলা পাঠশালা ব্যানার"
-onerror="this.style.display='none'">
+<img src="banner.png"
+onerror="this.style.display='none';document.getElementById('heroFallback').style.display='flex'">
+<div id="heroFallback" class="heroFallback">
+<div>
+<h1>বাংলা <span>পাঠশালা</span></h1>
+<h2>শিক্ষক : আশিষ হাইত</h2>
+<p>শিখবো বাংলা, গড়বো ভবিষ্যৎ</p>
+</div>
+</div>
 </section>
 
-<section class="quick-wrap">
-<div class="quick-grid">
+<div class="notice">
+📢 <b>নোটিশ:</b>
+পরীক্ষার রুটিন ও গুরুত্বপূর্ণ আপডেট দেখতে Notice Board দেখুন।
+</div>
 
-<div class="quick-card" onclick="showCourses()">
-<div class="bigicon">📚</div>
+<div class="container">
+
+<h2 class="sectionTitle">🚀 দ্রুত প্রবেশ</h2>
+
+<div class="quickGrid">
+
+<div class="quickCard" onclick="showCourses()">
+<div class="quickIcon">📚</div>
 <div>
-<h2>All Courses</h2>
+<h3>All Courses</h3>
 <p>সমস্ত কোর্স দেখুন</p>
 </div>
 </div>
 
-<div class="quick-card orange" onclick="showNotice()">
-<div class="bigicon">📢</div>
+<div class="quickCard" onclick="showNotice()">
+<div class="quickIcon">📢</div>
 <div>
-<h2>Notice Board</h2>
+<h3>Notice Board</h3>
 <p>নোটিশ দেখুন</p>
 </div>
 </div>
 
-<div class="quick-card green" onclick="showFreeClass()">
-<div class="bigicon">💻</div>
+<div class="quickCard" onclick="showFreeClass()">
+<div class="quickIcon">👨‍🏫</div>
 <div>
-<h2>Free Class</h2>
+<h3>Free Class</h3>
 <p>ফ্রি ক্লাস দেখুন</p>
 </div>
 </div>
 
-<div class="quick-card purple" onclick="showFreeMCQ()">
-<div class="bigicon">📝</div>
+<div class="quickCard" onclick="showFreeTest()">
+<div class="quickIcon">📝</div>
 <div>
-<h2>Free MCQ Test</h2>
+<h3>Free MCQ Test</h3>
 <p>ফ্রি MCQ টেস্ট দিন</p>
 </div>
 </div>
 
-<div class="quick-card red" onclick="showPDF()">
-<div class="bigicon">📄</div>
+<div class="quickCard" onclick="showStudy()">
+<div class="quickIcon">📄</div>
 <div>
-<h2>Free PDF</h2>
+<h3>Free PDF</h3>
 <p>Study Material দেখুন</p>
 </div>
 </div>
 
-<div class="quick-card" onclick="showLinks()">
-<div class="bigicon">🔗</div>
+<div class="quickCard" onclick="showLinks()">
+<div class="quickIcon">🔗</div>
 <div>
-<h2>Important Links</h2>
-<p>গুরুত্বপূর্ণ লিংকসমূহ</p>
+<h3>Important Links</h3>
+<p>গুরুত্বপূর্ণ লিঙ্কসমূহ</p>
 </div>
 </div>
 
 </div>
-</section>
-
-<section class="section">
-<h2 class="section-title">📚 শ্রেণি অনুযায়ী পড়াশোনা</h2>
-<p class="section-sub">আপনার শ্রেণি নির্বাচন করে বাংলা বিষয়ের প্রস্তুতি নিন</p>
-
-<div class="course-grid">
-
-${courseCard("9","📘")}
-${courseCard("10","📗")}
-${courseCard("11","📙")}
-${courseCard("12","📕")}
-
-</div>
-</section>
-
-<section class="section">
-<h2 class="section-title">📝 গুরুত্বপূর্ণ Model Set</h2>
-<p class="section-sub">পরীক্ষার প্রস্তুতির জন্য নির্বাচিত মডেল সেট</p>
-
-<div class="model-list">
-${DATA.models.map((x,i)=>`
-<div class="model">
-<b>${x}</b>
-<span class="badge">${i<2?"১০টি":"১৫টি"}</span>
-</div>
-`).join("")}
-</div>
-</section>
-
-<section class="section">
-<h2 class="section-title">📖 Study Material</h2>
-<div class="content-box">
-<h2>🔐 Protected Study Material</h2>
-<p>লগইন করা শিক্ষার্থীরা নির্বাচিত Study Material দেখতে পারবেন।</p>
-<button class="btn blue" onclick="showPDF()">Study Material দেখুন</button>
-</div>
-</section>
-
-<section class="section">
-<h2 class="section-title">📞 যোগাযোগ</h2>
-<div class="contact-card">
-<h2>শিক্ষক : আশিষ হাইত</h2>
-<p>বাংলা পাঠশালা সংক্রান্ত যোগাযোগ</p>
-<div class="contact-row">
-<a class="contact-btn whatsapp"
-href="https://wa.me/91${CONTACT.phone}"
-target="_blank">🟢 WhatsApp</a>
-<a class="contact-btn email"
-href="mailto:${CONTACT.email}">✉️ Email</a>
-<a class="contact-btn phone"
-href="tel:${CONTACT.phone}">📞 ${CONTACT.phone}</a>
-</div>
-</div>
-</section>
-`;
-}
-
-function courseCard(id,icon){
-const c=DATA.classes[id];
-return `
-<div class="course-card" onclick="showClass('${id}')">
-<div class="class-icon">${icon}</div>
-<h3>${c.name}</h3>
-<p>${c.desc}</p>
-<span class="badge">Course দেখুন →</span>
-</div>
-`;
-}
 
 
-/* ---------- COURSES ---------- */
+<h2 class="sectionTitle">📚 শ্রেণি নির্বাচন করুন</h2>
+<p class="sectionSub">আপনার শ্রেণি নির্বাচন করে বাংলা বিষয়ের প্রস্তুতি নিন</p>
 
-function showCourses(){
-setPage(`
-<section class="page">
-<div class="page-head">
-<h1>📚 All Courses</h1>
-<p>নবম থেকে দ্বাদশ শ্রেণির বাংলা পড়াশোনা</p>
-</div>
+<div class="classGrid">
 
-<div class="course-grid">
-${courseCard("9","📘")}
-${courseCard("10","📗")}
-${courseCard("11","📙")}
-${courseCard("12","📕")}
-</div>
-
-<div class="content-box">
-<h2>📖 বাংলা ব্যাকরণ</h2>
-<p>নবম ও দশম শ্রেণির নির্ধারিত ব্যাকরণ এবং নির্মিতি।</p>
-<button class="btn" onclick="showGrammar()">ব্যাকরণ দেখুন</button>
-</div>
-
-<div class="content-box">
-<h2>🏫 কলেজ বাংলা</h2>
-<p>উপন্যাস, ছোটগল্প, নাটক, প্রবন্ধ ও কলেজ নোট।</p>
-<button class="btn blue" onclick="showCollege()">কলেজ বাংলা</button>
-</div>
-</section>
-`);
-}
-
-function showClass(id){
-const c=DATA.classes[id];
-
-setPage(`
-<section class="page">
-<button class="back" onclick="showCourses()">← সব কোর্স</button>
-
-<div class="page-head">
-<h1>${c.name}</h1>
-<p>${c.desc}</p>
-</div>
-
-<div class="chapter-grid">
-${c.chapters.map((x,i)=>`
-<div class="chapter" onclick="openChapter('${id}','${x.type}',${i})">
-<h3>📖 ${x.title}</h3>
-<p>${x.desc}</p>
-</div>
-`).join("")}
-</div>
-
-${id==="9"?`
-<div class="content-box">
-<h2>✍️ নবম শ্রেণির নির্মিতি</h2>
-${DATA.nirmiti9.map(x=>`<div class="chapter" style="margin-top:10px"><h3>${x}</h3></div>`).join("")}
-</div>`:""}
-
-${id==="10"?`
-<div class="content-box">
-<h2>✍️ দশম শ্রেণির নির্মিতি</h2>
-${DATA.nirmiti10.map(x=>`<div class="chapter" style="margin-top:10px"><h3>${x}</h3></div>`).join("")}
-</div>`:""}
-
-</section>
-`);
-}
-
-
-/* ---------- CHAPTER ---------- */
-
-function openCha
+${Object.entries(DATA.classes).map(([id,c
