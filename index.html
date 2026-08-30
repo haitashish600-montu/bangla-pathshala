@@ -1,514 +1,491 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#082f63">
-<title>বাংলা পাঠশালা | শিক্ষক : আশিষ হাইত</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#082f5f">
+<title>বাংলা পাঠশালা | আশিষ হাইত</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800;900&display=swap');
-
-:root{
---navy:#082f63;--blue:#0d4f91;--purple:#7138d8;--gold:#f6c945;
---bg:#f5f7fb;--text:#102a43;--muted:#6b7c8f;--card:#fff;
---line:#e4eaf2;--green:#10b981;--red:#ef4444
-}
-
-*{box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
-margin:0;background:var(--bg);color:var(--text);
-font-family:"Noto Sans Bengali",sans-serif;line-height:1.6
+font-family:"Noto Sans Bengali","Nirmala UI","Hind Siliguri",Arial,sans-serif;
+background:#f4f7fb;color:#102d4d;line-height:1.65
 }
 button,input,textarea,select{font:inherit}
 button{cursor:pointer}
 .hidden{display:none!important}
 
+:root{
+--nav:#062f5f;
+--blue:#087bd3;
+--yellow:#ffd21a;
+--purple:#7b2ff7;
+--green:#16a85a;
+--red:#ef3e4a;
+--card:#fff;
+--muted:#6d7785;
+}
+
+/* TOP NAV */
 .topbar{
-height:62px;background:var(--navy);color:#fff;position:sticky;
-top:0;z-index:1000;box-shadow:0 4px 18px #0002
+height:64px;background:var(--nav);color:#fff;
+position:sticky;top:0;z-index:1000;
+box-shadow:0 3px 18px #001d3d44
 }
-.topin{
-max-width:1250px;height:100%;margin:auto;padding:0 14px;
-display:flex;align-items:center;justify-content:space-between;gap:10px
+.top-inner{
+height:100%;max-width:1500px;margin:auto;
+display:flex;align-items:center;justify-content:space-between;
+padding:0 18px
 }
-.leftbar,.actions{display:flex;align-items:center;gap:7px}
-.brand{font-size:19px;font-weight:900}
-.brand b{color:var(--gold)}
-.icon,.topbtn{
-border:0;border-radius:11px;padding:9px 11px;
-background:#ffffff18;color:#fff
+.brand{font-size:21px;font-weight:900}
+.brand span{color:var(--yellow)}
+.nav-actions{display:flex;align-items:center;gap:7px}
+.nav-actions button{
+border:0;background:transparent;color:white;
+padding:9px 12px;border-radius:9px;font-weight:700
 }
-.logout{background:#ef4444!important}
+.nav-actions button:hover{background:#ffffff18}
+.menu-btn{
+font-size:25px!important;background:#ffffff16!important
+}
+.logout-btn{background:#ef3e4a!important}
+.hamburger{
+font-size:25px;border:0;background:transparent;color:white
+}
 
-.drawer{
-position:fixed;z-index:2200;top:0;bottom:0;left:-330px;width:310px;
-background:#fff;box-shadow:8px 0 30px #0003;transition:.25s;overflow:auto
-}
-.drawer.open{left:0}
+/* DRAWER */
 .overlay{
-position:fixed;inset:0;background:#0007;z-index:2100;display:none
+position:fixed;inset:0;background:#0008;z-index:1500
 }
-.overlay.show{display:block}
-.dhead{
-padding:25px;background:linear-gradient(135deg,var(--navy),var(--blue));
-color:#fff
+.drawer{
+position:fixed;left:0;top:0;bottom:0;width:min(340px,88vw);
+background:white;z-index:1600;
+transform:translateX(-105%);transition:.25s;
+box-shadow:8px 0 30px #0004;
+overflow:auto
 }
-.dlogo{
-width:64px;height:64px;border-radius:20px;background:#ffffff18;
-display:grid;place-items:center;font-size:34px
+.drawer.open{transform:translateX(0)}
+.drawer-head{
+background:linear-gradient(135deg,#062f5f,#0a5da8);
+color:white;padding:30px 20px
 }
-.dhead h2{margin:8px 0 0;font-size:24px}
-.dhead p{margin:0;color:#dbeafe}
-.nav{padding:10px}
-.nav button{
-width:100%;border:0;background:#fff;text-align:left;padding:13px 14px;
-border-radius:12px;font-weight:800;color:var(--text)
+.logo-circle{
+width:65px;height:65px;border-radius:50%;
+background:#fff2;display:flex;align-items:center;
+justify-content:center;font-size:32px;margin-bottom:10px
 }
-.nav button:hover{background:#eef4ff}
-.navbottom{border-top:1px solid var(--line);padding:12px}
+.drawer-head h2{font-size:24px}
+.drawer-head p{opacity:.9}
+.drawer nav button{
+width:100%;text-align:left;border:0;background:white;
+padding:14px 20px;font-weight:700;color:#173451;
+border-bottom:1px solid #edf0f5
+}
+.drawer nav button:hover{background:#f0f6ff}
+.drawer-contact{
+padding:18px;background:#f7f9fc;margin:15px;border-radius:15px
+}
 
-main{
-max-width:1250px;margin:auto;padding:0 14px 35px
-}
-
+/* HOME */
 .hero{
-margin:0 0 16px;border-radius:0 0 25px 25px;overflow:hidden;
-background:#092f61
+position:relative;width:100%;overflow:hidden;background:#082f5f
 }
 .hero img{
-width:100%;display:block;height:auto;min-height:180px;object-fit:cover
-}
-.heroFallback{
-display:none;padding:45px 20px;color:#fff;text-align:center
-}
-.heroFallback h1{font-size:42px;margin:0}
-.heroFallback b{color:var(--gold)}
-
-.notice{
-background:#fff;border:1px solid var(--line);border-left:5px solid var(--purple);
-border-radius:14px;padding:10px 14px;margin:10px 0 22px;
-box-shadow:0 6px 20px #17395c0b
+display:block;width:100%;height:auto;max-height:520px;
+object-fit:cover
 }
 
-.title{
-font-size:30px;line-height:1.25;font-weight:900;margin:28px 0 5px
+/* QUICK CARDS */
+.quick-wrap{
+max-width:1480px;margin:22px auto;padding:0 22px
 }
-.sub{color:var(--muted);margin:0 0 13px}
+.quick-grid{
+display:grid;grid-template-columns:repeat(3,1fr);gap:20px
+}
+.quick-card{
+background:white;border-radius:20px;min-height:145px;
+display:flex;align-items:center;gap:22px;padding:20px;
+box-shadow:0 8px 25px #193b5b12;
+border-left:7px solid var(--blue);
+transition:.2s
+}
+.quick-card:hover{transform:translateY(-3px)}
+.quick-card.orange{border-left-color:#ff9e00}
+.quick-card.green{border-left-color:#19ad60}
+.quick-card.purple{border-left-color:#8c42dc}
+.quick-card.red{border-left-color:#ef4050}
+.quick-card .bigicon{font-size:55px;min-width:70px;text-align:center}
+.quick-card h2{font-size:25px;color:#082f5f}
+.quick-card p{color:#687789;font-size:16px}
+.section{
+max-width:1480px;margin:30px auto;padding:0 22px
+}
+.section-title{
+font-size:32px;color:#07335e;margin-bottom:8px;
+font-weight:900
+}
+.section-sub{color:#748091;margin-bottom:20px}
 
-.classgrid{
-display:grid;grid-template-columns:repeat(4,1fr);gap:14px
+/* COURSE CARDS */
+.course-grid{
+display:grid;grid-template-columns:repeat(4,1fr);gap:20px
 }
-.classcard{
-position:relative;background:#fff;border:1px solid var(--line);
-border-radius:20px;padding:18px;min-height:155px;
-box-shadow:0 8px 24px #17395c10;overflow:hidden
+.course-card{
+background:white;border-radius:20px;padding:24px;
+box-shadow:0 8px 24px #193b5b13;
+border-top:5px solid var(--blue);
+cursor:pointer;position:relative;overflow:hidden
 }
-.classcard:after{
-content:"";position:absolute;right:-20px;top:-20px;width:80px;height:80px;
-border-radius:50%;background:#fde68a88
+.course-card:nth-child(2){border-top-color:#65b73a}
+.course-card:nth-child(3){border-top-color:#f0a000}
+.course-card:nth-child(4){border-top-color:#ef4454}
+.course-card .class-icon{
+font-size:48px;margin-bottom:10px
 }
-.num{font-size:34px;font-weight:900;color:#12608e}
-.classcard h3{margin:5px 0;font-size:22px}
-.classcard p{margin:0 0 10px;color:var(--muted)}
-
-.btn{
-border:0;border-radius:10px;background:var(--purple);
-color:#fff;padding:9px 13px;font-weight:800
-}
-.btn.green{background:var(--green)}
-.btn.blue{background:#0ea5e9}
-.btn.gray{background:#e8eef6;color:var(--text)}
-.btn.red{background:var(--red)}
-
-.modelgrid{
-display:grid;grid-template-columns:repeat(2,1fr);gap:10px
-}
-.model{
-background:#fff;border:1px solid var(--line);border-radius:14px;
-padding:12px 15px;display:flex;align-items:center;
-justify-content:space-between;gap:10px;font-weight:700
-}
+.course-card h3{font-size:24px}
+.course-card p{color:#737f8e}
 .badge{
-background:#fff1b8;color:#795600;padding:4px 9px;
-border-radius:999px;white-space:nowrap
+display:inline-block;background:#eaf4ff;color:#1265a3;
+padding:4px 10px;border-radius:20px;font-size:13px;
+font-weight:700;margin-top:10px
 }
 
-.proverb{
-display:grid;grid-template-columns:repeat(3,1fr);gap:12px
+/* PAGE */
+.page{
+max-width:1200px;margin:25px auto;padding:0 18px
 }
-.pbox{
-background:#fff;border:1px solid var(--line);border-radius:17px;
-padding:16px;box-shadow:0 7px 20px #17395c0a
-}
-.pbox h3{margin:0 0 5px}
-.pbox p{margin:0;color:var(--muted)}
-
-.contact{
-background:#fff;border:1px solid var(--line);border-radius:20px;
-padding:18px;display:flex;justify-content:space-between;
-align-items:center;gap:15px
-}
-.contactActions{display:flex;gap:8px;flex-wrap:wrap}
-.contactActions a{text-decoration:none;color:#fff}
-
-.view{padding:12px 0}
 .back{
-border:0;background:#e8eef7;color:var(--navy);
-border-radius:11px;padding:9px 13px;font-weight:900;margin-bottom:12px
+border:0;background:#e9f1fa;color:#073e6e;
+padding:9px 16px;border-radius:10px;font-weight:800;
+margin-bottom:15px
 }
-.chapterlist{display:grid;gap:10px}
+.page-head{
+background:linear-gradient(135deg,#06386d,#087bd3);
+color:white;padding:28px;border-radius:20px;
+margin-bottom:20px
+}
+.page-head h1{font-size:32px}
+.page-head p{opacity:.9}
+
+/* CHAPTERS */
+.chapter-grid{
+display:grid;grid-template-columns:repeat(2,1fr);gap:15px
+}
 .chapter{
-background:#fff;border:1px solid var(--line);border-radius:16px;
-padding:14px 15px;display:flex;align-items:center;
-justify-content:space-between;gap:12px;box-shadow:0 5px 17px #17395c0b
+background:white;border-radius:16px;padding:20px;
+box-shadow:0 6px 20px #173c5b12;
+border-left:5px solid #0b79cf;
+cursor:pointer
 }
-.chapter h3{margin:0;font-size:20px}
-.chapter p{margin:1px 0;color:var(--muted)}
+.chapter h3{font-size:21px}
+.chapter p{color:#75808c;font-size:14px}
+.chapter:hover{background:#f7fbff}
 
-.sectiongrid{
-display:grid;grid-template-columns:repeat(2,1fr);gap:12px
-}
-.box{
-background:#fff;border:1px solid var(--line);border-radius:17px;padding:16px
-}
-.box h3{margin:0 0 4px;font-size:20px}
-.box p{margin:0;color:var(--muted)}
-
-.modal{
-position:fixed;inset:0;z-index:3000;background:#0008;
-display:flex;align-items:flex-end;justify-content:center
-}
-.modalbox{
-width:min(800px,100%);max-height:92vh;overflow:auto;background:#fff;
-border-radius:24px 24px 0 0;padding:20px
-}
-.modalhead{
-display:flex;justify-content:space-between;gap:10px;align-items:center
-}
-.close{
-border:0;background:#eef2f7;border-radius:50%;width:40px;height:40px;
-font-size:22px
-}
-.options{
-display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:17px 0
+/* CHAPTER PAGE OPTIONS */
+.option-grid{
+display:grid;grid-template-columns:repeat(4,1fr);gap:15px;
+margin:20px 0
 }
 .option{
-background:#fff;border:1px solid var(--line);border-radius:17px;
-padding:16px;text-align:center;box-shadow:0 5px 18px #17395c0a
+background:white;border-radius:17px;padding:20px;
+box-shadow:0 7px 20px #173c5b14
 }
-.option .ico{font-size:31px}
-.option b{display:block;font-size:18px}
-.option small{
-display:block;color:var(--muted);min-height:27px
+.option .ico{font-size:35px}
+.option h3{margin-top:5px}
+.option p{color:#727e8b;font-size:14px;margin-bottom:12px}
+.btn{
+border:0;background:#7b2ff7;color:white;
+padding:9px 16px;border-radius:10px;font-weight:800
+}
+.btn.blue{background:#087bd3}
+.btn.green{background:#16a85a}
+.btn.red{background:#ef3e4a}
+.btn.dark{background:#07335e}
+.btn.light{background:#edf3fa;color:#123d62}
+
+/* CONTENT */
+.content-box{
+background:white;border-radius:20px;padding:25px;
+box-shadow:0 7px 25px #173c5b12;margin-top:18px
+}
+.content-box h2{font-size:27px;margin-bottom:12px}
+.note-text{
+font-size:18px;white-space:pre-wrap;
+line-height:2;color:#24384d
 }
 
-.note{
-background:#fff;border:1px solid var(--line);border-radius:16px;
-padding:18px;font-size:18px;white-space:pre-wrap
-}
-.protected{
-user-select:none;-webkit-user-select:none
+/* MODEL */
+.model-list{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.model{
+background:white;border-radius:15px;padding:17px 20px;
+display:flex;align-items:center;justify-content:space-between;
+box-shadow:0 5px 18px #193b5b12
 }
 
-.test{
-background:#fff;border:1px solid var(--line);border-radius:18px;
-padding:18px;margin-top:12px
+/* CONTACT */
+.contact-card{
+background:white;border-radius:20px;padding:25px;
+box-shadow:0 8px 25px #173c5b12
 }
-.question{
-font-size:21px;font-weight:800;margin-bottom:12px
+.contact-row{
+display:flex;gap:15px;flex-wrap:wrap;margin-top:15px
 }
-.opt{
-width:100%;display:block;text-align:left;border:1px solid #dbe4ef;
-background:#f8fafc;border-radius:12px;padding:11px;margin:8px 0
+.contact-btn{
+text-decoration:none;color:white;padding:12px 20px;
+border-radius:12px;font-weight:800;display:inline-block
 }
-.opt.correct{background:#dcfce7;border-color:#10b981}
-.opt.wrong{background:#fee2e2;border-color:#ef4444}
+.whatsapp{background:#18b957}
+.email{background:#7b2ff7}
+.phone{background:#087bd3}
 
+/* LOGIN */
+.login-screen{
+min-height:calc(100vh - 64px);display:flex;
+align-items:center;justify-content:center;padding:25px;
+background:linear-gradient(135deg,#eef5ff,#f8f0ff)
+}
+.login-box{
+background:white;width:min(460px,100%);padding:35px;
+border-radius:25px;box-shadow:0 15px 50px #173c5b25
+}
+.login-logo{font-size:55px;text-align:center}
+.login-box h1{text-align:center;color:#6828c7;font-size:31px}
+.login-box .teacher{text-align:center;color:#777;margin-bottom:25px}
+.login-tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.login-tabs button{
+border:0;padding:12px;border-radius:12px;background:#eee
+}
+.login-tabs .active{background:#8b35f5;color:white}
+.field{
+width:100%;padding:14px;border:1px solid #d7dce4;
+border-radius:12px;margin-top:12px;outline:0
+}
+.field:focus{border-color:#7b2ff7}
+.login-btn{
+width:100%;margin-top:15px;padding:14px;
+border:0;border-radius:12px;background:#8434f5;color:white;
+font-size:18px;font-weight:900
+}
+.demo{
+background:#f5f7fb;padding:12px;border-radius:12px;
+margin-top:15px;font-size:14px;color:#617082
+}
+
+/* MCQ */
+.quiz-question{
+font-size:21px;font-weight:800;margin-bottom:18px
+}
+.answers{display:grid;gap:10px}
+.answer{
+padding:13px 16px;border:1px solid #dce2e9;
+background:white;border-radius:12px;text-align:left
+}
+.answer:hover{background:#f4f8ff}
+.answer.selected{background:#e9f1ff;border-color:#087bd3}
+.answer.correct{background:#dff8e9;border-color:#16a85a}
+.answer.wrong{background:#ffe2e2;border-color:#ef3e4a}
 .result{
-background:#ecfdf5;border:1px solid #a7f3d0;border-radius:16px;
-padding:17px;margin-bottom:15px
+padding:18px;background:#f3f7fb;border-radius:15px;
+margin-top:20px
 }
-.score{
-font-size:38px;font-weight:900;color:#047857
+.result strong{font-size:25px}
+
+/* ADMIN */
+.admin-box{
+background:#fff;border-radius:20px;padding:25px;
+box-shadow:0 8px 25px #173c5b12
+}
+textarea.field{min-height:130px;resize:vertical}
+.admin-item{
+padding:12px;background:#f6f8fb;border-radius:10px;
+margin-top:10px
 }
 
-.admin{
-display:grid;grid-template-columns:repeat(2,1fr);gap:14px
+/* BOTTOM NAV */
+.bottom-nav{
+position:sticky;bottom:0;z-index:900;
+background:white;border-top:1px solid #e1e6ed;
+display:flex;justify-content:center;gap:50px;
+padding:9px 10px;box-shadow:0 -4px 20px #173c5b12
 }
-.adminbox{
-background:#fff;border:1px solid var(--line);border-radius:17px;padding:17px
+.bottom-nav button{
+border:0;background:white;color:#183b5c;
+display:flex;flex-direction:column;align-items:center;
+font-size:13px;font-weight:700
 }
-.adminbox input,.adminbox textarea,.adminbox select{
-width:100%;border:1px solid #d8e0ea;border-radius:10px;
-padding:10px;margin:5px 0 9px
-}
-.adminbox textarea{min-height:115px}
-.search{
-width:100%;border:1px solid var(--line);
-border-radius:13px;padding:13px;outline:none
-}
+.bottom-nav .bico{font-size:25px}
+.bottom-nav button.active{color:#073d88}
 
+/* FOOTER */
 footer{
-background:var(--navy);color:#dbeafe;text-align:center;
-padding:23px
-}
-.footername{color:#fff;font-weight:900}
-
-@media(max-width:900px){
-.classgrid{grid-template-columns:repeat(2,1fr)}
-.proverb{grid-template-columns:1fr 1fr}
-.hero img{min-height:170px}
-.actions .topbtn:nth-child(3){display:none}
+background:#062f5f;color:white;text-align:center;
+padding:25px;margin-top:35px
 }
 
-@media(max-width:600px){
-.topbar{height:57px}
+/* RESPONSIVE */
+@media(max-width:950px){
+.quick-grid{grid-template-columns:repeat(2,1fr)}
+.course-grid{grid-template-columns:repeat(2,1fr)}
+.option-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:650px){
+.topbar{height:56px}
 .brand{font-size:16px}
-.topbtn{padding:8px 8px}
-.actions .topbtn:nth-child(2){display:none}
-.hero img{min-height:120px}
-.title{font-size:25px}
-.classgrid{gap:9px}
-.classcard{padding:13px;min-height:138px}
-.classcard h3{font-size:18px}
-.num{font-size:28px}
-.modelgrid,.sectiongrid,.admin{grid-template-columns:1fr}
-.proverb{grid-template-columns:1fr}
-.chapter{align-items:flex-start;flex-direction:column}
-.chapter .btn{width:100%}
-.options{grid-template-columns:1fr}
-.contact{flex-direction:column;align-items:flex-start}
-.contactActions a{display:inline-block}
+.nav-actions button:not(.menu-btn){display:none}
+.hero img{min-height:190px;object-fit:cover}
+.quick-wrap,.section{padding:0 12px}
+.quick-grid{grid-template-columns:1fr}
+.quick-card{min-height:115px;padding:15px}
+.quick-card .bigicon{font-size:42px;min-width:55px}
+.quick-card h2{font-size:21px}
+.quick-card p{font-size:14px}
+.section-title{font-size:26px}
+.course-grid{grid-template-columns:1fr 1fr;gap:10px}
+.course-card{padding:15px}
+.course-card h3{font-size:19px}
+.course-card .class-icon{font-size:36px}
+.chapter-grid{grid-template-columns:1fr}
+.option-grid{grid-template-columns:1fr 1fr}
+.option{padding:15px}
+.option .ico{font-size:28px}
+.option h3{font-size:17px}
+.model-list{grid-template-columns:1fr}
+.page-head h1{font-size:25px}
+.note-text{font-size:17px}
+.bottom-nav{gap:18px}
+.bottom-nav .bico{font-size:22px}
+.login-box{padding:25px}
 }
 </style>
 </head>
 
 <body>
 
+<!-- TOP BAR -->
 <header class="topbar">
-<div class="topin">
-
-<div class="leftbar">
-<button class="icon" onclick="openDrawer()">☰</button>
-<div class="brand">বাংলা <b>পাঠশালা</b></div>
+<div class="top-inner">
+<button class="hamburger" onclick="openMenu()">☰</button>
+<div class="brand">বাংলা <span>পাঠশালা</span></div>
+<div class="nav-actions">
+<button onclick="goHome()">হোম</button>
+<button onclick="showCourses()">ক্লাস</button>
+<button onclick="showModels()">মডেল সেট</button>
+<button onclick="showNotice()">নোটিশ</button>
+<button id="logoutTop" class="logout-btn hidden" onclick="logout()">Logout</button>
 </div>
-
-<div class="actions">
-<button class="topbtn" onclick="home()">হোম</button>
-<button class="topbtn" onclick="searchPage()">খোঁজ</button>
-<button class="topbtn" onclick="modelsPage()">মডেল সেট</button>
-<button class="topbtn" onclick="noticePage()">নোটিস</button>
-<button id="logoutTop" class="topbtn logout hidden" onclick="logout()">Logout</button>
-</div>
-
 </div>
 </header>
 
-<div id="overlay" class="overlay" onclick="closeDrawer()"></div>
-
+<!-- DRAWER -->
+<div id="overlay" class="overlay hidden" onclick="closeMenu()"></div>
 <aside id="drawer" class="drawer">
-
-<div class="dhead">
-<div class="dlogo">📚</div>
+<div class="drawer-head">
+<div class="logo-circle">📚</div>
 <h2>বাংলা পাঠশালা</h2>
 <p>শিক্ষক : আশিষ হাইত</p>
 </div>
 
-<nav class="nav">
-
-<button onclick="home();closeDrawer()">🏠 হোম</button>
-
-<button onclick="classesPage();closeDrawer()">📚 শ্রেণি</button>
-
-<button onclick="modelsPage();closeDrawer()">📝 মডেল সেট</button>
-
-<button onclick="materialsPage();closeDrawer()">📑 স্টাডি ম্যাটেরিয়াল</button>
-
-<button onclick="noticePage();closeDrawer()">📢 নোটিস</button>
-
-<button onclick="profilePage();closeDrawer()">👤 Profile</button>
-
-<button onclick="contactPage();closeDrawer()">☎️ যোগাযোগ</button>
-
+<nav>
+<button onclick="goHome()">🏠 Home</button>
+<button onclick="showCourses()">📚 All Courses</button>
+<button onclick="showNotice()">📢 Notice Board</button>
+<button onclick="showFreeClass()">🎬 Free Class</button>
+<button onclick="showFreeMCQ()">📝 Free MCQ Test</button>
+<button onclick="showPDF()">📄 Free PDF</button>
+<button onclick="showLinks()">🔗 Important Links</button>
+<button onclick="showModels()">📋 Model Set</button>
+<button onclick="showGrammar()">📖 বাংলা ব্যাকরণ</button>
+<button onclick="showCollege()">🏫 কলেজ বাংলা</button>
+<button onclick="showContact()">📞 যোগাযোগ</button>
+<button onclick="showProfile()">👤 Profile</button>
+<button onclick="showAdmin()">⚙️ Content Manager</button>
 </nav>
 
-<div class="navbottom">
-<button class="btn" style="width:100%" onclick="login();closeDrawer()">
-🔐 Login / Demo Login
-</button>
+<div class="drawer-contact">
+<b>যোগাযোগ</b><br>
+📱 9775746579<br>
+✉️ haitashishbengali@gmail.com
 </div>
-
 </aside>
 
-<main>
+<!-- APP -->
+<main id="app"></main>
 
-<section id="homeView">
-
-<div class="hero">
-
-<img src="banner.png"
-alt="বাংলা পাঠশালা ব্যানার"
-onerror="this.style.display='none';document.getElementById('fallback').style.display='block'">
-
-<div id="fallback" class="heroFallback">
-<h1>বাংলা <b>পাঠশালা</b></h1>
-<p>শিক্ষক : আশিষ হাইত</p>
-</div>
-
-</div>
-
-<div class="notice">
-📢 <b>নোটিস:</b>
-পরীক্ষার রুটিন ও গুরুত্বপূর্ণ আপডেট দেখতে Notice Board দেখুন।
-</div>
-
-<h2 class="title">📚 শ্রেণি অনুযায়ী পড়াশোনা</h2>
-
-<p class="sub">
-আপনার শ্রেণি নির্বাচন করে বাংলা বিষয়ের প্রস্তুতি নিন
-</p>
-
-<div id="classGrid" class="classgrid"></div>
-
-<h2 class="title">📝 গুরুত্বপূর্ণ Model Set</h2>
-
-<div id="modelGrid" class="modelgrid"></div>
-
-<h2 class="title">📄 Study Material</h2>
-
-<div class="pbox">
-<p>
-🔐 Login করা শিক্ষার্থীদের জন্য PDF / Study Material রাখা যাবে।
-কোন নোট Protected হবে তা Teacher Panel থেকে ঠিক করা যাবে।
-</p>
-</div>
-
-<h2 class="title">✍️ প্রবন্ধ রচনা</h2>
-
-<div class="proverb">
-
-<div class="pbox">
-<h3>নবম ও দশম শ্রেণির জন্য</h3>
-<p>শ্রেণি অনুযায়ী প্রবন্ধ অনুশীলন</p>
-</div>
-
-<div class="pbox">
-<h3>একাদশ শ্রেণির জন্য</h3>
-<p>WBCHSE অনুযায়ী প্রবন্ধ</p>
-</div>
-
-<div class="pbox">
-<h3>দ্বাদশ শ্রেণির জন্য</h3>
-<p>WBCHSE অনুযায়ী প্রবন্ধ</p>
-</div>
-
-</div>
-
-<h2 class="title">☎️ যোগাযোগ</h2>
-
-<div class="contact">
-
-<div>
-<b>শিক্ষক : আশিষ হাইত</b><br>
-<span style="color:var(--muted)">বাংলা পাঠশালা</span><br>
-<span style="color:var(--muted)">📱 9775746579</span><br>
-<span style="color:var(--muted)">✉️ haitashishbengali@gmail.com</span>
-</div>
-
-<div class="contactActions">
-
-<a class="btn green"
-href="https://wa.me/919775746579"
-target="_blank">
-💬 WhatsApp
-</a>
-
-<a class="btn blue"
-href="tel:+919775746579">
-📱 ফোন
-</a>
-
-<a class="btn"
-href="mailto:haitashishbengali@gmail.com">
-✉️ Email
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="pageView" class="view hidden"></section>
-
-</main>
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+<button class="active" onclick="goHome()">
+<span class="bico">🏠</span>Home
+</button>
+<button onclick="showCourses()">
+<span class="bico">📖</span>My Courses
+</button>
+<button onclick="showHelp()">
+<span class="bico">❓</span>Help
+</button>
+<button onclick="openWhatsApp()">
+<span class="bico">🟢</span>WhatsApp
+</button>
+<button onclick="showContact()">
+<span class="bico">💬</span>Chat
+</button>
+</nav>
 
 <footer>
-© 2026 <span class="footername">বাংলা পাঠশালা</span>
-| শিক্ষক : আশিষ হাইত
+© 2026 বাংলা পাঠশালা | শিক্ষক : আশিষ হাইত
 </footer>
 
-<div id="modal" class="modal hidden">
-<div id="modalbox" class="modalbox"></div>
-</div>
-
 <script>
+/* =========================================================
+   বাংলা পাঠশালা
+   সমস্ত content এই DATA object-এ রাখা হয়েছে।
+   ভবিষ্যতে নতুন প্রশ্ন/নোট যোগ করা সহজ।
+========================================================= */
 
-const EMAIL="haitashishbengali@gmail.com";
-const PHONE="9775746579";
-const KEY="bangla_pathshala_final_v5";
-
-let data=JSON.parse(
-localStorage.getItem(KEY) ||
-'{"logged":false,"user":null,"notes":[],"questions":[],"videos":[],"models":[]}'
-);
-
-let current={class:null,chapter:null};
-
-let test={
-qs:[],
-answers:[],
-i:0
+const CONTACT={
+phone:"9775746579",
+email:"haitashishbengali@gmail.com"
 };
 
+const DATA={
 
-/* =========================
-   SYLLABUS
-========================= */
-
-const syllabus={
-
+classes:{
 "9":{
-board:"WBBSE",
 name:"নবম শ্রেণি",
+desc:"বাংলা সাহিত্য, ব্যাকরণ ও নির্মিতি",
+chapters:[
+{title:"পাঠ্য সাহিত্য",type:"literature",desc:"পাঠ্য সাহিত্য অংশ"},
+{title:"ব্যাকরণ ও নির্মিতি",type:"grammar",desc:"নবম শ্রেণির নির্ধারিত ব্যাকরণ ও নির্মিতি"}
+]
+},
+"10":{
+name:"দশম শ্রেণি",
+desc:"মাধ্যমিক বাংলা প্রস্তুতি",
+chapters:[
+{title:"পাঠ্য সাহিত্য",type:"literature",desc:"পাঠ্য সাহিত্য অংশ"},
+{title:"ব্যাকরণ ও নির্মিতি",type:"grammar",desc:"দশম শ্রেণির নির্ধারিত ব্যাকরণ ও নির্মিতি"}
+]
+},
+"11":{
+name:"একাদশ শ্রেণি",
+desc:"WBCHSE Semester 1 ও Semester 2",
+chapters:[
+{title:"Semester 1",type:"sem1",desc:"WBCHSE Bengali"},
+{title:"Semester 2",type:"sem2",desc:"WBCHSE Bengali"}
+]
+},
+"12":{
+name:"দ্বাদশ শ্রেণি",
+desc:"WBCHSE Semester 3 ও Semester 4",
+chapters:[
+{title:"Semester 3",type:"sem3",desc:"WBCHSE Bengali"},
+{title:"Semester 4",type:"sem4",desc:"WBCHSE Bengali"}
+]
+}
+},
 
-literature:[
-
-["গল্প/গদ্য","ইলিয়াস"],
-["গল্প/গদ্য","দাম"],
-["পদ্য","কলিঙ্গদেশে ঝড়-বৃষ্টি"],
-["নাটক","ধীবর-বৃত্তান্ত"],
-["পদ্য","নোঙর"],
-["গদ্য","নব নব সৃষ্টি"],
-["পদ্য","আকাশে সাতটি তারা"],
-["গদ্য","চিঠি"],
-["পদ্য","আবহমান"],
-["গল্প/গদ্য","রাধারাণী"],
-["গদ্য","হিমালয় দর্শন"],
-["পদ্য","খেয়া"],
-["গল্প/গদ্য","নিরুদ্দেশ"],
-["পদ্য","ভাঙার গান"],
-["সহায়ক পাঠ","চন্দ্রনাথ"],
-["সহায়ক পাঠ","প্রফেসর শঙ্কুর ডাইরি — ব্যোমযাত্রীর ডায়রি"],
-["সহায়ক পাঠ","প্রফেসর শঙ্কুর ডাইরি — কর্ভাস"],
-["সহায়ক পাঠ","প্রফেসর শঙ্কুর ডাইরি — স্বর্ণপর্ণী"]
-
-],
-
-grammar:[
-
+grammar9:[
 "ধ্বনি ও ধ্বনি পরিবর্তনের কারণ ও ধারা",
 "সন্ধি",
 "বাংলা শব্দ গঠনের প্রক্রিয়া : উপসর্গ ও অনুসর্গ",
@@ -516,523 +493,334 @@ grammar:[
 "বাংলা শব্দভাণ্ডার",
 "বাংলা পদ পরিচয় (নামপদ)",
 "ধাতু ও ক্রিয়া"
-
 ],
 
-writing:[
-
-"ভাবসম্প্রসারণ",
-"ভাবার্থ",
-"সারাংশ",
-"গল্প লিখন"
-
-]
-
-},
-
-"10":{
-
-board:"WBBSE",
-name:"দশম শ্রেণি",
-
-literature:[
-
-["গল্প","জ্ঞানচক্ষু"],
-["গল্প","বহুরূপী"],
-["গল্প","পথের দাবী"],
-["গল্প","নদীর বিদ্রোহ"],
-["গল্প","অদল বদল"],
-["কবিতা","অসুখী একজন"],
-["কবিতা","আয় আরো বেঁধে বেঁধে থাকি"],
-["কবিতা","আফ্রিকা"],
-["কবিতা","অভিষেক"],
-["কবিতা","প্রলয়োল্লাস"],
-["কবিতা","অস্ত্রের বিরুদ্ধে গান"],
-["কবিতা","সিন্ধুতীরে"],
-["প্রবন্ধ","হারিয়ে যাওয়া কালি কলম"],
-["প্রবন্ধ","বাংলা ভাষায় বিজ্ঞান"],
-["নাটক","সিরাজদ্দৌলা"],
-["সহায়ক পাঠ","কোনি"]
-
-],
-
-grammar:[
-
+grammar10:[
 "কারক ও বিভক্তি",
 "সমাস পরিচয়",
 "বাক্য ও বাক্য পরিবর্তন",
 "বাচ্য ও বাচ্য পরিবর্তন"
-
 ],
 
-writing:[
+nirmiti9:[
+"ভাবসম্প্রসারণ",
+"ভাবার্থ",
+"সারাংশ",
+"গল্প লিখন"
+],
 
+nirmiti10:[
 "ইংরেজি থেকে বাংলায় অনুবাদ (E TO B)",
 "প্রতিবেদন রচনা",
 "সংলাপ রচনা"
+],
 
-]
+essay:[
+"নবম ও দশম শ্রেণির জন্য",
+"একাদশ শ্রেণির জন্য",
+"দ্বাদশ শ্রেণির জন্য"
+],
 
+college:[
+"উপন্যাস",
+"ছোটগল্প",
+"নাটক",
+"প্রবন্ধ",
+"কলেজ নোট"
+],
+
+models:[
+"নবম শ্রেণি – গুরুত্বপূর্ণ মডেল সেট",
+"দশম শ্রেণি – মাধ্যমিক মডেল সেট",
+"একাদশ – প্রথম সেমিস্টার",
+"একাদশ – দ্বিতীয় সেমিস্টার",
+"দ্বাদশ – তৃতীয় সেমিস্টার",
+"দ্বাদশ – চতুর্থ সেমিস্টার"
+],
+
+/*
+  এখানে নিজের প্রশ্ন যোগ করবেন।
+  answer: 0 মানে প্রথম option,
+  answer: 1 মানে দ্বিতীয় option ইত্যাদি।
+*/
+questions:[
+{
+chapter:"grammar9",
+q:"‘সন্ধি’ কীসের সঙ্গে সম্পর্কিত?",
+options:["শব্দের মিলন","বাক্যের পরিবর্তন","কারক","বাচ্য"],
+answer:0
 },
-
-"11":{
-
-board:"WBCHSE",
-name:"একাদশ শ্রেণি",
-
-literature:[
-
-["Semester I • গল্প","পুঁইমাচা"],
-["Semester I • প্রবন্ধ","বিড়াল"],
-["Semester I • কবিতা","ঈশ্বরচন্দ্র বিদ্যাসাগর"],
-["Semester I • কবিতা","সাম্যবাদী"],
-["Semester I • আন্তর্জাতিক গল্প","বিশাল ডানাওয়ালা এক থুথুরে বুড়ো"],
-["Semester I • ভারতীয় কবিতা","চারণ কবি"],
-
-["Semester II • গল্প","ছুটি"],
-["Semester II • গল্প","তেলেনাপোতা আবিষ্কার"],
-["Semester II • কবিতা","ভাব সম্মিলন"],
-["Semester II • কবিতা","লালন শাহ ফকিরের গান"],
-["Semester II • কবিতা","নুন"],
-["Semester II • নাটক","আগুন"],
-["Semester II • পূর্ণাঙ্গ সহায়ক","পঞ্চতন্ত্র — বই কেনা; আজব শহর কলকেতা; পঁচিশে বৈশাখ; আড্ডা"]
-
-],
-
-grammar:[
-
-"বিশ্বের ভাষা ও ভাষা পরিবার",
-"বাংলা ভাষার উদ্ভব ও ক্রমবিকাশ",
-"ভারতে প্রচলিত ভাষা পরিবার",
-"বাংলা ভাষার বৈচিত্র্য"
-
-],
-
-writing:[
-
-"প্রবন্ধ রচনা",
-"মানস মানচিত্রের সাহায্যে প্রবন্ধ রচনা",
-"বিতর্কমূলক প্রবন্ধ রচনা",
-"সটীক অনুবাদ",
-"সাক্ষাৎকার গ্রহণ",
-"প্রতিবেদন রচনা",
-"স্বরচিত গল্প লিখন",
-"প্রুফ সংশোধন"
-
-]
-
+{
+chapter:"grammar9",
+q:"‘প্রত্যয়’ কোথায় যুক্ত হয়?",
+options:["শব্দের সঙ্গে","শুধু বাক্যের শেষে","শুধু ক্রিয়ায়","শুধু সর্বনামে"],
+answer:0
 },
-
-"12":{
-
-board:"WBCHSE",
-name:"দ্বাদশ শ্রেণি",
-
-literature:[
-
-["Semester III • গল্প","আদরিণী"],
-["Semester III • কবিতা","ধর্ম"],
-["Semester III • কবিতা","দিগ্বিজয়ের রূপকথা"],
-["Semester III • প্রবন্ধ","বাঙ্গালা ভাষা"],
-["Semester III • ভারতীয় গল্প","পোটরাজ"],
-["Semester III • আন্তর্জাতিক কবিতা","তার সঙ্গে"],
-
-["Semester IV • গল্প","হলুদ পোড়া"],
-["Semester IV • গল্প","হারুন সালেমের মাসি"],
-["Semester IV • কবিতা","প্রার্থনা"],
-["Semester IV • কবিতা","তিমির হননের গান"],
-["Semester IV • কবিতা","কেন এল না"],
-["Semester IV • নাটক","নানা রঙের দিন"],
-["Semester IV • পূর্ণাঙ্গ সহায়ক","ডাকঘর"]
-
-],
-
-grammar:[
-
-"ভাষাবিজ্ঞান ও তার শাখা-প্রশাখা",
-"ধ্বনিতত্ত্ব",
-"শব্দার্থতত্ত্ব"
-
-],
-
-writing:[
-
-"সূত্রনির্ভর প্রবন্ধ রচনা",
-"প্রস্তাবনা/ভূমিকানির্ভর প্রবন্ধ রচনা"
-
-]
-
+{
+chapter:"grammar10",
+q:"কারক কোনটির সঙ্গে সম্পর্ক নির্দেশ করে?",
+options:["ক্রিয়ার সঙ্গে পদের","শুধু শব্দের","শুধু বর্ণের","শুধু ধ্বনির"],
+answer:0
+},
+{
+chapter:"grammar10",
+q:"বাচ্য পরিবর্তন কোন বিষয়ের সঙ্গে সম্পর্কিত?",
+options:["ক্রিয়ার প্রকাশভঙ্গি","শব্দভাণ্ডার","সন্ধি","প্রত্যয়"],
+answer:0
 }
+],
 
+notes:{
+"grammar9":"নবম শ্রেণির ব্যাকরণ অংশের নোট এখানে যোগ করা যাবে।",
+"grammar10":"দশম শ্রেণির ব্যাকরণ অংশের নোট এখানে যোগ করা যাবে।",
+"college":"কলেজ বাংলার নোট এখানে যোগ করা যাবে।"
+},
+
+videos:{},
+materials:{}
 };
 
 
-/* =========================
-   MODEL SET
-========================= */
+/* ---------- BASIC ---------- */
 
-const models=[
-
-["9","নবম শ্রেণি — গুরুত্বপূর্ণ মডেল সেট","10টি"],
-
-["10","দশম — টেস্ট টেস্ট ও মাধ্যমিক মডেল সেট","10টি"],
-
-["11","একাদশ — প্রথম সেমিস্টার","10টি"],
-
-["11","একাদশ — দ্বিতীয় সেমিস্টার","10টি"],
-
-["12","দ্বাদশ — তৃতীয় সেমিস্টার","10টি"],
-
-["12","দ্বাদশ — চতুর্থ সেমিস্টার","10টি"]
-
-];
-
-
-/* =========================
-   DEMO QUESTIONS
-========================= */
-
-const demoQuestions=[
-
-{
-class:"10",
-chapter:"কারক ও বিভক্তি",
-q:"কারক কী নির্দেশ করে?",
-o:[
-"ক্রিয়ার সঙ্গে নামপদের সম্পর্ক",
-"শব্দের বানান",
-"বাক্যের দৈর্ঘ্য",
-"ছন্দের মাত্রা"
-],
-a:0
-},
-
-{
-class:"11",
-chapter:"পুঁইমাচা",
-q:"‘পুঁইমাচা’ কোন ধরনের রচনা?",
-o:[
-"গল্প",
-"কবিতা",
-"নাটক",
-"প্রবন্ধ"
-],
-a:0
-},
-
-{
-class:"12",
-chapter:"আদরিণী",
-q:"‘আদরিণী’ কোন ধরনের রচনা?",
-o:[
-"গল্প",
-"কবিতা",
-"নাটক",
-"প্রবন্ধ"
-],
-a:0
+function app(){
+return document.getElementById("app");
 }
 
-];
-
-
-/* =========================
-   COMMON FUNCTIONS
-========================= */
-
-function save(){
-localStorage.setItem(KEY,JSON.stringify(data));
+function closeMenu(){
+document.getElementById("drawer").classList.remove("open");
+document.getElementById("overlay").classList.add("hidden");
 }
 
-function esc(s){
-return String(s)
-.replace(/\\/g,"\\\\")
-.replace(/'/g,"&#39;")
-.replace(/"/g,"&quot;");
+function openMenu(){
+document.getElementById("drawer").classList.add("open");
+document.getElementById("overlay").classList.remove("hidden");
 }
 
-function openDrawer(){
-drawer.classList.add("open");
-overlay.classList.add("show");
+function setPage(html){
+closeMenu();
+app().innerHTML=html;
+window.scrollTo(0,0);
 }
 
-function closeDrawer(){
-drawer.classList.remove("open");
-overlay.classList.remove("show");
+function goHome(){
+setPage(homeHTML());
 }
 
-function openModal(html){
-modalbox.innerHTML=html;
-modal.classList.remove("hidden");
+function isLogged(){
+return localStorage.getItem("bp_logged_in")==="1";
 }
 
-function closeModal(){
-modal.classList.add("hidden");
-}
-
-function setPage(title,html){
-
-homeView.classList.add("hidden");
-pageView.classList.remove("hidden");
-
-pageView.innerHTML=
-'<button class="back" onclick="home()">← হোমে ফিরুন</button>'+
-'<h1 class="title">'+title+'</h1>'+
-html;
-
-scrollTo(0,0);
-}
-
-function home(){
-
-homeView.classList.remove("hidden");
-pageView.classList.add("hidden");
-
-scrollTo(0,0);
-
-renderHome();
+function updateLoginButton(){
+const b=document.getElementById("logoutTop");
+if(b)b.classList.toggle("hidden",!isLogged());
 }
 
 
-/* =========================
-   HOME
-========================= */
+/* ---------- HOME ---------- */
 
-function renderHome(){
+function homeHTML(){
 
-classGrid.innerHTML=
+return `
+<section class="hero">
+<img src="assets/banner.png"
+alt="বাংলা পাঠশালা ব্যানার"
+onerror="this.style.display='none'">
+</section>
 
-Object.entries(syllabus)
-.map(([k,v])=>
+<section class="quick-wrap">
+<div class="quick-grid">
 
-'<div class="classcard">'+
+<div class="quick-card" onclick="showCourses()">
+<div class="bigicon">📚</div>
+<div>
+<h2>All Courses</h2>
+<p>সমস্ত কোর্স দেখুন</p>
+</div>
+</div>
 
-'<div class="num">'+k+'</div>'+
+<div class="quick-card orange" onclick="showNotice()">
+<div class="bigicon">📢</div>
+<div>
+<h2>Notice Board</h2>
+<p>নোটিশ দেখুন</p>
+</div>
+</div>
 
-'<h3>'+v.name+'</h3>'+
+<div class="quick-card green" onclick="showFreeClass()">
+<div class="bigicon">💻</div>
+<div>
+<h2>Free Class</h2>
+<p>ফ্রি ক্লাস দেখুন</p>
+</div>
+</div>
 
-'<p>'+v.board+' • বাংলা</p>'+
+<div class="quick-card purple" onclick="showFreeMCQ()">
+<div class="bigicon">📝</div>
+<div>
+<h2>Free MCQ Test</h2>
+<p>ফ্রি MCQ টেস্ট দিন</p>
+</div>
+</div>
 
-'<button class="btn" onclick="classPage(\''+
-k+
-'\')">প্রবেশ করুন →</button>'+
+<div class="quick-card red" onclick="showPDF()">
+<div class="bigicon">📄</div>
+<div>
+<h2>Free PDF</h2>
+<p>Study Material দেখুন</p>
+</div>
+</div>
 
-'</div>'
+<div class="quick-card" onclick="showLinks()">
+<div class="bigicon">🔗</div>
+<div>
+<h2>Important Links</h2>
+<p>গুরুত্বপূর্ণ লিংকসমূহ</p>
+</div>
+</div>
 
-).join("");
+</div>
+</section>
 
+<section class="section">
+<h2 class="section-title">📚 শ্রেণি অনুযায়ী পড়াশোনা</h2>
+<p class="section-sub">আপনার শ্রেণি নির্বাচন করে বাংলা বিষয়ের প্রস্তুতি নিন</p>
 
-modelGrid.innerHTML=
+<div class="course-grid">
 
-models.map(m=>
+${courseCard("9","📘")}
+${courseCard("10","📗")}
+${courseCard("11","📙")}
+${courseCard("12","📕")}
 
-'<div class="model">'+
+</div>
+</section>
 
-'<span>'+m[1]+'</span>'+
+<section class="section">
+<h2 class="section-title">📝 গুরুত্বপূর্ণ Model Set</h2>
+<p class="section-sub">পরীক্ষার প্রস্তুতির জন্য নির্বাচিত মডেল সেট</p>
 
-'<span class="badge">'+m[2]+'</span>'+
+<div class="model-list">
+${DATA.models.map((x,i)=>`
+<div class="model">
+<b>${x}</b>
+<span class="badge">${i<2?"১০টি":"১৫টি"}</span>
+</div>
+`).join("")}
+</div>
+</section>
 
-'</div>'
+<section class="section">
+<h2 class="section-title">📖 Study Material</h2>
+<div class="content-box">
+<h2>🔐 Protected Study Material</h2>
+<p>লগইন করা শিক্ষার্থীরা নির্বাচিত Study Material দেখতে পারবেন।</p>
+<button class="btn blue" onclick="showPDF()">Study Material দেখুন</button>
+</div>
+</section>
 
-).join("");
+<section class="section">
+<h2 class="section-title">📞 যোগাযোগ</h2>
+<div class="contact-card">
+<h2>শিক্ষক : আশিষ হাইত</h2>
+<p>বাংলা পাঠশালা সংক্রান্ত যোগাযোগ</p>
+<div class="contact-row">
+<a class="contact-btn whatsapp"
+href="https://wa.me/91${CONTACT.phone}"
+target="_blank">🟢 WhatsApp</a>
+<a class="contact-btn email"
+href="mailto:${CONTACT.email}">✉️ Email</a>
+<a class="contact-btn phone"
+href="tel:${CONTACT.phone}">📞 ${CONTACT.phone}</a>
+</div>
+</div>
+</section>
+`;
+}
 
-
-logoutTop.classList.toggle(
-"hidden",
-!data.logged
-);
-
+function courseCard(id,icon){
+const c=DATA.classes[id];
+return `
+<div class="course-card" onclick="showClass('${id}')">
+<div class="class-icon">${icon}</div>
+<h3>${c.name}</h3>
+<p>${c.desc}</p>
+<span class="badge">Course দেখুন →</span>
+</div>
+`;
 }
 
 
-/* =========================
-   CLASS PAGE
-========================= */
+/* ---------- COURSES ---------- */
 
-function classesPage(){
+function showCourses(){
+setPage(`
+<section class="page">
+<div class="page-head">
+<h1>📚 All Courses</h1>
+<p>নবম থেকে দ্বাদশ শ্রেণির বাংলা পড়াশোনা</p>
+</div>
 
-setPage(
+<div class="course-grid">
+${courseCard("9","📘")}
+${courseCard("10","📗")}
+${courseCard("11","📙")}
+${courseCard("12","📕")}
+</div>
 
-"📚 শ্রেণি নির্বাচন",
+<div class="content-box">
+<h2>📖 বাংলা ব্যাকরণ</h2>
+<p>নবম ও দশম শ্রেণির নির্ধারিত ব্যাকরণ এবং নির্মিতি।</p>
+<button class="btn" onclick="showGrammar()">ব্যাকরণ দেখুন</button>
+</div>
 
-'<div class="classgrid">'+
+<div class="content-box">
+<h2>🏫 কলেজ বাংলা</h2>
+<p>উপন্যাস, ছোটগল্প, নাটক, প্রবন্ধ ও কলেজ নোট।</p>
+<button class="btn blue" onclick="showCollege()">কলেজ বাংলা</button>
+</div>
+</section>
+`);
+}
 
-Object.entries(syllabus)
-.map(([k,v])=>
+function showClass(id){
+const c=DATA.classes[id];
 
-'<div class="classcard">'+
+setPage(`
+<section class="page">
+<button class="back" onclick="showCourses()">← সব কোর্স</button>
 
-'<div class="num">'+k+'</div>'+
+<div class="page-head">
+<h1>${c.name}</h1>
+<p>${c.desc}</p>
+</div>
 
-'<h3>'+v.name+'</h3>'+
+<div class="chapter-grid">
+${c.chapters.map((x,i)=>`
+<div class="chapter" onclick="openChapter('${id}','${x.type}',${i})">
+<h3>📖 ${x.title}</h3>
+<p>${x.desc}</p>
+</div>
+`).join("")}
+</div>
 
-'<p>'+v.board+' • বাংলা</p>'+
+${id==="9"?`
+<div class="content-box">
+<h2>✍️ নবম শ্রেণির নির্মিতি</h2>
+${DATA.nirmiti9.map(x=>`<div class="chapter" style="margin-top:10px"><h3>${x}</h3></div>`).join("")}
+</div>`:""}
 
-'<button class="btn" onclick="classPage(\''+
-k+
-'\')">প্রবেশ করুন</button>'+
+${id==="10"?`
+<div class="content-box">
+<h2>✍️ দশম শ্রেণির নির্মিতি</h2>
+${DATA.nirmiti10.map(x=>`<div class="chapter" style="margin-top:10px"><h3>${x}</h3></div>`).join("")}
+</div>`:""}
 
-'</div>'
-
-).join("")+
-
-'</div>'
-
-);
-
+</section>
+`);
 }
 
 
-function classPage(k){
+/* ---------- CHAPTER ---------- */
 
-current.class=k;
-
-const v=syllabus[k];
-
-let html=
-
-'<p class="sub">'+v.board+' • বাংলা</p>'+
-
-'<h2 class="title">📖 পাঠ্য অধ্যায়</h2>'+
-
-'<div class="chapterlist">'+
-
-v.literature.map(x=>
-
-'<div class="chapter">'+
-
-'<div>'+
-
-'<h3>'+x[1]+'</h3>'+
-
-'<p>'+x[0]+'</p>'+
-
-'</div>'+
-
-'<button class="btn" onclick="chapter(\''+
-k+
-'\',\''+
-esc(x[1])+
-'\')">অধ্যায় খুলুন</button>'+
-
-'</div>'
-
-).join("")+
-
-'</div>';
-
-
-html+=
-
-'<h2 class="title">📘 বাংলা ব্যাকরণ</h2>'+
-
-'<div class="sectiongrid">'+
-
-v.grammar.map(g=>
-
-'<div class="box">'+
-
-'<h3>'+g+'</h3>'+
-
-'<p>আলোচনা ও অনুশীলন</p>'+
-
-'<button class="btn" onclick="chapter(\''+
-k+
-'\',\''+
-esc(g)+
-'\')">খুলুন</button>'+
-
-'</div>'
-
-).join("")+
-
-'</div>';
-
-
-html+=
-
-'<h2 class="title">✍️ নির্মিতি</h2>'+
-
-'<div class="sectiongrid">'+
-
-v.writing.map(g=>
-
-'<div class="box">'+
-
-'<h3>'+g+'</h3>'+
-
-'<p>লিখন অনুশীলন ও আলোচনা</p>'+
-
-'<button class="btn" onclick="chapter(\''+
-k+
-'\',\''+
-esc(g)+
-'\')">খুলুন</button>'+
-
-'</div>'
-
-).join("")+
-
-'</div>';
-
-
-setPage(v.name,html);
-
-}
-
-
-/* =========================
-   CHAPTER PAGE
-========================= */
-
-function chapter(k,ch){
-
-current={
-class:k,
-chapter:ch
-};
-
-const n=getNote(k,ch);
-const v=getVideos(k,ch);
-const q=getQuestions(k,ch);
-
-/* নবম শ্রেণিতে Mock Test নেই */
-const allowMock=k!=="9";
-
-let opts=
-
-'<div class="options">'+
-
-'<div class="option">'+
-'<div class="ico">📖</div>'+
-'<b>আলোচনা</b>'+
-'<small>এই অধ্যায়ের আলোচনা</small>'+
-'<button class="btn" onclick="discussion()">দেখুন</button>'+
-'</div>';
-
-
-opts+=
-
-'<div class="option">'+
-'<div class="ico">🎥</div>'+
-'<b>ভিডিও</b>'+
-'<small>'+
-(v.length?
-"এই অধ্যায়ের ভিডিও":
-"ভিডিও পরে যোগ হবে")+
-'</small>'+
-'<button class="btn blue" onclick="videos()">দেখুন</button>'+
-'</div>';
-
-
-opts+=
-
-'<div class="option">'+
-'<div class="ico">📑</div>'+
-'<b>Study Material</b>'+
-'<small>'+
-(n?
-"নোট প্রস্তুত":
-"নোট পরে যোগ হবে")+
-'</small>'+
- 
+function openCha
