@@ -2,7 +2,7 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#082f63">
 <title>বাংলা পাঠশালা | শিক্ষক : আশিষ হাইত</title>
 
@@ -10,1449 +10,829 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800;900&display=swap');
 
 :root{
---navy:#082f63;
---navy2:#0b4388;
---purple:#6d28d9;
---purple2:#9333ea;
---gold:#f7c948;
---bg:#f5f7fb;
---text:#10233d;
---muted:#64748b;
---card:#fff;
---green:#10b981;
---red:#ef4444;
---blue:#087bd3;
---orange:#ff9f00;
---line:#e5e7eb;
+--navy:#062f63;--blue:#087bd3;--gold:#f7c948;
+--purple:#7334d8;--green:#10a86a;--red:#ef4051;
+--bg:#f3f6fc;--text:#10233d;--muted:#64748b;
+--card:#fff;--line:#e5e7eb;
 }
 
 *{box-sizing:border-box}
-
-html{
-scroll-behavior:smooth;
-}
-
+html{scroll-behavior:smooth}
 body{
-margin:0;
-background:var(--bg);
-color:var(--text);
+margin:0;background:var(--bg);color:var(--text);
 font-family:"Noto Sans Bengali",Arial,sans-serif;
-line-height:1.6;
+line-height:1.6
 }
-
-button,input,textarea,select{
-font:inherit;
-}
-
-button{
-cursor:pointer;
-}
-
-.hidden{
-display:none!important;
-}
-
-.app{
-min-height:100vh;
-}
-
-/* ================= TOP BAR ================= */
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
+a{text-decoration:none}
 
 .topbar{
-height:64px;
-background:var(--navy);
-color:#fff;
-position:sticky;
-top:0;
-z-index:1000;
-box-shadow:0 4px 16px #0003;
+height:62px;background:var(--navy);color:#fff;
+position:sticky;top:0;z-index:1000;
+box-shadow:0 4px 16px #0003
 }
-
-.topbar-in{
-max-width:1250px;
-height:100%;
-margin:auto;
-padding:0 14px;
-display:flex;
-align-items:center;
-justify-content:space-between;
+.topin{
+height:100%;max-width:1400px;margin:auto;padding:0 10px;
+display:flex;align-items:center;justify-content:space-between
 }
-
-.brand{
-font-size:21px;
-font-weight:900;
-white-space:nowrap;
+.left{display:flex;align-items:center;gap:9px}
+.menu{
+border:0;background:#ffffff18;color:white;
+border-radius:11px;padding:9px 12px;font-size:23px
 }
+.brand{font-size:19px;font-weight:900;white-space:nowrap}
+.brand span{color:var(--gold)}
 
-.brand span{
-color:var(--gold);
+.actions{display:flex;gap:6px;align-items:center}
+.topbtn{
+border:0;background:#ffffff18;color:white;
+border-radius:10px;padding:8px 11px;font-weight:700
 }
-
-.top-actions{
-display:flex;
-gap:7px;
-align-items:center;
-}
-
-.icon-btn,
-.top-btn{
-border:0;
-background:#ffffff18;
-color:#fff;
-border-radius:12px;
-padding:9px 12px;
-}
-
-.top-btn:hover,
-.icon-btn:hover{
-background:#ffffff30;
-}
-
-.logout{
-background:#ef4444!important;
-}
-
-.login{
-background:#10b981!important;
-}
-
-/* ================= DRAWER ================= */
+.loginbtn{background:#00c98b!important}
+.logoutbtn{background:#ef4051!important}
 
 .drawer{
-position:fixed;
-top:0;
-left:-330px;
-width:310px;
-height:100vh;
-background:#fff;
-z-index:2000;
-box-shadow:10px 0 40px #0003;
-transition:.25s;
-overflow:auto;
+position:fixed;left:-320px;top:0;width:305px;height:100vh;
+background:white;z-index:2000;transition:.25s;
+box-shadow:8px 0 35px #0004;overflow:auto
 }
-
-.drawer.open{
-left:0;
-}
-
+.drawer.open{left:0}
 .overlay{
-position:fixed;
-inset:0;
-background:#0007;
-z-index:1900;
-display:none;
+position:fixed;inset:0;background:#0008;z-index:1900;display:none
 }
+.overlay.show{display:block}
 
-.overlay.show{
-display:block;
+.drawerhead{
+padding:25px 20px;background:linear-gradient(135deg,#062f63,#087bd3);
+color:white
 }
-
-.drawer-head{
-padding:24px;
-background:linear-gradient(135deg,var(--navy),var(--navy2));
-color:#fff;
+.drawerhead h2{margin:0;font-size:25px}
+.drawerhead p{margin:3px 0;color:#dbeafe}
+.dicon{
+font-size:35px;margin-bottom:5px
 }
-
-.logo-circle{
-width:66px;
-height:66px;
-border-radius:20px;
-background:#ffffff20;
-display:grid;
-place-items:center;
-font-size:34px;
-margin-bottom:8px;
+.drawer nav{padding:10px}
+.drawer nav button{
+width:100%;border:0;background:white;text-align:left;
+padding:13px;border-radius:11px;margin:2px 0;
+font-weight:700;color:var(--text)
 }
+.drawer nav button:hover{background:#eef5ff}
 
-.drawer-head h2{
-margin:0;
-font-size:24px;
-}
-
-.drawer-head p{
-margin:2px 0 0;
-color:#dbeafe;
-}
-
-.nav{
-padding:10px;
-}
-
-.nav button{
-width:100%;
-border:0;
-background:#fff;
-text-align:left;
-padding:13px 14px;
-border-radius:12px;
-margin:2px 0;
-color:var(--text);
-font-weight:700;
-}
-
-.nav button:hover{
-background:#eef4ff;
-}
-
-.navBottom{
-padding:12px;
-border-top:1px solid var(--line);
-margin-top:8px;
-}
-
-/* ================= MAIN ================= */
-
-main{
-max-width:1250px;
-margin:auto;
-padding:0 14px 40px;
-}
-
-/* ================= BANNER ================= */
+main{max-width:1400px;margin:auto;padding:0 10px 35px}
 
 .hero{
-margin:14px 0 18px;
-border-radius:0 0 28px 28px;
-overflow:hidden;
-background:#082f63;
-position:relative;
+margin:10px 0 14px;border-radius:0 0 28px 28px;
+overflow:hidden;background:#fff
 }
-
-.hero-img{
-width:100%;
-height:auto;
-min-height:210px;
-display:block;
-object-fit:cover;
+.hero img{
+display:block;width:100%;height:auto;
+max-height:430px;object-fit:cover
 }
-
-.hero-fallback{
-display:none;
-min-height:220px;
-padding:30px;
-align-items:center;
-justify-content:center;
-flex-direction:column;
-text-align:center;
-color:#fff;
-background:linear-gradient(135deg,#ff8b00,#082f63 50%,#124c91);
-}
-
-.hero-fallback h1{
-font-size:42px;
-margin:0;
-font-weight:900;
-}
-
-.teacher-pill{
-display:inline-block;
-background:#fff;
-color:#17324f;
-padding:8px 18px;
-border-radius:14px;
-font-size:20px;
-font-weight:800;
-margin:10px 0;
-}
-
-/* ================= NOTICE ================= */
 
 .notice{
-background:#fff;
-border:1px solid var(--line);
-border-left:6px solid var(--purple2);
-padding:14px 16px;
-border-radius:16px;
-margin-bottom:25px;
+background:white;border:1px solid var(--line);
+border-left:5px solid var(--purple);
+border-radius:14px;padding:11px 14px;
+margin-bottom:22px;box-shadow:0 6px 20px #183b6b10
+}
+
+.title{
+font-size:28px;font-weight:900;margin:24px 0 5px
+}
+.sub{color:var(--muted);margin:0 0 12px}
+
+.quick{
+display:grid;grid-template-columns:repeat(3,1fr);gap:12px
+}
+.quickcard{
+background:white;border:1px solid var(--line);
+border-radius:17px;padding:15px;
 box-shadow:0 6px 20px #183b6b12;
-font-size:18px;
+min-height:105px
 }
+.quickcard h3{margin:2px 0;font-size:19px}
+.quickcard p{margin:0;color:var(--muted)}
+.quickicon{font-size:30px}
 
-/* ================= TITLES ================= */
-
-.section-title{
-font-size:30px;
-font-weight:900;
-margin:30px 0 8px;
-display:flex;
-align-items:center;
-gap:8px;
+.classgrid{
+display:grid;grid-template-columns:repeat(4,1fr);gap:13px
 }
-
-.section-sub{
-color:var(--muted);
-margin:-3px 0 14px;
-font-size:16px;
-}
-
-/* ================= QUICK ================= */
-
-.quick-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:15px;
-}
-
-.quick-card{
-background:#fff;
-border:1px solid var(--line);
-border-radius:20px;
-padding:20px;
+.classcard{
+background:white;border:1px solid var(--line);
+border-radius:19px;padding:16px;min-height:145px;
 box-shadow:0 7px 22px #183b6b12;
-transition:.2s;
+position:relative;overflow:hidden
 }
-
-.quick-card:hover{
-transform:translateY(-3px);
-box-shadow:0 12px 28px #183b6b20;
+.classcard:after{
+content:"";position:absolute;width:75px;height:75px;
+border-radius:50%;right:-20px;top:-20px;background:#fde68a77
 }
+.classnum{font-size:30px;font-weight:900;color:#087bd3}
+.classcard h3{margin:3px 0;font-size:21px}
+.classcard p{margin:0 0 9px;color:var(--muted)}
 
-.quick-icon{
-font-size:32px;
-margin-bottom:5px;
+.btn{
+border:0;border-radius:10px;padding:9px 13px;
+background:var(--purple);color:white;font-weight:800
 }
+.btn.green{background:var(--green)}
+.btn.red{background:var(--red)}
+.btn.blue{background:var(--blue)}
+.btn.dark{background:#334155}
 
-.quick-card h3{
-margin:0 0 4px;
-font-size:23px;
-font-weight:900;
+.modelgrid{
+display:grid;grid-template-columns:repeat(2,1fr);gap:9px
 }
-
-.quick-card p{
-margin:0;
-color:var(--muted);
-font-size:17px;
-}
-
-/* ================= CLASS ================= */
-
-.class-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:15px;
-}
-
-.class-card{
-background:#fff;
-border:1px solid var(--line);
-border-radius:20px;
-padding:18px;
-min-height:165px;
-box-shadow:0 8px 24px #183b6b12;
-transition:.2s;
-position:relative;
-overflow:hidden;
-}
-
-.class-card:after{
-content:"";
-position:absolute;
-width:80px;
-height:80px;
-border-radius:50%;
-right:-20px;
-top:-20px;
-background:#fde68a66;
-}
-
-.class-card:hover{
-transform:translateY(-3px);
-}
-
-.class-num{
-font-size:34px;
-font-weight:900;
-color:#0b568e;
-}
-
-.class-card h3{
-font-size:22px;
-margin:5px 0;
-}
-
-.class-card p{
-color:var(--muted);
-margin:0 0 10px;
-}
-
-.small-btn,
-.primary{
-border:0;
-border-radius:11px;
-padding:9px 14px;
-background:var(--purple);
-color:#fff;
-font-weight:800;
-text-decoration:none;
-display:inline-block;
-}
-
-.small-btn:hover,
-.primary:hover{
-opacity:.9;
-}
-
-.blue{
-background:var(--blue)!important;
-}
-
-.dark{
-background:var(--navy)!important;
-}
-
-/* ================= MODEL ================= */
-
-.model-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px;
-}
-
 .model{
-background:#fff;
-border:1px solid var(--line);
-border-radius:15px;
-padding:14px 16px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:10px;
-box-shadow:0 5px 18px #183b6b0b;
+background:white;border:1px solid var(--line);
+border-radius:13px;padding:11px 13px;
+display:flex;justify-content:space-between;align-items:center
 }
-
 .badge{
-background:#fef3c7;
-color:#8a5a00;
-padding:4px 9px;
-border-radius:999px;
-font-weight:800;
-white-space:nowrap;
+background:#fef3c7;color:#8a5a00;
+border-radius:999px;padding:3px 8px;font-weight:800
 }
 
-/* ================= CHAPTER ================= */
-
-.view{
-padding:20px 0;
+.bottom{
+display:grid;grid-template-columns:repeat(5,1fr);
+background:white;border:1px solid var(--line);
+border-radius:18px;margin-top:20px;
+box-shadow:0 5px 20px #183b6b15;
+overflow:hidden
 }
-
-.back{
-border:0;
-background:#e8eef8;
-color:var(--navy);
-padding:10px 15px;
-border-radius:12px;
-font-weight:900;
-margin-bottom:14px;
+.bottom button{
+border:0;background:white;padding:9px 3px;
+color:#17324f;font-weight:700
 }
-
-.chapter-list{
-display:grid;
-gap:11px;
-}
-
-.chapter-card{
-background:#fff;
-border:1px solid var(--line);
-border-radius:17px;
-padding:16px;
-display:flex;
-justify-content:space-between;
-gap:12px;
-align-items:center;
-box-shadow:0 6px 20px #183b6b0c;
-}
-
-.chapter-card h3{
-margin:0;
-font-size:21px;
-}
-
-.chapter-card p{
-margin:2px 0;
-color:var(--muted);
-}
-
-.chapter-card button{
-white-space:nowrap;
-}
-
-/* ================= UNIT ================= */
-
-.unit-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:14px;
-}
-
-.unit{
-background:#fff;
-border:1px solid var(--line);
-border-radius:18px;
-padding:18px;
-box-shadow:0 7px 22px #183b6b0d;
-}
-
-.unit h3{
-margin:0 0 6px;
-font-size:22px;
-}
-
-/* ================= MODAL ================= */
-
-.modal{
-position:fixed;
-inset:0;
-background:#0008;
-z-index:3000;
-display:flex;
-align-items:flex-end;
-justify-content:center;
-}
-
-.modal-box{
-background:#fff;
-width:min(760px,100%);
-max-height:92vh;
-overflow:auto;
-border-radius:24px 24px 0 0;
-padding:20px;
-}
-
-.modal-head{
-display:flex;
-justify-content:space-between;
-gap:10px;
-align-items:center;
-}
-
-.close{
-border:0;
-background:#eef2f7;
-border-radius:50%;
-width:42px;
-height:42px;
-font-size:24px;
-}
-
-.option-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px;
-margin:18px 0;
-}
-
-.option{
-border:1px solid var(--line);
-background:#fff;
-border-radius:18px;
-padding:18px;
-text-align:center;
-box-shadow:0 6px 20px #0000000a;
-}
-
-.option b{
-display:block;
-font-size:19px;
-}
-
-.option span{
-font-size:32px;
-}
-
-/* ================= TEST ================= */
-
-.test-card{
-background:#fff;
-border:1px solid var(--line);
-border-radius:20px;
-padding:20px;
-margin-top:15px;
-}
-
-.q{
-font-size:21px;
-font-weight:800;
-margin-bottom:12px;
-}
-
-.opt{
-display:block;
-width:100%;
-border:1px solid #dce3ee;
-background:#f8fafc;
-padding:12px;
-border-radius:12px;
-margin:8px 0;
-text-align:left;
-}
-
-.opt.correct{
-border-color:#10b981;
-background:#dcfce7;
-}
-
-.opt.wrong{
-border-color:#ef4444;
-background:#fee2e2;
-}
-
-.result{
-background:#eefbf6;
-border:1px solid #a7f3d0;
-padding:18px;
-border-radius:16px;
-margin-top:16px;
-}
-
-.score{
-font-size:38px;
-font-weight:900;
-color:#047857;
-}
-
-/* ================= NOTE ================= */
-
-.note-box{
-background:#fff;
-border:1px solid var(--line);
-border-radius:18px;
-padding:20px;
-white-space:pre-wrap;
-font-size:18px;
-}
-
-.note-toolbar{
-display:flex;
-gap:8px;
-flex-wrap:wrap;
-margin-bottom:12px;
-}
-
-/* ================= CONTACT ================= */
-
-.contact{
-background:#fff;
-border:1px solid var(--line);
-border-radius:20px;
-padding:20px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:16px;
-}
-
-.contact-actions{
-display:flex;
-gap:8px;
-flex-wrap:wrap;
-}
-
-.contact a{
-color:#fff;
-text-decoration:none;
-}
-
-/* ================= SEARCH ================= */
-
-.search{
-width:100%;
-padding:14px 16px;
-border:1px solid var(--line);
-border-radius:14px;
-outline:0;
-font-size:17px;
-}
-
-.search:focus{
-border-color:var(--purple);
-}
-
-/* ================= EMPTY ================= */
-
-.empty{
-background:#fff;
-border:1px dashed #cbd5e1;
-padding:25px;
-border-radius:18px;
-text-align:center;
-color:var(--muted);
-}
-
-/* ================= BOTTOM NAV ================= */
-
-.bottom-nav{
-display:grid;
-grid-template-columns:repeat(5,1fr);
-background:#fff;
-border:1px solid var(--line);
-border-radius:18px;
-margin:25px 0 0;
-box-shadow:0 6px 20px #183b6b12;
-overflow:hidden;
-}
-
-.bottom-nav button{
-border:0;
-background:#fff;
-padding:10px 3px;
-color:#17324f;
-font-weight:700;
-}
-
-.bottom-nav button:hover{
-background:#f0f5ff;
-}
-
-/* ================= ADMIN ================= */
-
-.admin-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:14px;
-}
-
-.admin-card{
-background:#fff;
-border:1px solid var(--line);
-border-radius:18px;
-padding:18px;
-}
-
-.admin-card input,
-.admin-card textarea,
-.admin-card select{
-width:100%;
-padding:11px;
-border:1px solid #dbe2ec;
-border-radius:10px;
-margin:6px 0 10px;
-}
-
-.admin-card textarea{
-min-height:120px;
-resize:vertical;
-}
-
-.list-mini{
-max-height:220px;
-overflow:auto;
-}
-
-.mini{
-padding:8px;
-border-bottom:1px solid var(--line);
-}
-
-/* ================= FOOTER ================= */
+.bottom button:hover{background:#eef5ff}
 
 footer{
-background:var(--navy);
-color:#dbeafe;
-text-align:center;
-padding:24px;
-margin-top:30px;
+background:var(--navy);color:#dbeafe;
+text-align:center;padding:22px;margin-top:20px
+}
+footer b{color:white}
+
+.page{padding:15px 0}
+.back{
+border:0;background:#e7eef9;color:var(--navy);
+padding:9px 13px;border-radius:11px;
+font-weight:900;margin-bottom:10px
 }
 
-.footer-name{
-font-weight:900;
-color:#fff;
+.chapters{display:grid;gap:9px}
+.chapter{
+background:white;border:1px solid var(--line);
+border-radius:15px;padding:14px;
+display:flex;justify-content:space-between;
+align-items:center;gap:10px
+}
+.chapter h3{margin:0;font-size:19px}
+.chapter p{margin:2px 0;color:var(--muted)}
+
+.modalbg{
+position:fixed;inset:0;background:#0008;
+z-index:3000;display:flex;align-items:flex-end
+}
+.modalbox{
+background:white;width:100%;max-width:800px;
+margin:auto;max-height:92vh;overflow:auto;
+border-radius:23px 23px 0 0;padding:19px
+}
+.modalhead{
+display:flex;justify-content:space-between;
+align-items:center;gap:10px
+}
+.close{
+border:0;background:#eef2f7;
+border-radius:50%;width:40px;height:40px;font-size:24px
 }
 
-/* ================= MOBILE ================= */
+.options{
+display:grid;grid-template-columns:repeat(2,1fr);
+gap:11px;margin-top:16px
+}
+.option{
+background:white;border:1px solid var(--line);
+border-radius:17px;padding:16px;
+box-shadow:0 5px 17px #0001
+}
+.optionicon{font-size:30px}
+
+.note{
+background:white;border:1px solid var(--line);
+border-radius:17px;padding:18px;
+font-size:18px;white-space:pre-wrap
+}
+
+.protected{
+user-select:none!important;
+-webkit-user-select:none!important;
+-webkit-touch-callout:none!important
+}
+
+.test{
+background:white;border:1px solid var(--line);
+border-radius:18px;padding:18px
+}
+.question{font-size:20px;font-weight:800}
+.answer{
+display:block;width:100%;text-align:left;
+border:1px solid #dbe3ef;background:#f8fafc;
+padding:12px;border-radius:11px;margin:8px 0
+}
+.answer:hover{background:#eef5ff}
+.result{
+background:#ecfdf5;border:1px solid #a7f3d0;
+padding:18px;border-radius:15px
+}
+.score{font-size:38px;font-weight:900;color:#047857}
+
+.search{
+width:100%;padding:13px;
+border:1px solid var(--line);border-radius:12px
+}
+
+.admin{
+display:grid;grid-template-columns:repeat(2,1fr);gap:13px
+}
+.adminbox{
+background:white;border:1px solid var(--line);
+border-radius:17px;padding:16px
+}
+.adminbox input,.adminbox textarea,.adminbox select{
+width:100%;padding:11px;
+border:1px solid #dbe2ec;border-radius:10px;
+margin:5px 0 9px
+}
+.adminbox textarea{min-height:130px}
+.smalllist{
+max-height:220px;overflow:auto
+}
+.smallitem{
+padding:8px;border-bottom:1px solid var(--line)
+}
+.empty{
+background:white;border:1px dashed #cbd5e1;
+padding:25px;border-radius:17px;
+text-align:center;color:var(--muted)
+}
+
+/* যতটা সম্ভব copy/select বন্ধ */
+.protected-page{
+user-select:none;
+-webkit-user-select:none;
+-webkit-touch-callout:none
+}
 
 @media(max-width:900px){
-
-.class-grid{
-grid-template-columns:repeat(2,1fr);
-}
-
-.quick-grid{
-grid-template-columns:repeat(2,1fr);
-}
-
-.admin-grid{
-grid-template-columns:1fr;
-}
-
-.unit-grid{
-grid-template-columns:1fr;
-}
-
+.classgrid{grid-template-columns:repeat(2,1fr)}
+.quick{grid-template-columns:repeat(2,1fr)}
+.admin{grid-template-columns:1fr}
 }
 
 @media(max-width:600px){
-
-.topbar{
-height:58px;
+.topbar{height:57px}
+.brand{font-size:16px}
+.topbtn{font-size:12px;padding:7px 8px}
+.actions .hideMobile{display:none}
+main{padding:0 9px 30px}
+.hero{margin-top:8px}
+.title{font-size:23px}
+.quick{grid-template-columns:repeat(2,1fr);gap:9px}
+.quickcard{padding:12px;min-height:105px}
+.quickcard h3{font-size:17px}
+.quickicon{font-size:25px}
+.classgrid{grid-template-columns:repeat(2,1fr);gap:9px}
+.classcard{padding:12px;min-height:135px}
+.classcard h3{font-size:17px}
+.classcard p{font-size:13px}
+.modelgrid{grid-template-columns:1fr}
+.chapter{align-items:flex-start;flex-direction:column}
+.chapter .btn{width:100%}
+.options{grid-template-columns:1fr}
+.bottom{grid-template-columns:repeat(5,1fr)}
+.bottom button{font-size:11px}
 }
-
-.topbar-in{
-padding:0 8px;
-}
-
-.brand{
-font-size:16px;
-}
-
-.top-actions{
-gap:5px;
-}
-
-.topbar .top-actions:nth-child(2) .top-btn:nth-child(-n+4){
-display:none;
-}
-
-.top-btn{
-padding:7px 10px;
-font-size:13px;
-}
-
-.icon-btn{
-padding:8px 10px;
-}
-
-.hero{
-margin-top:10px;
-}
-
-.hero-img{
-width:100%;
-height:auto;
-min-height:190px;
-object-fit:cover;
-}
-
-.section-title{
-font-size:25px;
-}
-
-.class-grid{
-grid-template-columns:repeat(2,1fr);
-gap:10px;
-}
-
-.class-card{
-padding:14px;
-min-height:145px;
-}
-
-.class-card h3{
-font-size:18px;
-}
-
-.class-num{
-font-size:28px;
-}
-
-.quick-grid{
-grid-template-columns:repeat(2,1fr);
-gap:10px;
-}
-
-.quick-card{
-padding:16px;
-min-height:145px;
-}
-
-.quick-card h3{
-font-size:19px;
-}
-
-.quick-card p{
-font-size:15px;
-}
-
-.model-grid{
-grid-template-columns:1fr;
-}
-
-.option-grid{
-grid-template-columns:1fr;
-}
-
-.contact{
-align-items:flex-start;
-flex-direction:column;
-}
-
-.chapter-card{
-align-items:flex-start;
-flex-direction:column;
-}
-
-.chapter-card button{
-width:100%;
-}
-
-.bottom-nav button{
-font-size:12px;
-}
-
-.modal{
-align-items:flex-end;
-}
-
-}
-
 </style>
 </head>
 
 <body>
 
-<div id="app" class="app">
-
-<!-- ================= TOP BAR ================= -->
+<div class="app">
 
 <header class="topbar">
+<div class="topin">
 
-<div class="topbar-in">
+<div class="left">
+<button class="menu" onclick="openDrawer()">☰</button>
+<div class="brand">বাংলা <span>পাঠশালা</span></div>
+</div>
 
-<div class="top-actions">
+<div class="actions">
+<button class="topbtn hideMobile" onclick="home()">হোম</button>
+<button class="topbtn hideMobile" onclick="searchPage()">খোঁজ</button>
+<button class="topbtn hideMobile" onclick="modelsPage()">মডেল সেট</button>
+<button class="topbtn hideMobile" onclick="noticePage()">নোটিস</button>
 
-<button class="icon-btn" onclick="openDrawer()">☰</button>
-
-<div class="brand">
-বাংলা <span>পাঠশালা</span>
+<button id="loginBtn" class="topbtn loginbtn" onclick="loginPage()">Login</button>
+<button id="logoutBtn" class="topbtn logoutbtn hidden" onclick="logout()">Logout</button>
 </div>
 
 </div>
-
-<div class="top-actions">
-
-<button class="top-btn" onclick="goHome()">হোম</button>
-
-<button class="top-btn" onclick="openSearch()">খোঁজ</button>
-
-<button class="top-btn" onclick="showModels()">মডেল সেট</button>
-
-<button class="top-btn" onclick="showNotice()">নোটিস</button>
-
-<button id="loginTopBtn"
-class="top-btn login"
-onclick="showLogin()">
-Login
-</button>
-
-<button id="logoutBtn"
-class="top-btn logout hidden"
-onclick="logout()">
-Logout
-</button>
-
-</div>
-
-</div>
-
 </header>
 
-
-<!-- ================= DRAWER ================= -->
-
-<div id="overlay"
-class="overlay"
-onclick="closeDrawer()">
-</div>
+<div id="overlay" class="overlay" onclick="closeDrawer()"></div>
 
 <aside id="drawer" class="drawer">
 
-<div class="drawer-head">
-
-<div class="logo-circle">
-📚
-</div>
-
+<div class="drawerhead">
+<div class="dicon">📚</div>
 <h2>বাংলা পাঠশালা</h2>
-
 <p>শিক্ষক : আশিষ হাইত</p>
-
 </div>
 
-<nav class="nav">
-
-<button onclick="goHome();closeDrawer()">
-🏠 হোম
-</button>
-
-<button onclick="showAllCourses();closeDrawer()">
-📚 সমস্ত কোর্স
-</button>
-
-<button onclick="showModels();closeDrawer()">
-📝 মডেল সেট
-</button>
-
-<button onclick="showMaterials();closeDrawer()">
-📑 স্টাডি ম্যাটেরিয়াল
-</button>
-
-<button onclick="showChapters();closeDrawer()">
-📖 অধ্যায়সমূহ
-</button>
-
-<button onclick="showTests();closeDrawer()">
-☑️ MCQ / Mock Test
-</button>
-
-<button onclick="showVideos();closeDrawer()">
-🎥 ভিডিও ক্লাস
-</button>
-
-<button onclick="showNotice();closeDrawer()">
-📢 নোটিস
-</button>
-
-<button onclick="showProfile();closeDrawer()">
-👤 Profile
-</button>
-
-<button onclick="showContact();closeDrawer()">
-☎️ যোগাযোগ
-</button>
-
+<nav>
+<button onclick="home();closeDrawer()">🏠 হোম</button>
+<button onclick="coursesPage();closeDrawer()">📚 All Courses</button>
+<button onclick="modelsPage();closeDrawer()">📝 Model Set</button>
+<button onclick="materialsPage();closeDrawer()">📑 Study Material</button>
+<button onclick="chaptersPage();closeDrawer()">📖 অধ্যায়সমূহ</button>
+<button onclick="testsPage();closeDrawer()">☑️ MCQ / Mock Test</button>
+<button onclick="videosPage();closeDrawer()">🎥 Video Class</button>
+<button onclick="noticePage();closeDrawer()">📢 Notice</button>
+<button onclick="profilePage();closeDrawer()">👤 Profile</button>
+<button onclick="contactPage();closeDrawer()">☎️ যোগাযোগ</button>
 </nav>
 
-<div class="navBottom">
-
-<button class="primary"
-style="width:100%"
-onclick="showLogin()">
-🔐 Login
-</button>
-
+<div style="padding:12px;border-top:1px solid #eee">
+<button class="btn" style="width:100%" onclick="adminPage();closeDrawer()">🛠️ Teacher Panel</button>
 </div>
 
 </aside>
-
-
-<!-- ================= MAIN ================= -->
 
 <main>
 
 <section id="homeView">
 
-
-<!-- ================= REAL BANNER ================= -->
-
 <div class="hero">
-
-<img
-src="banner.png"
-class="hero-img"
-alt="বাংলা পাঠশালা ব্যানার"
-onerror="
-this.style.display='none';
-document.getElementById('bannerFallback').style.display='flex';
-">
-
-<div id="bannerFallback"
-class="hero-fallback">
-
-<h1>
-বাংলা <span>পাঠশালা</span>
-</h1>
-
-<div class="teacher-pill">
-শিক্ষক : আশিষ হাইত
+<img src="banner.png" alt="বাংলা পাঠশালা ব্যানার"
+onerror="this.style.display='none'">
 </div>
-
-<p>
-শিখবো বাংলা, গড়বো ভবিষ্যৎ
-</p>
-
-</div>
-
-</div>
-
-
-<!-- ================= NOTICE ================= -->
 
 <div class="notice">
-
-📢 <b>নোটিশ:</b>
-পরীক্ষার রুটিন ও গুরুত্বপূর্ণ আপডেট দেখতে
-Notice Board দেখুন।
-
+📢 <b>নোটিস:</b> পরীক্ষার রুটিন ও গুরুত্বপূর্ণ আপডেট দেখতে Notice Board দেখুন।
 </div>
 
+<h2 class="title">🚀 দ্রুত প্রবেশ</h2>
 
-<!-- ================= QUICK ACCESS ================= -->
+<div class="quick">
 
-<h2 class="section-title">
-🚀 দ্রুত প্রবেশ
-</h2>
-
-<div class="quick-grid">
-
-
-<div class="quick-card"
-style="border-left:6px solid #087bd3"
-onclick="showAllCourses()">
-
-<div class="quick-icon">📚</div>
-
+<div class="quickcard" style="border-left:6px solid #087bd3"
+onclick="coursesPage()">
+<div class="quickicon">📚</div>
 <h3>All Courses</h3>
-
 <p>সমস্ত কোর্স দেখুন</p>
-
 </div>
 
-
-<div class="quick-card"
-style="border-left:6px solid #ff9f00"
-onclick="showNotice()">
-
-<div class="quick-icon">📢</div>
-
+<div class="quickcard" style="border-left:6px solid #ff9f00"
+onclick="noticePage()">
+<div class="quickicon">📢</div>
 <h3>Notice Board</h3>
-
-<p>নোটিশ দেখুন</p>
-
+<p>নোটিস দেখুন</p>
 </div>
 
-
-<div class="quick-card"
-style="border-left:6px solid #16a86a"
-onclick="showFreeClass()">
-
-<div class="quick-icon">💻</div>
-
+<div class="quickcard" style="border-left:6px solid #10a86a"
+onclick="videosPage()">
+<div class="quickicon">💻</div>
 <h3>Free Class</h3>
-
 <p>ফ্রি ক্লাস দেখুন</p>
-
 </div>
 
-
-<div class="quick-card"
-style="border-left:6px solid #7334d8"
-onclick="showFreeTest()">
-
-<div class="quick-icon">📝</div>
-
+<div class="quickcard" style="border-left:6px solid #7334d8"
+onclick="testsPage()">
+<div class="quickicon">📝</div>
 <h3>Free MCQ Test</h3>
-
 <p>ফ্রি MCQ টেস্ট দিন</p>
-
 </div>
 
-
-<div class="quick-card"
-style="border-left:6px solid #ef4051"
-onclick="showMaterials()">
-
-<div class="quick-icon">📄</div>
-
+<div class="quickcard" style="border-left:6px solid #ef4051"
+onclick="materialsPage()">
+<div class="quickicon">📄</div>
 <h3>Free PDF</h3>
-
 <p>Study Material দেখুন</p>
-
 </div>
 
-
-<div class="quick-card"
-style="border-left:6px solid #087bd3"
-onclick="showLinks()">
-
-<div class="quick-icon">🔗</div>
-
+<div class="quickcard" style="border-left:6px solid #087bd3"
+onclick="linksPage()">
+<div class="quickicon">🔗</div>
 <h3>Important Links</h3>
-
 <p>গুরুত্বপূর্ণ লিঙ্কসমূহ</p>
-
 </div>
 
 </div>
 
+<h2 class="title">📚 শ্রেণি অনুযায়ী পড়াশোনা</h2>
+<p class="sub">আপনার শ্রেণি নির্বাচন করে বাংলা বিষয়ের প্রস্তুতি নিন</p>
 
-<!-- ================= CLASSES ================= -->
+<div id="classGrid" class="classgrid"></div>
 
-<h2 class="section-title">
-📚 শ্রেণি অনুযায়ী পড়াশোনা
-</h2>
+<h2 class="title">📝 গুরুত্বপূর্ণ Model Set</h2>
+<div id="modelGrid" class="modelgrid"></div>
 
-<p class="section-sub">
-আপনার শ্রেণি নির্বাচন করে বাংলা বিষয়ের প্রস্তুতি নিন
-</p>
-
-<div id="classGrid"
-class="class-grid">
-</div>
-
-
-<!-- ================= MODEL SET ================= -->
-
-<h2 class="section-title">
-📝 গুরুত্বপূর্ণ Model Set
-</h2>
-
-<div id="homeModels"
-class="model-grid">
-</div>
-
-
-<!-- ================= BOTTOM NAV ================= -->
-
-<div class="bottom-nav">
-
-<button onclick="goHome()">
-🏠<br>Home
-</button>
-
-<button onclick="showHelp()">
-❓<br>Help
-</button>
-
-<button onclick="showAllCourses()">
-📖<br>My Courses
-</button>
-
-<button onclick="openWhatsApp()">
-🟢<br>WhatsApp
-</button>
-
-<button onclick="showContact()">
-💬<br>Chat
-</button>
-
+<div class="bottom">
+<button onclick="home()">🏠<br>Home</button>
+<button onclick="helpPage()">❓<br>Help</button>
+<button onclick="coursesPage()">📖<br>My Courses</button>
+<button onclick="whatsapp()">🟢<br>WhatsApp</button>
+<button onclick="contactPage()">💬<br>Chat</button>
 </div>
 
 </section>
 
-
-<section id="pageView"
-class="view hidden">
-</section>
+<section id="pageView" class="page hidden"></section>
 
 </main>
 
-
 <footer>
-
-© 2026
-<span class="footer-name">
-বাংলা পাঠশালা
-</span>
-|
-শিক্ষক : আশিষ হাইত
-
+© 2026 <b>বাংলা পাঠশালা</b> | শিক্ষক : আশিষ হাইত
 </footer>
 
 </div>
 
-
-<!-- ================= MODAL ================= -->
-
-<div id="modal"
-class="modal hidden">
-
-<div id="modalBox"
-class="modal-box">
+<div id="modal" class="modalbg hidden">
+<div id="modalBox" class="modalbox"></div>
 </div>
-
-</div>
-
 
 <script>
 
-/* =========================================================
+/* =========================
    BASIC SETTINGS
-========================================================= */
+========================= */
 
-const PHONE="9775746579";
-
+const PHONE="919775746579";
 const EMAIL="haitashishbengali@gmail.com";
+const STORE="bangla_pathshala_final_v5";
 
-const STORAGE="bangla_pathshala_final_v1";
+let data=JSON.parse(localStorage.getItem(STORE)||`
+{
+"logged":false,
+"user":null,
+"notes":[],
+"videos":[],
+"pdfs":[],
+"questions":[],
+"models":[]
+}`);
+
+let currentClass="";
+let currentChapter="";
+let currentQuestions=[];
+let currentQuestion=0;
+let answers=[];
 
 
-/* =========================================================
+/* =========================
    SYLLABUS
-========================================================= */
+========================= */
 
 const syllabus={
 
 "9":{
-
-board:"WBBSE",
-
 title:"নবম শ্রেণি",
-
-sem:"বাংলা",
+board:"WBBSE",
+sem:"পর্যায়ক্রমিক মূল্যায়ন",
 
 literature:[
-
-["গদ্য","ইলিয়াস"],
-["গদ্য","দাম"],
-["পদ্য","কলিঙ্গদেশে ঝড়-বৃষ্টি"],
-["নাটক","ধীবর-বৃত্তান্ত"],
-["পদ্য","নোঙর"],
-["গদ্য","নব নব সৃষ্টি"],
-["পদ্য","আকাশে সাতটি তারা"],
-["গদ্য","চিঠি"],
-["পদ্য","আবহমান"],
-["গল্প","রাধারাণী"],
-["গদ্য","হিমালয় দর্শন"],
-["পদ্য","খেয়া"],
-["গল্প","নিরুদ্দেশ"],
-["পদ্য","ভাঙার গান"],
-["সহায়ক পাঠ","চন্দ্রনাথ"],
-["সহায়ক পাঠ","প্রফেসর শঙ্কুর ডায়রি — ব্যোমযাত্রীর ডায়রি"],
-["সহায়ক পাঠ","প্রফেসর শঙ্কুর ডায়রি — কর্ভাস"],
-["সহায়ক পাঠ","প্রফেসর শঙ্কুর ডায়রি — স্বর্ণপর্ণী"]
-
+"ইলিয়াস","দাম","কলিঙ্গদেশে ঝড়-বৃষ্টি","ধীবর-বৃত্তান্ত",
+"নোঙর","নব নব সৃষ্টি","আকাশে সাতটি তারা","চিঠি",
+"আবহমান","রাধারাণী","হিমালয় দর্শন","খেয়া",
+"নিরুদ্দেশ","ভাঙার গান","চন্দ্রনাথ",
+"প্রফেসর শঙ্কুর ডাইরি — ব্যোমযাত্রীর ডায়রি",
+"প্রফেসর শঙ্কুর ডাইরি — কর্ভাস",
+"প্রফেসর শঙ্কুর ডাইরি — স্বর্ণপর্ণী"
 ],
 
 grammar:[
-
 "ধ্বনি ও ধ্বনি পরিবর্তনের কারণ ও ধারা",
-
 "সন্ধি",
-
 "বাংলা শব্দ গঠনের প্রক্রিয়া : উপসর্গ ও অনুসর্গ",
-
-"প্রত্যয়",
-
-"বাংলা শব্দভাণ্ডার",
-
+"প্রত্যয়","বাংলা শব্দভাণ্ডার",
 "বাংলা পদ পরিচয় (নামপদ)",
-
 "ধাতু ও ক্রিয়া"
-
 ],
 
 writing:[
-
-"ভাবসম্প্রসারণ",
-
-"ভাবার্থ",
-
-"সারাংশ",
-
-"গল্প লিখন"
-
+"ভাবসম্প্রসারণ","ভাবার্থ","সারাংশ","গল্প লিখন"
 ]
-
 },
-
 
 "10":{
-
-board:"WBBSE",
-
 title:"দশম শ্রেণি",
-
-sem:"বাংলা",
+board:"WBBSE",
+sem:"মাধ্যমিক প্রস্তুতি",
 
 literature:[
-
-["গল্প","জ্ঞানচক্ষু"],
-["গল্প","বহুরূপী"],
-["গল্প","পথের দাবী"],
-["গল্প","নদীর বিদ্রোহ"],
-["গল্প","অদল বদল"],
-["কবিতা","অসুখী একজন"],
-["কবিতা","আয় আরো বেঁধে বেঁধে থাকি"],
-["কবিতা","আফ্রিকা"],
-["কবিতা","অভিষেক"],
-["কবিতা","প্রলয়োল্লাস"],
-["কবিতা","অস্ত্রের বিরুদ্ধে গান"],
-["কবিতা","সিন্ধুতীরে"],
-["প্রবন্ধ","হারিয়ে যাওয়া কালি কলম"],
-["প্রবন্ধ","বাংলা ভাষায় বিজ্ঞান"],
-["নাটক","সিরাজদ্দৌলা"],
-["সহায়ক পাঠ","কোনি"]
-
+"জ্ঞানচক্ষু","বহুরূপী","পথের দাবী",
+"নদীর বিদ্রোহ","অদল বদল",
+"অসুখী একজন","আয় আরো বেঁধে বেঁধে থাকি",
+"আফ্রিকা","অভিষেক","প্রলয়োল্লাস",
+"অস্ত্রের বিরুদ্ধে গান","সিন্ধুতীরে",
+"হারিয়ে যাওয়া কালি কলম","বাংলা ভাষায় বিজ্ঞান",
+"সিরাজদ্দৌলা","কোনি"
 ],
 
 grammar:[
-
 "কারক ও বিভক্তি",
-
 "সমাস পরিচয়",
-
 "বাক্য ও বাক্য পরিবর্তন",
-
 "বাচ্য ও বাচ্য পরিবর্তন"
-
 ],
 
 writing:[
-
 "ইংরেজি থেকে বাংলায় অনুবাদ (E TO B)",
-
-"প্রতিবেদন রচনা",
-
-"সংলাপ রচনা"
-
+"প্রতিবেদন রচনা","সংলাপ রচনা"
 ]
-
 },
 
-
 "11":{
-
-board:"WBCHSE",
-
 title:"একাদশ শ্রেণি",
-
-sem:"প্রথম ও দ্বিতীয় সেমিস্টার",
+board:"WBCHSE",
+sem:"Semester I & II",
 
 literature:[
-
-["প্রথম সেমিস্টার • গল্প","পুঁইমাচা"],
-["প্রথম সেমিস্টার • প্রবন্ধ","বিড়াল"],
-["প্রথম সেমিস্টার • কবিতা","ঈশ্বরচন্দ্র বিদ্যাসাগর"],
-["প্রথম সেমিস্টার • কবিতা","সাম্যবাদী"],
-["প্রথম সেমিস্টার • আন্তর্জাতিক গল্প","বিশাল ডানাওয়ালা এক থুথুরে বুড়ো"],
-["প্রথম সেমিস্টার • ভারতীয় কবিতা","চারণ কবি"],
-
-["দ্বিতীয় সেমিস্টার • গল্প","ছুটি"],
-["দ্বিতীয় সেমিস্টার • গল্প","তেলেনাপোতা আবিষ্কার"],
-["দ্বিতীয় সেমিস্টার • কবিতা","ভাব সম্মিলন"],
-["দ্বিতীয় সেমিস্টার • কবিতা","লালন শাহ ফকিরের গান"],
-["দ্বিতীয় সেমিস্টার • কবিতা","নুন"],
-["দ্বিতীয় সেমিস্টার • নাটক","আগুন"],
-
-["দ্বিতীয় সেমিস্টার • সহায়ক পাঠ","পঞ্চতন্ত্র — বই কেনা; আজব শহর কলকেতা; পঁচিশে বৈশাখ; আড্ডা"]
-
+"পুঁইমাচা","বিড়াল","ঈশ্বরচন্দ্র বিদ্যাসাগর",
+"সাম্যবাদী","বিশাল ডানাওয়ালা এক থুথুরে বুড়ো",
+"চারণ কবি","ছুটি","তেলেনাপোতা আবিষ্কার",
+"ভাব সম্মিলন","লালন শাহ ফকিরের গান",
+"নুন","আগুন",
+"পঞ্চতন্ত্র — বই কেনা; আজব শহর কলকেতা; পঁচিশে বৈশাখ; আড্ডা"
 ],
 
 grammar:[
-
 "বিশ্বের ভাষা ও ভাষা পরিবার",
-
 "বাংলা ভাষার উদ্ভব ও ক্রমবিকাশ",
-
 "ভারতে প্রচলিত ভাষা পরিবার",
-
 "বাংলা ভাষার বৈচিত্র্য"
-
 ],
 
 writing:[
+"প্রবন্ধ রচনা","মানস মানচিত্রের সাহায্যে প্রবন্ধ রচনা",
+"বিতর্কমূলক প্রবন্ধ রচনা","সটীক অনুবাদ",
+"সাক্ষাৎকার গ্রহণ","প্রতিবেদন রচনা",
+"স্বরচিত গল্প লিখন","প্রুফ সংশোধন"
+]
+},
 
-"প্রবন্ধ রচনা",
+"12":{
+title:"দ্বাদশ শ্রেণি",
+board:"WBCHSE",
+sem:"Semester III & IV",
 
-"মানস মানচিত্রের সাহায্যে প্রবন্ধ রচনা",
+literature:[
+"আদরিণী","ধর্ম","দিগ্বিজয়ের রূপকথা",
+"বাঙ্গালা ভাষা","পোটরাজ","তার সঙ্গে",
+"হলুদ পোড়া","হারুন সালেমের মাসি",
+"প্রার্থনা","তিমির হননের গান","কেন এল না",
+"নানা রঙের দিন","ডাকঘর"
+],
 
-"বিতর্কমূলক প্রবন্ধ রচনা",
+grammar:[
+"ভাষাবিজ্ঞান ও তার শাখা-প্রশাখা",
+"ধ্বনিতত্ত্ব","শব্দার্থতত্ত্ব"
+],
 
-"সটীক অনুবাদ",
-
-"সাক্ষাৎকার গ্রহণ",
-
-"প্রতিবেদন রচনা",
-
-"স্বরচিত গল্প লিখন",
-
-"প্রুফ সংশোধন"
-
+writing:[
+"সূত্রনির্ভর প্রবন্ধ রচনা",
+"প্রস্তাবনা/ভূমিকানির্ভর প্রবন্ধ রচনা"
 ],
 
 history:[
+"বাংলা গানের ধারা — সংক্ষিপ্ত রূপরেখা",
+"বাঙালির বিজ্ঞানচর্চার সংক্ষিপ্ত পরিচিতি",
+"বাঙালির ক্রীড়া সংস্কৃতি",
+"বাংলা চিত্রকলার ইতিহাস — সংক্ষিপ্ত রূপরেখা",
+"বাঙালির চলচ্চিত্রের ইতিহাস — সংক্ষিপ্ত রূপরেখা"
+]
+}
 
-"প্রাচীন বাংলা: সমাজ ও সাহিত্য",
+};
 
-"মধ্যযুগের বাংলা সমাজ ও সাহিত্যের প্রধান ধারা",
 
-"আধুনিক বাংলা সাহিত্য: গদ্য, কবিতা, উপন্যাস,
+/* =========================
+   SAVE
+========================= */
+
+function save(){
+localStorage.setItem(STORE,JSON.stringify(data));
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function openDrawer(){
+document.getElementById("drawer").classList.add("open");
+document.getElementById("overlay").classList.add("show");
+}
+
+function closeDrawer(){
+document.getElementById("drawer").classList.remove("open");
+document.getElementById("overlay").classList.remove("show");
+}
+
+function home(){
+document.getElementById("homeView").classList.remove("hidden");
+document.getElementById("pageView").classList.add("hidden");
+window.scrollTo(0,0);
+renderHome();
+}
+
+function page(title,html){
+document.getElementById("homeView").classList.add("hidden");
+let p=document.getElementById("pageView");
+p.classList.remove("hidden");
+p.innerHTML=
+`<button class="back" onclick="home()">← হোমে ফিরুন</button>
+<h1 class="title">${title}</h1>${html}`;
+window.scrollTo(0,0);
+}
+
+function closeModal(){
+document.getElementById("modal").classList.add("hidden");
+}
+
+function openModal(html){
+document.getElementById("modal").classList.remove("hidden");
+document.getElementById("modalBox").innerHTML=html;
+}
+
+
+/* =========================
+   HOME
+========================= */
+
+function renderHome(){
+
+let grid=document.getElementById("classGrid");
+
+grid.innerHTML=Object.entries(syllabus).map(([k,v])=>`
+<div class="classcard">
+<div class="classnum">${k}</div>
+<h3>${v.title}</h3>
+<p>${v.board} • ${v.sem}</p>
+<button class="btn" onclick="classPage('${k}')">
+প্রবেশ করুন →
+</button>
+</div>
+`).join("");
+
+let mg=document.getElementById("modelGrid");
+
+mg.innerHTML=`
+<div class="model"><span>নবম শ্রেণি — গুরুত্বপূর্ণ Model Set</span><span class="badge">10টি</span></div>
+<div class="model"><span>দশম — মাধ্যমিক Model Set</span><span class="badge">10টি</span></div>
+<div class="model"><span>একাদশ — প্রথম সেমিস্টার</span><span class="badge">10টি</span></div>
+<div class="model"><span>একাদশ — দ্বিতীয় সেমিস্টার</span><span class="badge">10টি</span></div>
+<div class="model"><span>দ্বাদশ — তৃতীয় সেমিস্টার</span><span class="badge">10টি</span></div>
+<div class="model"><span>দ্বাদশ — চতুর্থ সেমিস্টার</span><span class="badge">10টি</span></div>
+`;
+
+document.getElementById("loginBtn").classList.toggle("hidden",data.logged);
+document.getElementById("logoutBtn").classList.toggle("hidden",!data.logged);
+}
+
+
+/* =========================
+   CLASS
+========================= */
+
+function classPage(k){
+
+currentClass=k;
+let v=syllabus[k];
+
+let html=`
+<p class="sub">${v.board} • ${v.sem}</p>
+
+<h2 class="title">📚 সাহিত্য</h2>
+
+<div class="chapters">
+${v.literature.map(x=>`
+<div class="chapter">
+<div>
+<h3>${x}</h3>
+<p>পাঠ্য আলোচনা ও প্রস্তুতি</p>
+</div>
+<button class="btn" onclick="chapter('${k}','${safe(x)}')">
+অধ্যায় খুলুন
+</button>
+</div>
+`).join("")}
+</div>
+
+<h2 class="title">📘 বাংলা ব্যাকরণ</h2>
+
+<div class="quick">
+${v.grammar.map(x=>`
+<div class="quickcard">
+<div class="quickicon">📘</div>
+<h3>${x}</h3>
+<p>ব্যাকরণ + ভিডিও + নোট</p>
+<button class="btn" onclick="chapter('${k}','${safe(x)}')">
+দেখুন
+</button>
+</div>
+`).join("")}
+</div>
+
+<h2 class="title">✍️ নির্মিতি</h2>
+
+<div class="quick">
+${v.writing.map(x=>`
+<div class="quickcard">
+<div class="quickicon">✍️</div>
+<h3>${x}</h3>
+<p>লিখন অনুশীলন</p>
+<button class="btn" onclick="chapter('${k}','${safe(x)}')">
+দেখুন
+</button>
+</div>
+`).join("")}
+</div>
+
+${v.history?`
+<h2 class="title">🏛️ ইতিহাস ও সংস্কৃতি</h2>
+<div class="quick">
+${v.history.map(x=>`
+<div class="quickcard">
+<div class="quickicon">🏛️</div>
+<h3>${x}</h3>
+<p>আলোচনা ও প্রস্তুতি</p>
+<button class="btn" onclick="chapter('${k}','${safe(x)}')">
+দেখুন
+</button>
+</div>
+`).join("")}
+</div>
+`:""}
+`;
+
+page(v.title,html);
+}
+
+
+/* =========================
+   CHAPTER
+========================= */
+
+function safe(x){
+return x.replace(/'/g,"\\'");
+}
+
+function chapter(k,ch){
+
+currentClass=k;
+currentChapter=ch;
+
+let note=data.notes.find(n=>n.class===k&&n.chapter===ch);
+let vids=data.videos.filter(v=>v.class===k&&v.chapter===ch);
+let pdfs=data.pdfs.filter(v=>v.class===k&&v.chapter===ch);
+let qs=data.questions.filter(q=>q.class===k&&q.chapter===ch);
+
+openModal(`
+<div class="modalhead">
+<div>
+<h2>${ch}</h2>
+<p style="color:#64748b">${syllabus[k].title}</p>
+</div>
+<button class="close" onclick="closeModal()">×</button>
+</div>
+
+<div class="options">
+
+<div class="option">
+<div class="optionicon">📑</div>
+<h3>Notes</h3>
+<p>${note?"নোট প্রস্তুত আছে":"নোট পরে যোগ হবে"}</p>
+<button class="btn" onclick="showNote()">
+নোট খুলুন
+</button>
+</div>
+
+<div class="option">
+<div class="optionicon">📄</div>
+<h3>PDF</h3>
+<p>${pdfs.length?pdfs.length+"টি PDF":"PDF পরে যোগ হবে"}</p>
+<button class="btn red" onclick="showPDFs()">
+PDF দেখুন
+</button>
+</div>
+
+<div class="option">
+<div class="optionicon">🎥</div>
+<h3>Grammar / Video</h3>
+<p>${vids.length?vi
