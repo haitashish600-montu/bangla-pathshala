@@ -1607,6 +1607,14 @@ home();
  </button>
 
 </nav>
+<script>
+document.addEventListener("click", function(e) {
+  const btn = e.target.closest("button");
 
+  if (btn) {
+    alert("BUTTON কাজ করছে: " + btn.innerText);
+  }
+});
+</script>
 </body>
 </html>
