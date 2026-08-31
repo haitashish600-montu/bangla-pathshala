@@ -2666,7 +2666,68 @@ Chat
 .hero {
   position: relative !important;
 }
+/* ===== BEAUTIFUL OVAL QUICK ACCESS DESIGN ===== */
 
+@media (max-width: 600px) {
+
+  .quick-card,
+  .quickAccessCard,
+  .quick-item {
+    border-radius: 30px !important;
+    padding: 14px 16px !important;
+    background: linear-gradient(145deg,#ffffff,#f4f7ff) !important;
+    border: 1px solid rgba(30,80,180,.15) !important;
+    box-shadow: 0 6px 18px rgba(20,50,100,.12) !important;
+    overflow: hidden !important;
+    transition: transform .2s ease !important;
+  }
+
+  .quick-card:active,
+  .quickAccessCard:active,
+  .quick-item:active {
+    transform: scale(.97) !important;
+  }
+
+  .quick-card h3,
+  .quickAccessCard h3,
+  .quick-item h3 {
+    font-size: 20px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+  }
+
+  .quick-card p,
+  .quickAccessCard p,
+  .quick-item p {
+    font-size: 15px !important;
+    line-height: 1.4 !important;
+  }
+
+  /* গোলাকার আইকন */
+  .quick-card .icon,
+  .quickAccessCard .icon,
+  .quick-item .icon {
+    border-radius: 50% !important;
+  }
+
+  /* Quick Access heading */
+  .sectionTitle {
+    font-size: 24px !important;
+    font-weight: 900 !important;
+    letter-spacing: 1px !important;
+  }
+
+  /* Banner Menu */
+  .bannerMenuBtn {
+    z-index: 9999 !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+  }
+
+  .hero {
+    position: relative !important;
+  }
+}
 </style>
 
 
