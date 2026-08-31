@@ -2728,6 +2728,124 @@ Chat
     position: relative !important;
   }
 }
+/* ===== QUICK CARD OVAL STYLE ===== */
+
+.quickGrid{
+  display:grid !important;
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  gap:16px !important;
+  margin-top:15px !important;
+}
+
+.quick-card{
+  min-height:125px !important;
+  padding:18px 16px !important;
+  border-radius:38px !important;
+  background:linear-gradient(135deg,#ffffff,#f5f8ff) !important;
+  border:1px solid rgba(30,80,180,.18) !important;
+  box-shadow:0 7px 18px rgba(20,50,100,.12) !important;
+
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+  align-items:flex-start !important;
+
+  overflow:hidden !important;
+  transition:transform .25s ease,box-shadow .25s ease !important;
+}
+
+.quick-card:hover{
+  transform:translateY(-3px) !important;
+  box-shadow:0 10px 24px rgba(20,50,100,.18) !important;
+}
+
+.quick-card:active{
+  transform:scale(.97) !important;
+}
+
+/* Icon */
+.quick-card .quickIcon{
+  width:58px !important;
+  height:58px !important;
+  border-radius:50% !important;
+
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+
+  font-size:32px !important;
+  margin-bottom:10px !important;
+
+  background:linear-gradient(135deg,#eef5ff,#ffffff) !important;
+  box-shadow:0 4px 12px rgba(20,60,130,.15) !important;
+}
+
+/* Main title – Oval */
+.quick-card h3{
+  display:inline-block !important;
+
+  margin:0 !important;
+  padding:8px 18px !important;
+
+  border-radius:30px !important;
+  background:linear-gradient(135deg,#eef8ff,#ffffff) !important;
+
+  border:1px solid rgba(40,130,210,.25) !important;
+
+  font-size:20px !important;
+  font-weight:800 !important;
+  line-height:1.2 !important;
+
+  box-shadow:0 4px 10px rgba(40,90,150,.10) !important;
+}
+
+/* Subtitle – ছোট Oval */
+.quick-card p{
+  display:inline-block !important;
+
+  margin:8px 0 0 0 !important;
+  padding:5px 14px !important;
+
+  border-radius:20px !important;
+  background:rgba(235,241,249,.85) !important;
+
+  font-size:15px !important;
+  line-height:1.35 !important;
+
+  color:#64748b !important;
+}
+
+/* Mobile */
+@media(max-width:600px){
+
+  .quickGrid{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:12px !important;
+  }
+
+  .quick-card{
+    min-height:145px !important;
+    padding:16px 12px !important;
+    border-radius:30px !important;
+  }
+
+  .quick-card .quickIcon{
+    width:52px !important;
+    height:52px !important;
+    font-size:28px !important;
+    margin-bottom:9px !important;
+  }
+
+  .quick-card h3{
+    font-size:18px !important;
+    padding:7px 14px !important;
+  }
+
+  .quick-card p{
+    font-size:14px !important;
+    padding:5px 11px !important;
+  }
+}
 </style>
 
 
