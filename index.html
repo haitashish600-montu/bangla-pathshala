@@ -2,837 +2,1611 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#082f63">
-<title>বাংলা পাঠশালা | শিক্ষক : আশিষ হাইত</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#062f5f">
+<title>বাংলা পাঠশালা | শিক্ষক : আশিস হাইত</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800;900&display=swap');
-
-:root{
---navy:#062f63;--blue:#087bd3;--gold:#f7c948;
---purple:#7334d8;--green:#10a86a;--red:#ef4051;
---bg:#f3f6fc;--text:#10233d;--muted:#64748b;
---card:#fff;--line:#e5e7eb;
-}
-
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-margin:0;background:var(--bg);color:var(--text);
-font-family:"Noto Sans Bengali",Arial,sans-serif;
-line-height:1.6
+ margin:0;
+ background:#f3f6fb;
+ color:#102a43;
+ font-family:"Noto Sans Bengali","Nirmala UI",Arial,sans-serif;
+ line-height:1.6;
+ user-select:none;
+ -webkit-user-select:none;
 }
-button,input,textarea,select{font:inherit}
+button,a{font-family:inherit}
 button{cursor:pointer}
-.hidden{display:none!important}
-a{text-decoration:none}
 
 .topbar{
-height:62px;background:var(--navy);color:#fff;
-position:sticky;top:0;z-index:1000;
-box-shadow:0 4px 16px #0003
+ position:sticky;
+ top:0;
+ z-index:1000;
+ background:#062f5f;
+ color:#fff;
+ box-shadow:0 3px 12px #0003;
 }
-.topin{
-height:100%;max-width:1400px;margin:auto;padding:0 10px;
-display:flex;align-items:center;justify-content:space-between
+.nav{
+ max-width:1200px;
+ margin:auto;
+ min-height:62px;
+ display:flex;
+ align-items:center;
+ gap:12px;
+ padding:8px 14px;
 }
-.left{display:flex;align-items:center;gap:9px}
-.menu{
-border:0;background:#ffffff18;color:white;
-border-radius:11px;padding:9px 12px;font-size:23px
+.menuBtn{
+ width:44px;
+ height:44px;
+ border:0;
+ border-radius:12px;
+ background:#124b83;
+ color:#fff;
+ font-size:25px;
 }
-.brand{font-size:19px;font-weight:900;white-space:nowrap}
-.brand span{color:var(--gold)}
+.logo{
+ font-size:20px;
+ font-weight:900;
+ margin-right:auto;
+ white-space:nowrap;
+}
+.logo span{color:#ffd21a}
 
-.actions{display:flex;gap:6px;align-items:center}
-.topbtn{
-border:0;background:#ffffff18;color:white;
-border-radius:10px;padding:8px 11px;font-weight:700
+.navlinks{
+ display:flex;
+ gap:7px;
+ align-items:center;
 }
-.loginbtn{background:#00c98b!important}
-.logoutbtn{background:#ef4051!important}
+.navlinks button{
+ border:0;
+ background:#124b83;
+ color:#fff;
+ padding:9px 13px;
+ border-radius:10px;
+ font-weight:700;
+}
+.navlinks button:hover{background:#1b619f}
 
-.drawer{
-position:fixed;left:-320px;top:0;width:305px;height:100vh;
-background:white;z-index:2000;transition:.25s;
-box-shadow:8px 0 35px #0004;overflow:auto
+.loginBtn{
+ background:#00c889!important;
+ min-width:75px;
 }
-.drawer.open{left:0}
-.overlay{
-position:fixed;inset:0;background:#0008;z-index:1900;display:none
-}
-.overlay.show{display:block}
+.logoutBtn{background:#e53935!important}
 
-.drawerhead{
-padding:25px 20px;background:linear-gradient(135deg,#062f63,#087bd3);
-color:white
+.container{
+ width:min(1200px,94%);
+ margin:auto;
 }
-.drawerhead h2{margin:0;font-size:25px}
-.drawerhead p{margin:3px 0;color:#dbeafe}
-.dicon{
-font-size:35px;margin-bottom:5px
-}
-.drawer nav{padding:10px}
-.drawer nav button{
-width:100%;border:0;background:white;text-align:left;
-padding:13px;border-radius:11px;margin:2px 0;
-font-weight:700;color:var(--text)
-}
-.drawer nav button:hover{background:#eef5ff}
-
-main{max-width:1400px;margin:auto;padding:0 10px 35px}
 
 .hero{
-margin:10px 0 14px;border-radius:0 0 28px 28px;
-overflow:hidden;background:#fff
+ margin:18px auto 14px;
+ border-radius:0 0 35px 35px;
+ overflow:hidden;
+ background:#063b73;
+ box-shadow:0 5px 18px #0002;
 }
 .hero img{
-display:block;width:100%;height:auto;
-max-height:430px;object-fit:cover
+ display:block;
+ width:100%;
+ height:auto;
+ min-height:180px;
+ object-fit:cover;
 }
 
 .notice{
-background:white;border:1px solid var(--line);
-border-left:5px solid var(--purple);
-border-radius:14px;padding:11px 14px;
-margin-bottom:22px;box-shadow:0 6px 20px #183b6b10
+ background:#fff;
+ border-left:6px solid #9c27d8;
+ border-radius:15px;
+ padding:14px 18px;
+ margin:15px 0 24px;
+ box-shadow:0 3px 12px #0001;
+ font-size:16px;
+}
+.notice b{font-size:18px}
+
+.sectionTitle{
+ font-size:27px;
+ margin:20px 0 4px;
+ font-weight:900;
+}
+.sectionSub{
+ margin:0 0 15px;
+ color:#667788;
 }
 
-.title{
-font-size:28px;font-weight:900;margin:24px 0 5px
+.quickGrid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:14px;
 }
-.sub{color:var(--muted);margin:0 0 12px}
+.quickCard{
+ background:#fff;
+ border-radius:18px;
+ padding:17px;
+ min-height:120px;
+ box-shadow:0 4px 14px #0001;
+ border-left:7px solid #087bd3;
+ transition:.2s;
+}
+.quickCard:hover{
+ transform:translateY(-2px);
+ box-shadow:0 8px 18px #0002;
+}
+.quickCard:nth-child(2){border-color:#ffae00}
+.quickCard:nth-child(3){border-color:#10ad73}
+.quickCard:nth-child(4){border-color:#8b2bd9}
+.quickCard:nth-child(5){border-color:#ef3340}
+.quickCard:nth-child(6){border-color:#087bd3}
+.quickIcon{font-size:29px}
+.quickCard h3{
+ margin:2px 0;
+ font-size:21px;
+}
+.quickCard p{
+ margin:0;
+ color:#718096;
+}
 
-.quick{
-display:grid;grid-template-columns:repeat(3,1fr);gap:12px
+.classGrid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:14px;
 }
-.quickcard{
-background:white;border:1px solid var(--line);
-border-radius:17px;padding:15px;
-box-shadow:0 6px 20px #183b6b12;
-min-height:105px
+.classCard{
+ background:#fff;
+ border-radius:17px;
+ padding:18px;
+ box-shadow:0 3px 13px #0001;
+ border-top:5px solid #087bd3;
 }
-.quickcard h3{margin:2px 0;font-size:19px}
-.quickcard p{margin:0;color:var(--muted)}
-.quickicon{font-size:30px}
+.classCard h3{margin:0 0 5px}
+.classCard p{margin:0;color:#667788}
+.classCard button{margin-top:12px}
 
-.classgrid{
-display:grid;grid-template-columns:repeat(4,1fr);gap:13px
+.modelGrid,.noticeGrid,.linkGrid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:14px;
 }
-.classcard{
-background:white;border:1px solid var(--line);
-border-radius:19px;padding:16px;min-height:145px;
-box-shadow:0 7px 22px #183b6b12;
-position:relative;overflow:hidden
+
+.card{
+ background:#fff;
+ padding:18px;
+ border-radius:17px;
+ box-shadow:0 3px 13px #0001;
 }
-.classcard:after{
-content:"";position:absolute;width:75px;height:75px;
-border-radius:50%;right:-20px;top:-20px;background:#fde68a77
-}
-.classnum{font-size:30px;font-weight:900;color:#087bd3}
-.classcard h3{margin:3px 0;font-size:21px}
-.classcard p{margin:0 0 9px;color:var(--muted)}
+.card h3{margin-top:0}
 
 .btn{
-border:0;border-radius:10px;padding:9px 13px;
-background:var(--purple);color:white;font-weight:800
+ border:0;
+ border-radius:10px;
+ padding:10px 16px;
+ background:#087bd3;
+ color:white;
+ font-weight:800;
 }
-.btn.green{background:var(--green)}
-.btn.red{background:var(--red)}
-.btn.blue{background:var(--blue)}
-.btn.dark{background:#334155}
+.btn.green{background:#0aa56f}
+.btn.red{background:#e53935}
+.btn.dark{background:#26374a}
+.btn.yellow{background:#e59b00}
 
-.modelgrid{
-display:grid;grid-template-columns:repeat(2,1fr);gap:9px
+.page{
+ padding:20px 0 50px;
 }
-.model{
-background:white;border:1px solid var(--line);
-border-radius:13px;padding:11px 13px;
-display:flex;justify-content:space-between;align-items:center
+.pageHead{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:10px;
+ margin-bottom:18px;
 }
-.badge{
-background:#fef3c7;color:#8a5a00;
-border-radius:999px;padding:3px 8px;font-weight:800
-}
+.pageHead h1{margin:0}
 
-.bottom{
-display:grid;grid-template-columns:repeat(5,1fr);
-background:white;border:1px solid var(--line);
-border-radius:18px;margin-top:20px;
-box-shadow:0 5px 20px #183b6b15;
-overflow:hidden
-}
-.bottom button{
-border:0;background:white;padding:9px 3px;
-color:#17324f;font-weight:700
-}
-.bottom button:hover{background:#eef5ff}
-
-footer{
-background:var(--navy);color:#dbeafe;
-text-align:center;padding:22px;margin-top:20px
-}
-footer b{color:white}
-
-.page{padding:15px 0}
 .back{
-border:0;background:#e7eef9;color:var(--navy);
-padding:9px 13px;border-radius:11px;
-font-weight:900;margin-bottom:10px
+ border:0;
+ background:#062f5f;
+ color:#fff;
+ border-radius:10px;
+ padding:10px 15px;
+ font-weight:800;
 }
 
-.chapters{display:grid;gap:9px}
+.chapterGrid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:14px;
+}
 .chapter{
-background:white;border:1px solid var(--line);
-border-radius:15px;padding:14px;
-display:flex;justify-content:space-between;
-align-items:center;gap:10px
+ background:#fff;
+ border-radius:16px;
+ padding:17px;
+ box-shadow:0 3px 13px #0001;
+ cursor:pointer;
+ border-left:5px solid #087bd3;
 }
-.chapter h3{margin:0;font-size:19px}
-.chapter p{margin:2px 0;color:var(--muted)}
+.chapter:hover{background:#f9fbff}
+.chapter h3{margin:0}
+.chapter p{margin:3px 0;color:#667788}
 
-.modalbg{
-position:fixed;inset:0;background:#0008;
-z-index:3000;display:flex;align-items:flex-end
-}
-.modalbox{
-background:white;width:100%;max-width:800px;
-margin:auto;max-height:92vh;overflow:auto;
-border-radius:23px 23px 0 0;padding:19px
-}
-.modalhead{
-display:flex;justify-content:space-between;
-align-items:center;gap:10px
-}
-.close{
-border:0;background:#eef2f7;
-border-radius:50%;width:40px;height:40px;font-size:24px
-}
-
-.options{
-display:grid;grid-template-columns:repeat(2,1fr);
-gap:11px;margin-top:16px
+.optionGrid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:15px;
 }
 .option{
-background:white;border:1px solid var(--line);
-border-radius:17px;padding:16px;
-box-shadow:0 5px 17px #0001
+ background:#fff;
+ border-radius:17px;
+ padding:18px;
+ box-shadow:0 3px 13px #0001;
 }
-.optionicon{font-size:30px}
+.optionIcon{font-size:30px}
 
-.note{
-background:white;border:1px solid var(--line);
-border-radius:17px;padding:18px;
-font-size:18px;white-space:pre-wrap
-}
-
-.protected{
-user-select:none!important;
--webkit-user-select:none!important;
--webkit-touch-callout:none!important
-}
-
-.test{
-background:white;border:1px solid var(--line);
-border-radius:18px;padding:18px
-}
-.question{font-size:20px;font-weight:800}
-.answer{
-display:block;width:100%;text-align:left;
-border:1px solid #dbe3ef;background:#f8fafc;
-padding:12px;border-radius:11px;margin:8px 0
-}
-.answer:hover{background:#eef5ff}
-.result{
-background:#ecfdf5;border:1px solid #a7f3d0;
-padding:18px;border-radius:15px
-}
-.score{font-size:38px;font-weight:900;color:#047857}
-
-.search{
-width:100%;padding:13px;
-border:1px solid var(--line);border-radius:12px
-}
-
-.admin{
-display:grid;grid-template-columns:repeat(2,1fr);gap:13px
-}
-.adminbox{
-background:white;border:1px solid var(--line);
-border-radius:17px;padding:16px
-}
-.adminbox input,.adminbox textarea,.adminbox select{
-width:100%;padding:11px;
-border:1px solid #dbe2ec;border-radius:10px;
-margin:5px 0 9px
-}
-.adminbox textarea{min-height:130px}
-.smalllist{
-max-height:220px;overflow:auto
-}
-.smallitem{
-padding:8px;border-bottom:1px solid var(--line)
-}
 .empty{
-background:white;border:1px dashed #cbd5e1;
-padding:25px;border-radius:17px;
-text-align:center;color:var(--muted)
+ background:#fff;
+ border-radius:16px;
+ padding:25px;
+ text-align:center;
+ color:#687889;
 }
 
-/* যতটা সম্ভব copy/select বন্ধ */
-.protected-page{
-user-select:none;
--webkit-user-select:none;
--webkit-touch-callout:none
+.modal{
+ position:fixed;
+ inset:0;
+ background:#0008;
+ z-index:5000;
+ display:none;
+ align-items:center;
+ justify-content:center;
+ padding:15px;
 }
+.modal.show{display:flex}
+.modalBox{
+ background:#fff;
+ width:min(650px,96%);
+ max-height:90vh;
+ overflow:auto;
+ border-radius:20px;
+ padding:20px;
+ position:relative;
+}
+.close{
+ position:absolute;
+ right:12px;
+ top:10px;
+ border:0;
+ background:#eee;
+ width:38px;
+ height:38px;
+ border-radius:50%;
+ font-size:22px;
+}
+.modalHead{
+ padding-right:45px;
+ border-bottom:1px solid #ddd;
+ margin-bottom:15px;
+}
+.modalHead h2{margin:0}
+
+.input{
+ width:100%;
+ padding:12px;
+ border:1px solid #ccd5df;
+ border-radius:10px;
+ margin:6px 0 12px;
+ font-size:16px;
+}
+
+.videoBox{
+ position:relative;
+ padding-top:56.25%;
+ margin-top:12px;
+}
+.videoBox iframe{
+ position:absolute;
+ inset:0;
+ width:100%;
+ height:100%;
+ border:0;
+ border-radius:12px;
+}
+
+.bottomNav{
+ position:sticky;
+ bottom:0;
+ z-index:900;
+ background:#fff;
+ box-shadow:0 -3px 15px #0002;
+ display:grid;
+ grid-template-columns:repeat(5,1fr);
+ padding:7px 4px;
+ margin-top:25px;
+}
+.bottomNav button{
+ border:0;
+ background:transparent;
+ color:#102a43;
+ padding:6px 2px;
+ font-weight:700;
+}
+.bottomNav .ico{font-size:24px;display:block}
+.bottomNav button.active{color:#064fb4}
+
+footer{
+ background:#063b73;
+ color:#fff;
+ text-align:center;
+ padding:18px;
+ margin-top:0;
+}
+
+.drawer{
+ position:fixed;
+ top:0;
+ left:-310px;
+ width:290px;
+ height:100%;
+ background:#fff;
+ z-index:3000;
+ box-shadow:5px 0 20px #0003;
+ transition:.25s;
+ padding:20px;
+}
+.drawer.open{left:0}
+.drawer h2{margin-top:0;color:#062f5f}
+.drawer button{
+ display:block;
+ width:100%;
+ text-align:left;
+ border:0;
+ background:#f3f6fb;
+ padding:12px;
+ margin:7px 0;
+ border-radius:10px;
+ font-weight:700;
+}
+.drawerOverlay{
+ position:fixed;
+ inset:0;
+ background:#0006;
+ z-index:2500;
+ display:none;
+}
+.drawerOverlay.show{display:block}
+
+.answer{
+ background:#fff9df;
+ border-left:5px solid #ffb000;
+ padding:14px;
+ border-radius:10px;
+ margin-top:12px;
+}
+.answerTitle{font-weight:900}
 
 @media(max-width:900px){
-.classgrid{grid-template-columns:repeat(2,1fr)}
-.quick{grid-template-columns:repeat(2,1fr)}
-.admin{grid-template-columns:1fr}
+ .quickGrid{grid-template-columns:repeat(2,1fr)}
+ .classGrid{grid-template-columns:repeat(2,1fr)}
+ .optionGrid{grid-template-columns:1fr}
+ .navlinks{display:none}
+ .menuBtn{order:-1}
 }
-
-@media(max-width:600px){
-.topbar{height:57px}
-.brand{font-size:16px}
-.topbtn{font-size:12px;padding:7px 8px}
-.actions .hideMobile{display:none}
-main{padding:0 9px 30px}
-.hero{margin-top:8px}
-.title{font-size:23px}
-.quick{grid-template-columns:repeat(2,1fr);gap:9px}
-.quickcard{padding:12px;min-height:105px}
-.quickcard h3{font-size:17px}
-.quickicon{font-size:25px}
-.classgrid{grid-template-columns:repeat(2,1fr);gap:9px}
-.classcard{padding:12px;min-height:135px}
-.classcard h3{font-size:17px}
-.classcard p{font-size:13px}
-.modelgrid{grid-template-columns:1fr}
-.chapter{align-items:flex-start;flex-direction:column}
-.chapter .btn{width:100%}
-.options{grid-template-columns:1fr}
-.bottom{grid-template-columns:repeat(5,1fr)}
-.bottom button{font-size:11px}
+@media(max-width:560px){
+ .container{width:94%}
+ .hero{margin-top:10px;border-radius:0 0 30px 30px}
+ .quickGrid{grid-template-columns:repeat(2,1fr);gap:9px}
+ .quickCard{padding:13px;min-height:112px}
+ .quickCard h3{font-size:18px}
+ .quickCard p{font-size:14px}
+ .quickIcon{font-size:24px}
+ .classGrid,.chapterGrid,.modelGrid,.noticeGrid,.linkGrid{
+  grid-template-columns:1fr;
+ }
+ .sectionTitle{font-size:24px}
+ .logo{font-size:17px}
+ .nav{padding:7px}
 }
 </style>
 </head>
 
-<body>
+<body oncontextmenu="return false">
 
-<div class="app">
+<div class="topbar">
+ <div class="nav">
+  <button class="menuBtn" onclick="openDrawer()">☰</button>
 
-<header class="topbar">
-<div class="topin">
+  <div class="logo">বাংলা <span>পাঠশালা</span></div>
 
-<div class="left">
-<button class="menu" onclick="openDrawer()">☰</button>
-<div class="brand">বাংলা <span>পাঠশালা</span></div>
+  <nav class="navlinks">
+   <button onclick="home()">হোম</button>
+   <button onclick="showPage('courses')">কোর্স</button>
+   <button onclick="showPage('models')">মডেল সেট</button>
+   <button onclick="showPage('notice')">নোটিশ</button>
+  </nav>
+
+  <button id="loginBtn" class="loginBtn btn" onclick="login()">Login</button>
+ </div>
 </div>
 
-<div class="actions">
-<button class="topbtn hideMobile" onclick="home()">হোম</button>
-<button class="topbtn hideMobile" onclick="searchPage()">খোঁজ</button>
-<button class="topbtn hideMobile" onclick="modelsPage()">মডেল সেট</button>
-<button class="topbtn hideMobile" onclick="noticePage()">নোটিস</button>
-
-<button id="loginBtn" class="topbtn loginbtn" onclick="loginPage()">Login</button>
-<button id="logoutBtn" class="topbtn logoutbtn hidden" onclick="logout()">Logout</button>
-</div>
-
-</div>
-</header>
-
-<div id="overlay" class="overlay" onclick="closeDrawer()"></div>
+<div id="drawerOverlay" class="drawerOverlay" onclick="closeDrawer()"></div>
 
 <aside id="drawer" class="drawer">
-
-<div class="drawerhead">
-<div class="dicon">📚</div>
-<h2>বাংলা পাঠশালা</h2>
-<p>শিক্ষক : আশিষ হাইত</p>
-</div>
-
-<nav>
-<button onclick="home();closeDrawer()">🏠 হোম</button>
-<button onclick="coursesPage();closeDrawer()">📚 All Courses</button>
-<button onclick="modelsPage();closeDrawer()">📝 Model Set</button>
-<button onclick="materialsPage();closeDrawer()">📑 Study Material</button>
-<button onclick="chaptersPage();closeDrawer()">📖 অধ্যায়সমূহ</button>
-<button onclick="testsPage();closeDrawer()">☑️ MCQ / Mock Test</button>
-<button onclick="videosPage();closeDrawer()">🎥 Video Class</button>
-<button onclick="noticePage();closeDrawer()">📢 Notice</button>
-<button onclick="profilePage();closeDrawer()">👤 Profile</button>
-<button onclick="contactPage();closeDrawer()">☎️ যোগাযোগ</button>
-</nav>
-
-<div style="padding:12px;border-top:1px solid #eee">
-<button class="btn" style="width:100%" onclick="adminPage();closeDrawer()">🛠️ Teacher Panel</button>
-</div>
-
+ <button onclick="closeDrawer()">✕ মেনু বন্ধ করুন</button>
+ <h2>বাংলা পাঠশালা</h2>
+ <button onclick="home()">🏠 Home</button>
+ <button onclick="showPage('courses')">📚 All Courses</button>
+ <button onclick="showPage('notice')">📢 Notice Board</button>
+ <button onclick="showPage('freeclass')">💻 Free Class</button>
+ <button onclick="showPage('test')">📝 Free MCQ Test</button>
+ <button onclick="showPage('pdf')">📄 Free PDF</button>
+ <button onclick="showPage('links')">🔗 Important Links</button>
+ <button onclick="showPage('models')">📑 Model Set</button>
+ <button onclick="showPage('help')">❓ Help</button>
+ <button onclick="showPage('mycourses')">📖 My Courses</button>
+ <button onclick="showPage('college')">🎓 College</button>
+ <button onclick="login()">🔐 Login / Logout</button>
 </aside>
 
-<main>
+<main id="app"></main>
 
-<section id="homeView">
-
-<div class="hero">
-<img src="banner.png" alt="বাংলা পাঠশালা ব্যানার"
-onerror="this.style.display='none'">
+<div id="modal" class="modal">
+ <div id="modalBox" class="modalBox"></div>
 </div>
-
-<div class="notice">
-📢 <b>নোটিস:</b> পরীক্ষার রুটিন ও গুরুত্বপূর্ণ আপডেট দেখতে Notice Board দেখুন।
-</div>
-
-<h2 class="title">🚀 দ্রুত প্রবেশ</h2>
-
-<div class="quick">
-
-<div class="quickcard" style="border-left:6px solid #087bd3"
-onclick="coursesPage()">
-<div class="quickicon">📚</div>
-<h3>All Courses</h3>
-<p>সমস্ত কোর্স দেখুন</p>
-</div>
-
-<div class="quickcard" style="border-left:6px solid #ff9f00"
-onclick="noticePage()">
-<div class="quickicon">📢</div>
-<h3>Notice Board</h3>
-<p>নোটিস দেখুন</p>
-</div>
-
-<div class="quickcard" style="border-left:6px solid #10a86a"
-onclick="videosPage()">
-<div class="quickicon">💻</div>
-<h3>Free Class</h3>
-<p>ফ্রি ক্লাস দেখুন</p>
-</div>
-
-<div class="quickcard" style="border-left:6px solid #7334d8"
-onclick="testsPage()">
-<div class="quickicon">📝</div>
-<h3>Free MCQ Test</h3>
-<p>ফ্রি MCQ টেস্ট দিন</p>
-</div>
-
-<div class="quickcard" style="border-left:6px solid #ef4051"
-onclick="materialsPage()">
-<div class="quickicon">📄</div>
-<h3>Free PDF</h3>
-<p>Study Material দেখুন</p>
-</div>
-
-<div class="quickcard" style="border-left:6px solid #087bd3"
-onclick="linksPage()">
-<div class="quickicon">🔗</div>
-<h3>Important Links</h3>
-<p>গুরুত্বপূর্ণ লিঙ্কসমূহ</p>
-</div>
-
-</div>
-
-<h2 class="title">📚 শ্রেণি অনুযায়ী পড়াশোনা</h2>
-<p class="sub">আপনার শ্রেণি নির্বাচন করে বাংলা বিষয়ের প্রস্তুতি নিন</p>
-
-<div id="classGrid" class="classgrid"></div>
-
-<h2 class="title">📝 গুরুত্বপূর্ণ Model Set</h2>
-<div id="modelGrid" class="modelgrid"></div>
-
-<div class="bottom">
-<button onclick="home()">🏠<br>Home</button>
-<button onclick="helpPage()">❓<br>Help</button>
-<button onclick="coursesPage()">📖<br>My Courses</button>
-<button onclick="whatsapp()">🟢<br>WhatsApp</button>
-<button onclick="contactPage()">💬<br>Chat</button>
-</div>
-
-</section>
-
-<section id="pageView" class="page hidden"></section>
-
-</main>
 
 <footer>
-© 2026 <b>বাংলা পাঠশালা</b> | শিক্ষক : আশিষ হাইত
+ © 2026 বাংলা পাঠশালা | শিক্ষক : আশিস হাইত
 </footer>
-
-</div>
-
-<div id="modal" class="modalbg hidden">
-<div id="modalBox" class="modalbox"></div>
-</div>
 
 <script>
 
-/* =========================
-   BASIC SETTINGS
-========================= */
+/* =========================================================
+   বাংলা পাঠশালা
+   এখানে ভবিষ্যতে শুধু DATA-র ভিতরের Note/PDF/Video বদলাবেন।
+   ========================================================= */
 
-const PHONE="919775746579";
-const EMAIL="haitashishbengali@gmail.com";
-const STORE="bangla_pathshala_final_v5";
+const DATA = {
 
-let data=JSON.parse(localStorage.getItem(STORE)||`
-{
-"logged":false,
-"user":null,
-"notes":[],
-"videos":[],
-"pdfs":[],
-"questions":[],
-"models":[]
-}`);
+ notice:[
+  {
+   title:"পরীক্ষার রুটিন ও গুরুত্বপূর্ণ আপডেট",
+   text:"পরীক্ষা সংক্রান্ত গুরুত্বপূর্ণ ঘোষণা এখানে দেওয়া হবে।"
+  }
+ ],
 
-let currentClass="";
-let currentChapter="";
-let currentQuestions=[];
-let currentQuestion=0;
-let answers=[];
+ classes:{
 
+  "9":{
+   name:"নবম শ্রেণি",
+   desc:"নবম শ্রেণির বাংলা",
+   chapters:[
+    {
+     title:"অধ্যায় ১",
+     desc:"প্রথম অধ্যায়",
+     notes:"এখানে প্রথম অধ্যায়ের নোট লিখুন।",
+     pdf:"",
+     video:"",
+     questions:[
+      {
+       q:"নমুনা প্রশ্ন",
+       a:"উত্তর এখানে থাকবে।"
+      }
+     ]
+    },
+    {
+     title:"অধ্যায় ২",
+     desc:"দ্বিতীয় অধ্যায়",
+     notes:"এখানে দ্বিতীয় অধ্যায়ের নোট লিখুন।",
+     pdf:"",
+     video:"",
+     questions:[]
+    }
+   ]
+  },
 
-/* =========================
-   SYLLABUS
-========================= */
+  "10":{
+   name:"দশম শ্রেণি",
+   desc:"মাধ্যমিকের বাংলা",
+   chapters:[
+    {
+     title:"অধ্যায় ১",
+     desc:"প্রথম অধ্যায়",
+     notes:"এখানে নোট লিখুন।",
+     pdf:"",
+     video:"",
+     questions:[]
+    },
+    {
+     title:"অধ্যায় ২",
+     desc:"দ্বিতীয় অধ্যায়",
+     notes:"এখানে নোট লিখুন।",
+     pdf:"",
+     video:"",
+     questions:[]
+    }
+   ]
+  },
 
-const syllabus={
+  "11":{
+   name:"একাদশ শ্রেণি",
+   desc:"একাদশ শ্রেণির বাংলা",
+   chapters:[
+    {
+     title:"অধ্যায় ১",
+     desc:"প্রথম অধ্যায়",
+     notes:"এখানে নোট লিখুন।",
+     pdf:"",
+     video:"",
+     questions:[]
+    }
+   ]
+  },
 
-"9":{
-title:"নবম শ্রেণি",
-board:"WBBSE",
-sem:"পর্যায়ক্রমিক মূল্যায়ন",
+  "12":{
+   name:"দ্বাদশ শ্রেণি",
+   desc:"উচ্চমাধ্যমিকের বাংলা",
+   chapters:[
+    {
+     title:"অধ্যায় ১",
+     desc:"প্রথম অধ্যায়",
+     notes:"এখানে নোট লিখুন।",
+     pdf:"",
+     video:"",
+     questions:[]
+    }
+   ]
+  }
 
-literature:[
-"ইলিয়াস","দাম","কলিঙ্গদেশে ঝড়-বৃষ্টি","ধীবর-বৃত্তান্ত",
-"নোঙর","নব নব সৃষ্টি","আকাশে সাতটি তারা","চিঠি",
-"আবহমান","রাধারাণী","হিমালয় দর্শন","খেয়া",
-"নিরুদ্দেশ","ভাঙার গান","চন্দ্রনাথ",
-"প্রফেসর শঙ্কুর ডাইরি — ব্যোমযাত্রীর ডায়রি",
-"প্রফেসর শঙ্কুর ডাইরি — কর্ভাস",
-"প্রফেসর শঙ্কুর ডাইরি — স্বর্ণপর্ণী"
-],
+ },
 
-grammar:[
-"ধ্বনি ও ধ্বনি পরিবর্তনের কারণ ও ধারা",
-"সন্ধি",
-"বাংলা শব্দ গঠনের প্রক্রিয়া : উপসর্গ ও অনুসর্গ",
-"প্রত্যয়","বাংলা শব্দভাণ্ডার",
-"বাংলা পদ পরিচয় (নামপদ)",
-"ধাতু ও ক্রিয়া"
-],
+ models:[
+  {
+   title:"মডেল সেট ১",
+   text:"বাংলা বিষয়ের গুরুত্বপূর্ণ মডেল প্রশ্নপত্র।",
+   link:""
+  },
+  {
+   title:"মডেল সেট ২",
+   text:"পরীক্ষার প্রস্তুতির জন্য মডেল সেট।",
+   link:""
+  }
+ ],
 
-writing:[
-"ভাবসম্প্রসারণ","ভাবার্থ","সারাংশ","গল্প লিখন"
-]
-},
+ links:[
+  {
+   title:"WBCHSE",
+   text:"উচ্চমাধ্যমিক সংক্রান্ত গুরুত্বপূর্ণ লিংক।",
+   link:"https://wbchse.wb.gov.in/"
+  },
+  {
+   title:"WBBSE",
+   text:"মাধ্যমিক সংক্রান্ত গুরুত্বপূর্ণ লিংক।",
+   link:"https://wbbse.wb.gov.in/"
+  }
+ ],
 
-"10":{
-title:"দশম শ্রেণি",
-board:"WBBSE",
-sem:"মাধ্যমিক প্রস্তুতি",
-
-literature:[
-"জ্ঞানচক্ষু","বহুরূপী","পথের দাবী",
-"নদীর বিদ্রোহ","অদল বদল",
-"অসুখী একজন","আয় আরো বেঁধে বেঁধে থাকি",
-"আফ্রিকা","অভিষেক","প্রলয়োল্লাস",
-"অস্ত্রের বিরুদ্ধে গান","সিন্ধুতীরে",
-"হারিয়ে যাওয়া কালি কলম","বাংলা ভাষায় বিজ্ঞান",
-"সিরাজদ্দৌলা","কোনি"
-],
-
-grammar:[
-"কারক ও বিভক্তি",
-"সমাস পরিচয়",
-"বাক্য ও বাক্য পরিবর্তন",
-"বাচ্য ও বাচ্য পরিবর্তন"
-],
-
-writing:[
-"ইংরেজি থেকে বাংলায় অনুবাদ (E TO B)",
-"প্রতিবেদন রচনা","সংলাপ রচনা"
-]
-},
-
-"11":{
-title:"একাদশ শ্রেণি",
-board:"WBCHSE",
-sem:"Semester I & II",
-
-literature:[
-"পুঁইমাচা","বিড়াল","ঈশ্বরচন্দ্র বিদ্যাসাগর",
-"সাম্যবাদী","বিশাল ডানাওয়ালা এক থুথুরে বুড়ো",
-"চারণ কবি","ছুটি","তেলেনাপোতা আবিষ্কার",
-"ভাব সম্মিলন","লালন শাহ ফকিরের গান",
-"নুন","আগুন",
-"পঞ্চতন্ত্র — বই কেনা; আজব শহর কলকেতা; পঁচিশে বৈশাখ; আড্ডা"
-],
-
-grammar:[
-"বিশ্বের ভাষা ও ভাষা পরিবার",
-"বাংলা ভাষার উদ্ভব ও ক্রমবিকাশ",
-"ভারতে প্রচলিত ভাষা পরিবার",
-"বাংলা ভাষার বৈচিত্র্য"
-],
-
-writing:[
-"প্রবন্ধ রচনা","মানস মানচিত্রের সাহায্যে প্রবন্ধ রচনা",
-"বিতর্কমূলক প্রবন্ধ রচনা","সটীক অনুবাদ",
-"সাক্ষাৎকার গ্রহণ","প্রতিবেদন রচনা",
-"স্বরচিত গল্প লিখন","প্রুফ সংশোধন"
-]
-},
-
-"12":{
-title:"দ্বাদশ শ্রেণি",
-board:"WBCHSE",
-sem:"Semester III & IV",
-
-literature:[
-"আদরিণী","ধর্ম","দিগ্বিজয়ের রূপকথা",
-"বাঙ্গালা ভাষা","পোটরাজ","তার সঙ্গে",
-"হলুদ পোড়া","হারুন সালেমের মাসি",
-"প্রার্থনা","তিমির হননের গান","কেন এল না",
-"নানা রঙের দিন","ডাকঘর"
-],
-
-grammar:[
-"ভাষাবিজ্ঞান ও তার শাখা-প্রশাখা",
-"ধ্বনিতত্ত্ব","শব্দার্থতত্ত্ব"
-],
-
-writing:[
-"সূত্রনির্ভর প্রবন্ধ রচনা",
-"প্রস্তাবনা/ভূমিকানির্ভর প্রবন্ধ রচনা"
-],
-
-history:[
-"বাংলা গানের ধারা — সংক্ষিপ্ত রূপরেখা",
-"বাঙালির বিজ্ঞানচর্চার সংক্ষিপ্ত পরিচিতি",
-"বাঙালির ক্রীড়া সংস্কৃতি",
-"বাংলা চিত্রকলার ইতিহাস — সংক্ষিপ্ত রূপরেখা",
-"বাঙালির চলচ্চিত্রের ইতিহাস — সংক্ষিপ্ত রূপরেখা"
-]
-}
+ freeClass:[
+  {
+   title:"Free Class 1",
+   text:"বিনামূল্যে বাংলা ক্লাস।",
+   video:""
+  },
+  {
+   title:"Free Class 2",
+   text:"বিনামূল্যে বাংলা ক্লাস।",
+   video:""
+  }
+ ]
 
 };
 
 
-/* =========================
-   SAVE
-========================= */
+/* =========================================================
+   BASIC NAVIGATION
+   ========================================================= */
 
-function save(){
-localStorage.setItem(STORE,JSON.stringify(data));
+function home(){
+ closeDrawer();
+
+ let html=`
+ <div class="container">
+
+  <section class="hero">
+   <img src="banner.png"
+        alt="বাংলা পাঠশালা ব্যানার"
+        onerror="this.style.display='none'">
+  </section>
+
+  <div class="notice" onclick="showPage('notice')">
+   📢 <b>নোটিশ:</b>
+   পরীক্ষার রুটিন ও গুরুত্বপূর্ণ আপডেট দেখতে Notice Board দেখুন।
+  </div>
+
+  <h2 class="sectionTitle">🚀 দ্রুত প্রবেশ</h2>
+
+  <div class="quickGrid">
+
+   ${quickCard("📚","All Courses","সমস্ত কোর্স দেখুন","showPage('courses')")}
+
+   ${quickCard("📢","Notice Board","নোটিশ দেখুন","showPage('notice')")}
+
+   ${quickCard("💻","Free Class","ফ্রি ক্লাস দেখুন","showPage('freeclass')")}
+
+   ${quickCard("📝","Free MCQ Test","ফ্রি MCQ টেস্ট দিন","showPage('test')")}
+
+   ${quickCard("📄","Free PDF","Study Material দেখুন","showPage('pdf')")}
+
+   ${quickCard("🔗","Important Links","গুরুত্বপূর্ণ লিংকসমূহ","showPage('links')")}
+
+  </div>
+
+  <h2 class="sectionTitle">📚 শ্রেণি অনুযায়ী পড়াশোনা</h2>
+  <p class="sectionSub">আপনার শ্রেণি নির্বাচন করে বাংলা বিষয়ের প্রস্তুতি নিন।</p>
+
+  <div class="classGrid">
+   ${Object.entries(DATA.classes).map(([id,c])=>`
+    <div class="classCard">
+     <h3>${esc(c.name)}</h3>
+     <p>${esc(c.desc)}</p>
+     <button class="btn" onclick="openClass('${id}')">প্রবেশ করুন</button>
+    </div>
+   `).join("")}
+  </div>
+
+  <h2 class="sectionTitle">📝 গুরুত্বপূর্ণ Model Set</h2>
+
+  <div class="modelGrid">
+   ${DATA.models.map((m,i)=>`
+    <div class="card">
+     <h3>📑 ${esc(m.title)}</h3>
+     <p>${esc(m.text)}</p>
+     ${m.link
+       ? `<a class="btn" href="${escAttr(m.link)}" target="_blank">দেখুন</a>`
+       : `<button class="btn yellow" onclick="alert('Model Set শীঘ্রই যোগ করা হবে।')">দেখুন</button>`
+     }
+    </div>
+   `).join("")}
+  </div>
+
+ </div>`;
+
+ document.getElementById("app").innerHTML=html;
+ window.scrollTo(0,0);
 }
 
 
-/* =========================
-   NAVIGATION
-========================= */
+/* QUICK CARD */
+
+function quickCard(icon,title,text,action){
+ return `
+ <div class="quickCard" onclick="${action}">
+  <div class="quickIcon">${icon}</div>
+  <h3>${title}</h3>
+  <p>${text}</p>
+ </div>`;
+}
+
+
+/* =========================================================
+   COURSES
+   ========================================================= */
+
+function openClass(id){
+ closeDrawer();
+
+ const c=DATA.classes[id];
+
+ let html=`
+ <div class="container page">
+
+  <div class="pageHead">
+   <div>
+    <h1>${esc(c.name)}</h1>
+    <p>${esc(c.desc)}</p>
+   </div>
+   <button class="back" onclick="showPage('courses')">← সব কোর্স</button>
+  </div>
+
+  <div class="chapterGrid">
+   ${c.chapters.map((ch,i)=>`
+    <div class="chapter"
+         onclick="openChapter('${id}',${i})">
+     <h3>📖 ${esc(ch.title)}</h3>
+     <p>${esc(ch.desc)}</p>
+    </div>
+   `).join("")}
+  </div>
+
+ </div>`;
+
+ document.getElementById("app").innerHTML=html;
+ window.scrollTo(0,0);
+}
+
+
+function showPage(page){
+
+ closeDrawer();
+
+ if(page==="courses"){
+  renderCourses();
+  return;
+ }
+
+ if(page==="notice"){
+  renderNotice();
+  return;
+ }
+
+ if(page==="freeclass"){
+  renderFreeClass();
+  return;
+ }
+
+ if(page==="test"){
+  renderTest();
+  return;
+ }
+
+ if(page==="pdf"){
+  renderPDF();
+  return;
+ }
+
+ if(page==="links"){
+  renderLinks();
+  return;
+ }
+
+ if(page==="models"){
+  renderModels();
+  return;
+ }
+
+ if(page==="help"){
+  renderHelp();
+  return;
+ }
+
+ if(page==="mycourses"){
+  renderMyCourses();
+  return;
+ }
+
+ if(page==="college"){
+  renderCollege();
+  return;
+ }
+
+ home();
+}
+
+
+function renderCourses(){
+
+ let html=`
+ <div class="container page">
+
+  <div class="pageHead">
+   <div>
+    <h1>📚 All Courses</h1>
+    <p>সমস্ত কোর্স দেখুন এবং অধ্যায় নির্বাচন করুন।</p>
+   </div>
+   <button class="back" onclick="home()">← Home</button>
+  </div>
+
+  <div class="classGrid">
+   ${Object.entries(DATA.classes).map(([id,c])=>`
+    <div class="classCard">
+     <h3>${esc(c.name)}</h3>
+     <p>${esc(c.desc)}</p>
+     <button class="btn" onclick="openClass('${id}')">কোর্স খুলুন</button>
+    </div>
+   `).join("")}
+  </div>
+
+ </div>`;
+
+ document.getElementById("app").innerHTML=html;
+ window.scrollTo(0,0);
+}
+
+
+/* =========================================================
+   CHAPTER
+   ========================================================= */
+
+function openChapter(classId,index){
+
+ const c=DATA.classes[classId];
+ const ch=c.chapters[index];
+
+ let html=`
+ <div class="container page">
+
+  <div class="pageHead">
+   <div>
+    <h1>📖 ${esc(ch.title)}</h1>
+    <p>${esc(c.name)}</p>
+   </div>
+
+   <button class="back" onclick="openClass('${classId}')">
+    ← অধ্যায়
+   </button>
+  </div>
+
+  <div class="optionGrid">
+
+   <div class="option">
+    <div class="optionIcon">📒</div>
+    <h3>Notes</h3>
+    <p>${ch.notes ? "নোট দেওয়া আছে" : "নোট পরে যোগ হবে"}</p>
+    <button class="btn" onclick="showNotes('${classId}',${index})">
+     নোট খুলুন
+    </button>
+   </div>
+
+   <div class="option">
+    <div class="optionIcon">📄</div>
+    <h3>PDF</h3>
+    <p>${ch.pdf ? "PDF দেওয়া আছে" : "PDF পরে যোগ হবে"}</p>
+    <button class="btn red" onclick="showPDF('${classId}',${index})">
+     PDF দেখুন
+    </button>
+   </div>
+
+   <div class="option">
+    <div class="optionIcon">🎥</div>
+    <h3>Grammar / Video</h3>
+    <p>${ch.video ? "ভিডিও দেওয়া আছে" : "ভিডিও পরে যোগ হবে"}</p>
+    <button class="btn green" onclick="showVideo('${classId}',${index})">
+     ভিডিও দেখুন
+    </button>
+   </div>
+
+  </div>
+
+  <div class="card" style="margin-top:18px">
+   <h2>📝 অধ্যায়ের প্রশ্ন ও উত্তর</h2>
+
+   ${
+    ch.questions && ch.questions.length
+    ?
+    ch.questions.map((q,i)=>`
+     <div class="answer">
+      <div class="answerTitle">
+       প্রশ্ন ${i+1}: ${esc(q.q)}
+      </div>
+      <p>${esc(q.a)}</p>
+     </div>
+    `).join("")
+    :
+    `<div class="empty">এই অধ্যায়ের প্রশ্ন-উত্তর পরে যোগ করা হবে।</div>`
+   }
+
+  </div>
+
+ </div>`;
+
+ document.getElementById("app").innerHTML=html;
+ window.scrollTo(0,0);
+}
+
+
+/* =========================================================
+   NOTES
+   ========================================================= */
+
+function showNotes(classId,index){
+
+ const ch=DATA.classes[classId].chapters[index];
+
+ openModal(`
+  <div class="modalHead">
+   <h2>📒 ${esc(ch.title)} — Notes</h2>
+  </div>
+
+  <div class="card">
+   ${
+    ch.notes
+    ? `<div style="white-space:pre-wrap">${esc(ch.notes)}</div>`
+    : `<div class="empty">এই অধ্যায়ের Notes এখনো যোগ করা হয়নি।</div>`
+   }
+  </div>
+ `);
+}
+
+
+/* =========================================================
+   PDF
+   ========================================================= */
+
+function showPDF(classId,index){
+
+ const ch=DATA.classes[classId].chapters[index];
+
+ if(!ch.pdf){
+  openModal(`
+   <div class="modalHead"><h2>📄 PDF</h2></div>
+   <div class="empty">এই অধ্যায়ের PDF এখনো যোগ করা হয়নি।</div>
+  `);
+  return;
+ }
+
+ openModal(`
+  <div class="modalHead">
+   <h2>📄 ${esc(ch.title)} — PDF</h2>
+  </div>
+
+  <p>PDF খুলতে নিচের বোতামে চাপুন।</p>
+
+  <a class="btn red"
+     href="${escAttr(ch.pdf)}"
+     target="_blank"
+     rel="noopener">
+     PDF খুলুন
+  </a>
+ `);
+}
+
+
+/* =========================================================
+   VIDEO / GRAMMAR
+   ========================================================= */
+
+function showVideo(classId,index){
+
+ const ch=DATA.classes[classId].chapters[index];
+
+ if(!ch.video){
+  openModal(`
+   <div class="modalHead"><h2>🎥 Grammar / Video</h2></div>
+   <div class="empty">এই অধ্যায়ের ভিডিও এখনো যোগ করা হয়নি।</div>
+  `);
+  return;
+ }
+
+ let videoUrl=ch.video;
+
+ if(videoUrl.includes("youtube.com/watch?v=")){
+  videoUrl=videoUrl.replace("https://www.youtube.com/watch?v=",
+                            "https://www.youtube.com/embed/");
+ }
+
+ if(videoUrl.includes("youtu.be/")){
+  videoUrl=videoUrl.replace("https://youtu.be/",
+                            "https://www.youtube.com/embed/");
+ }
+
+ openModal(`
+  <div class="modalHead">
+   <h2>🎥 ${esc(ch.title)} — Grammar / Video</h2>
+  </div>
+
+  <div class="videoBox">
+   <iframe
+    src="${escAttr(videoUrl)}"
+    allowfullscreen>
+   </iframe>
+  </div>
+
+  <p style="margin-top:14px">
+   <a class="btn green"
+      href="${escAttr(ch.video)}"
+      target="_blank"
+      rel="noopener">
+      YouTube / Video খুলুন
+   </a>
+  </p>
+ `);
+}
+
+
+/* =========================================================
+   NOTICE
+   ========================================================= */
+
+function renderNotice(){
+
+ let html=`
+ <div class="container page">
+
+  <div class="pageHead">
+   <div>
+    <h1>📢 Notice Board</h1>
+    <p>গুরুত্বপূর্ণ নোটিশ ও পরীক্ষার আপডেট।</p>
+   </div>
+   <button class="back" onclick="home()">← Home</button>
+  </div>
+
+  <div class="noticeGrid">
+   ${DATA.notice.map(n=>`
+    <div class="card">
+     <h3>📢 ${esc(n.title)}</h3>
+     <p>${esc(n.text)}</p>
+    </div>
+   `).join("")}
+  </div>
+
+ </div>`;
+
+ document.getElementById("app").innerHTML=html;
+ window.scrollTo(0,0);
+}
+
+
+/* =========================================================
+   FREE CLASS
+   ========================================================= */
+
+function renderFreeClass(){
+
+ let html=`
+ <div class="container page">
+
+  <div class="pageHead">
+   <div>
+    <h1>💻 Free Class</h1>
+    <p>বিনামূল্যে বাংলা ক্লাস।</p>
+   </div>
+   <button class="back" onclick="home()">← Home</button>
+  </div>
+
+  <div class="modelGrid">
+
+   ${DATA.freeClass.map((x,i)=>`
+    <div class="card">
+     <h3>🎥 ${esc(x.title)}</h3>
+     <p>${esc(x.text)}</p>
+
+     ${
+      x.video
+      ?
+      `<button class="btn green"
+       onclick="openVideoURL('${escAttr(x.video)}')">
+       ক্লাস দেখুন
+       </button>`
+      :
+      `<button class="btn"
+       onclick="alert('Free Class শীঘ্রই যোগ করা হবে।')">
+       দেখুন
+       </button>`
+     }
+
+    </div>
+   `).join("")}
+
+  </div>
+
+ </div>`;
+
+ document.getElementById("app").innerHTML=html;
+ window.scrollTo(0,0);
+}
+
+
+function openVideoURL(url){
+
+ let u=url;
+
+ if(u.includes("youtube.com/watch?v=")){
+  u=u.replace("https://www.youtube.com/watch?v=",
+              "https://www.youtube.com/embed/");
+ }
+
+ if(u.includes("youtu.be/")){
+  u=u.replace("https://youtu.be/",
+              "https://www.youtube.com/embed/");
+ }
+
+ openModal(`
+  <div class="modalHead"><h2>🎥 Free Class</h2></div>
+  <div class="videoBox">
+   <iframe src="${escAttr(u)}" allowfullscreen></iframe>
+  </div>
+ `);
+}
+
+
+/* =========================================================
+   PDF PAGE
+   ========================================================= */
+
+function renderPDF(){
+
+ let items=[];
+
+ Object.entries(DATA.classes).forEach(([id,c])=>{
+  c.chapters.forEach((ch,i)=>{
+   if(ch.pdf){
+    items.push(`
+     <div class="card">
+      <h3>📄 ${esc(c.name)} — ${esc(ch.title)}</h3>
+      <a class="btn red"
+         href="${escAttr(ch.pdf)}"
+         target="_blank">
+         PDF খুলুন
+      </a>
+     </div>
+    `);
+   }
+  });
+ });
+
+ document.getElementById("app").innerHTML=`
+ <div class="container page">
+
+  <div class="pageHead">
+   <div>
+    <h1>📄 Free PDF</h1>
+    <p>সমস্ত available Study Material।</p>
+   </div>
+   <button class="back" onclick="home()">← Home</button>
+  </div>
+
+  <div class="modelGrid">
+   ${
+    items.length
+    ? items.join("")
+    : `<div class="empty">এখনো কোনো PDF যোগ করা হয়নি।</div>`
+   }
+  </div>
+
+ </div>`;
+
+ window.scrollTo(0,0);
+}
+
+
+/* =========================================================
+   TEST
+   ========================================================= */
+
+function renderTest(){
+
+ let html=`
+ <div class="container page">
+
+  <div class="pageHead">
+   <div>
+    <h1>📝 Free MCQ Test</h1>
+    <p>বাংলা বিষয়ের অনুশীলন করুন।</p>
+   </div>
+   <button class="back" onclick="home()">← Home</button>
+  </div>
+
+  <div class="card">
+   <h2>MCQ Test</h2>
+   <p>
+    অধ্যায়ভিত্তিক MCQ এখানে যোগ করা যাবে।
+   </p>
+   <button class="btn" onclick="alert('MCQ Test শীঘ্রই চালু করা হবে।')">
+    Test শুরু করুন
+   </button>
+  </div>
+
+ </div>`;
+
+ document.getElementById("app").innerHTML=html;
+ window.scrollTo(0,0);
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+function renderLinks(){
+
+ document.getElementById("app").innerHTML=`
+ <div class="container page">
+
+  <div class="pageHead">
+   <div>
+    <h1>🔗 Important Links</h1>
+    <p>গুরুত্বপূর্ণ শিক্ষামূলক লিংক।</p>
+   </div>
+   <button class="back" onclick="home()">← Home</button>
+  </div>
+
+  <div class="linkGrid">
+
+   ${DATA.links.map(x=>`
+    <div class="card">
+     <h3>🔗 ${esc(x.title)}</h3>
+     <p>${esc(x.text)}</p>
+
+     <a class="btn"
+        href="${escAttr(x.link)}"
+        target="_blank"
+        rel="noopener">
+        Link খুলুন
+     </a>
+    </div>
+   `).join("")}
+
+  </div>
+
+ </div>`;
+
+ window.scrollTo(0,0);
+}
+
+
+/* =========================================================
+   MODEL SET
+   ========================================================= */
+
+function renderModels(){
+
+ document.getElementById("app").innerHTML=`
+ <div class="container page">
+
+  <div class="pageHead">
+   <div>
+    <h1>📑 Model Set</h1>
+    <p>পরীক্ষার প্রস্তুতির জন্য গুরুত্বপূর্ণ মডেল সেট।</p>
+   </div>
+   <button class="back" onclick="home()">← Home</button>
+  </div>
+
+  <div class="modelGrid">
+
+   ${DATA.models.map(x=>`
+    <div class="card">
+     <h3>📑 ${esc(x.title)}</h3>
+     <p>${esc(x.text)}</p>
+
+     ${
+      x.link
+      ?
+      `<a class="btn yellow"
+       href="${escAttr(x.link)}"
+       target="_blank">
+       দেখুন
+       </a>`
+      :
+      `<button class="btn yellow"
+       onclick="alert('Model Set শীঘ্রই যোগ করা হবে।')">
+       দেখুন
+       </button>`
+     }
+
+    </div>
+   `).join("")}
+
+  </div>
+
+ </div>`;
+
+ window.scrollTo(0,0);
+}
+
+
+/* =========================================================
+   HELP
+   ========================================================= */
+
+function renderHelp(){
+
+ document.getElementById("app").innerHTML=`
+ <div class="container page">
+
+  <div class="pageHead">
+   <div>
+    <h1>❓ Help</h1>
+    <p>অ্যাপ ব্যবহার করার নিয়ম।</p>
+   </div>
+   <button class="back" onclick="home()">← Home</button>
+  </div>
+
+  <div class="card">
+
+   <h3>📚 Course</h3>
+   <p>
+    All Courses থেকে শ্রেণি নির্বাচন করুন।
+    তারপর অধ্যায় নির্বাচন করুন।
+   </p>
+
+   <h3>📒 Notes</h3>
+   <p>প্রতিটি অধ্যায়ে Notes বোতামে চাপলে নোট দেখা যাবে।</p>
+
+   <h3>📄 PDF</h3>
+   <p>PDF বোতাম থেকে Study Material খুলবে।</p>
+
+   <h3>🎥 Grammar / Video</h3>
+   <p>প্রতিটি অধ্যায়ের Grammar বা Video এখান থেকেই দেখা যাবে।</p>
+
+  </div>
+
+ </div>`;
+
+ window.scrollTo(0,0);
+}
+
+
+/* =========================================================
+   MY COURSES
+   ========================================================= */
+
+function renderMyCourses(){
+
+ document.getElementById("app").innerHTML=`
+ <div class="container page">
+
+  <div class="pageHead">
+   <div>
+    <h1>📖 My Courses</h1>
+    <p>আপনার কোর্স।</p>
+   </div>
+   <button class="back" onclick="home()">← Home</button>
+  </div>
+
+  <div class="empty">
+   Login করার পর আপনার নির্বাচিত কোর্স এখানে দেখা যাবে।
+  </div>
+
+ </div>`;
+
+ window.scrollTo(0,0);
+}
+
+
+/* =========================================================
+   COLLEGE
+   ========================================================= */
+
+function renderCollege(){
+
+ document.getElementById("app").innerHTML=`
+ <div class="container page">
+
+  <div class="pageHead">
+   <div>
+    <h1>🎓 College</h1>
+    <p>কলেজ ও ভর্তি সংক্রান্ত তথ্য।</p>
+   </div>
+   <button class="back" onclick="home()">← Home</button>
+  </div>
+
+  <div class="card">
+   <h3>🎓 College Admission</h3>
+   <p>
+    কলেজ ভর্তি সংক্রান্ত গুরুত্বপূর্ণ তথ্য এখানে প্রকাশ করা হবে।
+   </p>
+  </div>
+
+ </div>`;
+
+ window.scrollTo(0,0);
+}
+
+
+/* =========================================================
+   LOGIN / LOGOUT
+   ========================================================= */
+
+function login(){
+
+ closeDrawer();
+
+ const logged=localStorage.getItem("bp_logged");
+
+ if(logged==="1"){
+  openModal(`
+   <div class="modalHead">
+    <h2>👤 Account</h2>
+   </div>
+
+   <p>আপনি বর্তমানে Login করা অবস্থায় আছেন।</p>
+
+   <button class="btn red" onclick="logout()">
+    Logout
+   </button>
+  `);
+  return;
+ }
+
+ openModal(`
+  <div class="modalHead">
+   <h2>🔐 Login</h2>
+  </div>
+
+  <label>নাম / মোবাইল</label>
+  <input id="loginName"
+         class="input"
+         placeholder="আপনার নাম লিখুন">
+
+  <label>Password</label>
+  <input id="loginPassword"
+         class="input"
+         type="password"
+         placeholder="Password">
+
+  <button class="btn green" onclick="doLogin()">
+   Login
+  </button>
+
+  <p style="color:#667788;font-size:13px">
+   এটি অ্যাপের local login system।
+  </p>
+ `);
+}
+
+
+function doLogin(){
+
+ const name=document.getElementById("loginName").value.trim();
+
+ if(!name){
+  alert("নাম লিখুন।");
+  return;
+ }
+
+ localStorage.setItem("bp_logged","1");
+ localStorage.setItem("bp_name",name);
+
+ updateLoginButton();
+ closeModal();
+
+ alert("Login সফল হয়েছে।");
+}
+
+
+function logout(){
+
+ localStorage.removeItem("bp_logged");
+ localStorage.removeItem("bp_name");
+
+ updateLoginButton();
+ closeModal();
+
+ alert("Logout হয়েছে।");
+}
+
+
+function updateLoginButton(){
+
+ const btn=document.getElementById("loginBtn");
+
+ if(!btn)return;
+
+ if(localStorage.getItem("bp_logged")==="1"){
+  btn.textContent="Logout";
+  btn.classList.remove("loginBtn");
+  btn.classList.add("logoutBtn");
+ }else{
+  btn.textContent="Login";
+  btn.classList.remove("logoutBtn");
+  btn.classList.add("loginBtn");
+ }
+}
+
+
+/* =========================================================
+   DRAWER
+   ========================================================= */
 
 function openDrawer(){
-document.getElementById("drawer").classList.add("open");
-document.getElementById("overlay").classList.add("show");
+ document.getElementById("drawer").classList.add("open");
+ document.getElementById("drawerOverlay").classList.add("show");
 }
 
 function closeDrawer(){
-document.getElementById("drawer").classList.remove("open");
-document.getElementById("overlay").classList.remove("show");
+ document.getElementById("drawer").classList.remove("open");
+ document.getElementById("drawerOverlay").classList.remove("show");
 }
 
-function home(){
-document.getElementById("homeView").classList.remove("hidden");
-document.getElementById("pageView").classList.add("hidden");
-window.scrollTo(0,0);
-renderHome();
-}
 
-function page(title,html){
-document.getElementById("homeView").classList.add("hidden");
-let p=document.getElementById("pageView");
-p.classList.remove("hidden");
-p.innerHTML=
-`<button class="back" onclick="home()">← হোমে ফিরুন</button>
-<h1 class="title">${title}</h1>${html}`;
-window.scrollTo(0,0);
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+function openModal(content){
+
+ document.getElementById("modalBox").innerHTML=`
+  <button class="close" onclick="closeModal()">×</button>
+  ${content}
+ `;
+
+ document.getElementById("modal").classList.add("show");
 }
 
 function closeModal(){
-document.getElementById("modal").classList.add("hidden");
+ document.getElementById("modal").classList.remove("show");
+ document.getElementById("modalBox").innerHTML="";
 }
 
-function openModal(html){
-document.getElementById("modal").classList.remove("hidden");
-document.getElementById("modalBox").innerHTML=html;
+document.getElementById("modal").addEventListener("click",function(e){
+ if(e.target===this)closeModal();
+});
+
+
+/* =========================================================
+   SECURITY / SCREENSHOT DETERRENTS
+   ========================================================= */
+
+document.addEventListener("contextmenu",function(e){
+ e.preventDefault();
+});
+
+document.addEventListener("selectstart",function(e){
+ e.preventDefault();
+});
+
+document.addEventListener("dragstart",function(e){
+ e.preventDefault();
+});
+
+document.addEventListener("keydown",function(e){
+
+ if(
+  e.key==="F12" ||
+  (e.ctrlKey && e.shiftKey && ["I","J","C"].includes(e.key.toUpperCase())) ||
+  (e.ctrlKey && ["U","S","P"].includes(e.key.toUpperCase()))
+ ){
+  e.preventDefault();
+ }
+
+});
+
+
+/* =========================================================
+   SAFE TEXT
+   ========================================================= */
+
+function esc(value){
+
+ return String(value ?? "")
+  .replace(/&/g,"&amp;")
+  .replace(/</g,"&lt;")
+  .replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;")
+  .replace(/'/g,"&#039;");
 }
 
-
-/* =========================
-   HOME
-========================= */
-
-function renderHome(){
-
-let grid=document.getElementById("classGrid");
-
-grid.innerHTML=Object.entries(syllabus).map(([k,v])=>`
-<div class="classcard">
-<div class="classnum">${k}</div>
-<h3>${v.title}</h3>
-<p>${v.board} • ${v.sem}</p>
-<button class="btn" onclick="classPage('${k}')">
-প্রবেশ করুন →
-</button>
-</div>
-`).join("");
-
-let mg=document.getElementById("modelGrid");
-
-mg.innerHTML=`
-<div class="model"><span>নবম শ্রেণি — গুরুত্বপূর্ণ Model Set</span><span class="badge">10টি</span></div>
-<div class="model"><span>দশম — মাধ্যমিক Model Set</span><span class="badge">10টি</span></div>
-<div class="model"><span>একাদশ — প্রথম সেমিস্টার</span><span class="badge">10টি</span></div>
-<div class="model"><span>একাদশ — দ্বিতীয় সেমিস্টার</span><span class="badge">10টি</span></div>
-<div class="model"><span>দ্বাদশ — তৃতীয় সেমিস্টার</span><span class="badge">10টি</span></div>
-<div class="model"><span>দ্বাদশ — চতুর্থ সেমিস্টার</span><span class="badge">10টি</span></div>
-`;
-
-document.getElementById("loginBtn").classList.toggle("hidden",data.logged);
-document.getElementById("logoutBtn").classList.toggle("hidden",!data.logged);
-}
-
-
-/* =========================
-   CLASS
-========================= */
-
-function classPage(k){
-
-currentClass=k;
-let v=syllabus[k];
-
-let html=`
-<p class="sub">${v.board} • ${v.sem}</p>
-
-<h2 class="title">📚 সাহিত্য</h2>
-
-<div class="chapters">
-${v.literature.map(x=>`
-<div class="chapter">
-<div>
-<h3>${x}</h3>
-<p>পাঠ্য আলোচনা ও প্রস্তুতি</p>
-</div>
-<button class="btn" onclick="chapter('${k}','${safe(x)}')">
-অধ্যায় খুলুন
-</button>
-</div>
-`).join("")}
-</div>
-
-<h2 class="title">📘 বাংলা ব্যাকরণ</h2>
-
-<div class="quick">
-${v.grammar.map(x=>`
-<div class="quickcard">
-<div class="quickicon">📘</div>
-<h3>${x}</h3>
-<p>ব্যাকরণ + ভিডিও + নোট</p>
-<button class="btn" onclick="chapter('${k}','${safe(x)}')">
-দেখুন
-</button>
-</div>
-`).join("")}
-</div>
-
-<h2 class="title">✍️ নির্মিতি</h2>
-
-<div class="quick">
-${v.writing.map(x=>`
-<div class="quickcard">
-<div class="quickicon">✍️</div>
-<h3>${x}</h3>
-<p>লিখন অনুশীলন</p>
-<button class="btn" onclick="chapter('${k}','${safe(x)}')">
-দেখুন
-</button>
-</div>
-`).join("")}
-</div>
-
-${v.history?`
-<h2 class="title">🏛️ ইতিহাস ও সংস্কৃতি</h2>
-<div class="quick">
-${v.history.map(x=>`
-<div class="quickcard">
-<div class="quickicon">🏛️</div>
-<h3>${x}</h3>
-<p>আলোচনা ও প্রস্তুতি</p>
-<button class="btn" onclick="chapter('${k}','${safe(x)}')">
-দেখুন
-</button>
-</div>
-`).join("")}
-</div>
-`:""}
-`;
-
-page(v.title,html);
+function escAttr(value){
+ return esc(value).replace(/`/g,"&#096;");
 }
 
 
-/* =========================
-   CHAPTER
-========================= */
+/* =========================================================
+   START APP
+   ========================================================= */
 
-function safe(x){
-return x.replace(/'/g,"\\'");
-}
+updateLoginButton();
+home();
 
-function chapter(k,ch){
+</script>
 
-currentClass=k;
-currentChapter=ch;
+<nav class="bottomNav">
 
-let note=data.notes.find(n=>n.class===k&&n.chapter===ch);
-let vids=data.videos.filter(v=>v.class===k&&v.chapter===ch);
-let pdfs=data.pdfs.filter(v=>v.class===k&&v.chapter===ch);
-let qs=data.questions.filter(q=>q.class===k&&q.chapter===ch);
+ <button onclick="home()" class="active">
+  <span class="ico">🏠</span>
+  Home
+ </button>
 
-openModal(`
-<div class="modalhead">
-<div>
-<h2>${ch}</h2>
-<p style="color:#64748b">${syllabus[k].title}</p>
-</div>
-<button class="close" onclick="closeModal()">×</button>
-</div>
+ <button onclick="showPage('help')">
+  <span class="ico">❓</span>
+  Help
+ </button>
 
-<div class="options">
+ <button onclick="showPage('mycourses')">
+  <span class="ico">📖</span>
+  My Courses
+ </button>
 
-<div class="option">
-<div class="optionicon">📑</div>
-<h3>Notes</h3>
-<p>${note?"নোট প্রস্তুত আছে":"নোট পরে যোগ হবে"}</p>
-<button class="btn" onclick="showNote()">
-নোট খুলুন
-</button>
-</div>
+ <button onclick="alert('WhatsApp নম্বর DATA-তে যোগ করলে এখানে WhatsApp চালু করা যাবে।')">
+  <span class="ico">🟢</span>
+  WhatsApp
+ </button>
 
-<div class="option">
-<div class="optionicon">📄</div>
-<h3>PDF</h3>
-<p>${pdfs.length?pdfs.length+"টি PDF":"PDF পরে যোগ হবে"}</p>
-<button class="btn red" onclick="showPDFs()">
-PDF দেখুন
-</button>
-</div>
+ <button onclick="alert('Chat বিভাগ শীঘ্রই চালু করা হবে।')">
+  <span class="ico">💬</span>
+  Chat
+ </button>
 
-<div class="option">
-<div class="optionicon">🎥</div>
-<h3>Grammar / Video</h3>
-<p>${vids.length?vi
+</nav>
+
+</body>
+</html>
