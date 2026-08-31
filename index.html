@@ -1,2135 +1,2755 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
-<title>বাংলা পাঠশালা — আশিস হাইত</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#063b72">
+<title>বাংলা পাঠশালা | শিক্ষক : আশিষ হাইত</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800;900&display=swap');
+
 :root{
- --nav:#063b73;
- --blue:#0879d9;
- --purple:#8e20df;
- --green:#06b878;
- --orange:#f2a500;
- --red:#ef3340;
- --cyan:#12a9b6;
- --bg:#f3f7ff;
- --ink:#092f50;
- --muted:#718093;
- --shadow:0 7px 22px rgba(9,47,80,.10)
+ --navy:#063b72;
+ --navy2:#07518f;
+ --blue:#087bd3;
+ --purple:#8b25df;
+ --green:#0bb77a;
+ --orange:#f4a500;
+ --red:#ef3154;
+ --cyan:#16a8b8;
+ --gold:#ffd21a;
+ --bg:#f1f5fb;
+ --text:#092d4b;
+ --muted:#748395;
+ --white:#fff;
+ --line:#dfe7f0;
 }
 
 *{box-sizing:border-box}
-
+html{scroll-behavior:smooth}
 body{
  margin:0;
  background:var(--bg);
- color:var(--ink);
- font:15px/1.55 "Noto Sans Bengali",sans-serif
+ color:var(--text);
+ font-family:"Noto Sans Bengali","Nirmala UI","Hind Siliguri",Arial,sans-serif;
+ font-size:15px;
+ line-height:1.55;
 }
-
 button,input,textarea,select{font:inherit}
-button{cursor:pointer;border:0}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+.hidden{display:none!important}
 
-.top{
+.topbar{
  position:sticky;
  top:0;
- z-index:20;
+ z-index:1000;
  height:64px;
- background:var(--nav);
+ background:var(--navy);
  color:#fff;
+ box-shadow:0 3px 15px #0003;
+}
+.topbar-inner{
+ max-width:1200px;
+ height:100%;
+ margin:auto;
+ padding:0 16px;
  display:flex;
  align-items:center;
- gap:10px;
- padding:7px 12px;
- box-shadow:0 3px 14px #0003
+ gap:14px;
 }
-
-.menu{
- width:46px;
- height:46px;
+.menu-btn{
+ width:48px;
+ height:48px;
+ border:1px solid #1594e9;
  border-radius:15px;
- background:#07528f;
+ background:#07518f;
  color:#fff;
- border:1px solid #1688df;
- font-size:25px
+ font-size:27px;
 }
-
 .brand{
- font-size:21px;
- font-weight:800;
- flex:1
+ font-size:23px;
+ font-weight:900;
+ margin-right:auto;
+ white-space:nowrap;
 }
-
-.brand span{color:#ffd500}
-
-.loginTop,.primary{
- background:#00c98b;
+.brand span{color:var(--gold)}
+.login-btn{
+ border:0;
+ border-radius:15px;
+ background:#06cf88;
  color:#fff;
- font-weight:800;
- border-radius:13px;
- padding:10px 15px
+ font-weight:900;
+ font-size:17px;
+ padding:12px 22px;
 }
+
+.drawer-bg{
+ position:fixed;
+ inset:0;
+ background:#0008;
+ z-index:1900;
+ display:none;
+}
+.drawer-bg.show{display:block}
+.drawer{
+ position:fixed;
+ top:0;
+ left:-330px;
+ width:310px;
+ max-width:86%;
+ height:100vh;
+ background:#fff;
+ z-index:2000;
+ transition:.25s;
+ box-shadow:8px 0 35px #0004;
+ overflow:auto;
+}
+.drawer.open{left:0}
+.drawer-head{
+ background:linear-gradient(135deg,#063b72,#087bd3);
+ color:#fff;
+ padding:25px 20px;
+}
+.drawer-logo{
+ width:65px;
+ height:65px;
+ border-radius:20px;
+ background:#ffffff18;
+ display:grid;
+ place-items:center;
+ font-size:34px;
+ margin-bottom:8px;
+}
+.drawer-head h2{margin:0;font-size:24px}
+.drawer-head p{margin:3px 0 0;color:#dceeff}
+.drawer-nav{padding:12px}
+.drawer-nav button{
+ width:100%;
+ border:0;
+ background:#f5f8fc;
+ color:var(--text);
+ text-align:left;
+ border-radius:12px;
+ padding:13px;
+ margin:4px 0;
+ font-weight:700;
+}
+.drawer-nav button:hover{background:#e8f1fc}
 
 main{
- max-width:1000px;
+ max-width:1200px;
  margin:auto;
- padding:10px 14px 90px
+ padding:0 16px 90px;
 }
 
 /* BANNER */
-.banner{
- background:#073b73;
- border-radius:25px;
+.banner-wrap{
+ margin:12px 0 15px;
+ border-radius:28px;
  overflow:hidden;
- margin:4px 0 14px;
- box-shadow:var(--shadow)
+ background:#063b72;
+ box-shadow:0 8px 25px #183b6b22;
 }
-
-.banner img{
+.banner-img{
+ display:block;
  width:100%;
  height:auto;
- display:block;
- object-fit:contain
+ aspect-ratio:3.42/1;
+ object-fit:cover;
+ object-position:center;
 }
+.banner-fallback{
+ min-height:185px;
+ display:none;
+ align-items:center;
+ justify-content:center;
+ text-align:center;
+ color:#fff;
+ padding:25px;
+ background:linear-gradient(135deg,#063b72,#001c44);
+}
+.banner-fallback h1{
+ font-size:42px;
+ margin:0;
+}
+.banner-fallback span{color:var(--gold)}
+.banner-fallback p{margin:8px 0;font-size:17px}
 
 /* NOTICE */
 .notice{
  background:#fff;
- border-radius:22px;
+ border:1px solid var(--line);
  border-left:6px solid var(--purple);
- padding:13px 15px;
- display:flex;
- gap:9px;
- align-items:center;
- margin-bottom:20px;
- box-shadow:var(--shadow)
-}
-
-.notice .grow{flex:1}
-.notice strong{font-size:16px}
-
-.pill{
- background:var(--purple);
- color:#fff;
- border-radius:11px;
- padding:9px 13px;
- font-weight:700
-}
-
-/* TITLES */
-.title{
- font-size:21px;
- font-weight:800;
- margin:18px 0 9px
-}
-
-.sub{
- color:var(--muted);
- margin:0 0 12px
-}
-
-/* CARDS */
-.grid{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:12px
-}
-
-.card{
- background:#fff;
  border-radius:22px;
- box-shadow:var(--shadow);
- padding:15px;
- min-height:135px;
- border-left:6px solid var(--blue);
- text-align:left
-}
-
-.card h3{
- font-size:17px;
- margin:5px 0
-}
-
-.card p{
- font-size:13px;
- color:var(--muted);
- margin:0
-}
-
-.ico{font-size:30px}
-
-.course{
+ padding:14px 18px;
+ margin:0 0 25px;
+ box-shadow:0 6px 20px #17365d12;
  display:flex;
  align-items:center;
  gap:12px;
- border-top:5px solid var(--blue)
 }
-
-.num{
- background:#eaf4ff;
- border-radius:12px;
- padding:5px 9px;
- font-size:25px;
- font-weight:800
-}
-
-.course b{
- margin-left:auto;
- font-size:23px
-}
-
-/* CHAPTER */
-.chapter{
- border-left:5px solid var(--blue);
- min-height:125px;
- display:flex;
- flex-direction:column;
- justify-content:space-between
-}
-
-.chapter h3{
- font-size:16px;
- margin:0
-}
-
-.chapter button{
- margin-top:10px;
- align-self:flex-start
-}
-
-.back{
- background:#eaf3ff;
- color:var(--nav);
- border-radius:11px;
- padding:8px 12px;
- font-weight:700;
- margin:4px 0 8px
-}
-
-/* DETAIL */
-.detail{
- background:#fff;
- border-radius:22px;
- box-shadow:var(--shadow);
- padding:17px
-}
-
-.detail h1{
- font-size:22px;
- margin:4px 0
-}
-
-.tag{
- display:inline-block;
- background:#eef5ff;
- color:#27669b;
- border-radius:99px;
- padding:4px 9px;
- font-size:12px
-}
-
-.resgrid{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:11px;
- margin-top:14px
-}
-
-.resource{
- background:#f7fbff;
- border:1px solid #dce8f4;
- border-radius:17px;
- padding:13px
-}
-
-.resource h3{
- font-size:16px;
- margin:0 0 5px
-}
-
-.resource p{
- font-size:13px;
- color:var(--muted)
-}
-
-.secondary{
- background:#eef5ff;
- color:var(--ink);
- border:1px solid #d4e3f2;
- border-radius:10px;
- padding:8px 11px;
- font-weight:700
-}
-
-/* MOCK TEST */
-.qbox{
- background:#fff;
- border:1px solid #dce8f4;
- border-radius:17px;
- padding:13px;
- margin:11px 0
-}
-
-.qbox h4{
- font-size:15px;
- margin:0 0 8px
-}
-
-.opt{
- display:block;
- background:#f7faff;
- border:1px solid #dce8f4;
- border-radius:10px;
- padding:8px;
- margin:6px 0
-}
-
-.result{
- background:#edf9f4;
- border-left:5px solid var(--green);
- padding:12px;
- border-radius:14px
-}
-
-.wrong{
- background:#fff1f1;
- border-left-color:var(--red)
-}
-
-.ok{
- color:#008b59;
- font-weight:800
-}
-
-.bad{
- color:#c9232e;
- font-weight:800
-}
-
-/* FORMS */
-.form{
- background:#fff;
- border-radius:22px;
- box-shadow:var(--shadow);
- padding:15px;
- margin:12px 0
-}
-
-label{
- display:block;
- font-weight:700;
- margin:8px 0 4px
-}
-
-input,textarea,select{
- width:100%;
- border:1px solid #cfddea;
- border-radius:10px;
- padding:9px;
- background:#fff;
- color:var(--ink)
-}
-
-textarea{
- min-height:95px
-}
-
-.row{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:9px
-}
-
-.warn{
- background:#fff9e8;
- border-left:5px solid var(--orange);
- padding:10px;
- border-radius:12px;
- font-size:13px
-}
-
-/* BOTTOM NAV */
-.bottom{
- position:fixed;
- z-index:30;
- left:0;
- right:0;
- bottom:0;
- background:#fff;
- border-top:1px solid #dce7f2;
- display:grid;
- grid-template-columns:repeat(6,1fr);
- padding:5px 3px;
- box-shadow:0 -4px 16px #0001
-}
-
-.bottom button{
- background:none;
- color:var(--ink);
- font-size:10px;
- font-weight:700;
- padding:2px
-}
-
-.bi{
- font-size:21px;
- display:block
-}
-
-/* DRAWER */
-.drawer{
- position:fixed;
- z-index:100;
- top:0;
- bottom:0;
- left:-300px;
- width:285px;
- background:#fff;
- padding:20px;
- box-shadow:8px 0 25px #0003;
- transition:.2s;
- overflow:auto
-}
-
-.drawer.open{left:0}
-
-.drawer button{
- display:block;
- width:100%;
- text-align:left;
- background:#f3f7fc;
- border-radius:10px;
- padding:10px;
- margin:7px 0;
- font-weight:700;
- color:var(--ink)
-}
-
-.shade{
- display:none;
- position:fixed;
- z-index:90;
- inset:0;
- background:#0005
-}
-
-.shade.show{display:block}
-
-.toast{
- display:none;
- position:fixed;
- z-index:200;
- left:50%;
- bottom:85px;
- transform:translateX(-50%);
- background:#102f4e;
+.notice-icon{font-size:29px}
+.notice-text{flex:1;font-size:17px}
+.notice-btn{
+ border:0;
+ border-radius:13px;
+ background:var(--purple);
  color:#fff;
- padding:9px 15px;
- border-radius:99px
+ padding:10px 17px;
+ font-weight:800;
+ white-space:nowrap;
 }
 
-.toast.show{display:block}
+/* TITLES */
+.section-title{
+ margin:26px 0 7px;
+ font-size:27px;
+ font-weight:900;
+ color:#092f4e;
+}
+.section-sub{
+ margin:0 0 14px;
+ color:var(--muted);
+ font-size:15px;
+}
 
-/* WATERMARK */
-.protected{
+/* OVAL QUICK ACCESS */
+.quick-grid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:14px;
+}
+.quick-card{
+ min-height:125px;
+ background:#fff;
+ border:1px solid var(--line);
+ border-left:7px solid var(--blue);
+ border-radius:32px;
+ padding:17px 20px;
+ display:flex;
+ align-items:center;
+ gap:17px;
+ box-shadow:0 7px 24px #17365d13;
+ transition:.18s;
  position:relative;
- overflow:hidden
+ overflow:hidden;
+}
+.quick-card:after{
+ content:"›";
+ position:absolute;
+ right:20px;
+ bottom:12px;
+ font-size:34px;
+ font-weight:900;
+ color:#0c3959;
+}
+.quick-card:active{transform:scale(.985)}
+.quick-card.orange{border-left-color:var(--orange)}
+.quick-card.green{border-left-color:var(--green)}
+.quick-card.purple{border-left-color:var(--purple)}
+.quick-card.red{border-left-color:var(--red)}
+.quick-card.cyan{border-left-color:var(--cyan)}
+.quick-card.gold{border-left-color:#eab308}
+.quick-icon{
+ width:72px;
+ height:72px;
+ flex:0 0 72px;
+ border-radius:50%;
+ background:#eaf4ff;
+ display:grid;
+ place-items:center;
+ font-size:38px;
+}
+.quick-card h3{
+ margin:0 28px 3px 0;
+ font-size:20px;
+ font-weight:900;
+}
+.quick-card p{
+ margin:0;
+ color:var(--muted);
+ font-size:14px;
 }
 
-.protected:after{
- content:"বাংলা পাঠশালা • আশিস হাইত";
+/* CLASS */
+.class-grid{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:14px;
+}
+.class-card{
+ background:#fff;
+ border:1px solid var(--line);
+ border-top:6px solid var(--blue);
+ border-radius:25px;
+ padding:17px;
+ min-height:175px;
+ box-shadow:0 7px 23px #17365d13;
+ position:relative;
+}
+.class-number{
+ width:58px;
+ height:58px;
+ border-radius:18px;
+ background:#e8f3ff;
+ display:grid;
+ place-items:center;
+ font-size:27px;
+ font-weight:900;
+ color:#000;
+ float:left;
+ margin-right:13px;
+}
+.class-card h3{
+ margin:5px 0;
+ font-size:19px;
+ font-weight:900;
+}
+.class-card p{
+ color:var(--muted);
+ margin:4px 0 10px;
+}
+.btn{
+ border:0;
+ border-radius:11px;
+ background:var(--purple);
+ color:#fff;
+ padding:9px 14px;
+ font-weight:800;
+}
+.btn.blue{background:var(--blue)}
+.btn.green{background:var(--green)}
+.btn.orange{background:var(--orange);color:#17202b}
+.btn.red{background:var(--red)}
+.btn.dark{background:var(--navy)}
+.btn.full{width:100%}
+
+/* MODELS */
+.model-grid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:10px;
+}
+.model-card{
+ background:#fff;
+ border-radius:16px;
+ padding:13px 16px;
+ border:1px solid var(--line);
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ box-shadow:0 5px 18px #17365d10;
+}
+.badge{
+ display:inline-block;
+ padding:4px 10px;
+ border-radius:999px;
+ background:#fff3c4;
+ color:#8a5a00;
+ font-weight:900;
+ font-size:12px;
+}
+
+/* PAGE */
+.page{
+ display:none;
+ padding-top:20px;
+}
+.page.active{display:block}
+.page-head{
+ display:flex;
+ align-items:center;
+ gap:10px;
+ margin-bottom:15px;
+}
+.back{
+ border:0;
+ background:#e4eef9;
+ color:var(--navy);
+ border-radius:13px;
+ padding:9px 14px;
+ font-weight:900;
+}
+.page-title{
+ font-size:28px;
+ font-weight:900;
+ margin:0;
+}
+
+/* CHAPTER LIST */
+.chapter-list{
+ display:grid;
+ gap:11px;
+}
+.chapter-card{
+ background:#fff;
+ border:1px solid var(--line);
+ border-left:6px solid var(--blue);
+ border-radius:18px;
+ padding:15px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:12px;
+ box-shadow:0 5px 18px #17365d0d;
+}
+.chapter-card h3{
+ margin:0;
+ font-size:18px;
+}
+.chapter-card p{
+ margin:2px 0;
+ color:var(--muted);
+}
+
+/* CONTENT */
+.content-card{
+ background:#fff;
+ border:1px solid var(--line);
+ border-radius:22px;
+ padding:20px;
+ margin:13px 0;
+ box-shadow:0 6px 20px #17365d10;
+}
+.content-card h3{margin-top:0}
+.note-content{
+ white-space:pre-wrap;
+ user-select:none;
+ -webkit-user-select:none;
+ font-size:16px;
+}
+.watermark-area{
+ position:relative;
+ overflow:hidden;
+}
+.watermark-area:before{
+ content:"বাংলা পাঠশালা • আশিষ হাইত • বাংলা পাঠশালা • আশিষ হাইত";
  position:absolute;
  inset:0;
  display:flex;
  align-items:center;
  justify-content:center;
- font-size:25px;
- color:#123f69;
- opacity:.07;
- transform:rotate(-22deg);
+ font-size:22px;
+ font-weight:900;
+ color:#0b4b8620;
+ transform:rotate(-25deg);
  pointer-events:none;
- white-space:nowrap
+ white-space:nowrap;
+ z-index:0;
+}
+.watermark-content{
+ position:relative;
+ z-index:1;
 }
 
-@media(max-width:650px){
- .brand{font-size:19px}
- .loginTop{padding:9px 12px;font-size:14px}
- .title{font-size:20px}
- .resgrid{grid-template-columns:1fr}
+/* CHAPTER OPTIONS */
+.option-grid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:13px;
+ margin-top:16px;
+}
+.option-card{
+ background:#fff;
+ border:1px solid var(--line);
+ border-radius:22px;
+ padding:18px;
+ box-shadow:0 5px 18px #17365d10;
+}
+.option-card .big-icon{font-size:34px}
+.option-card h3{margin:5px 0;font-size:19px}
+.option-card p{color:var(--muted);margin:0}
+
+/* TEST */
+.question{
+ background:#fff;
+ border:1px solid #dfe7f0;
+ border-radius:20px;
+ padding:18px;
+ margin:14px 0;
+ box-shadow:0 4px 15px #17365d0b;
+}
+.question h3{margin:0 0 12px;font-size:18px}
+.answer{
+ width:100%;
+ border:1px solid #d7e0ea;
+ background:#f7fafd;
+ border-radius:13px;
+ padding:13px;
+ text-align:left;
+ margin:7px 0;
+}
+.answer.selected{
+ background:#eee5ff;
+ border-color:var(--purple);
+}
+.answer.correct{
+ background:#dcfce7;
+ border-color:#16a34a;
+}
+.answer.wrong{
+ background:#fee2e2;
+ border-color:#ef4444;
+}
+.result-box{
+ background:linear-gradient(135deg,#073c73,#087bd3);
+ color:#fff;
+ border-radius:25px;
+ padding:25px;
+ text-align:center;
+ margin:15px 0;
+}
+.result-score{
+ font-size:42px;
+ font-weight:900;
 }
 
-@media(min-width:800px){
- .resgrid{grid-template-columns:repeat(3,1fr)}
+/* SEARCH */
+.search-box{
+ width:100%;
+ border:1px solid #cdd9e6;
+ border-radius:15px;
+ padding:13px 16px;
+ outline:0;
+ background:#fff;
+}
+.search-results{margin-top:14px}
+
+/* ADMIN */
+.admin-grid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:14px;
+}
+.admin-card{
+ background:#fff;
+ border:1px solid var(--line);
+ border-radius:20px;
+ padding:18px;
+ box-shadow:0 5px 18px #17365d10;
+}
+.admin-card h3{margin-top:0}
+.admin-card input,
+.admin-card textarea,
+.admin-card select{
+ width:100%;
+ border:1px solid #ccd8e6;
+ border-radius:11px;
+ padding:11px;
+ margin:5px 0 9px;
+}
+.admin-card textarea{min-height:130px;resize:vertical}
+.admin-list{
+ max-height:250px;
+ overflow:auto;
+}
+.admin-item{
+ padding:9px;
+ border-bottom:1px solid var(--line);
 }
 
-@media print{
- body *{display:none!important}
+/* COLLEGE */
+.college-grid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:13px;
+}
+.college-card{
+ background:#fff;
+ border-radius:20px;
+ padding:18px;
+ border-left:6px solid var(--cyan);
+ box-shadow:0 5px 18px #17365d10;
+}
+.college-card h3{margin:0 0 5px}
+
+/* CONTACT */
+.contact{
+ background:#fff;
+ border-radius:22px;
+ padding:20px;
+ box-shadow:0 6px 20px #17365d10;
+}
+
+/* BOTTOM NAV */
+.bottom-nav{
+ position:fixed;
+ bottom:0;
+ left:0;
+ right:0;
+ z-index:1100;
+ background:#fff;
+ border-top:1px solid #dbe4ee;
+ box-shadow:0 -5px 18px #17365d14;
+ display:grid;
+ grid-template-columns:repeat(6,1fr);
+ padding:5px 3px;
+}
+.bottom-nav button{
+ border:0;
+ background:transparent;
+ color:#14324b;
+ padding:3px 2px;
+ font-size:11px;
+ font-weight:800;
+}
+.bottom-nav span{
+ display:block;
+ font-size:24px;
+ line-height:25px;
+}
+
+/* MODAL */
+.modal-bg{
+ position:fixed;
+ inset:0;
+ z-index:3000;
+ background:#0008;
+ display:none;
+ align-items:flex-end;
+ justify-content:center;
+}
+.modal-bg.show{display:flex}
+.modal{
+ width:min(700px,100%);
+ max-height:92vh;
+ overflow:auto;
+ background:#fff;
+ border-radius:25px 25px 0 0;
+ padding:20px;
+}
+.modal-head{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:10px;
+}
+.close{
+ width:40px;
+ height:40px;
+ border:0;
+ border-radius:50%;
+ background:#eef3f8;
+ font-size:24px;
+}
+
+/* FOOTER */
+footer{
+ text-align:center;
+ color:#718096;
+ padding:25px 10px 80px;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+ .class-grid{grid-template-columns:repeat(2,1fr)}
+ .college-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+ body{font-size:14px}
+ .topbar{height:58px}
+ .topbar-inner{padding:0 8px}
+ .menu-btn{width:45px;height:45px}
+ .brand{font-size:18px}
+ .login-btn{font-size:14px;padding:10px 15px}
+ main{padding:0 10px 90px}
+ .banner-wrap{border-radius:0 0 24px 24px;margin:0 -10px 13px}
+ .banner-img{aspect-ratio:3.42/1}
+ .notice{padding:12px;border-radius:18px}
+ .notice-text{font-size:14px}
+ .notice-btn{padding:8px 12px}
+ .section-title{font-size:23px}
+ .quick-grid{grid-template-columns:repeat(2,1fr);gap:9px}
+ .quick-card{
+   min-height:150px;
+   display:block;
+   padding:13px;
+   border-left-width:5px;
+   border-radius:25px;
+ }
+ .quick-icon{
+   width:52px;
+   height:52px;
+   font-size:28px;
+   margin-bottom:8px;
+ }
+ .quick-card h3{
+   font-size:16px;
+   margin-right:10px;
+ }
+ .quick-card p{font-size:12px}
+ .quick-card:after{right:12px;bottom:4px;font-size:27px}
+ .class-grid{grid-template-columns:repeat(2,1fr);gap:9px}
+ .class-card{min-height:155px;padding:12px;border-radius:21px}
+ .class-number{
+   width:50px;height:50px;font-size:23px;
+   margin-right:8px;
+ }
+ .class-card h3{font-size:17px}
+ .class-card p{font-size:12px}
+ .model-grid{grid-template-columns:1fr}
+ .chapter-card{align-items:flex-start;flex-direction:column}
+ .chapter-card .btn{width:100%}
+ .option-grid{grid-template-columns:1fr}
+ .college-grid{grid-template-columns:1fr}
+ .admin-grid{grid-template-columns:1fr}
+ .bottom-nav button{font-size:10px}
+ .bottom-nav span{font-size:22px}
+ .page-title{font-size:23px}
 }
 </style>
 </head>
 
 <body>
 
-<div id="drawer" class="drawer"></div>
-<div id="shade" class="shade"></div>
-
-<header class="top">
- <button class="menu" data-a="drawer">☰</button>
- <div class="brand">বাংলা <span>পাঠশালা</span></div>
- <button class="loginTop" data-a="login">👤 Login</button>
+<header class="topbar">
+ <div class="topbar-inner">
+  <button class="menu-btn" onclick="openDrawer()">☰</button>
+  <div class="brand">বাংলা <span>পাঠশালা</span></div>
+  <button class="login-btn" onclick="login()">👤 Login</button>
+ </div>
 </header>
 
-<main id="app"></main>
+<div id="drawerBg" class="drawer-bg" onclick="closeDrawer()"></div>
 
-<nav class="bottom">
- <button data-a="home">
-  <span class="bi">🏠</span>Home
- </button>
- <button data-a="help">
-  <span class="bi">❓</span>Help
- </button>
- <button data-a="courses">
-  <span class="bi">📖</span>Courses
- </button>
- <button data-a="wa">
-  <span class="bi">💬</span>WhatsApp
- </button>
- <button data-a="mail">
-  <span class="bi">✉️</span>Email
- </button>
- <button data-a="chat">
-  <span class="bi">💭</span>Chat
- </button>
-</nav>
+<aside id="drawer" class="drawer">
+ <div class="drawer-head">
+  <div class="drawer-logo">📚</div>
+  <h2>বাংলা পাঠশালা</h2>
+  <p>শিক্ষক : আশিষ হাইত</p>
+ </div>
 
-<div id="toast" class="toast"></div>
+ <div class="drawer-nav">
+  <button onclick="home();closeDrawer()">🏠 Home</button>
+  <button onclick="showAllCourses();closeDrawer()">📚 All Courses</button>
+  <button onclick="showGrammarMenu();closeDrawer()">📘 বাংলা ব্যাকরণ</button>
+  <button onclick="showWriting();closeDrawer()">✍️ প্রবন্ধ ও রচনা</button>
+  <button onclick="showCollege();closeDrawer()">🏫 College Bengali</button>
+  <button onclick="showModels();closeDrawer()">📝 Model Set</button>
+  <button onclick="showFreeClass();closeDrawer()">🎥 Free Class</button>
+  <button onclick="showFreeTest();closeDrawer()">🧪 Free MCQ Test</button>
+  <button onclick="showMaterials();closeDrawer()">📄 Free PDF / Study Material</button>
+  <button onclick="showLinks();closeDrawer()">🔗 Important Links</button>
+  <button onclick="showHelp();closeDrawer()">❓ Help</button>
+  <button onclick="showSearch();closeDrawer()">🔎 Search</button>
+  <button onclick="showAdmin();closeDrawer()">🛠️ Teacher / Admin</button>
+ </div>
+</aside>
 
-<script>
+<main>
 
-/* =========================
-   COURSE DATA
-========================= */
+<!-- HOME -->
+<section id="homePage" class="page active">
 
-const C=[
-
-["9","নবম শ্রেণি","WBBSE",[
-"কলিঙ্গদেশে ঝড়-বৃষ্টি",
-"ধীবর-বৃত্তান্ত",
-"ইলিয়াস",
-"দাম",
-"নব নব সৃষ্টি",
-"পথে প্রবাসে",
-"হিমালয় দর্শন",
-"নোঙর",
-"খেয়া",
-"আকাশে সাতটি তারা",
-"আবহমান",
-"ভাঙার গান",
-"চিঠি",
-"আমরা",
-"নিরুদ্দেশ",
-"ছুটি",
-"রাধারাণী"
-]],
-
-["10","দশম শ্রেণি","WBBSE • মাধ্যমিক",[
-"জ্ঞানচক্ষু",
-"অসুখী একজন",
-"আয় আরো বেঁধে বেঁধে থাকি",
-"হারিয়ে যাওয়া কালি কলম",
-"বহুরূপী",
-"পথের দাবী",
-"অভিষেক",
-"প্রলয়োল্লাস",
-"সিরাজদ্দৌলা",
-"অদল বদল",
-"নদীর বিদ্রোহ",
-"অস্ত্রের বিরুদ্ধে গান",
-"বাংলা ভাষায় বিজ্ঞান"
-]],
-
-["11s1","একাদশ — সেমিস্টার ১","WBCHSE • Bengali-A",[
-"পুঁইমাচা",
-"ঈশ্বরচন্দ্র বিদ্যাসাগর",
-"সাম্যবাদী",
-"বিড়াল",
-"চারণ কবি",
-"বিশাল ডানাওয়ালা এক থুরথুরে বুড়ো",
-"বিশ্বের ভাষা ও পরিবার",
-"বাংলা ভাষার উদ্ভব ও ক্রমবিকাশ",
-"ভারতে প্রচলিত ভাষা পরিবার",
-"ভাষাবৈচিত্র্য ও বাংলা ভাষা",
-"প্রাচীন বাংলার সমাজ ও সাহিত্য",
-"মধ্যযুগের বাংলার সমাজ ও সাহিত্য"
-]],
-
-["11s2","একাদশ — সেমিস্টার ২","WBCHSE • Bengali-A",[
-"ছুটি",
-"তেলেনাপোতা আবিষ্কার",
-"ভাবসম্মিলন",
-"লালন শাহের গান",
-"নুন",
-"আগুন",
-"পঞ্চতন্ত্র — বই কেনা",
-"পঞ্চতন্ত্র — আজব শহর কলকেতা",
-"পঞ্চতন্ত্র — পঁচিশে বৈশাখ",
-"পঞ্চতন্ত্র — আড্ডা",
-"ফোর্ট উইলিয়াম কলেজের অবদান",
-"ঈশ্বরচন্দ্র বিদ্যাসাগরের অবদান",
-"বিহারীলাল চক্রবর্তী",
-"মধুসূদন দত্ত",
-"দীনবন্ধু মিত্র",
-"গিরিশচন্দ্র ঘোষ",
-"লৌকিক সাহিত্যের নানা দিক",
-"মানস-মানচিত্র অনুসরণে প্রবন্ধ",
-"বিতর্কমূলক প্রবন্ধ"
-]],
-
-["12s3","দ্বাদশ — সেমিস্টার ৩","WBCHSE • Bengali-A",[
-"আদরিণী",
-"অন্ধকার লেখাগুচ্ছ",
-"দ্বিগ্বিজয়ের রূপকথা",
-"বাঙ্গালা ভাষা",
-"পোটরাজ",
-"তার সঙ্গে",
-"ধ্বনিতত্ত্ব",
-"শব্দভাণ্ডার",
-"শব্দার্থতত্ত্ব",
-"শৈলী বিজ্ঞানের গোড়ার কথা",
-"বাংলা গানের ইতিহাস",
-"বাঙালির বিজ্ঞানচর্চার সংক্ষিপ্ত পরিচিতি",
-"বাঙালির ক্রীড়া সংস্কৃতি"
-]],
-
-["12s4","দ্বাদশ — সেমিস্টার ৪","WBCHSE • Bengali-A",[
-"হলুদ পোড়া",
-"হারুণ সালেমের মাসি",
-"প্রার্থনা",
-"তিমির হননের গান",
-"কেন এল না",
-"নানা রঙের দিন",
-"ডাকঘর",
-"বাংলা চিত্রকলার ইতিহাস",
-"বাঙালির চলচ্চিত্রের ইতিহাস",
-"প্রবন্ধ রচনা — প্রদত্ত ভূমিকা",
-"প্রবন্ধ রচনা — সূত্র/তথ্য অবলম্বনে"
-]]
-
-];
-
-/* =========================
-   GRAMMAR
-========================= */
-
-const GR=[
-"কারক ও অকারক সম্পর্ক",
-"সমাস",
-"বাক্য ও বাক্যরূপ",
-"বাচ্য",
-"শব্দ গঠন",
-"উপসর্গ ও অনুসর্গ",
-"ধাতু ও প্রত্যয়",
-"সন্ধি",
-"শব্দার্থ",
-"নির্মিতি"
-];
-
-/* =========================
-   STORAGE
-========================= */
-
-let store=JSON.parse(localStorage.bp_content||"{}");
-let notices=JSON.parse(localStorage.bp_notice||"[]");
-
-let S={p:"home"};
-
-const $=x=>document.getElementById(x);
-
-const esc=x=>String(x??"").replace(
- /[&<>"']/g,
- m=>({
-  "&":"&amp;",
-  "<":"&lt;",
-  ">":"&gt;",
-  '"':"&quot;",
-  "'":"&#039;"
- }[m])
-);
-
-const K=(c,i)=>c+"_"+i;
-
-function D(c,i){
- return store[K(c,i)]||{
-  notes:"",
-  video:"",
-  pdf:"",
-  qs:[]
- };
-}
-
-function Cc(id){
- return C.find(x=>x[0]==id);
-}
-
-function save(){
- localStorage.bp_content=JSON.stringify(store);
- localStorage.bp_notice=JSON.stringify(notices);
-}
-
-function toast(x){
- $("toast").textContent=x;
- $("toast").classList.add("show");
- setTimeout(()=>$("toast").classList.remove("show"),2000);
-}
-
-function go(p,x={}){
- S={...S,p,...x};
- render();
- closeDrawer();
-}
-
-/* =========================
-   HOME
-========================= */
-
-function home(){
-
- let q=[
- ["📚","All Courses","সমস্ত কোর্স দেখুন","courses"],
- ["📢","Notice Board","গুরুত্বপূর্ণ নোটিশ","notice"],
- ["💻","Free Class","ফ্রি ক্লাস দেখুন","freeclass"],
- ["📝","Free MCQ Test","অধ্যায়ভিত্তিক পরীক্ষা","freequiz"],
- ["📄","Free PDF","Study Material দেখুন","freepdf"],
- ["🔗","Important Links","গুরুত্বপূর্ণ লিংকসমূহ","links"],
- ["📋","Model Set","মডেল সেট দেখুন","models"],
- ["❓","Help","সাহায্য ও সহযোগিতা","help"],
- ["📖","My Courses","আমার কোর্সসমূহ","mycourses"],
- ["🔐","Login / Logout","লগইন / লগআউট","login"]
- ];
-
- return `
-
- <div class="banner">
-   <img src="banner.png" alt="বাংলা পাঠশালা ব্যানার">
+ <div class="banner-wrap">
+  <img id="bannerImage"
+       class="banner-img"
+       src="https://haitashish600-montu.github.io/bangla-pathshala/banner.png"
+       alt="বাংলা পাঠশালা ব্যানার"
+       onerror="bannerError()">
+  <div id="bannerFallback" class="banner-fallback">
+   <div>
+    <h1>বাংলা <span>পাঠশালা</span></h1>
+    <p>শিক্ষক : আশিষ হাইত</p>
+    <p>শিখবো বাংলা, গড়বো ভবিষ্যৎ</p>
+   </div>
+  </div>
  </div>
 
  <div class="notice">
-   📢
-   <div class="grow">
-     <strong>নোটিশ:</strong>
-     ${esc(notices[0]?.text||
-     "পরীক্ষার রুটিন ও গুরুত্বপূর্ণ আপডেট দেখতে Notice Board দেখুন।")}
-   </div>
-   <button class="pill" data-a="notice">দেখুন</button>
+  <div class="notice-icon">📢</div>
+  <div class="notice-text">
+   <b>নোটিশ:</b> পরীক্ষার রুটিন ও গুরুত্বপূর্ণ আপডেট দেখতে Notice Board দেখুন।
+  </div>
+  <button class="notice-btn" onclick="showNotice()">দেখুন →</button>
  </div>
 
- <h2 class="title">🚀 দ্রুত প্রবেশ</h2>
+ <h2 class="section-title">🚀 দ্রুত প্রবেশ</h2>
 
- <div class="grid">
+ <div class="quick-grid">
 
- ${q.map(x=>`
-
- <button class="card" data-a="${x[3]}">
-
-   <span class="ico">${x[0]}</span>
-
-   <h3>${x[1]}</h3>
-
-   <p>${x[2]}</p>
-
- </button>
-
- `).join("")}
-
- </div>
-
- <h2 class="title">📚 শ্রেণি অনুযায়ী পড়াশোনা</h2>
-
- <p class="sub">
-   শ্রেণি নির্বাচন করে বাংলা বিষয়ের অধ্যায় খুলুন।
- </p>
-
- <div class="grid">
-
- ${C.map(c=>`
-
- <button
-   class="card course"
-   data-a="course"
-   data-id="${c[0]}"
- >
-
-   <span class="num">
-   ${
-    c[0].startsWith("11")
-    ?"১১"
-    :c[0].startsWith("12")
-    ?"১২"
-    :c[0]
-   }
-   </span>
-
-   <span>
-
-    <h3>${esc(c[1])}</h3>
-
-    <p>${esc(c[2])}</p>
-
-   </span>
-
-   <b>›</b>
-
- </button>
-
- `).join("")}
-
- </div>
- `;
-}
-
-/* =========================
-   COURSE
-========================= */
-
-function coursePage(c){
-
- return `
-
- <button class="back" data-a="home">
-   ← হোম
- </button>
-
- <h2 class="title">
-   📖 ${esc(c[1])}
- </h2>
-
- <p class="sub">
-   ${esc(c[2])} — প্রতিটি অধ্যায় আলাদা
- </p>
-
- <div class="grid">
-
- ${c[3].map((x,i)=>`
-
- <article class="card chapter">
-
-  <div>
-
-   <h3>📚 ${esc(x)}</h3>
-
-   <p>
-    নোট • ভিডিও • Study Material • Mock Test
-   </p>
-
+  <div class="quick-card" onclick="showAllCourses()">
+   <div class="quick-icon">📚</div>
+   <h3>All Courses</h3>
+   <p>সমস্ত কোর্স দেখুন</p>
   </div>
 
-  <button
-   class="pill"
-   data-a="chapter"
-   data-id="${c[0]}"
-   data-i="${i}"
-  >
-   অধ্যায় খুলুন
-  </button>
-
- </article>
-
- `).join("")}
-
- </div>
- `;
-}
-
-/* =========================
-   CHAPTER
-========================= */
-
-function chapterPage(c,i){
-
- let d=D(c[0],i);
- let ch=c[3][i];
-
- return `
-
- <button
-  class="back"
-  data-a="course"
-  data-id="${c[0]}"
- >
-  ← ${esc(c[1])}
- </button>
-
- <section class="detail protected">
-
-  <span class="tag">অধ্যায়</span>
-
-  <h1>📚 ${esc(ch)}</h1>
-
-  <p class="sub">
-   ${esc(c[1])} • শুধু এই অধ্যায়ের content
-  </p>
-
-  <div class="resgrid">
-
-   <div class="resource">
-
-    <h3>📖 আলোচনা / নোট</h3>
-
-    <p>
-     ${d.notes
-       ?"নোট প্রস্তুত"
-       :"Teacher/Admin পরে যোগ করবেন"}
-    </p>
-
-    <button
-     class="${d.notes?"primary":"secondary"}"
-     data-a="${d.notes?"notes":"empty"}"
-    >
-     নোট ${d.notes?"পড়ুন":"শীঘ্রই"}
-    </button>
-
-   </div>
-
-   <div class="resource">
-
-    <h3>🎬 ভিডিও</h3>
-
-    <p>
-     ${d.video
-       ?"ভিডিও প্রস্তুত"
-       :"Teacher/Admin পরে যোগ করবেন"}
-    </p>
-
-    <button
-     class="${d.video?"primary":"secondary"}"
-     data-a="${d.video?"url":"empty"}"
-     data-url="${esc(d.video)}"
-    >
-     ভিডিও ${d.video?"দেখুন":"শীঘ্রই"}
-    </button>
-
-   </div>
-
-   <div class="resource">
-
-    <h3>📄 Study Material / PDF</h3>
-
-    <p>
-     ${d.pdf
-       ?"PDF প্রস্তুত"
-       :"Teacher/Admin পরে যোগ করবেন"}
-    </p>
-
-    <button
-     class="${d.pdf?"primary":"secondary"}"
-     data-a="${d.pdf?"url":"empty"}"
-     data-url="${esc(d.pdf)}"
-    >
-     PDF ${d.pdf?"খুলুন":"শীঘ্রই"}
-    </button>
-
-   </div>
-
+  <div class="quick-card orange" onclick="showNotice()">
+   <div class="quick-icon">📢</div>
+   <h3>Notice Board</h3>
+   <p>গুরুত্বপূর্ণ নোটিশ</p>
   </div>
 
-  <h2 class="title">
-   📝 ${esc(ch)} — Mock Test
-  </h2>
+  <div class="quick-card green" onclick="showFreeClass()">
+   <div class="quick-icon">💻</div>
+   <h3>Free Class</h3>
+   <p>ফ্রি ক্লাস দেখুন</p>
+  </div>
 
-  <p class="sub">
-   Random • Submit • Score • সঠিক/ভুল •
-   সঠিক উত্তর • আবার পরীক্ষা
-  </p>
+  <div class="quick-card purple" onclick="showFreeTest()">
+   <div class="quick-icon">📝</div>
+   <h3>Free MCQ Test</h3>
+   <p>অধ্যায়ভিত্তিক পরীক্ষা</p>
+  </div>
 
-  <button
-   class="primary"
-   data-a="test"
-   data-id="${c[0]}"
-   data-i="${i}"
-  >
-   🚀 Mock Test শুরু করুন
-  </button>
+  <div class="quick-card red" onclick="showMaterials()">
+   <div class="quick-icon">📄</div>
+   <h3>Free PDF</h3>
+   <p>Study Material দেখুন</p>
+  </div>
 
- </section>
- `;
+  <div class="quick-card" onclick="showLinks()">
+   <div class="quick-icon">🔗</div>
+   <h3>Important Links</h3>
+   <p>গুরুত্বপূর্ণ লিঙ্কসমূহ</p>
+  </div>
+
+  <div class="quick-card purple" onclick="showModels()">
+   <div class="quick-icon">📋</div>
+   <h3>Model Set</h3>
+   <p>মডেল সেট দেখুন</p>
+  </div>
+
+  <div class="quick-card cyan" onclick="showHelp()">
+   <div class="quick-icon">❓</div>
+   <h3>Help</h3>
+   <p>সাহায্য ও সহযোগিতা</p>
+  </div>
+
+  <div class="quick-card gold" onclick="showAllCourses()">
+   <div class="quick-icon">📖</div>
+   <h3>My Courses</h3>
+   <p>আমার কোর্সসমূহ</p>
+  </div>
+
+  <div class="quick-card green" onclick="login()">
+   <div class="quick-icon">🔐</div>
+   <h3>Login / Logout</h3>
+   <p>লগইন / লগআউট</p>
+  </div>
+
+ </div>
+
+ <h2 class="section-title">📚 শ্রেণি অনুযায়ী পড়াশোনা</h2>
+ <p class="section-sub">শ্রেণি নির্বাচন করে বাংলা বিষয়ের অধ্যায় খুলুন।</p>
+ <div id="classGrid" class="class-grid"></div>
+
+ <h2 class="section-title">📝 গুরুত্বপূর্ণ Model Set</h2>
+ <div id="modelGrid" class="model-grid"></div>
+
+</section>
+
+<!-- DYNAMIC PAGE -->
+<section id="dynamicPage" class="page"></section>
+
+</main>
+
+<footer>
+ © 2026 <b>বাংলা পাঠশালা</b><br>
+ শিক্ষক : আশিষ হাইত
+</footer>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+ <button onclick="home()"><span>🏠</span>Home</button>
+ <button onclick="showHelp()"><span>❓</span>Help</button>
+ <button onclick="showAllCourses()"><span>📖</span>Courses</button>
+ <button onclick="openWhatsApp()"><span>🟢</span>WhatsApp</button>
+ <button onclick="openEmail()"><span>✉️</span>Email</button>
+ <button onclick="showChat()"><span>💬</span>Chat</button>
+</nav>
+
+<!-- MODAL -->
+<div id="modalBg" class="modal-bg" onclick="closeModal(event)">
+ <div id="modal" class="modal" onclick="event.stopPropagation()"></div>
+</div>
+
+<script>
+
+/* =========================================================
+   বাংলা পাঠশালা — FINAL SINGLE FILE
+========================================================= */
+
+const PHONE="919775746579";
+const EMAIL="haitashishbengali@gmail.com";
+const ADMIN_EMAIL="haitashishbengali@gmail.com";
+
+const DATA_KEY="bangla_pathshala_final_v7";
+
+let store=JSON.parse(localStorage.getItem(DATA_KEY)||"null");
+
+if(!store){
+ store={
+  notes:[],
+  videos:[],
+  questions:[],
+  models:[],
+  notices:[],
+  college:[],
+  logged:false,
+  user:null
+ };
 }
 
-/* =========================
-   QUESTION BANK
-========================= */
+function save(){
+ localStorage.setItem(DATA_KEY,JSON.stringify(store));
+}
 
-function questions(cid,i){
+function esc(v){
+ return String(v??"")
+  .replace(/&/g,"&amp;")
+  .replace(/</g,"&lt;")
+  .replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;")
+  .replace(/'/g,"&#039;");
+}
 
- let d=D(cid,i);
+/* =========================================================
+   SYLLABUS / CHAPTERS
+========================================================= */
 
- if(d.qs?.length)
-  return d.qs;
+const syllabus={
 
- let ch=Cc(cid)[3][i];
+"9":{
+ name:"নবম শ্রেণি",
+ board:"WBBSE",
+ desc:"নবম শ্রেণির বাংলা",
+ periods:["পর্যায়ক্রমিক মূল্যায়ন"],
+ literature:[
+  ["গল্প/গদ্য","ইলিয়াস"],
+  ["গল্প/গদ্য","দাম"],
+  ["পদ্য","কলিঙ্গদেশে ঝড়-বৃষ্টি"],
+  ["নাটক","ধীবর-বৃত্তান্ত"],
+  ["পদ্য","নোঙর"],
+  ["গদ্য","নব নব সৃষ্টি"],
+  ["পদ্য","আকাশে সাতটি তারা"],
+  ["গদ্য","চিঠি"],
+  ["পদ্য","আবহমান"],
+  ["গল্প/গদ্য","রাধারাণী"],
+  ["গদ্য","হিমালয় দর্শন"],
+  ["পদ্য","খেয়া"],
+  ["গল্প/গদ্য","নিরুদ্দেশ"],
+  ["পদ্য","ভাঙার গান"],
+  ["গল্প/সহায়ক","চন্দ্রনাথ"],
+  ["সহায়ক পাঠ","প্রফেসর শঙ্কুর ডাইরি — ব্যোমযাত্রীর ডায়রি"],
+  ["সহায়ক পাঠ","প্রফেসর শঙ্কুর ডাইরি — কর্ভাস"],
+  ["সহায়ক পাঠ","প্রফেসর শঙ্কুর ডাইরি — স্বর্ণপর্ণী"]
+ ],
+ grammar:[
+  "ধ্বনি ও ধ্বনি পরিবর্তনের কারণ ও ধারা",
+  "সন্ধি",
+  "বাংলা শব্দ গঠনের প্রক্রিয়া : উপসর্গ ও অনুসর্গ",
+  "প্রত্যয়",
+  "বাংলা শব্দভাণ্ডার",
+  "বাংলা পদ পরিচয় (নামপদ)",
+  "ধাতু ও ক্রিয়া"
+ ],
+ writing:[
+  "ভাবসম্প্রসারণ",
+  "ভাবার্থ",
+  "সারাংশ",
+  "গল্প লিখন"
+ ]
+},
 
- return [
+"10":{
+ name:"দশম শ্রেণি",
+ board:"WBBSE",
+ desc:"মাধ্যমিক বাংলা প্রস্তুতি",
+ periods:["পর্যায়ক্রমিক মূল্যায়ন"],
+ literature:[
+  ["গল্প","জ্ঞানচক্ষু"],
+  ["গল্প","বহুরূপী"],
+  ["গল্প","পথের দাবী"],
+  ["গল্প","নদীর বিদ্রোহ"],
+  ["গল্প","অদল বদল"],
+  ["কবিতা","অসুখী একজন"],
+  ["কবিতা","আয় আরো বেঁধে বেঁধে থাকি"],
+  ["কবিতা","আফ্রিকা"],
+  ["কবিতা","অভিষেক"],
+  ["কবিতা","প্রলয়োল্লাস"],
+  ["কবিতা","অস্ত্রের বিরুদ্ধে গান"],
+  ["কবিতা","সিন্ধুতীরে"],
+  ["প্রবন্ধ","হারিয়ে যাওয়া কালি কলম"],
+  ["প্রবন্ধ","বাংলা ভাষায় বিজ্ঞান"],
+  ["নাটক","সিরাজদ্দৌলা"],
+  ["সহায়ক পাঠ","কোনি"]
+ ],
+ grammar:[
+  "কারক ও বিভক্তি",
+  "সমাস পরিচয়",
+  "বাক্য ও বাক্য পরিবর্তন",
+  "বাচ্য ও বাচ্য পরিবর্তন"
+ ],
+ writing:[
+  "ইংরেজি থেকে বাংলায় অনুবাদ (E TO B)",
+  "প্রতিবেদন রচনা",
+  "সংলাপ রচনা"
+ ]
+},
+
+"11":{
+ name:"একাদশ শ্রেণি",
+ board:"WBCHSE",
+ desc:"বাংলা — Semester I & II",
+ periods:["Semester I","Semester II"],
+ literature:[
+  ["Semester I • গল্প","পুঁইমাচা"],
+  ["Semester I • প্রবন্ধ","বিড়াল"],
+  ["Semester I • কবিতা","ঈশ্বরচন্দ্র বিদ্যাসাগর"],
+  ["Semester I • কবিতা","সাম্যবাদী"],
+  ["Semester I • আন্তর্জাতিক গল্প","বিশাল ডানাওয়ালা এক থুথুরে বুড়ো"],
+  ["Semester I • ভারতীয় কবিতা","চারণ কবি"],
+  ["Semester II • গল্প","ছুটি"],
+  ["Semester II • গল্প","তেলেনাপোতা আবিষ্কার"],
+  ["Semester II • কবিতা","ভাব সম্মিলন"],
+  ["Semester II • কবিতা","লালন শাহ ফকিরের গান"],
+  ["Semester II • কবিতা","নুন"],
+  ["Semester II • নাটক","আগুন"],
+  ["Semester II • পূর্ণাঙ্গ সহায়ক","পঞ্চতন্ত্র — বই কেনা; আজব শহর কলকেতা; পঁচিশে বৈশাখ; আড্ডা"]
+ ],
+ grammar:[
+  "বিশ্বের ভাষা ও ভাষা পরিবার",
+  "বাংলা ভাষার উদ্ভব ও ক্রমবিকাশ",
+  "ভারতে প্রচলিত ভাষা পরিবার",
+  "বাংলা ভাষার বৈচিত্র্য"
+ ],
+ writing:[
+  "প্রবন্ধ রচনা",
+  "মানস মানচিত্রের সাহায্যে প্রবন্ধ রচনা",
+  "বিতর্কমূলক প্রবন্ধ রচনা",
+  "সটীক অনুবাদ",
+  "সাক্ষাৎকার গ্রহণ",
+  "প্রতিবেদন রচনা",
+  "স্বরচিত গল্প লিখন",
+  "প্রুফ সংশোধন"
+ ],
+ history:[
+  "প্রাচীন বাংলা: সমাজ ও সাহিত্য",
+  "মধ্যযুগের বাংলা সমাজ ও সাহিত্যের প্রধান ধারা",
+  "আধুনিক বাংলা সাহিত্য: গদ্য, কবিতা, উপন্যাস, ছোটগল্প, নাটক, যাত্রা, প্রবন্ধ",
+  "লৌকিক সাহিত্য: ছড়া, ধাঁধা, প্রবাদ",
+  "আধুনিক কবিতা ও কথাসাহিত্যের প্রধান ধারা"
+ ]
+},
+
+"12":{
+ name:"দ্বাদশ শ্রেণি",
+ board:"WBCHSE",
+ desc:"বাংলা — Semester III & IV",
+ periods:["Semester III","Semester IV"],
+ literature:[
+  ["Semester III • গল্প","আদরিণী"],
+  ["Semester III • কবিতা","ধর্ম"],
+  ["Semester III • কবিতা","দিগ্বিজয়ের রূপকথা"],
+  ["Semester III • প্রবন্ধ","বাঙ্গালা ভাষা"],
+  ["Semester III • ভারতীয় গল্প","পোটরাজ"],
+  ["Semester III • আন্তর্জাতিক কবিতা","তার সঙ্গে"],
+  ["Semester IV • গল্প","হলুদ পোড়া"],
+  ["Semester IV • গল্প","হারুন সালেমের মাসি"],
+  ["Semester IV • কবিতা","প্রার্থনা"],
+  ["Semester IV • কবিতা","তিমির হননের গান"],
+  ["Semester IV • কবিতা","কেন এল না"],
+  ["Semester IV • নাটক","নানা রঙের দিন"],
+  ["Semester IV • পূর্ণাঙ্গ সহায়ক","ডাকঘর"]
+ ],
+ grammar:[
+  "ভাষাবিজ্ঞান ও তার শাখা-প্রশাখা",
+  "ধ্বনিতত্ত্ব",
+  "শব্দার্থতত্ত্ব"
+ ],
+ writing:[
+  "সূত্রনির্ভর প্রবন্ধ রচনা",
+  "প্রস্তাবনা/ভূমিকানির্ভর প্রবন্ধ রচনা"
+ ],
+ history:[
+  "বাংলা গানের ধারা — সংক্ষিপ্ত রূপরেখা",
+  "বাঙালির বিজ্ঞানচর্চার সংক্ষিপ্ত পরিচিতি",
+  "বাঙালির ক্রীড়া সংস্কৃতি",
+  "বাংলা চিত্রকলার ইতিহাস — সংক্ষিপ্ত রূপরেখা",
+  "বাঙালির চলচ্চিত্রের ইতিহাস — সংক্ষিপ্ত রূপরেখা"
+ ]
+}
+
+};
+
+/* =========================================================
+   MODEL SET
+========================================================= */
+
+const defaultModels=[
+ ["9","নবম শ্রেণি — গুরুত্বপূর্ণ মডেল সেট","১০টি"],
+ ["10","দশম — টেস্ট টেস্ট ও মাধ্যমিক মডেল সেট","২০টি"],
+ ["11","একাদশ — প্রথম সেমিস্টার","১০টি"],
+ ["11","একাদশ — দ্বিতীয় সেমিস্টার","৫টি"],
+ ["12","দ্বাদশ — তৃতীয় সেমিস্টার","১৫টি"],
+ ["12","দ্বাদশ — চতুর্থ সেমিস্টার","১০টি"]
+];
+
+/* =========================================================
+   DEFAULT QUESTION BANK
+========================================================= */
+
+const defaultQuestions=[
 
  {
-  q:`“${ch}” অধ্যায়ের জন্য কোন ব্যবস্থা থাকবে?`,
-  o:[
-   "শুধু বই",
-   "নোট + ভিডিও + Study Material + Mock Test",
-   "শুধু ভিডিও",
-   "শুধু PDF"
-  ],
-  a:1
+  class:"9",
+  chapter:"ধ্বনি ও ধ্বনি পরিবর্তনের কারণ ও ধারা",
+  q:"ধ্বনি কী?",
+  o:["ভাষার ক্ষুদ্রতম শ্রুত একক","শব্দের বৃহত্তম একক","বাক্যের অংশ","লিপির চিহ্ন"],
+  a:0
  },
 
  {
-  q:"প্রতিটি অধ্যায় কি আলাদা Study Space পাবে?",
-  o:[
-   "হ্যাঁ",
-   "না",
-   "শুধু দশম",
-   "শুধু কলেজ"
-  ],
+  class:"9",
+  chapter:"সন্ধি",
+  q:"সন্ধির প্রধান উদ্দেশ্য কী?",
+  o:["ধ্বনির মিলন","বাক্য বড় করা","শব্দ বাদ দেওয়া","ছন্দ তৈরি করা"],
+  a:0
+ },
+
+ {
+  class:"10",
+  chapter:"কারক ও বিভক্তি",
+  q:"কারক প্রধানত কী নির্দেশ করে?",
+  o:["ক্রিয়ার সঙ্গে নামপদের সম্পর্ক","শব্দের বানান","বাক্যের দৈর্ঘ্য","ছন্দের মাত্রা"],
+  a:0
+ },
+
+ {
+  class:"10",
+  chapter:"সমাস পরিচয়",
+  q:"সমাসের ফলে সাধারণত কী হয়?",
+  o:["দুই বা ততোধিক পদের সংক্ষেপে এক পদ হয়","বাক্য ভেঙে যায়","শব্দ মুছে যায়","শুধু ক্রিয়া তৈরি হয়"],
+  a:0
+ },
+
+ {
+  class:"11",
+  chapter:"পুঁইমাচা",
+  q:"‘পুঁইমাচা’ কোন ধরনের রচনা?",
+  o:["গল্প","কবিতা","নাটক","প্রবন্ধ"],
+  a:0
+ },
+
+ {
+  class:"12",
+  chapter:"আদরিণী",
+  q:"‘আদরিণী’ কোন ধরনের রচনা?",
+  o:["গল্প","কবিতা","নাটক","প্রবন্ধ"],
+  a:0
+ },
+
+ {
+  class:"12",
+  chapter:"বাঙ্গালা ভাষা",
+  q:"‘বাঙ্গালা ভাষা’ কোন ধরনের পাঠ?",
+  o:["প্রবন্ধ","নাটক","গল্প","কবিতা"],
   a:0
  }
 
- ];
+];
 
+/* =========================================================
+   BASIC NAVIGATION
+========================================================= */
+
+function page(html,title=""){
+ const el=document.getElementById("dynamicPage");
+ el.innerHTML=
+ `<div class="page-head">
+   <button class="back" onclick="home()">← হোমে ফিরুন</button>
+   ${title?`<h1 class="page-title">${title}</h1>`:""}
+  </div>${html}`;
+ document.getElementById("homePage").classList.remove("active");
+ el.classList.add("active");
+ window.scrollTo({top:0,behavior:"smooth"});
 }
 
-/* =========================
-   TEST
-========================= */
-
-function testPage(cid,i){
-
- S.test={
-  cid,
-  i,
-  q:[...questions(cid,i)]
-   .sort(()=>Math.random()-.5)
-   .slice(0,10),
-  ans:{}
- };
-
- S.result=false;
- S.p="test";
-
- render();
+function home(){
+ document.getElementById("dynamicPage").classList.remove("active");
+ document.getElementById("homePage").classList.add("active");
+ renderHome();
+ window.scrollTo({top:0,behavior:"smooth"});
 }
 
-function testRender(){
-
- let t=S.test;
- let c=Cc(t.cid);
- let ch=c[3][t.i];
-
- return `
-
- <button
-  class="back"
-  data-a="chapter"
-  data-id="${t.cid}"
-  data-i="${t.i}"
- >
-  ← অধ্যায়ে ফিরুন
- </button>
-
- <section class="detail">
-
-  <span class="tag">Mock Test</span>
-
-  <h1>📝 ${esc(ch)}</h1>
-
-  <p class="sub">
-   ${t.q.length}টি Random প্রশ্ন
-  </p>
-
-  <form id="tf">
-
-  ${t.q.map((q,n)=>`
-
-   <div class="qbox">
-
-    <h4>
-     ${n+1}. ${esc(q.q)}
-    </h4>
-
-    ${q.o.map((o,j)=>`
-
-     <label class="opt">
-
-      <input
-       type="radio"
-       name="q${n}"
-       value="${j}"
-      >
-
-      ${esc(o)}
-
-     </label>
-
-    `).join("")}
-
-   </div>
-
-  `).join("")}
-
-  <button class="primary">
-   ✅ Submit Test
-  </button>
-
-  </form>
-
- </section>
- `;
-}
-
-/* =========================
-   RESULT
-========================= */
-
-function result(){
-
- let t=S.test;
- let score=0;
- let ans=0;
-
- let rows=t.q.map((q,n)=>{
-
-  let a=t.ans[n];
-
-  if(a!==undefined){
-   ans++;
-   if(a===q.a)score++;
-  }
-
-  return `
-
-  <div class="qbox ${a===q.a?"":"wrong"}">
-
-   <h4>
-    ${n+1}. ${esc(q.q)}
-   </h4>
-
-   <div class="${a===q.a?"ok":"bad"}">
-
-    ${
-     a===undefined
-     ?"উত্তর দেওয়া হয়নি"
-     :a===q.a
-     ?"✓ সঠিক উত্তর"
-     :"✗ ভুল উত্তর"
-    }
-
-   </div>
-
-   ${
-    a!==q.a
-    ?`<p>
-       <b>সঠিক উত্তর:</b>
-       ${esc(q.o[q.a])}
-      </p>`
-    :""
-   }
-
-  </div>
-
-  `;
-
- }).join("");
-
- return `
-
- <section class="detail">
-
-  <h1>📊 Mock Test Result</h1>
-
-  <div class="result">
-
-   <b>
-    Score: ${score}/${t.q.length}
-   </b>
-
-   <br>
-
-   শতাংশ:
-   ${Math.round(score/t.q.length*100)}%
-
-   • উত্তর:
-   ${ans}
-
-  </div>
-
-  ${rows}
-
-  <button
-   class="primary"
-   data-a="retry"
-  >
-   🔄 আবার পরীক্ষা
-  </button>
-
-  <button
-   class="secondary"
-   data-a="home"
-  >
-   🏠 Home
-  </button>
-
- </section>
-
- `;
-}
-
-/* =========================
-   GRAMMAR
-========================= */
-
-function grammar(){
-
- return `
-
- <button class="back" data-a="home">
-  ← হোম
- </button>
-
- <h2 class="title">
-  📘 বাংলা ব্যাকরণ
- </h2>
-
- <p class="sub">
-  নবম–দশমের নির্দিষ্ট ব্যাকরণ ও নির্মিতি
- </p>
-
- <div class="grid">
-
- ${GR.map((x,i)=>`
-
-  <article class="card chapter">
-
-   <h3>📘 ${x}</h3>
-
-   <p>
-    নোট • ভিডিও • Mock Test
-   </p>
-
-   <button
-    class="pill"
-    data-a="gdetail"
-    data-i="${i}"
-   >
-    অধ্যায় খুলুন
-   </button>
-
-  </article>
-
- `).join("")}
-
- </div>
- `;
-}
-
-/* =========================
-   COLLEGE
-========================= */
-
-function college(){
-
- return `
-
- <button class="back" data-a="home">
-  ← হোম
- </button>
-
- <h2 class="title">
-  🏫 College Bengali
- </h2>
-
- <p class="sub">
-  উপন্যাস • ছোটগল্প • নাটক • প্রবন্ধ • নোট
- </p>
-
- <div class="grid">
-
- ${[
-  "উপন্যাস",
-  "ছোটগল্প",
-  "নাটক",
-  "প্রবন্ধ",
-  "নোট"
- ].map(x=>`
-
-  <article class="card chapter">
-
-   <h3>📚 ${x}</h3>
-
-   <p>
-    Study Material • Mock Test
-   </p>
-
-   <button
-    class="pill"
-    data-a="empty"
-   >
-    খুলুন
-   </button>
-
-  </article>
-
- `).join("")}
-
- </div>
- `;
-}
-
-/* =========================
-   MODEL SET
-========================= */
-
-function models(){
-
- let x=[
-  ["নবম","১০টি"],
-  ["দশম","২০টি"],
-  ["একাদশ ১ম সেমিস্টার","১০টি"],
-  ["একাদশ ২য় সেমিস্টার","৫টি"],
-  ["দ্বাদশ ৩য় সেমিস্টার","১৫টি"],
-  ["দ্বাদশ ৪র্থ সেমিস্টার","১০টি"]
- ];
-
- return `
-
- <button class="back" data-a="home">
-  ← হোম
- </button>
-
- <h2 class="title">
-  📋 গুরুত্বপূর্ণ Model Set
- </h2>
-
- <div class="grid">
-
- ${x.map(a=>`
-
-  <article class="card">
-
-   <h3>${a[0]}</h3>
-
-   <p>${a[1]} Model Set</p>
-
-   <button
-    class="pill"
-    data-a="empty"
-   >
-    দেখুন
-   </button>
-
-  </article>
-
- `).join("")}
-
- </div>
- `;
-}
-
-/* =========================
-   NOTICE
-========================= */
-
-function notice(){
-
- return `
-
- <button class="back" data-a="home">
-  ← হোম
- </button>
-
- <h2 class="title">
-  📢 Notice Board
- </h2>
-
- ${
-  notices.length
-  ?notices.map(n=>`
-
-   <div class="form">
-
-    <b>
-     ${esc(n.title||"নোটিশ")}
-    </b>
-
-    <p>
-     ${esc(n.text)}
-    </p>
-
-   </div>
-
-  `).join("")
-  :`
-   <div class="form">
-    এখনও কোনো নোটিশ নেই।
-   </div>
-  `
- }
-
- `;
-}
-
-/* =========================
-   ADMIN
-========================= */
-
-function admin(){
-
- return `
-
- <section class="detail">
-
-  <h1>
-   👨‍🏫 Teacher / Admin Panel
-  </h1>
-
-  <p class="sub">
-   অধ্যায় অনুযায়ী নোট, ভিডিও, PDF এবং MCQ যোগ করুন।
-  </p>
-
-  <div class="form">
-
-   <label>Course</label>
-
-   <select id="ac">
-
-    ${C.map(c=>`
-     <option value="${c[0]}">
-      ${esc(c[1])}
-     </option>
-    `).join("")}
-
-   </select>
-
-   <label>Chapter</label>
-
-   <select id="ai"></select>
-
-   <label>নোট</label>
-
-   <textarea id="an"></textarea>
-
-   <label>ভিডিও URL</label>
-
-   <input id="av">
-
-   <label>PDF URL</label>
-
-   <input id="ap">
-
-   <button
-    class="primary"
-    data-a="save"
-   >
-    💾 Save Content
-   </button>
-
-  </div>
-
-  <div class="form">
-
-   <h3>
-    📝 MCQ যোগ করুন
-   </h3>
-
-   <textarea
-    id="mq"
-    placeholder="Question"
-   ></textarea>
-
-   <div class="row">
-
-    <input id="mo0" placeholder="Option A">
-    <input id="mo1" placeholder="Option B">
-    <input id="mo2" placeholder="Option C">
-    <input id="mo3" placeholder="Option D">
-
-   </div>
-
-   <label>
-    সঠিক Option
-   </label>
-
-   <select id="ma">
-
-    <option value="0">A</option>
-    <option value="1">B</option>
-    <option value="2">C</option>
-    <option value="3">D</option>
-
-   </select>
-
-   <button
-    class="primary"
-    data-a="addq"
-   >
-    ➕ Add MCQ
-   </button>
-
-  </div>
-
-  <div class="form">
-
-   <h3>📢 Notice</h3>
-
-   <input
-    id="nt"
-    placeholder="Title"
-   >
-
-   <textarea
-    id="nx"
-    placeholder="Notice"
-   ></textarea>
-
-   <button
-    class="primary"
-    data-a="addnotice"
-   >
-    Save Notice
-   </button>
-
-  </div>
-
-  <div class="warn">
-
-   এই single-file GitHub version-এ Admin data
-   এই browser-এর localStorage-এ থাকে।
-   ছাত্রদের সব ফোনে একই content পৌঁছাতে
-   Firebase/online backend লাগবে।
-
-  </div>
-
- </section>
- `;
-}
-
-/* =========================
-   LOGIN
-========================= */
-
-function login(){
-
- return `
-
- <section class="detail">
-
-  <h1>🔐 Login</h1>
-
-  <div class="form">
-
-   <label>
-    Email / Username
-   </label>
-
-   <input id="lu">
-
-   <label>
-    Password
-   </label>
-
-   <input
-    id="lp"
-    type="password"
-   >
-
-   <button
-    class="primary"
-    data-a="dologin"
-   >
-    Login
-   </button>
-
-  </div>
-
- </section>
- `;
-}
-
-/* =========================
-   RENDER
-========================= */
-
-function render(){
-
- let h;
-
- if(S.p=="home")
-  h=home();
-
- else if(S.p=="courses")
-
-  h=`
-
-   <h2 class="title">
-    📚 All Courses
-   </h2>
-
-   <div class="grid">
-
-   ${C.map(c=>`
-
-    <button
-     class="card course"
-     data-a="course"
-     data-id="${c[0]}"
-    >
-
-     <span class="num">
-
-      ${
-       c[0].startsWith("11")
-       ?"১১"
-       :c[0].startsWith("12")
-       ?"১২"
-       :c[0]
-      }
-
-     </span>
-
-     <span>
-
-      <h3>${esc(c[1])}</h3>
-
-      <p>${esc(c[2])}</p>
-
-     </span>
-
-     <b>›</b>
-
-    </button>
-
-   `).join("")}
-
-   </div>
-  `;
-
- else if(S.p=="course")
-  h=coursePage(Cc(S.id));
-
- else if(S.p=="chapter")
-  h=chapterPage(Cc(S.id),S.i);
-
- else if(S.p=="test")
-  h=testRender();
-
- else if(S.p=="result")
-  h=result();
-
- else if(S.p=="grammar")
-  h=grammar();
-
- else if(S.p=="college")
-  h=college();
-
- else if(S.p=="models")
-  h=models();
-
- else if(S.p=="notice")
-  h=notice();
-
- else if(S.p=="admin")
-  h=admin();
-
- else if(S.p=="login")
-  h=login();
-
- else if(S.p=="notes")
-
-  h=`
-
-   <button
-    class="back"
-    data-a="chapter"
-    data-id="${S.id}"
-    data-i="${S.i}"
-   >
-    ← অধ্যায়ে ফিরুন
-   </button>
-
-   <section class="detail protected">
-
-    <h1>📖 নোট</h1>
-
-    <div
-     style="
-      white-space:pre-wrap;
-      line-height:1.9
-     "
-    >
-     ${esc(S.text)}
-    </div>
-
-   </section>
-  `;
-
- else if(S.p=="gdetail")
-
-  h=`
-
-   <button
-    class="back"
-    data-a="grammar"
-   >
-    ← ব্যাকরণ
-   </button>
-
-   <section class="detail protected">
-
-    <h1>
-     📘 ${esc(GR[S.i])}
-    </h1>
-
-    <p>
-     এই ব্যাকরণ অধ্যায়ের নোট,
-     ভিডিও, Study Material ও Mock Test থাকবে।
-    </p>
-
-    <button
-     class="secondary"
-     data-a="empty"
-    >
-     Mock Test শীঘ্রই
-    </button>
-
-   </section>
-  `;
-
- else
-
-  h=`
-
-   <button
-    class="back"
-    data-a="home"
-   >
-    ← হোম
-   </button>
-
-   <section class="detail">
-
-    <h1>
-     ${esc(S.title||"Section")}
-    </h1>
-
-    <p>
-     ${esc(S.text||"Content এখানে যোগ করা যাবে।")}
-    </p>
-
-   </section>
-  `;
-
- $("app").innerHTML=h;
-
- if(S.p=="admin")
-  loadAdmin();
-
- scrollTo(0,0);
-}
-
-/* =========================
-   ADMIN LOAD
-========================= */
-
-function loadAdmin(){
-
- let c=Cc($("ac").value);
-
- $("ai").innerHTML=
- c[3].map((x,i)=>`
-
-  <option value="${i}">
-   ${esc(x)}
-  </option>
-
- `).join("");
-
- loadFields();
-}
-
-function loadFields(){
-
- let d=D(
-  $("ac").value,
-  +$("ai").value
- );
-
- $("an").value=d.notes||"";
- $("av").value=d.video||"";
- $("ap").value=d.pdf||"";
-}
-
-/* =========================
-   DRAWER
-========================= */
-
-function drawer(){
-
- let a=[
-  ["home","🏠 Home"],
-  ["courses","📚 All Courses"],
-  ["grammar","📘 বাংলা ব্যাকরণ"],
-  ["college","🏫 College Bengali"],
-  ["models","📋 Model Set"],
-  ["notice","📢 Notice Board"],
-  ["admin","👨‍🏫 Teacher/Admin"],
-  ["login","🔐 Login"],
-  ["help","❓ Help"]
- ];
-
- $("drawer").innerHTML=
- "<h2>☰ Menu</h2>"+
- a.map(x=>`
-
-  <button data-a="${x[0]}">
-   ${x[1]}
-  </button>
-
- `).join("");
-
- $("drawer").classList.add("open");
- $("shade").classList.add("show");
+function openDrawer(){
+ document.getElementById("drawer").classList.add("open");
+ document.getElementById("drawerBg").classList.add("show");
 }
 
 function closeDrawer(){
-
- $("drawer").classList.remove("open");
- $("shade").classList.remove("show");
-
+ document.getElementById("drawer").classList.remove("open");
+ document.getElementById("drawerBg").classList.remove("show");
 }
 
-$("shade").onclick=closeDrawer;
+function bannerError(){
+ document.getElementById("bannerImage").style.display="none";
+ document.getElementById("bannerFallback").style.display="flex";
+}
 
-/* =========================
-   BUTTON EVENTS
-========================= */
+/* =========================================================
+   HOME
+========================================================= */
 
-document.addEventListener("click",e=>{
+function renderHome(){
 
- let b=e.target.closest("[data-a]");
+ const cg=document.getElementById("classGrid");
 
- if(!b)return;
+ cg.innerHTML=Object.entries(syllabus).map(([k,v])=>`
+  <div class="class-card">
+   <div class="class-number">${k}</div>
+   <h3>${esc(v.name)}</h3>
+   <p>${esc(v.board)} • ${esc(v.desc)}</p>
+   <button class="btn blue" onclick="showClass('${k}')">
+    কোর্স খুলুন →
+   </button>
+  </div>
+ `).join("");
 
- let a=b.dataset.a;
+ const mg=document.getElementById("modelGrid");
 
- if(a=="drawer")
-  return drawer();
+ mg.innerHTML=defaultModels.map(m=>`
+  <div class="model-card">
+   <span>${esc(m[1])}</span>
+   <span class="badge">${esc(m[2])}</span>
+  </div>
+ `).join("")+
+ (store.models||[]).map(m=>`
+  <div class="model-card">
+   <span>${esc(m.title)}</span>
+   ${m.url?`<a class="btn" href="${esc(m.url)}" target="_blank">খুলুন</a>`:""}
+  </div>
+ `).join("");
+}
 
- if(a=="home")
-  return go("home");
+/* =========================================================
+   CLASS
+========================================================= */
 
- if(a=="courses")
-  return go("courses");
+function showClass(k){
 
- if(a=="course")
-  return go(
-   "course",
-   {id:b.dataset.id}
-  );
+ const v=syllabus[k];
 
- if(a=="chapter")
-  return go(
-   "chapter",
-   {
-    id:b.dataset.id,
-    i:+b.dataset.i
-   }
-  );
+ let html=`
+ <div class="notice">
+  📚 <b>${esc(v.name)}</b> — ${esc(v.board)}
+  <br>
+  ${esc(v.desc)}
+ </div>
 
- if(a=="notice")
-  return go("notice");
+ <h2 class="section-title">📖 পাঠ্য অধ্যায়</h2>
 
- if(a=="grammar")
-  return go("grammar");
+ <div class="chapter-list">
+ `;
 
- if(a=="gdetail")
-  return go(
-   "gdetail",
-   {i:+b.dataset.i}
-  );
+ html+=v.literature.map(x=>chapterCard(k,x[1],x[0])).join("");
 
- if(a=="college")
-  return go("college");
+ html+=`
+ </div>
 
- if(a=="models")
-  return go("models");
+ <h2 class="section-title">📘 ${esc(v.name)} — বাংলা ব্যাকরণ</h2>
 
- if(a=="help")
-  return go(
-   "help",
-   {
-    title:"❓ Help",
-    text:
-    "শ্রেণি নির্বাচন → অধ্যায় খুলুন → নোট/ভিডিও/PDF → Mock Test।"
-   }
-  );
+ <div class="chapter-list">
+ `;
 
- if(a=="login")
-  return go("login");
+ html+=v.grammar.map(g=>chapterCard(k,g,"ব্যাকরণ")).join("");
 
- if(a=="admin")
-  return go("admin");
+ html+=`
+ </div>
 
- if([
-  "freeclass",
-  "freepdf",
-  "freequiz",
-  "links",
-  "mycourses"
- ].includes(a))
+ <h2 class="section-title">✍️ নির্মিতি / প্রবন্ধ / রচনা</h2>
 
-  return go(
-   "simple",
-   {
-    title:a,
-    text:
-    "এই section-এর content Teacher/Admin পরে যোগ করতে পারবেন।"
-   }
-  );
+ <div class="chapter-list">
+ `;
 
- if(a=="wa")
-  return window.open(
-   "https://wa.me/",
-   "_blank"
-  );
+ html+=v.writing.map(g=>chapterCard(k,g,"নির্মিতি")).join("");
 
- if(a=="mail")
-  return location.href="mailto:";
-
- if(a=="chat")
-  return toast(
-   "Chat link পরে যোগ করুন।"
-  );
-
- if(a=="empty")
-  return toast(
-   "এই content এখনও যোগ করা হয়নি।"
-  );
-
- if(a=="url")
-  return window.open(
-   b.dataset.url,
-   "_blank"
-  );
-
- if(a=="notes"){
-
-  S.p="notes";
-
-  S.text=
-   D(
-    S.id,
-    S.i
-   ).notes;
-
-  return render();
-
+ if(v.history){
+  html+=`
+   </div>
+   <h2 class="section-title">🏛️ ইতিহাস ও সংস্কৃতি</h2>
+   <div class="chapter-list">
+  `;
+  html+=v.history.map(g=>chapterCard(k,g,"ইতিহাস ও সংস্কৃতি")).join("");
  }
 
- if(a=="test")
-  return testPage(
-   b.dataset.id,
-   +b.dataset.i
-  );
+ html+=`</div>`;
 
- if(a=="retry")
-  return testPage(
-   S.test.cid,
-   S.test.i
-  );
+ page(html,`${esc(v.name)} • বাংলা`);
+}
 
- if(a=="dologin"){
+function chapterCard(k,title,type){
+ return `
+ <div class="chapter-card">
+  <div>
+   <h3>📚 ${esc(title)}</h3>
+   <p>${esc(type)} • নোট • ভিডিও • Study Material • Mock Test</p>
+  </div>
+  <button class="btn" onclick="openChapter('${k}','${encodeURIComponent(title)}')">
+   অধ্যায় খুলুন
+  </button>
+ </div>`;
+}
 
-  if(
-   !$("lu").value||
-   !$("lp").value
-  )
-   return toast(
-    "Username ও Password দিন।"
-   );
+/* =========================================================
+   CHAPTER
+========================================================= */
 
-  localStorage.bp_user=
-   $("lu").value;
+function openChapter(k,encoded){
+ const ch=decodeURIComponent(encoded);
+ const v=syllabus[k];
 
-  toast("Login সফল");
+ const note=getNote(k,ch);
+ const vids=getVideos(k,ch);
+ const qs=getQuestions(k,ch);
 
-  return go("home");
- }
+ const html=`
 
- if(a=="save"){
+ <div class="content-card">
+  <h2>📖 ${esc(ch)}</h2>
+  <p>${esc(v.name)} • ${esc(v.board)}</p>
+ </div>
 
-  let c=$("ac").value;
-  let i=+$("ai").value;
-  let d=D(c,i);
+ <div class="option-grid">
 
-  d.notes=
-   $("an").value.trim();
+  <div class="option-card">
+   <div class="big-icon">📖</div>
+   <h3>আলোচনা / নোট</h3>
+   <p>${note?"এই অধ্যায়ের নোট প্রস্তুত আছে।":"Teacher পরে নোট যোগ করতে পারবেন।"}</p>
+   <button class="btn dark full" onclick="openNote('${k}','${encodeURIComponent(ch)}')">
+    নোট খুলুন
+   </button>
+  </div>
 
-  d.video=
-   $("av").value.trim();
+  <div class="option-card">
+   <div class="big-icon">🎬</div>
+   <h3>এই অধ্যায়ের ভিডিও</h3>
+   <p>${vids.length?vids.length+"টি ভিডিও আছে":"ভিডিও পরে যোগ হবে।"}</p>
+   <button class="btn blue full" onclick="openVideos('${k}','${encodeURIComponent(ch)}')">
+    ভিডিও দেখুন
+   </button>
+  </div>
 
-  d.pdf=
-   $("ap").value.trim();
+  <div class="option-card">
+   <div class="big-icon">📄</div>
+   <h3>Study Material / PDF</h3>
+   <p>${note&&note.pdf?"PDF আছে":"Material পরে যোগ হবে।"}</p>
+   <button class="btn red full" onclick="openPDF('${k}','${encodeURIComponent(ch)}')">
+    Study Material
+   </button>
+  </div>
 
-  store[K(c,i)]=d;
+  <div class="option-card">
+   <div class="big-icon">📝</div>
+   <h3>অধ্যায়ভিত্তিক Mock Test</h3>
+   <p>${qs.length}টি প্রশ্ন বর্তমানে আছে।</p>
+   <button class="btn" onclick="startChapterTest('${k}','${encodeURIComponent(ch)}')">
+    পরীক্ষা দিন
+   </button>
+  </div>
 
-  save();
+ </div>
 
-  toast(
-   "Content Save হয়েছে"
-  );
+ <div class="notice" style="margin-top:18px">
+  💡 Mock Test-এর প্রশ্নগুলো প্রতিবার এলোমেলোভাবে আসবে।
+  পরীক্ষা শেষে <b>Score + সঠিক উত্তর + ভুল উত্তর + আবার পরীক্ষা</b> দেখা যাবে।
+ </div>
+ `;
 
+ page(html,`📚 ${esc(ch)}`);
+}
+
+/* =========================================================
+   NOTES
+========================================================= */
+
+function getNote(k,ch){
+ return (store.notes||[]).find(n=>n.class===k&&n.chapter===ch);
+}
+
+function openNote(k,encoded){
+ const ch=decodeURIComponent(encoded);
+ const n=getNote(k,ch);
+
+ if(!n){
+  page(`
+   <div class="empty content-card">
+    📖 <b>${esc(ch)}</b>-এর নোট এখনও যোগ করা হয়নি।
+    <br><br>
+    Teacher/Admin Panel থেকে নোট যোগ করা যাবে।
+   </div>
+  `,"📖 নোট");
   return;
  }
 
- if(a=="addq"){
+ page(`
+  <div class="content-card watermark-area">
+   <div class="watermark-content">
+    <h2>📖 ${esc(n.title||ch)}</h2>
+    <p class="note-content">${esc(n.text)}</p>
+   </div>
+  </div>
 
-  let c=$("ac").value;
-  let i=+$("ai").value;
-  let q=$("mq").value.trim();
+  <div class="notice">
+   🔒 এই নোটের লেখা copy/select করার চেষ্টা নিষিদ্ধ করা হয়েছে।
+   প্রতিটি protected content-এ watermark থাকবে।
+  </div>
 
-  if(!q)
-   return toast(
-    "Question লিখুন"
-   );
+  ${n.pdf?`
+   <div class="content-card">
+    <h3>📄 PDF / Study Material</h3>
+    <button class="btn red" onclick="openProtectedPDF('${esc(n.pdf)}')">
+     PDF খুলুন
+    </button>
+   </div>`:""}
+ `,"📖 অধ্যায়ের নোট");
+}
 
-  let d=D(c,i);
+function openProtectedPDF(url){
+ window.open(url,"_blank");
+}
 
-  d.qs=d.qs||[];
+/* =========================================================
+   VIDEO
+========================================================= */
 
-  d.qs.push({
-   q:q,
+function getVideos(k,ch){
+ return (store.videos||[]).filter(v=>v.class===k&&v.chapter===ch);
+}
+
+function openVideos(k,encoded){
+ const ch=decodeURIComponent(encoded);
+ const vids=getVideos(k,ch);
+
+ let html="";
+
+ if(!vids.length){
+  html=`<div class="content-card">🎬 এই অধ্যায়ের ভিডিও এখনও যোগ করা হয়নি।</div>`;
+ }else{
+  html=vids.map(v=>`
+   <div class="content-card">
+    <h3>🎬 ${esc(v.title)}</h3>
+    <p>${esc(ch)}</p>
+    <a class="btn blue" href="${esc(v.url)}" target="_blank">
+     ▶️ ভিডিও দেখুন
+    </a>
+   </div>
+  `).join("");
+ }
+
+ page(html,`🎬 ${esc(ch)} — ভিডিও`);
+}
+
+/* =========================================================
+   PDF
+========================================================= */
+
+function openPDF(k,encoded){
+ const ch=decodeURIComponent(encoded);
+ const n=getNote(k,ch);
+
+ if(!n||!n.pdf){
+  page(`
+   <div class="content-card">
+    📄 <b>${esc(ch)}</b>-এর PDF এখনও যোগ করা হয়নি।
+   </div>
+  `,"📄 Study Material");
+  return;
+ }
+
+ page(`
+  <div class="content-card watermark-area">
+   <div class="watermark-content">
+    <h2>📄 ${esc(n.title||ch)}</h2>
+    <p>বাংলা পাঠশালা • শিক্ষক : আশিষ হাইত</p>
+    <button class="btn red" onclick="openProtectedPDF('${esc(n.pdf)}')">
+     🔒 Protected PDF খুলুন
+    </button>
+   </div>
+  </div>
+
+  <div class="notice">
+   ⚠️ PDF-এ watermark ব্যবহারের ব্যবস্থা রাখা হয়েছে।
+   Browser থেকে screenshot 100% বন্ধ করা সম্ভব নয়।
+  </div>
+ `,"📄 Study Material");
+}
+
+/* =========================================================
+   MOCK TEST
+========================================================= */
+
+function getQuestions(k,ch){
+ return [
+  ...defaultQuestions,
+  ...(store.questions||[])
+ ].filter(q=>q.class===k&&q.chapter===ch);
+}
+
+let activeTest=[];
+let activeAnswers=[];
+let activeTestTitle="";
+let activeTestClass="";
+let activeTestChapter="";
+
+function shuffle(arr){
+ return [...arr].sort(()=>Math.random()-.5);
+}
+
+function startChapterTest(k,encoded){
+ const ch=decodeURIComponent(encoded);
+
+ let qs=getQuestions(k,ch);
+
+ /*
+  যদি কোনো chapter-এ question না থাকে,
+  Auto Question Generator generic practice questions তৈরি করবে।
+ */
+ if(!qs.length){
+  qs=generateQuestions(k,ch);
+ }
+
+ activeTest=shuffle(qs);
+ activeAnswers=new Array(activeTest.length);
+ activeTestTitle=ch;
+ activeTestClass=k;
+ activeTestChapter=ch;
+
+ renderTest();
+}
+
+function generateQuestions(k,ch){
+
+ return [
+  {
+   class:k,
+   chapter:ch,
+   q:`“${ch}” অধ্যায়ের প্রস্তুতির জন্য কোনটি সবচেয়ে কার্যকর?`,
    o:[
-    $("mo0").value,
-    $("mo1").value,
-    $("mo2").value,
-    $("mo3").value
+    "শুধু অধ্যায়ের নাম পড়া",
+    "নোট + আলোচনা + অনুশীলন",
+    "শুধু ছবি দেখা",
+    "শুধু পরীক্ষার আগে পড়া"
    ],
-   a:+$("ma").value
-  });
+   a:1
+  },
+  {
+   class:k,
+   chapter:ch,
+   q:`“${ch}” অধ্যায়ের জন্য কোন পদ্ধতিতে প্রস্তুতি নেওয়া ভালো?`,
+   o:[
+    "অধ্যায় না পড়ে পরীক্ষা দেওয়া",
+    "নোট পড়ে প্রশ্ন অনুশীলন করা",
+    "শুধু উত্তর মুখস্থ করা",
+    "শুধু ভিডিও দেখা"
+   ],
+   a:1
+  },
+  {
+   class:k,
+   chapter:ch,
+   q:`একটি অধ্যায় ভালোভাবে শেখার পরে কী করা উচিত?`,
+   o:[
+    "Mock Test দেওয়া",
+    "বই বন্ধ করে দেওয়া",
+    "কিছুই না করা",
+    "শুধু নাম মুখস্থ করা"
+   ],
+   a:0
+  },
+  {
+   class:k,
+   chapter:ch,
+   q:`Mock Test-এর মূল উদ্দেশ্য কী?`,
+   o:[
+    "নিজের প্রস্তুতি যাচাই করা",
+    "শুধু সময় নষ্ট করা",
+    "শুধু বই পড়া",
+    "শুধু ভিডিও দেখা"
+   ],
+   a:0
+  }
+ ];
+}
 
-  store[K(c,i)]=d;
+function renderTest(){
 
-  save();
+ let html=`
+ <div class="content-card">
+  <h2>📝 Mock Test — ${esc(activeTestTitle)}</h2>
+  <p>${activeTest.length}টি প্রশ্ন • প্রশ্নের ক্রম Random</p>
+ </div>
+ `;
 
-  toast(
-   "MCQ যোগ হয়েছে"
-  );
+ html+=activeTest.map((q,i)=>`
+  <div class="question">
+   <h3>${i+1}. ${esc(q.q)}</h3>
+   ${q.o.map((op,j)=>`
+    <button
+     class="answer ${activeAnswers[i]===j?"selected":""}"
+     onclick="chooseAnswer(${i},${j})">
+     ${String.fromCharCode(65+j)}. ${esc(op)}
+    </button>
+   `).join("")}
+  </div>
+ `).join("");
 
-  $("mq").value="";
+ html+=`
+  <button class="btn full" onclick="submitTest()">
+   ✅ Submit Test
+  </button>
+ `;
 
+ page(html,"📝 Mock Test");
+}
+
+function chooseAnswer(q,i){
+ activeAnswers[q]=i;
+ renderTest();
+}
+
+function submitTest(){
+
+ let score=0;
+
+ activeTest.forEach((q,i)=>{
+  if(activeAnswers[i]===q.a)score++;
+ });
+
+ let wrong=activeTest.length-score;
+ let percent=Math.round(score/activeTest.length*100);
+
+ let html=`
+ <div class="result-box">
+  <div>🏆 আপনার ফলাফল</div>
+  <div class="result-score">${score}/${activeTest.length}</div>
+  <div>স্কোর : ${percent}%</div>
+  <div>সঠিক : ${score} • ভুল : ${wrong}</div>
+ </div>
+
+ <h2 class="section-title">📊 উত্তর যাচাই</h2>
+ `;
+
+ html+=activeTest.map((q,i)=>{
+  const selected=activeAnswers[i];
+  const correct=selected===q.a;
+
+  return `
+   <div class="question">
+    <h3>${i+1}. ${esc(q.q)}</h3>
+
+    <div class="answer ${correct?"correct":"wrong"}">
+     ${correct?"✅":"❌"}
+     আপনার উত্তর:
+     ${selected==null?"উত্তর দেননি":esc(q.o[selected])}
+    </div>
+
+    <div class="answer correct">
+     ✅ সঠিক উত্তর: ${esc(q.o[q.a])}
+    </div>
+   </div>
+  `;
+ }).join("");
+
+ html+=`
+  <button class="btn full" onclick="startChapterTest('${activeTestClass}','${encodeURIComponent(activeTestChapter)}')">
+   🔄 আবার পরীক্ষা দিন — প্রশ্ন Random হবে
+  </button>
+ `;
+
+ page(html,"🏆 Test Result");
+}
+
+/* =========================================================
+   ALL COURSES
+========================================================= */
+
+function showAllCourses(){
+ let html=`
+ <p class="section-sub">নবম থেকে দ্বাদশ শ্রেণির বাংলা বিষয়।</p>
+ <div class="class-grid">
+ `;
+
+ html+=Object.entries(syllabus).map(([k,v])=>`
+  <div class="class-card">
+   <div class="class-number">${k}</div>
+   <h3>${esc(v.name)}</h3>
+   <p>${esc(v.board)}</p>
+   <button class="btn blue" onclick="showClass('${k}')">
+    প্রবেশ করুন →
+   </button>
+  </div>
+ `).join("");
+
+ html+=`
+ </div>
+
+ <h2 class="section-title">📘 বাংলা ব্যাকরণ</h2>
+ <div class="chapter-list">
+ `;
+
+ Object.entries(syllabus).forEach(([k,v])=>{
+  html+=v.grammar.map(g=>chapterCard(k,g,"ব্যাকরণ")).join("");
+ });
+
+ html+=`
+ </div>
+
+ <h2 class="section-title">🏫 College Bengali</h2>
+
+ <div class="college-grid">
+
+  <div class="college-card" onclick="collegeTopic('উপন্যাস')">
+   <h3>📕 উপন্যাস</h3>
+   <p>উপন্যাস আলোচনা ও নোট</p>
+  </div>
+
+  <div class="college-card" onclick="collegeTopic('ছোটগল্প')">
+   <h3>📗 ছোটগল্প</h3>
+   <p>ছোটগল্প আলোচনা ও নোট</p>
+  </div>
+
+  <div class="college-card" onclick="collegeTopic('নাটক')">
+   <h3>🎭 নাটক</h3>
+   <p>নাটক আলোচনা ও নোট</p>
+  </div>
+
+  <div class="college-card" onclick="collegeTopic('প্রবন্ধ')">
+   <h3>📘 প্রবন্ধ</h3>
+   <p>প্রবন্ধ আলোচনা ও নোট</p>
+  </div>
+
+  <div class="college-card" onclick="collegeTopic('কলেজ সাজেশন')">
+   <h3>💡 কলেজ সাজেশন</h3>
+   <p>পরীক্ষার গুরুত্বপূর্ণ বিষয়</p>
+  </div>
+
+  <div class="college-card" onclick="collegeTopic('কলেজ নোট')">
+   <h3>📄 কলেজ নোট</h3>
+   <p>Study Material</p>
+  </div>
+
+ </div>
+ `;
+
+ page(html,"📚 All Courses");
+}
+
+/* =========================================================
+   GRAMMAR
+========================================================= */
+
+function showGrammarMenu(){
+
+ let html="";
+
+ Object.entries(syllabus).forEach(([k,v])=>{
+  html+=`
+   <h2 class="section-title">📘 ${esc(v.name)}</h2>
+   <div class="chapter-list">
+    ${v.grammar.map(g=>chapterCard(k,g,"ব্যাকরণ")).join("")}
+   </div>
+  `;
+ });
+
+ page(html,"📘 বাংলা ব্যাকরণ");
+}
+
+/* =========================================================
+   WRITING
+========================================================= */
+
+function showWriting(){
+
+ let html="";
+
+ Object.entries(syllabus).forEach(([k,v])=>{
+  html+=`
+   <h2 class="section-title">✍️ ${esc(v.name)}</h2>
+   <div class="chapter-list">
+    ${v.writing.map(g=>chapterCard(k,g,"প্রবন্ধ / রচনা")).join("")}
+   </div>
+  `;
+ });
+
+ page(html,"✍️ প্রবন্ধ ও রচনা");
+}
+
+/* =========================================================
+   COLLEGE
+========================================================= */
+
+const collegeDefault={
+ "উপন্যাস":[
+  "উপন্যাসের পরিচয়",
+  "গুরুত্বপূর্ণ উপন্যাস আলোচনা",
+  "চরিত্র আলোচনা",
+  "গুরুত্বপূর্ণ প্রশ্ন ও উত্তর"
+ ],
+ "ছোটগল্প":[
+  "ছোটগল্পের আলোচনা",
+  "গল্পের মূলভাব",
+  "চরিত্র বিশ্লেষণ",
+  "গুরুত্বপূর্ণ প্রশ্ন ও উত্তর"
+ ],
+ "নাটক":[
+  "নাটকের পরিচয়",
+  "নাটকের গুরুত্বপূর্ণ আলোচনা",
+  "চরিত্র বিশ্লেষণ",
+  "গুরুত্বপূর্ণ প্রশ্ন ও উত্তর"
+ ],
+ "প্রবন্ধ":[
+  "প্রবন্ধের আলোচনা",
+  "মূল বক্তব্য",
+  "গুরুত্বপূর্ণ প্রশ্ন ও উত্তর"
+ ],
+ "কলেজ সাজেশন":[
+  "প্রথম সেমেস্টার সাজেশন",
+  "দ্বিতীয় সেমেস্টার সাজেশন",
+  "তৃতীয় সেমেস্টার সাজেশন",
+  "চতুর্থ সেমেস্টার সাজেশন"
+ ],
+ "কলেজ নোট":[
+  "কলেজ বাংলা Study Material",
+  "পরীক্ষার গুরুত্বপূর্ণ নোট",
+  "প্রশ্ন ও উত্তর"
+ ]
+};
+
+function showCollege(){
+
+ let html=`
+ <div class="college-grid">
+ ${Object.keys(collegeDefault).map(x=>`
+  <div class="college-card" onclick="collegeTopic('${esc(x)}')">
+   <h3>📚 ${esc(x)}</h3>
+   <p>আলোচনা • নোট • প্রশ্ন</p>
+  </div>
+ `).join("")}
+ </div>
+ `;
+
+ page(html,"🏫 College Bengali");
+}
+
+function collegeTopic(type){
+
+ let arr=collegeDefault[type]||[];
+
+ const added=(store.college||[])
+  .filter(x=>x.category===type);
+
+ let html=`
+ <div class="college-grid">
+ ${arr.map(x=>`
+  <div class="college-card">
+   <h3>📚 ${esc(x)}</h3>
+   <p>আলোচনা • নোট • গুরুত্বপূর্ণ প্রশ্ন</p>
+   <button class="btn" onclick="collegeMessage('${encodeURIComponent(x)}')">
+    খুলুন
+   </button>
+  </div>
+ `).join("")}
+
+ ${added.map(x=>`
+  <div class="college-card">
+   <h3>${esc(x.title)}</h3>
+   <p>${esc(x.description||"College Bengali")}</p>
+   ${x.url?`<a class="btn" href="${esc(x.url)}" target="_blank">খুলুন</a>`:""}
+  </div>
+ `).join("")}
+ </div>
+ `;
+
+ page(html,`🏫 College Bengali — ${esc(type)}`);
+}
+
+function collegeMessage(encoded){
+ const x=decodeURIComponent(encoded);
+ page(`
+  <div class="content-card watermark-area">
+   <div class="watermark-content">
+    <h2>📚 ${esc(x)}</h2>
+    <p>
+     এই College Bengali অংশে Teacher/Admin থেকে
+     বিস্তারিত নোট, PDF, ভিডিও এবং প্রশ্ন যোগ করা যাবে।
+    </p>
+   </div>
+  </div>
+ `,"🏫 College Bengali");
+}
+
+/* =========================================================
+   MODELS
+========================================================= */
+
+function showModels(){
+
+ let html=`
+ <div class="model-grid">
+ ${defaultModels.map(m=>`
+  <div class="model-card">
+   <span>${esc(m[1])}</span>
+   <span class="badge">${esc(m[2])}</span>
+  </div>
+ `).join("")}
+ `;
+
+ html+=(store.models||[]).map(m=>`
+  <div class="model-card">
+   <span>${esc(m.title)}</span>
+   ${m.url?`<a class="btn" href="${esc(m.url)}" target="_blank">খুলুন</a>`:""}
+  </div>
+ `).join("");
+
+ html+=`</div>`;
+
+ page(html,"📝 গুরুত্বপূর্ণ Model Set");
+}
+
+/* =========================================================
+   FREE CLASS
+========================================================= */
+
+function showFreeClass(){
+
+ const vids=store.videos||[];
+
+ page(
+  vids.length?
+  vids.map(v=>`
+   <div class="chapter-card">
+    <div>
+     <h3>🎬 ${esc(v.title)}</h3>
+     <p>${esc(syllabus[v.class]?.name||"")} • ${esc(v.chapter)}</p>
+    </div>
+    <a class="btn blue" href="${esc(v.url)}" target="_blank">▶️ দেখুন</a>
+   </div>
+  `).join("")
+  :
+  `<div class="content-card">
+    🎥 Free Class এখনও Teacher/Admin Panel থেকে যোগ করা হয়নি।
+   </div>`,
+  "🎥 Free Class"
+ );
+}
+
+/* =========================================================
+   FREE TEST
+========================================================= */
+
+function showFreeTest(){
+
+ let html=`
+ <div class="notice">
+  📝 Free MCQ Test-এ প্রতিটি অধ্যায় অনুযায়ী পরীক্ষা দেওয়া যাবে।
+  প্রশ্নগুলো Random হবে এবং শেষে Score দেখা যাবে।
+ </div>
+
+ <div class="class-grid">
+ `;
+
+ Object.entries(syllabus).forEach(([k,v])=>{
+  html+=`
+   <div class="class-card">
+    <div class="class-number">${k}</div>
+    <h3>${esc(v.name)}</h3>
+    <p>${esc(v.board)}</p>
+    <button class="btn" onclick="showClass('${k}')">
+     অধ্যায় নির্বাচন করুন
+    </button>
+   </div>
+  `;
+ });
+
+ html+=`</div>`;
+
+ page(html,"📝 Free MCQ Test");
+}
+
+/* =========================================================
+   MATERIALS
+========================================================= */
+
+function showMaterials(){
+
+ const notes=store.notes||[];
+
+ page(
+  notes.length?
+  notes.map(n=>`
+   <div class="chapter-card">
+    <div>
+     <h3>📄 ${esc(n.title)}</h3>
+     <p>${esc(syllabus[n.class]?.name||"")} • ${esc(n.chapter)}</p>
+    </div>
+    <button class="btn red" onclick="openNote('${n.class}','${encodeURIComponent(n.chapter)}')">
+     খুলুন
+    </button>
+   </div>
+  `).join("")
+  :
+  `<div class="content-card">
+   📄 এখনও কোনো Study Material যোগ করা হয়নি।
+  </div>`,
+  "📄 Free PDF / Study Material"
+ );
+}
+
+/* =========================================================
+   NOTICE
+========================================================= */
+
+function showNotice(){
+
+ const ns=store.notices||[];
+
+ let html="";
+
+ if(ns.length){
+  html=ns.map(n=>`
+   <div class="content-card">
+    <h3>📢 ${esc(n.title)}</h3>
+    <p>${esc(n.text)}</p>
+    ${n.url?`<a class="btn" href="${esc(n.url)}" target="_blank">বিস্তারিত</a>`:""}
+   </div>
+  `).join("");
+ }else{
+  html=`
+   <div class="content-card">
+    <h2>📢 বাংলা পাঠশালা Notice Board</h2>
+    <p>
+     পরীক্ষার রুটিন, গুরুত্বপূর্ণ ঘোষণা,
+     নতুন Study Material এবং অন্যান্য আপডেট এখানে দেখা যাবে।
+    </p>
+   </div>
+  `;
+ }
+
+ page(html,"📢 Notice Board");
+}
+
+/* =========================================================
+   IMPORTANT LINKS
+========================================================= */
+
+function showLinks(){
+
+ page(`
+  <div class="quick-grid">
+
+   <div class="quick-card" onclick="window.open('https://wbbse.wb.gov.in/','_blank')">
+    <div class="quick-icon">🏫</div>
+    <h3>WBBSE</h3>
+    <p>West Bengal Board</p>
+   </div>
+
+   <div class="quick-card orange" onclick="window.open('https://wbchse.wb.gov.in/','_blank')">
+    <div class="quick-icon">🎓</div>
+    <h3>WBCHSE</h3>
+    <p>Higher Secondary Council</p>
+   </div>
+
+  </div>
+ `,"🔗 Important Links");
+}
+
+/* =========================================================
+   HELP
+========================================================= */
+
+function showHelp(){
+
+ page(`
+  <div class="content-card">
+   <h2>❓ কীভাবে ব্যবহার করবেন?</h2>
+   <ol>
+    <li>আপনার শ্রেণি নির্বাচন করুন।</li>
+    <li>প্রতিটি অধ্যায়ের নাম দেখা যাবে।</li>
+    <li>অধ্যায় খুললে নোট, ভিডিও, Study Material এবং Mock Test থাকবে।</li>
+    <li>Mock Test-এ প্রশ্ন Random হবে।</li>
+    <li>Submit করলে Score দেখা যাবে।</li>
+    <li>ভুল প্রশ্ন ও সঠিক উত্তর দেখা যাবে।</li>
+    <li>আবার পরীক্ষা দেওয়া যাবে।</li>
+   </ol>
+  </div>
+
+  <div class="content-card">
+   <h2>🔒 Protected Content</h2>
+   <p>
+    Protected note-এ text selection, copy এবং context-menu বন্ধ করার
+    ব্যবস্থা রাখা হয়েছে। Watermark-ও দেখানো হবে।
+   </p>
+  </div>
+ `,"❓ Help");
+}
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+function showSearch(){
+
+ page(`
+  <input id="searchInput"
+         class="search-box"
+         placeholder="🔎 অধ্যায় / ব্যাকরণ / রচনা / কলেজ বিষয় খুঁজুন..."
+         oninput="doSearch(this.value)">
+  <div id="searchResults" class="search-results"></div>
+ `,"🔎 Search");
+}
+
+function doSearch(q){
+
+ const box=document.getElementById("searchResults");
+ if(!box)return;
+
+ q=q.trim().toLowerCase();
+
+ if(!q){
+  box.innerHTML="";
   return;
  }
 
- if(a=="addnotice"){
+ let result=[];
 
-  let t=$("nt").value;
-  let x=$("nx").value;
+ Object.entries(syllabus).forEach(([k,v])=>{
 
-  if(!x)
-   return toast(
-    "Notice লিখুন"
-   );
-
-  notices.unshift({
-   title:t,
-   text:x
+  v.literature.forEach(x=>{
+   if(x[1].toLowerCase().includes(q)){
+    result.push({
+     k,
+     title:x[1],
+     type:x[0]
+    });
+   }
   });
 
-  save();
+  v.grammar.forEach(x=>{
+   if(x.toLowerCase().includes(q)){
+    result.push({
+     k,
+     title:x,
+     type:"ব্যাকরণ"
+    });
+   }
+  });
 
-  toast(
-   "Notice Save হয়েছে"
-  );
+  v.writing.forEach(x=>{
+   if(x.toLowerCase().includes(q)){
+    result.push({
+     k,
+     title:x,
+     type:"নির্মিতি"
+    });
+   }
+  });
 
+  if(v.history){
+   v.history.forEach(x=>{
+    if(x.toLowerCase().includes(q)){
+     result.push({
+      k,
+      title:x,
+      type:"ইতিহাস ও সংস্কৃতি"
+     });
+    }
+   });
+  }
+
+ });
+
+ box.innerHTML=result.length?
+ result.map(x=>`
+  <div class="chapter-card">
+   <div>
+    <h3>${esc(x.title)}</h3>
+    <p>${esc(syllabus[x.k].name)} • ${esc(x.type)}</p>
+   </div>
+   <button class="btn" onclick="openChapter('${x.k}','${encodeURIComponent(x.title)}')">
+    খুলুন
+   </button>
+  </div>
+ `).join("")
+ :
+ `<div class="content-card">কিছু পাওয়া যায়নি।</div>`;
+}
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+function openWhatsApp(){
+ window.open("https://wa.me/"+PHONE,"_blank");
+}
+
+function openEmail(){
+ window.location.href="mailto:"+EMAIL;
+}
+
+function showChat(){
+
+ page(`
+  <div class="contact">
+   <h2>💬 Chat / যোগাযোগ</h2>
+   <p>বাংলা পাঠশালা সংক্রান্ত যোগাযোগের জন্য নিচের অপশন ব্যবহার করুন।</p>
+
+   <button class="btn green" onclick="openWhatsApp()">
+    🟢 WhatsApp Chat
+   </button>
+
+   <button class="btn blue" onclick="openEmail()">
+    ✉️ Email
+   </button>
+  </div>
+ `,"💬 Chat");
+}
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+function login(){
+
+ if(store.logged){
+  modal(`
+   <h2>👤 ${esc(store.user?.name||"Student")}</h2>
+   <p>${esc(store.user?.email||"")}</p>
+   <button class="btn red full" onclick="logout()">Logout</button>
+  `);
   return;
+ }
+
+ modal(`
+  <div class="modal-head">
+   <h2>🔐 বাংলা পাঠশালা Login</h2>
+   <button class="close" onclick="closeModal()">×</button>
+  </div>
+
+  <input id="loginEmail"
+         class="search-box"
+         placeholder="Email / Phone">
+
+  <input id="loginPassword"
+         class="search-box"
+         type="password"
+         style="margin-top:10px"
+         placeholder="Password">
+
+  <button class="btn full" style="margin-top:10px" onclick="doLogin()">
+   Login
+  </button>
+
+  <div class="notice" style="margin-top:12px">
+   Teacher/Admin-এর জন্য আপনার Firebase/real account ব্যবহার করুন।
+  </div>
+ `);
+}
+
+function doLogin(){
+
+ const email=document.getElementById("loginEmail").value.trim();
+ const password=document.getElementById("loginPassword").value.trim();
+
+ if(!email||!password){
+  alert("Email/Phone ও Password দিন।");
+  return;
+ }
+
+ store.logged=true;
+ store.user={
+  name:email===ADMIN_EMAIL?"Teacher":"Student",
+  email,
+  role:email===ADMIN_EMAIL?"teacher":"student"
+ };
+
+ save();
+ closeModal();
+ alert("Login সফল হয়েছে।");
+}
+
+function logout(){
+ store.logged=false;
+ store.user=null;
+ save();
+ closeModal();
+ home();
+ alert("Logout হয়েছে।");
+}
+
+/* =========================================================
+   ADMIN PANEL
+========================================================= */
+
+function showAdmin(){
+
+ if(!store.logged || store.user?.role!=="teacher"){
+  modal(`
+   <h2>🛠️ Teacher / Admin Panel</h2>
+   <p>
+    Admin Panel খুলতে Teacher account দিয়ে Login করুন।
+   </p>
+   <p><b>Admin Email:</b> ${esc(ADMIN_EMAIL)}</p>
+   <button class="btn full" onclick="closeModal();login()">
+    Login
+   </button>
+  `);
+  return;
+ }
+
+ page(`
+  <div class="notice">
+   🛠️ <b>Teacher / Admin Panel</b><br>
+   এখান থেকে নোট, ভিডিও, PDF URL, Mock Question,
+   Model Set, Notice এবং College content যোগ করা যাবে।
+  </div>
+
+  <div class="admin-grid">
+
+   <!-- NOTE -->
+   <div class="admin-card">
+    <h3>📖 নোট যোগ করুন</h3>
+
+    <select id="aClass">
+     ${Object.entries(syllabus).map(([k,v])=>
+      `<option value="${k}">${esc(v.name)}</option>`
+     ).join("")}
+    </select>
+
+    <input id="aChapter" placeholder="অধ্যায়ের নাম">
+
+    <input id="aTitle" placeholder="নোটের শিরোনাম">
+
+    <textarea id="aText"
+      placeholder="এখানে আপনার নোট টাইপ করুন..."></textarea>
+
+    <input id="aPdf"
+      placeholder="PDF URL (ঐচ্ছিক)">
+
+    <button class="btn full" onclick="addNote()">
+     💾 নোট Save
+    </button>
+   </div>
+
+   <!-- VIDEO -->
+   <div class="admin-card">
+    <h3>🎬 Video যোগ করুন</h3>
+
+    <select id="vClass">
+     ${Object.entries(syllabus).map(([k,v])=>
+      `<option value="${k}">${esc(v.name)}</option>`
+     ).join("")}
+    </select>
+
+    <input id="vChapter" placeholder="অধ্যায়ের নাম">
+
+    <input id="vTitle" placeholder="ভিডিওর নাম">
+
+    <input id="vUrl"
+      placeholder="YouTube / Video URL">
+
+    <button class="btn blue full" onclick="addVideo()">
+     🎬 Video Save
+    </button>
+   </div>
+
+   <!-- QUESTION -->
+   <div class="admin-card">
+    <h3>📝 Mock Question যোগ করুন</h3>
+
+    <select id="qClass">
+     ${Object.entries(syllabus).map(([k,v])=>
+      `<option value="${k}">${esc(v.name)}</option>`
+     ).join("")}
+    </select>
+
+    <input id="qChapter" placeholder="অধ্যায়ের নাম">
+
+    <textarea id="qText"
+      placeholder="প্রশ্ন লিখুন"></textarea>
+
+    <input id="qA" placeholder="Option A">
+    <input id="qB" placeholder="Option B">
+    <input id="qC" placeholder="Option C">
+    <input id="qD" placeholder="Option D">
+
+    <select id="qAns">
+     <option value="0">সঠিক উত্তর — A</option>
+     <option value="1">সঠিক উত্তর — B</option>
+     <option value="2">সঠিক উত্তর — C</option>
+     <option value="3">সঠিক উত্তর — D</option>
+    </select>
+
+    <button class="btn purple full" onclick="addQuestion()">
+     📝 Question Save
+    </button>
+   </div>
+
+   <!-- MODEL -->
+   <div class="admin-card">
+    <h3>📋 Model Set যোগ করুন</h3>
+
+    <input id="mTitle"
+      placeholder="Model Set-এর নাম">
+
+    <input id="mUrl"
+      placeholder="PDF / URL">
+
+    <button class="btn orange full" onclick="addModel()">
+     📋 Model Set Save
+    </button>
+   </div>
+
+   <!-- NOTICE -->
+   <div class="admin-card">
+    <h3>📢 Notice যোগ করুন</h3>
+
+    <input id="nTitle"
+      placeholder="Notice-এর শিরোনাম">
+
+    <textarea id="nText"
+      placeholder="Notice-এর বিস্তারিত"></textarea>
+
+    <input id="nUrl"
+      placeholder="ঐচ্ছিক Link">
+
+    <button class="btn red full" onclick="addNotice()">
+     📢 Notice Save
+    </button>
+   </div>
+
+   <!-- COLLEGE -->
+   <div class="admin-card">
+    <h3>🏫 College Bengali যোগ করুন</h3>
+
+    <select id="cCategory">
+     ${Object.keys(collegeDefault).map(x=>
+      `<option>${esc(x)}</option>`
+     ).join("")}
+    </select>
+
+    <input id="cTitle"
+      placeholder="বিষয়ের নাম">
+
+    <input id="cDescription"
+      placeholder="সংক্ষিপ্ত বিবরণ">
+
+    <input id="cUrl"
+      placeholder="PDF / Video / Link">
+
+    <button class="btn full" onclick="addCollege()">
+     🏫 College Content Save
+    </button>
+   </div>
+
+  </div>
+
+  <h2 class="section-title">💾 Backup / Restore</h2>
+
+  <div class="content-card">
+
+   <button class="btn blue" onclick="exportContent()">
+    ⬇️ Content Backup
+   </button>
+
+   <button class="btn dark" onclick="importContent()">
+    ⬆️ Content Restore
+   </button>
+
+   <button class="btn red" onclick="clearContent()">
+    🗑️ Added Content Delete
+   </button>
+
+  </div>
+
+  <h2 class="section-title">📊 বর্তমান Content</h2>
+
+  <div class="admin-card">
+   <p>Notes: ${(store.notes||[]).length}</p>
+   <p>Videos: ${(store.videos||[]).length}</p>
+   <p>Questions: ${(store.questions||[]).length}</p>
+   <p>Models: ${(store.models||[]).length}</p>
+   <p>Notices: ${(store.notices||[]).length}</p>
+   <p>College: ${(store.college||[]).length}</p>
+  </div>
+ `,"🛠️ Teacher / Admin Panel");
+}
+
+/* =========================================================
+   ADMIN ADD FUNCTIONS
+========================================================= */
+
+function addNote(){
+
+ const n={
+  class:document.getElementById("aClass").value,
+  chapter:document.getElementById("aChapter").value.trim(),
+  title:document.getElementById("aTitle").value.trim(),
+  text:document.getElementById("aText").value,
+  pdf:document.getElementById("aPdf").value.trim()
+ };
+
+ if(!n.chapter||!n.title||!n.text){
+  alert("অধ্যায়, শিরোনাম ও নোট পূরণ করুন।");
+  return;
+ }
+
+ store.notes.push(n);
+ save();
+
+ alert("নোট Save হয়েছে।");
+ showAdmin();
+}
+
+function addVideo(){
+
+ const v={
+  class:document.getElementById("vClass").value,
+  chapter:document.getElementById("vChapter").value.trim(),
+  title:document.getElementById("vTitle").value.trim(),
+  url:document.getElementById("vUrl").value.trim()
+ };
+
+ if(!v.chapter||!v.title||!v.url){
+  alert("সব তথ্য পূরণ করুন।");
+  return;
+ }
+
+ store.videos.push(v);
+ save();
+
+ alert("Video Save হয়েছে।");
+ showAdmin();
+}
+
+function addQuestion(){
+
+ const q={
+  class:document.getElementById("qClass").value,
+  chapter:document.getElementById("qChapter").value.trim(),
+  q:document.getElementById("qText").value.trim(),
+  o:[
+   document.getElementById("qA").value.trim(),
+   document.getElementById("qB").value.trim(),
+   document.getElementById("qC").value.trim(),
+   document.getElementById("qD").value.trim()
+  ],
+  a:Number(document.getElementById("qAns").value)
+ };
+
+ if(!q.chapter||!q.q||q.o.some(x=>!x)){
+  alert("অধ্যায়, প্রশ্ন ও চারটি option পূরণ করুন।");
+  return;
+ }
+
+ store.questions.push(q);
+ save();
+
+ alert("Mock Question Save হয়েছে।");
+ showAdmin();
+}
+
+function addModel(){
+
+ const m={
+  title:document.getElementById("mTitle").value.trim(),
+  url:document.getElementById("mUrl").value.trim()
+ };
+
+ if(!m.title){
+  alert("Model Set-এর নাম দিন।");
+  return;
+ }
+
+ store.models.push(m);
+ save();
+
+ alert("Model Set Save হয়েছে।");
+ showAdmin();
+}
+
+function addNotice(){
+
+ const n={
+  title:document.getElementById("nTitle").value.trim(),
+  text:document.getElementById("nText").value.trim(),
+  url:document.getElementById("nUrl").value.trim()
+ };
+
+ if(!n.title||!n.text){
+  alert("Notice পূরণ করুন।");
+  return;
+ }
+
+ store.notices.push(n);
+ save();
+
+ alert("Notice Save হয়েছে।");
+ showAdmin();
+}
+
+function addCollege(){
+
+ const c={
+  category:document.getElementById("cCategory").value,
+  title:document.getElementById("cTitle").value.trim(),
+  description:document.getElementById("cDescription").value.trim(),
+  url:document.getElementById("cUrl").value.trim()
+ };
+
+ if(!c.title){
+  alert("College content-এর নাম দিন।");
+  return;
+ }
+
+ store.college.push(c);
+ save();
+
+ alert("College Content Save হয়েছে।");
+ showAdmin();
+}
+
+/* =========================================================
+   BACKUP
+========================================================= */
+
+function exportContent(){
+
+ const blob=new Blob(
+  [JSON.stringify(store,null,2)],
+  {type:"application/json"}
+ );
+
+ const a=document.createElement("a");
+ a.href=URL.createObjectURL(blob);
+ a.download="bangla-pathshala-content.json";
+ a.click();
+ URL.revokeObjectURL(a.href);
+}
+
+function importContent(){
+
+ const raw=prompt(
+  "আগে Backup করা JSON এখানে পুরোটা paste করুন:"
+ );
+
+ if(!raw)return;
+
+ try{
+  const x=JSON.parse(raw);
+
+  store={
+   ...store,
+   ...x
+  };
+
+  save();
+  alert("Content Restore হয়েছে।");
+  showAdmin();
+
+ }catch(e){
+  alert("JSON সঠিক নয়।");
+ }
+}
+
+function clearContent(){
+
+ if(!confirm("আপনার যোগ করা content মুছে ফেলবেন?"))return;
+
+ store.notes=[];
+ store.videos=[];
+ store.questions=[];
+ store.models=[];
+ store.notices=[];
+ store.college=[];
+
+ save();
+
+ alert("Added content মুছে গেছে।");
+ showAdmin();
+}
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+function modal(html){
+ document.getElementById("modal").innerHTML=html;
+ document.getElementById("modalBg").classList.add("show");
+}
+
+function closeModal(e){
+ if(e && e.target!==document.getElementById("modalBg"))return;
+ document.getElementById("modalBg").classList.remove("show");
+}
+
+function closeModalDirect(){
+ document.getElementById("modalBg").classList.remove("show");
+}
+
+/* =========================================================
+   PROTECTION
+========================================================= */
+
+document.addEventListener("contextmenu",function(e){
+ if(e.target.closest(".note-content,.watermark-area,.protected")){
+  e.preventDefault();
+ }
+});
+
+document.addEventListener("copy",function(e){
+ if(
+  e.target.closest &&
+  e.target.closest(".note-content,.watermark-area,.protected")
+ ){
+  e.preventDefault();
+ }
+});
+
+document.addEventListener("cut",function(e){
+ if(
+  e.target.closest &&
+  e.target.closest(".note-content,.watermark-area,.protected")
+ ){
+  e.preventDefault();
+ }
+});
+
+document.addEventListener("selectstart",function(e){
+ if(
+  e.target.closest &&
+  e.target.closest(".note-content,.watermark-area,.protected")
+ ){
+  e.preventDefault();
+ }
+});
+
+/* keyboard protection */
+document.addEventListener("keydown",function(e){
+
+ if(
+  (e.ctrlKey||e.metaKey) &&
+  ["c","x","u","s","p"].includes(e.key.toLowerCase())
+ ){
+  if(
+   document.activeElement &&
+   document.activeElement.closest &&
+   document.activeElement.closest(".note-content,.watermark-area")
+  ){
+   e.preventDefault();
+  }
  }
 
 });
 
-/* =========================
-   TEST SUBMIT
-========================= */
+/* =========================================================
+   INITIAL
+========================================================= */
 
-document.addEventListener(
- "submit",
- e=>{
-
-  if(e.target.id!="tf")
-   return;
-
-  e.preventDefault();
-
-  S.test.q.forEach(
-   (q,n)=>{
-
-    let x=
-     document.querySelector(
-      `input[name="q${n}"]:checked`
-     );
-
-    if(x)
-     S.test.ans[n]=+x.value;
-
-   }
-  );
-
-  S.result=true;
-  S.p="result";
-
-  render();
-
- }
-);
-
-/* ADMIN SELECT */
-document.addEventListener(
- "change",
- e=>{
-
-  if(e.target.id=="ac")
-   loadAdmin();
-
-  if(e.target.id=="ai")
-   loadFields();
-
- }
-);
-
-/* BASIC COPY/PRINT DETERRENCE */
-document.addEventListener(
- "contextmenu",
- e=>e.preventDefault()
-);
-
-document.addEventListener(
- "keydown",
- e=>{
-
-  if(
-   (e.ctrlKey||e.metaKey)&&
-   ["c","s","p","u"]
-   .includes(e.key.toLowerCase())
-  )
-   e.preventDefault();
-
- }
-);
-
-/* START */
-render();
+renderHome();
 
 </script>
 
