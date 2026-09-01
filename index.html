@@ -4820,6 +4820,13 @@ function(url){
   window.openStudentLogin = studentAuth;
 
 })();
+     document.addEventListener("DOMContentLoaded", function () {
+  if (localStorage.getItem("studentLoggedIn") !== "yes") {
+    setTimeout(function () {
+      showStudentLogin();
+    }, 300);
+  }
+});
                              </script>
 </body>
 </html>
