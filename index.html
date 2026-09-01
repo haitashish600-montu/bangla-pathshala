@@ -4594,7 +4594,221 @@ function(url){
   );
 
 };
+/* ===== STUDENT REGISTER + LOGIN ===== */
 
+(function () {
+
+  function studentAuth() {
+
+    const old = document.getElementById("studentAuthBox");
+    if (old) old.remove();
+
+    const box = document.createElement("div");
+    box.id = "studentAuthBox";
+
+    box.innerHTML = `
+      <div style="
+        position:fixed;
+        inset:0;
+        background:rgba(0,0,0,.65);
+        z-index:99999;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        padding:20px;
+      ">
+        <div style="
+          background:#fff;
+          width:100%;
+          max-width:380px;
+          border-radius:20px;
+          padding:25px;
+          box-sizing:border-box;
+        ">
+
+          <div style="
+            text-align:right;
+            font-size:25px;
+            cursor:pointer;
+          " onclick="document.getElementById('studentAuthBox').remove()">✕</div>
+
+          <h2 style="text-align:center;color:#064b80;">
+            🎓 ছাত্র-ছাত্রী লগইন
+          </h2>
+
+          <div id="studentRegister">
+
+            <input id="studentName"
+              placeholder="ছাত্র/ছাত্রীর নাম"
+              style="width:100%;padding:13px;margin:7px 0;
+              box-sizing:border-box;border:1px solid #ccc;
+              border-radius:10px;font-size:16px;">
+
+            <input id="studentMobile"
+              placeholder="মোবাইল নম্বর"
+              type="tel"
+              style="width:100%;padding:13px;margin:7px 0;
+              box-sizing:border-box;border:1px solid #ccc;
+              border-radius:10px;font-size:16px;">
+
+            <input id="studentPassword"
+              placeholder="পাসওয়ার্ড তৈরি করুন"
+              type="password"
+              style="width:100%;padding:13px;margin:7px 0;
+              box-sizing:border-box;border:1px solid #ccc;
+              border-radius:10px;font-size:16px;">
+
+            <button onclick="studentRegister()" style="
+              width:100%;
+              padding:13px;
+              margin-top:10px;
+              border:0;
+              border-radius:10px;
+              background:#087ffc;
+              color:white;
+              font-size:17px;
+              font-weight:bold;
+            ">রেজিস্টার করুন</button>
+
+            <p style="text-align:center;">
+              আগে রেজিস্টার করেছেন?
+              <span onclick="showStudentLogin()" style="
+                color:#087ffc;
+                cursor:pointer;
+                font-weight:bold;
+              ">লগইন করুন</span>
+            </p>
+
+          </div>
+
+          <div id="studentLogin" style="display:none;">
+
+            <input id="loginMobile"
+              placeholder="মোবাইল নম্বর"
+              type="tel"
+              style="width:100%;padding:13px;margin:7px 0;
+              box-sizing:border-box;border:1px solid #ccc;
+              border-radius:10px;font-size:16px;">
+
+            <input id="loginPassword"
+              placeholder="পাসওয়ার্ড"
+              type="password"
+              style="width:100%;padding:13px;margin:7px 0;
+              box-sizing:border-box;border:1px solid #ccc;
+              border-radius:10px;font-size:16px;">
+
+            <button onclick="studentLogin()" style="
+              width:100%;
+              padding:13px;
+              margin-top:10px;
+              border:0;
+              border-radius:10px;
+              background:#087ffc;
+              color:white;
+              font-size:17px;
+              font-weight:bold;
+            ">লগইন করুন</button>
+
+            <p style="text-align:center;">
+              নতুন ছাত্র/ছাত্রী?
+              <span onclick="showStudentRegister()" style="
+                color:#087ffc;
+                cursor:pointer;
+                font-weight:bold;
+              ">রেজিস্টার করুন</span>
+            </p>
+
+          </div>
+
+          <p id="studentMsg"
+             style="text-align:center;font-weight:bold;"></p>
+
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(box);
+  }
+
+  window.showStudentLogin = function () {
+    document.getElementById("studentRegister").style.display = "none";
+    document.getElementById("studentLogin").style.display = "block";
+    document.getElementById("studentMsg").innerHTML = "";
+  };
+
+  window.showStudentRegister = function () {
+    document.getElementById("studentLogin").style.display = "none";
+    document.getElementById("studentRegister").style.display = "block";
+    document.getElementById("studentMsg").innerHTML = "";
+  };
+
+  window.studentRegister = function () {
+
+    const name = document.getElementById("studentName").value.trim();
+    const mobile = document.getElementById("studentMobile").value.trim();
+    const password = document.getElementById("studentPassword").value;
+
+    const msg = document.getElementById("studentMsg");
+
+    if (!name || !mobile || !password) {
+      msg.style.color = "red";
+      msg.innerHTML = "সব তথ্য পূরণ করুন।";
+      return;
+    }
+
+    localStorage.setItem("studentAccount", JSON.stringify({
+      name: name,
+      mobile: mobile,
+      password: password
+    }));
+
+    msg.style.color = "green";
+    msg.innerHTML = "রেজিস্ট্রেশন সফল হয়েছে। এখন লগইন করুন।";
+
+    setTimeout(showStudentLogin, 800);
+  };
+
+  window.studentLogin = function () {
+
+    const mobile = document.getElementById("loginMobile").value.trim();
+    const password = document.getElementById("loginPassword").value;
+
+    const account = JSON.parse(
+      localStorage.getItem("studentAccount") || "null"
+    );
+
+    const msg = document.getElementById("studentMsg");
+
+    if (!account) {
+      msg.style.color = "red";
+      msg.innerHTML = "আগে রেজিস্টার করুন।";
+      return;
+    }
+
+    if (
+      mobile === account.mobile &&
+      password === account.password
+    ) {
+
+      localStorage.setItem("studentLoggedIn", "yes");
+
+      msg.style.color = "green";
+      msg.innerHTML = "লগইন সফল হয়েছে।";
+
+      setTimeout(function () {
+        document.getElementById("studentAuthBox").remove();
+      }, 700);
+
+    } else {
+
+      msg.style.color = "red";
+      msg.innerHTML = "মোবাইল নম্বর অথবা পাসওয়ার্ড ভুল।";
+    }
+  };
+
+  window.openStudentLogin = studentAuth;
+
+})();
                              </script>
 </body>
 </html>
