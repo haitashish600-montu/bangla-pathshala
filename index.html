@@ -3792,6 +3792,770 @@ applyWA();
 applyBanner();
 
 </script>
+<!-- ================================
+     BANGLA PATHSHALA FINAL PATCH
+     ================================ -->
 
+<style>
+
+/* ===== HOME PAGE COMPACT ===== */
+@media(max-width:650px){
+
+  #home .wrap{
+    padding:6px 8px 3px;
+  }
+
+  #home .banner{
+    height:115px;
+    border-radius:20px;
+    margin:2px 0 7px;
+  }
+
+  #home .banner-note{
+    font-size:8px;
+    padding:3px 7px;
+    top:6px;
+    right:6px;
+  }
+
+  #home .notice{
+    padding:6px 8px;
+    border-radius:17px;
+    border-left-width:4px;
+    gap:6px;
+    margin-bottom:6px;
+  }
+
+  #home .notice-icon{
+    font-size:20px;
+  }
+
+  #home .ntext{
+    font-size:10px;
+    line-height:1.25;
+  }
+
+  #home .notice .primary{
+    padding:6px 9px;
+    font-size:10px;
+  }
+
+  #home .title{
+    font-size:16px;
+    margin:7px 2px 5px;
+  }
+
+  #home .quickgrid{
+    gap:5px;
+  }
+
+  #home .quick{
+    min-height:60px;
+    height:60px;
+    padding:6px 8px 6px 7px;
+    gap:6px;
+    border-left-width:4px;
+  }
+
+  #home .quickIcon{
+    width:34px;
+    height:34px;
+    font-size:19px;
+  }
+
+  #home .quickText{
+    padding-right:7px;
+  }
+
+  #home .quick h3{
+    font-size:11px;
+    line-height:1.1;
+    margin:0 0 1px;
+  }
+
+  #home .quick p{
+    font-size:8px;
+    line-height:1.15;
+  }
+
+  #home .quickArrow{
+    right:6px;
+    bottom:6px;
+    font-size:17px;
+  }
+
+  #home .footer{
+    padding:5px;
+    font-size:9px;
+  }
+}
+
+
+/* ===== PDF WATERMARK ===== */
+
+.protected .water{
+  pointer-events:none !important;
+  user-select:none !important;
+}
+
+.protected .water img{
+  width:110px !important;
+  height:110px !important;
+  object-fit:contain !important;
+  opacity:.82 !important;
+}
+
+
+/* ===== SMALLER COURSE TEXT ===== */
+
+#periods .item h3{
+  font-size:15px;
+  line-height:1.45;
+}
+
+#periods .item .muted{
+  font-size:11px;
+}
+
+#periods .item .btn{
+  font-size:11px;
+  padding:7px 11px;
+}
+
+
+/* ===== PREVENT TEXT SELECTION ===== */
+
+html,body,
+.item,
+.card,
+.quick,
+.banner,
+.notice{
+  -webkit-user-select:none !important;
+  user-select:none !important;
+  -webkit-touch-callout:none !important;
+}
+
+</style>
+
+
+<script>
+
+/* =========================================
+   1. CORRECT USER LOGO FROM EXISTING HTML
+   ========================================= */
+
+var USER_LOGO =
+(function(){
+
+  try{
+
+    var html =
+      document.documentElement.innerHTML;
+
+    var match =
+      html.match(
+        /const USER_LOGO = "(data:image\/jpeg;base64,[^"]+)"/
+      );
+
+    return match ? match[1] : "";
+
+  }catch(e){
+
+    return "";
+
+  }
+
+})();
+
+
+/* =========================================
+   2. CORRECT XI CLASS
+   ========================================= */
+
+DATA[11]={
+
+"১ম সেমিস্টার":[
+
+"গল্প → পুঁইমাচা",
+
+"প্রবন্ধ → বিড়াল",
+
+"কবিতা → ঈশ্বরচন্দ্র বিদ্যাসাগর",
+
+"কবিতা → সাম্যবাদী",
+
+"আন্তর্জাতিক গল্প → বিশাল ডানাওয়ালা এক থুরথুরে বুড়ো",
+
+"ভারতীয় কবিতা → চারণ কবি",
+
+"ভাষা → বিশ্বের ভাষা ও ভাষা পরিবার",
+
+"ভাষা → বাংলা ভাষার উদ্ভব ও ক্রমবিকাশ",
+
+"ভাষা → ভারতে প্রচলিত ভাষা পরিবার",
+
+"ভাষা → বাংলা ভাষার বৈচিত্র্য",
+
+"বাংলা শিল্প-সাহিত্য ও সংস্কৃতির ইতিহাস → পর্ব ১",
+
+"বাংলা শিল্প-সাহিত্য ও সংস্কৃতির ইতিহাস → পর্ব ২"
+
+],
+
+"২য় সেমিস্টার":[
+
+"গল্প → ছুটি — রবীন্দ্রনাথ ঠাকুর",
+
+"গল্প → তেলেনাপোতা আবিষ্কার — প্রেমেন্দ্র মিত্র",
+
+"কবিতা → ভাব সম্মিলন — বিদ্যাপতি",
+
+"কবিতা → লালনশাহ ফকিরের গান — লালনশাহ",
+
+"কবিতা → নুন — জয় গোস্বামী",
+
+"নাটক → আষাঢ় — বিজন ভট্টাচার্য",
+
+"পূর্ণাঙ্গ সহায়ক গ্রন্থ → পঞ্চতন্ত্র — সৈয়দ মুজতবা আলি",
+
+"পঞ্চতন্ত্র → বই কেনা",
+
+"পঞ্চতন্ত্র → আজব শহর কলকেতা",
+
+"পঞ্চতন্ত্র → পঁচিশে বৈশাখ",
+
+"পঞ্চতন্ত্র → আড্ডা",
+
+"বাংলা শিল্প-সাহিত্য ও সংস্কৃতির ইতিহাস → পর্ব ৩",
+
+"বাংলা শিল্প-সাহিত্য ও সংস্কৃতির ইতিহাস → লৌকিক সাহিত্য",
+
+"বাংলা শিল্প-সাহিত্য ও সংস্কৃতির ইতিহাস → কবিতায় মহাকাব্য, আখ্যানকাব্য ও গীতিকবিতার ধারা",
+
+"বাংলা শিল্প-সাহিত্য ও সংস্কৃতির ইতিহাস → কবিতা: মধুসূদন দত্ত, রবীন্দ্রনাথ ঠাকুর, কাজী নজরুল ইসলাম, জীবনানন্দ দাশ ও পরবর্তী ধারা",
+
+"বাংলা শিল্প-সাহিত্য ও সংস্কৃতির ইতিহাস → কথাসাহিত্য: বঙ্কিমচন্দ্র চট্টোপাধ্যায়, রবীন্দ্রনাথ ঠাকুর, শরৎচন্দ্র চট্টোপাধ্যায়, মানিক বন্দ্যোপাধ্যায়, বিভূতিভূষণ বন্দ্যোপাধ্যায়, তারাশঙ্কর বন্দ্যোপাধ্যায় ও পরবর্তী ধারা",
+
+"বাংলা শিল্প-সাহিত্য ও সংস্কৃতির ইতিহাস → নাটক: মধুসূদন দত্ত, দীনবন্ধু মিত্র, গিরিশচন্দ্র ঘোষ, রবীন্দ্রনাথ ঠাকুর, দ্বিজেন্দ্রলাল রায়, বিজন ভট্টাচার্য ও পরবর্তী ধারা"
+
+]
+
+};
+
+
+/* =========================================
+   3. CORRECT XII CLASS — SEMESTER III
+   ========================================= */
+
+DATA[12]={
+
+"৩য় সেমিস্টার":[
+
+"গল্প → আদরিণী — প্রভাতকুমার মুখোপাধ্যায়",
+
+"কবিতা → ধর্ম — শ্রীজাত",
+
+"কবিতা → দিগ্বিজয়ের রূপকথা — নবনীতা দেবসেন",
+
+"প্রবন্ধ → ‘বাংলা ভাষা’ — স্বামী বিবেকানন্দ",
+
+"ভারতীয় গল্প → পোস্টারাজ — শঙ্কররাও খারাত",
+
+"আন্তর্জাতিক কবিতা → ‘তার সঙ্গে’ — পাবলো নেরুদা",
+
+"ভাষা → প্রথম অধ্যায় : ভাষাবিজ্ঞান ও তার শাখা-প্রশাখা",
+
+"ভাষা → দ্বিতীয় অধ্যায় : ধ্বনিতত্ত্ব",
+
+"ভাষা → তৃতীয় অধ্যায় : শব্দার্থতত্ত্ব",
+
+"বাংলা ভাষা ও সংস্কৃতি → প্রথম অধ্যায় : বাংলা গানের ইতিহাস—সংক্ষিপ্ত রূপরেখা",
+
+"বাংলা ভাষা ও সংস্কৃতি → দ্বিতীয় অধ্যায় : বাঙালির বিজ্ঞানচর্চার সংক্ষিপ্ত পরিচিতি",
+
+"বাংলা ভাষা ও সংস্কৃতি → তৃতীয় অধ্যায় : বাঙালির ক্রীড়াসংস্কৃতির সংক্ষিপ্ত পরিচিতি"
+
+],
+
+
+/* =========================================
+   4. CORRECT XII CLASS — SEMESTER IV
+   ========================================= */
+
+"৪র্থ সেমিস্টার":[
+
+"গল্প → হলুদ পোড়া — মানিক বন্দ্যোপাধ্যায়",
+
+"গল্প → হারুন সালেমের মাসি — মহাশ্বেতা দেবী",
+
+"কবিতা → প্রার্থনা — রবীন্দ্রনাথ ঠাকুর",
+
+"কবিতা → তিমিরহননের গান — জীবনানন্দ দাশ",
+
+"কবিতা → কেন এল না — সুভাষ মুখোপাধ্যায়",
+
+"নাটক → নানা রঙের দিন — অজিতেশ বন্দ্যোপাধ্যায়",
+
+"পূর্ণাঙ্গ সহায়ক গ্রন্থ → ডাকঘর — রবীন্দ্রনাথ ঠাকুর",
+
+"বাংলা শিল্প-সাহিত্য ও সংস্কৃতির ইতিহাস → বাংলা চিত্রকলার ইতিহাস—সংক্ষিপ্ত রূপরেখা",
+
+"বাংলা শিল্প-সাহিত্য ও সংস্কৃতির ইতিহাস → বাঙালির চলচ্চিত্রের ইতিহাস—সংক্ষিপ্ত রূপরেখা"
+
+]
+
+};
+
+
+/* =========================================
+   5. FIX ALL EXISTING 'আশিষ' TEXT
+   ========================================= */
+
+document.addEventListener(
+"DOMContentLoaded",
+function(){
+
+  document
+  .querySelectorAll("*")
+  .forEach(function(el){
+
+    if(
+      el.children.length===0 &&
+      el.textContent
+    ){
+
+      el.textContent =
+        el.textContent
+        .replaceAll(
+          "আশিস হাইত",
+          "আশিষ হাইত"
+        )
+        .replaceAll(
+          "আশিষ হাইত",
+          "আশিষ হাইত"
+        );
+
+    }
+
+  });
+
+});
+
+
+/* =========================================
+   6. REFRESH CURRENT VIEW
+   ========================================= */
+
+setTimeout(function(){
+
+  try{
+
+    if(
+      typeof render==="function"
+    ){
+
+      render("home");
+
+    }
+
+  }catch(e){}
+
+},100);
+
+
+/* =========================================
+   7. EXTRA PDF PROTECTION
+   ========================================= */
+
+document.addEventListener(
+"copy",
+function(e){
+
+  e.preventDefault();
+
+},
+true
+);
+
+document.addEventListener(
+"cut",
+function(e){
+
+  e.preventDefault();
+
+},
+true
+);
+
+document.addEventListener(
+"paste",
+function(e){
+
+  /*
+   * INPUT / TEXTAREA-তে paste
+   * প্রয়োজন হলে চলবে।
+   */
+  if(
+    !["INPUT","TEXTAREA"]
+    .includes(
+      e.target.tagName
+    )
+  ){
+
+    e.preventDefault();
+
+  }
+
+},
+true
+);
+
+document.addEventListener(
+"keyup",
+function(e){
+
+  if(
+    (e.ctrlKey || e.metaKey) &&
+    ["c","u","s","p","a"]
+    .includes(
+      e.key.toLowerCase()
+    )
+  ){
+
+    e.preventDefault();
+
+  }
+
+},
+true
+);
+
+
+/* =========================================
+   8. WATERMARK PDF DOWNLOAD
+   ========================================= */
+
+async function makeWatermarkedPDF(url){
+
+  try{
+
+    if(!window.PDFLib){
+
+      alert(
+        "PDF system এখনও লোড হচ্ছে। একটু পরে আবার চেষ্টা করুন।"
+      );
+
+      return;
+
+    }
+
+    if(!USER_LOGO){
+
+      alert(
+        "লোগো পাওয়া যাচ্ছে না।"
+      );
+
+      return;
+
+    }
+
+    const response =
+      await fetch(url);
+
+    if(!response.ok)
+      throw new Error(
+        "PDF load failed"
+      );
+
+    const bytes =
+      await response.arrayBuffer();
+
+    const {
+      PDFDocument,
+      rgb,
+      StandardFonts
+    } = PDFLib;
+
+    const pdf =
+      await PDFDocument.load(bytes);
+
+    const logoBytes =
+      await fetch(USER_LOGO)
+      .then(
+        r=>r.arrayBuffer()
+      );
+
+    const logo =
+      await pdf.embedJpg(
+        logoBytes
+      );
+
+    const font =
+      await pdf.embedFont(
+        StandardFonts.HelveticaBold
+      );
+
+    pdf.getPages()
+    .forEach(function(page){
+
+      const {
+        width,
+        height
+      } =
+        page.getSize();
+
+      const size =
+        Math.min(
+          width,
+          height
+        ) * .22;
+
+      /* মাঝখানে logo */
+
+      page.drawImage(
+        logo,
+        {
+          x:
+            (width-size)/2,
+
+          y:
+            (height-size)/2,
+
+          width:size,
+          height:size,
+
+          opacity:.13
+        }
+      );
+
+      /* নিচে watermark */
+
+      page.drawText(
+        "BANGLA PATHSHALA • ASHISH HAIT",
+        {
+          x:width*.08,
+          y:height*.045,
+          size:9,
+          font:font,
+          color:
+            rgb(
+              .03,
+              .24,
+              .46
+            ),
+          opacity:.40
+        }
+      );
+
+    });
+
+    const output =
+      await pdf.save();
+
+    const blob =
+      new Blob(
+        [output],
+        {
+          type:
+            "application/pdf"
+        }
+      );
+
+    const link =
+      document.createElement("a");
+
+    link.href =
+      URL.createObjectURL(
+        blob
+      );
+
+    link.download =
+      "Bangla-Pathshala-Watermarked.pdf";
+
+    document.body.appendChild(
+      link
+    );
+
+    link.click();
+
+    link.remove();
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+    alert(
+      "এই PDF-এ watermark বসানো যাচ্ছে না। PDF URL-এর CORS/same-origin অনুমতি পরীক্ষা করুন।"
+    );
+
+  }
+
+}
+
+
+/* =========================================
+   9. USE LOGO IN PDF VIEWER
+   ========================================= */
+
+window.openProtectedPDF =
+function(url){
+
+  let old =
+    document.getElementById(
+      "pdfModal"
+    );
+
+  if(old)
+    old.remove();
+
+  let modal =
+    document.createElement(
+      "div"
+    );
+
+  modal.id =
+    "pdfModal";
+
+  modal.style =
+    "position:fixed;inset:0;" +
+    "background:#001c35ee;" +
+    "z-index:500;padding:10px;";
+
+  modal.innerHTML = `
+
+  <div
+    style="
+      max-width:900px;
+      margin:auto;
+      height:100%;
+      background:#fff;
+      border-radius:20px;
+      overflow:hidden;
+      position:relative;
+    "
+  >
+
+    <div
+      style="
+        height:52px;
+        background:#063d75;
+        color:#fff;
+        display:flex;
+        align-items:center;
+        gap:7px;
+        padding:0 10px;
+      "
+    >
+
+      <b style="flex:1">
+        📕 Protected Study Material
+      </b>
+
+      <button
+        onclick="makeWatermarkedPDF(${JSON.stringify(url)})"
+        style="
+          border:0;
+          border-radius:10px;
+          padding:7px 9px;
+          background:#00d38d;
+          color:#fff;
+          font-weight:900;
+        "
+      >
+        ⬇️ Watermark PDF
+      </button>
+
+      <button
+        onclick="
+          document
+          .getElementById('pdfModal')
+          .remove()
+        "
+        style="
+          border:0;
+          border-radius:10px;
+          padding:7px 9px;
+          background:#df3151;
+          color:#fff;
+          font-weight:900;
+        "
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div
+      class="protected"
+      style="
+        height:calc(100% - 52px);
+        position:relative;
+      "
+    >
+
+      <iframe
+        src="${url}"
+        title="Protected Study Material"
+        sandbox="allow-scripts allow-same-origin allow-forms"
+        style="
+          width:100%;
+          height:100%;
+          border:0;
+        "
+      ></iframe>
+
+
+      <div
+        class="water"
+        style="
+          position:absolute;
+          inset:0;
+          pointer-events:none;
+          display:flex;
+          flex-direction:column;
+          align-items:center;
+          justify-content:center;
+          gap:8px;
+          transform:rotate(-25deg);
+          color:#063d75;
+          opacity:.17;
+          text-align:center;
+          font-weight:900;
+        "
+      >
+
+        <img
+          src="${USER_LOGO}"
+          alt="Bangla Pathshala"
+          style="
+            width:115px;
+            height:115px;
+            object-fit:contain;
+          "
+        >
+
+        <span>
+          BANGLA PATHSHALA • ASHISH HAIT
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  `;
+
+  document.body.appendChild(
+    modal
+  );
+
+};
+
+                             </script>
 </body>
 </html>
