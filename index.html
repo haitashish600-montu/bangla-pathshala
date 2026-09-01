@@ -1,345 +1,470 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name="theme-color" content="#073b73">
+<meta name="theme-color" content="#063d75">
 <title>বাংলা পাঠশালা</title>
 
 <style>
 :root{
---nav:#073b73;
---blue:#087bd1;
---purple:#8b20e8;
---bg:#f4f7fd;
---ink:#07334f;
---muted:#778697;
---green:#00c78b;
+--nav:#063d75;
+--blue:#087fd0;
+--purple:#8d1ee8;
+--green:#00b982;
+--orange:#ffad08;
+--red:#ef3150;
+--teal:#0ca8ad;
+--bg:#f3f7fd;
+--ink:#082f4b;
+--muted:#7b8997;
 }
 
 *{box-sizing:border-box}
 
-html{scroll-behavior:smooth}
+html{
+scroll-behavior:smooth
+}
 
 body{
 margin:0;
 background:var(--bg);
 color:var(--ink);
 font-family:"Noto Sans Bengali","Hind Siliguri",system-ui,sans-serif;
-font-size:15px;
+font-size:14px;
 -webkit-user-select:none;
 user-select:none;
+-webkit-touch-callout:none;
 }
 
-button,input,textarea,select{font:inherit}
-button{border:0;cursor:pointer}
+button,input,textarea,select{
+font:inherit
+}
+
+button{
+cursor:pointer
+}
 
 .app{
 min-height:100vh;
-padding-bottom:74px;
+padding-bottom:78px
 }
 
+/* HEADER */
+
 .header{
-height:84px;
+height:72px;
 background:var(--nav);
 color:#fff;
 display:flex;
 align-items:center;
-padding:10px 18px;
-gap:14px;
+padding:8px 14px;
+gap:12px;
 position:sticky;
 top:0;
-z-index:30;
-box-shadow:0 4px 16px #002b5430;
+z-index:50;
+box-shadow:0 4px 18px #002b5430
 }
 
 .menu{
-width:58px;
-height:58px;
-border-radius:18px;
+width:52px;
+height:52px;
+border-radius:17px;
 background:#07518f;
 color:#fff;
-border:1px solid #1d92e8;
-font-size:31px;
+border:1px solid #1695e8;
+font-size:28px
 }
 
 .brand{
+font-size:21px;
 font-weight:900;
-font-size:27px;
-flex:1;
 white-space:nowrap;
+flex:1
 }
 
-.brand b{color:#ffd000}
+.brand b{
+color:#ffd000
+}
 
 .login{
-background:#00d28f;
+background:#00d38d;
 color:#fff;
-padding:14px 20px;
-border-radius:18px;
-font-weight:800;
-font-size:18px;
+border-radius:17px;
+padding:11px 16px;
+font-weight:900;
+font-size:15px
 }
+
+/* MAIN */
 
 .wrap{
-max-width:980px;
+max-width:1000px;
 margin:auto;
-padding:18px;
+padding:14px
 }
 
+/* BANNER */
+
 .banner{
-height:230px;
+height:205px;
 border-radius:30px;
 overflow:hidden;
-background:#062e61;
 margin:4px 0 18px;
-position:relative;
-box-shadow:0 10px 30px #06315b25;
+background:#062e61;
+box-shadow:0 10px 28px #12395c20;
+position:relative
 }
 
 .banner img{
 width:100%;
 height:100%;
-object-fit:cover;
-display:block;
+object-fit:cover
 }
 
-.bannerFallback{
+.banner svg{
+width:100%;
 height:100%;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-color:#fff;
-background:radial-gradient(circle at 70%,#143e78,#031d43);
-padding:20px;
+display:block
 }
 
-.bannerFallback h1{
-font-size:42px;
-margin:0;
-color:#ffd000;
+.banner-note{
+position:absolute;
+right:10px;
+top:10px;
+background:#ffffffd9;
+color:#063d75;
+border-radius:999px;
+padding:5px 10px;
+font-size:11px;
+font-weight:800
 }
 
-.bannerFallback p{
-font-size:20px;
-margin:8px 0;
-}
+/* NOTICE */
 
 .notice{
 background:#fff;
-border-radius:25px;
-padding:16px 20px;
+border-radius:28px;
+padding:14px 16px;
 border-left:7px solid var(--purple);
-box-shadow:0 7px 24px #17365d14;
+box-shadow:0 7px 24px #17365d12;
 display:flex;
-gap:12px;
 align-items:center;
-margin-bottom:24px;
+gap:10px;
+margin-bottom:22px
 }
 
-.notice .ntext{
+.notice-icon{
+font-size:34px
+}
+
+.ntext{
 flex:1;
-font-size:18px;
-line-height:1.65;
+font-size:15px;
+line-height:1.55
 }
 
 .primary{
-background:linear-gradient(135deg,#6b16e8,#a329e8);
+background:linear-gradient(135deg,#7d18e6,#a329e8);
 color:#fff;
-border-radius:14px;
-padding:12px 20px;
-font-weight:800;
+border-radius:999px;
+padding:11px 17px;
+font-weight:900;
+white-space:nowrap
 }
 
+/* TITLES */
+
 .title{
-font-size:28px;
-margin:22px 4px 14px;
-font-weight:900;
+font-size:24px;
+line-height:1.2;
+margin:20px 4px 10px;
+font-weight:900
 }
 
 .sub{
 color:var(--muted);
-font-size:17px;
-margin:-5px 4px 16px;
+font-size:15px;
+margin:0 4px 14px
 }
+
+/* OVAL QUICK ACCESS */
+
+.quickgrid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px
+}
+
+.quick{
+background:#fff;
+border:1px solid #dce6f1;
+border-radius:999px;
+min-height:104px;
+padding:13px 18px 13px 14px;
+display:flex;
+align-items:center;
+gap:12px;
+position:relative;
+box-shadow:0 8px 22px #173b6012;
+overflow:hidden;
+border-left:7px solid var(--blue);
+transition:.12s
+}
+
+.quick:active{
+transform:scale(.985)
+}
+
+.quick.o{
+border-left-color:var(--orange)
+}
+
+.quick.g{
+border-left-color:var(--green)
+}
+
+.quick.p{
+border-left-color:var(--purple)
+}
+
+.quick.r{
+border-left-color:var(--red)
+}
+
+.quick.t{
+border-left-color:var(--teal)
+}
+
+.quickIcon{
+width:58px;
+height:58px;
+border-radius:50%;
+background:#edf6ff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:31px;
+flex:none
+}
+
+.quickText{
+padding-right:18px
+}
+
+.quick h3{
+font-size:17px;
+margin:0 0 3px
+}
+
+.quick p{
+font-size:13px;
+color:#7b8997;
+margin:0;
+line-height:1.35
+}
+
+.quickArrow{
+position:absolute;
+right:13px;
+bottom:13px;
+font-size:26px;
+font-weight:900
+}
+
+/* VIEWS */
+
+.view{
+display:none
+}
+
+.view.active{
+display:block
+}
+
+/* CARDS */
 
 .grid{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:14px;
+gap:12px
 }
 
 .card{
 background:#fff;
-border-radius:27px;
-padding:20px;
-min-height:160px;
-border:1px solid #dce5f1;
-box-shadow:0 8px 24px #193b6314;
+border:1px solid #dce5ef;
+border-radius:26px;
+padding:17px;
+min-height:130px;
+box-shadow:0 7px 20px #193b6310;
 position:relative;
 overflow:hidden;
+border-left:7px solid var(--blue)
 }
 
-.card:before{
-content:"";
-position:absolute;
-left:0;
-top:0;
-bottom:0;
-width:7px;
-background:var(--blue);
+.card.p{
+border-left-color:var(--purple)
 }
 
-.card.p:before{background:var(--purple)}
-.card.g:before{background:#00b77d}
-.card.o:before{background:#ffad00}
-.card.r:before{background:#ef3152}
-.card.c:before{background:#12aeb1}
+.card.g{
+border-left-color:var(--green)
+}
+
+.card.o{
+border-left-color:var(--orange)
+}
+
+.card.r{
+border-left-color:var(--red)
+}
+
+.card.t{
+border-left-color:var(--teal)
+}
 
 .card:active{
-transform:scale(.985);
+transform:scale(.987)
 }
 
 .ico{
-font-size:42px;
-margin-bottom:8px;
+font-size:34px;
+margin-bottom:5px
 }
 
 .card h3{
-font-size:21px;
-margin:0 0 5px;
+font-size:18px;
+line-height:1.25;
+margin:0 0 4px
 }
 
 .card p{
+font-size:13px;
+color:#7b8997;
 margin:0;
-color:#7a8794;
-font-size:15px;
+line-height:1.35
 }
 
 .arrow{
 position:absolute;
-right:18px;
-bottom:18px;
-font-size:28px;
-font-weight:900;
+right:13px;
+bottom:12px;
+font-size:27px;
+font-weight:900
 }
 
 .classgrid .card{
-min-height:130px;
+min-height:118px
 }
 
-.classgrid .num{
-font-size:34px;
+.num{
+font-size:30px;
 font-weight:900;
 background:#edf6ff;
-width:58px;
-height:58px;
+width:52px;
+height:52px;
 border-radius:18px;
 display:flex;
 align-items:center;
 justify-content:center;
-margin-bottom:8px;
+margin-bottom:8px
 }
+
+/* LIST */
 
 .list{
 display:grid;
-gap:12px;
+gap:11px
 }
 
 .item{
 background:#fff;
-border-radius:22px;
-padding:18px;
 border:1px solid #dbe5ef;
-box-shadow:0 6px 20px #193b6310;
+border-radius:23px;
+padding:16px;
+box-shadow:0 6px 19px #193b6310
 }
 
 .item h3{
 margin:0 0 6px;
-font-size:19px;
+font-size:17px
 }
 
 .muted{
-color:var(--muted);
+color:var(--muted)
 }
 
-.chips{
-display:flex;
-flex-wrap:wrap;
-gap:8px;
-margin:10px 0;
-}
-
-.chip{
-background:#eef5ff;
-border-radius:999px;
-padding:7px 11px;
-color:#245d89;
-}
+/* BUTTONS */
 
 .actions{
 display:flex;
 gap:8px;
 flex-wrap:wrap;
-margin-top:12px;
+margin-top:10px
 }
 
 .btn{
-padding:10px 14px;
-border-radius:12px;
-background:#087bd1;
-color:#fff;
-font-weight:800;
 display:inline-block;
+background:#087fd0;
+color:#fff;
 text-decoration:none;
+border-radius:999px;
+padding:9px 14px;
+font-weight:900;
+border:0
 }
 
 .btn.purple{
-background:#8b20e8;
+background:#8d1ee8
 }
 
 .btn.green{
-background:#00ad7a;
+background:#00aa77
+}
+
+.btn.orange{
+background:#f29d00
 }
 
 .btn.gray{
-background:#edf1f6;
-color:#24415b;
+background:#edf2f7;
+color:#26455d
 }
 
 .btn.red{
-background:#df3151;
+background:#df3151
 }
 
-.oval{
-border-radius:999px!important;
-}
+/* MODEL */
 
 .model{
-min-height:115px;
+min-height:112px;
+border-radius:999px;
+padding-left:18px
 }
 
-.model h3{
-font-size:18px;
+.model .ico{
+font-size:30px
 }
+
+/* TEST */
 
 .testbox{
 background:#fff;
 border-radius:24px;
-padding:18px;
+padding:15px
 }
 
 .q{
 border:1px solid #dbe5ef;
-border-radius:18px;
-padding:16px;
-margin:12px 0;
+border-radius:19px;
+padding:14px;
+margin:11px 0
 }
 
 .q h3{
-font-size:17px;
-margin:0 0 12px;
+font-size:16px;
+line-height:1.5;
+margin:0 0 10px
 }
 
 .opt{
@@ -348,65 +473,120 @@ width:100%;
 text-align:left;
 background:#f7faff;
 border:1px solid #dbe5ef;
-border-radius:13px;
-padding:12px;
+border-radius:15px;
+padding:11px;
 margin:7px 0;
+color:var(--ink)
 }
 
 .opt.sel{
 background:#eadcff;
-border-color:#8b20e8;
+border-color:#8d1ee8
 }
 
 .score{
-background:linear-gradient(135deg,#073b73,#8b20e8);
+background:linear-gradient(135deg,#063d75,#8d1ee8);
 color:#fff;
-border-radius:22px;
-padding:22px;
+border-radius:23px;
+padding:20px;
 text-align:center;
-margin-top:15px;
+margin-top:14px
 }
 
 .score strong{
-font-size:40px;
+font-size:36px
 }
+
+/* ADMIN */
 
 .field{
 width:100%;
 border:1px solid #ccd9e6;
-border-radius:13px;
-padding:12px;
+border-radius:14px;
+padding:11px;
 background:#fff;
-margin:6px 0 12px;
-outline:none;
+margin:5px 0 11px;
+outline:none
 }
 
 .adminbox{
 background:#fff;
-border-radius:24px;
-padding:18px;
-margin:12px 0;
+border-radius:22px;
+padding:16px;
+margin:11px 0;
+border:1px solid #dbe5ef
 }
 
 .adminbox h3{
-margin-top:0;
+margin:0 0 9px
 }
 
 .danger{
-font-size:13px;
+font-size:12px;
 color:#a33;
-line-height:1.5;
+line-height:1.5
 }
+
+/* BACK */
+
+.back{
+background:#eaf3fc;
+color:#07508c;
+border-radius:999px;
+padding:9px 14px;
+font-weight:900;
+margin-bottom:10px
+}
+
+/* FOOTER */
+
+.footer{
+text-align:center;
+color:#7c8a98;
+padding:24px
+}
+
+/* BOTTOM NAV */
+
+.bottom{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+height:74px;
+background:#fff;
+border-top:1px solid #dce5ef;
+z-index:60;
+display:flex;
+justify-content:space-around;
+align-items:center
+}
+
+.bottom button{
+background:none;
+color:#17354f;
+font-size:11px;
+font-weight:900;
+min-width:54px
+}
+
+.bottom span{
+display:block;
+font-size:23px;
+line-height:24px
+}
+
+/* DRAWER */
 
 .drawer{
 position:fixed;
 inset:0;
 z-index:100;
-pointer-events:none;
+pointer-events:none
 }
 
 .drawer.on{
-pointer-events:auto;
+pointer-events:auto
 }
 
 .shade{
@@ -414,11 +594,11 @@ position:absolute;
 inset:0;
 background:#001c3580;
 opacity:0;
-transition:.2s;
+transition:.2s
 }
 
 .drawer.on .shade{
-opacity:1;
+opacity:1
 }
 
 .panel{
@@ -428,18 +608,19 @@ top:0;
 bottom:0;
 width:min(340px,86vw);
 background:#fff;
-padding:22px;
+padding:20px;
 transform:translateX(-105%);
 transition:.25s;
-overflow:auto;
+overflow:auto
 }
 
 .drawer.on .panel{
-transform:none;
+transform:none
 }
 
 .panel h2{
-color:#073b73;
+color:#063d75;
+margin-top:8px
 }
 
 .panel button{
@@ -447,126 +628,143 @@ width:100%;
 text-align:left;
 background:#f3f7fc;
 margin:5px 0;
-padding:13px;
-border-radius:13px;
-color:#143a59;
-font-weight:700;
-}
-
-.view{
-display:none;
-}
-
-.view.active{
-display:block;
-}
-
-.back{
-background:#eaf3fc;
-color:#07508c;
+padding:12px;
 border-radius:14px;
-padding:10px 14px;
-font-weight:800;
-margin-bottom:14px;
+color:#143a59;
+font-weight:800
 }
 
-.bottom{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-height:72px;
-background:#fff;
-border-top:1px solid #dce5ef;
-z-index:40;
+/* PDF VIEWER WATERMARK */
+
+.protected{
+position:relative;
+overflow:hidden;
+border-radius:20px;
+background:#fff
+}
+
+.protected iframe{
+width:100%;
+height:70vh;
+border:0
+}
+
+.protected .water{
+position:absolute;
+inset:0;
+pointer-events:none;
 display:flex;
-justify-content:space-around;
 align-items:center;
+justify-content:center;
+font-size:28px;
+font-weight:900;
+color:#063d75;
+opacity:.15;
+transform:rotate(-25deg)
 }
 
-.bottom button{
-background:none;
-color:#17354f;
-font-size:12px;
-font-weight:800;
-}
-
-.bottom span{
-display:block;
-font-size:24px;
-line-height:24px;
-}
-
-.footer{
-text-align:center;
-color:#7c8a98;
-padding:28px;
-}
+/* MOBILE */
 
 @media(max-width:650px){
 
 .header{
-height:72px;
-padding:8px 12px;
-}
-
-.menu{
-width:52px;
-height:52px;
+height:70px
 }
 
 .brand{
-font-size:21px;
-}
-
-.login{
-font-size:15px;
-padding:12px 15px;
+font-size:20px
 }
 
 .banner{
-height:185px;
-border-radius:24px;
-}
-
-.bannerFallback h1{
-font-size:31px;
-}
-
-.title{
-font-size:24px;
-}
-
-.grid{
-gap:10px;
-}
-
-.card{
-padding:16px;
-min-height:150px;
-border-radius:23px;
-}
-
-.card h3{
-font-size:18px;
-}
-
-.ico{
-font-size:34px;
-}
-
-.notice .ntext{
-font-size:15px;
-}
-
-.primary{
-padding:10px 14px;
+height:175px;
+border-radius:26px
 }
 
 .wrap{
-padding:12px;
+padding:11px
 }
 
+.title{
+font-size:22px
+}
+
+.quickgrid,
+.grid{
+gap:9px
+}
+
+.quick{
+min-height:99px;
+padding:11px 13px 11px 11px;
+gap:9px
+}
+
+.quickIcon{
+width:50px;
+height:50px;
+font-size:27px
+}
+
+.quick h3{
+font-size:16px
+}
+
+.quick p{
+font-size:12px
+}
+
+.card{
+padding:14px;
+min-height:122px
+}
+
+.card h3{
+font-size:17px
+}
+
+.ico{
+font-size:30px
+}
+
+.notice{
+border-radius:24px
+}
+
+.notice .primary{
+padding:9px 13px
+}
+
+.ntext{
+font-size:14px
+}
+
+}
+
+@media(max-width:390px){
+
+.quick h3{
+font-size:15px
+}
+
+.quick p{
+font-size:11px
+}
+
+.quickIcon{
+width:46px;
+height:46px
+}
+
+.login{
+padding:10px 13px
+}
+
+}
+
+@media print{
+body>*{
+display:none!important
+}
 }
 </style>
 </head>
@@ -596,28 +794,160 @@ padding:12px;
 
 <div class="wrap">
 
+<!-- PROFESSIONAL BANNER -->
+
 <div class="banner" id="banner">
 
-<div class="bannerFallback">
+<svg viewBox="0 0 1200 360"
+preserveAspectRatio="xMidYMid slice">
 
-<div>
+<defs>
 
-<h1>বাংলা পাঠশালা</h1>
+<linearGradient id="bg"
+x1="0"
+x2="1">
 
-<p>শিক্ষক : আশিস হাইত</p>
+<stop offset="0"
+stop-color="#0b5c9d"/>
 
-<small>শিখবো বাংলা, গড়বো ভবিষ্যৎ</small>
+<stop offset=".48"
+stop-color="#06305f"/>
 
+<stop offset="1"
+stop-color="#001a3a"/>
+
+</linearGradient>
+
+<linearGradient id="gold"
+x1="0"
+x2="1">
+
+<stop offset="0"
+stop-color="#fff000"/>
+
+<stop offset="1"
+stop-color="#ffb900"/>
+
+</linearGradient>
+
+</defs>
+
+<rect
+width="1200"
+height="360"
+fill="url(#bg)"/>
+
+<circle
+cx="160"
+cy="180"
+r="135"
+fill="#0b78bd"
+opacity=".28"/>
+
+<circle
+cx="1050"
+cy="180"
+r="150"
+fill="#0d4e87"
+opacity=".45"/>
+
+<path
+d="M80 70 Q260 10 430 75"
+fill="none"
+stroke="#ffd000"
+stroke-width="3"
+opacity=".7"/>
+
+<path
+d="M760 75 Q930 15 1120 70"
+fill="none"
+stroke="#ffd000"
+stroke-width="3"
+opacity=".7"/>
+
+<text
+x="600"
+y="142"
+text-anchor="middle"
+fill="white"
+font-size="76"
+font-weight="900">
+
+বাংলা
+
+<tspan fill="url(#gold)">
+পাঠশালা
+</tspan>
+
+</text>
+
+<rect
+x="400"
+y="168"
+width="400"
+height="62"
+rx="31"
+fill="white"/>
+
+<text
+x="600"
+y="211"
+text-anchor="middle"
+fill="#17354f"
+font-size="31"
+font-weight="800">
+
+শিক্ষক :
+
+<tspan fill="#a32626">
+আশিস হাইত
+</tspan>
+
+</text>
+
+<text
+x="600"
+y="276"
+text-anchor="middle"
+fill="#fff"
+font-size="25">
+
+শিখবো বাংলা, গড়বো ভবিষ্যৎ
+
+</text>
+
+<text
+x="1050"
+y="145"
+text-anchor="middle"
+font-size="72">
+📖
+</text>
+
+<text
+x="150"
+y="220"
+text-anchor="middle"
+font-size="72">
+✒️
+</text>
+
+</svg>
+
+<div class="banner-note">
+বাংলা পাঠশালা
 </div>
 
 </div>
 
-</div>
 
+<!-- NOTICE -->
 
 <div class="notice">
 
-<div style="font-size:36px">📢</div>
+<div class="notice-icon">
+📢
+</div>
 
 <div class="ntext">
 
@@ -626,9 +956,12 @@ padding:12px;
 
 </div>
 
-<button class="primary"
+<button
+class="primary"
 onclick="openView('notice')">
+
 দেখুন →
+
 </button>
 
 </div>
@@ -639,145 +972,276 @@ onclick="openView('notice')">
 </h2>
 
 
-<div class="grid">
+<!-- OVAL BUTTONS -->
 
+<div class="quickgrid">
 
-<div class="card"
+<div
+class="quick"
 onclick="openView('classes')">
 
-<div class="ico">📚</div>
+<div class="quickIcon">
+📚
+</div>
 
-<h3>All Courses</h3>
+<div class="quickText">
 
-<p>নবম–দ্বাদশের সব অধ্যায়</p>
+<h3>
+All Courses
+</h3>
 
-<div class="arrow">›</div>
+<p>
+নবম–দ্বাদশের সব অধ্যায়
+</p>
+
+</div>
+
+<div class="quickArrow">
+›
+</div>
 
 </div>
 
 
-<div class="card o"
+<div
+class="quick o"
 onclick="openView('notice')">
 
-<div class="ico">📢</div>
+<div class="quickIcon">
+📢
+</div>
 
-<h3>Notice Board</h3>
+<div class="quickText">
 
-<p>গুরুত্বপূর্ণ নোটিশ</p>
+<h3>
+Notice Board
+</h3>
 
-<div class="arrow">›</div>
+<p>
+গুরুত্বপূর্ণ নোটিশ
+</p>
+
+</div>
+
+<div class="quickArrow">
+›
+</div>
 
 </div>
 
 
-<div class="card g"
+<div
+class="quick g"
 onclick="openView('freeclass')">
 
-<div class="ico">💻</div>
+<div class="quickIcon">
+💻
+</div>
 
-<h3>Free Class</h3>
+<div class="quickText">
 
-<p>ফ্রি ক্লাস দেখুন</p>
+<h3>
+Free Class
+</h3>
 
-<div class="arrow">›</div>
+<p>
+ফ্রি ক্লাস দেখুন
+</p>
+
+</div>
+
+<div class="quickArrow">
+›
+</div>
 
 </div>
 
 
-<div class="card p"
-onclick="openView('freeTest')">
-
-<div class="ico">📝</div>
-
-<h3>Free MCQ Test</h3>
-
-<p>অধ্যায়ভিত্তিক পরীক্ষা</p>
-
-<div class="arrow">›</div>
-
-</div>
-
-
-<div class="card r"
-onclick="openView('pdf')">
-
-<div class="ico">📄</div>
-
-<h3>Free PDF</h3>
-
-<p>Study Material দেখুন</p>
-
-<div class="arrow">›</div>
-
-</div>
-
-
-<div class="card"
-onclick="openView('links')">
-
-<div class="ico">🔗</div>
-
-<h3>Important Links</h3>
-
-<p>গুরুত্বপূর্ণ লিঙ্কসমূহ</p>
-
-<div class="arrow">›</div>
-
-</div>
-
-
-<div class="card p"
-onclick="openView('grammar')">
-
-<div class="ico">📘</div>
-
-<h3>বাংলা ব্যাকরণ</h3>
-
-<p>শ্রেণি অনুযায়ী ব্যাকরণ</p>
-
-<div class="arrow">›</div>
-
-</div>
-
-
-<div class="card c"
-onclick="openView('college')">
-
-<div class="ico">🏫</div>
-
-<h3>College Bengali</h3>
-
-<p>কলেজ বাংলা বিভাগ</p>
-
-<div class="arrow">›</div>
-
-</div>
-
-
-<div class="card o"
+<div
+class="quick p"
 onclick="openView('models')">
 
-<div class="ico">📑</div>
+<div class="quickIcon">
+📝
+</div>
 
-<h3>Model Set</h3>
+<div class="quickText">
 
-<p>প্রতি বিভাগে ১৫টি</p>
+<h3>
+Free MCQ Test
+</h3>
 
-<div class="arrow">›</div>
+<p>
+অধ্যায়ভিত্তিক পরীক্ষা
+</p>
+
+</div>
+
+<div class="quickArrow">
+›
+</div>
 
 </div>
 
 
-<div class="card g"
+<div
+class="quick r"
+onclick="openView('contact')">
+
+<div class="quickIcon">
+💬
+</div>
+
+<div class="quickText">
+
+<h3>
+অনলাইন / অফলাইন ক্লাস
+</h3>
+
+<p>
+WhatsApp-এ যোগাযোগ করুন
+</p>
+
+</div>
+
+<div class="quickArrow">
+›
+</div>
+
+</div>
+
+
+<div
+class="quick t"
+onclick="openView('links')">
+
+<div class="quickIcon">
+🔗
+</div>
+
+<div class="quickText">
+
+<h3>
+Important Links
+</h3>
+
+<p>
+গুরুত্বপূর্ণ লিঙ্কসমূহ
+</p>
+
+</div>
+
+<div class="quickArrow">
+›
+</div>
+
+</div>
+
+
+<div
+class="quick p"
+onclick="openView('grammar')">
+
+<div class="quickIcon">
+📘
+</div>
+
+<div class="quickText">
+
+<h3>
+বাংলা ব্যাকরণ
+</h3>
+
+<p>
+শ্রেণি অনুযায়ী ব্যাকরণ
+</p>
+
+</div>
+
+<div class="quickArrow">
+›
+</div>
+
+</div>
+
+
+<div
+class="quick t"
+onclick="openView('college')">
+
+<div class="quickIcon">
+🏫
+</div>
+
+<div class="quickText">
+
+<h3>
+College Bengali
+</h3>
+
+<p>
+কলেজ বাংলা বিভাগ
+</p>
+
+</div>
+
+<div class="quickArrow">
+›
+</div>
+
+</div>
+
+
+<div
+class="quick o"
+onclick="openView('models')">
+
+<div class="quickIcon">
+📑
+</div>
+
+<div class="quickText">
+
+<h3>
+Model Set
+</h3>
+
+<p>
+প্রতি বিভাগে ১৫টি
+</p>
+
+</div>
+
+<div class="quickArrow">
+›
+</div>
+
+</div>
+
+
+<div
+class="quick g"
 onclick="openView('help')">
 
-<div class="ico">❓</div>
+<div class="quickIcon">
+❓
+</div>
 
-<h3>Help</h3>
+<div class="quickText">
 
-<p>সাহায্য ও সহযোগিতা</p>
+<h3>
+Help
+</h3>
 
-<div class="arrow">›</div>
+<p>
+সাহায্য ও সহযোগিতা
+</p>
+
+</div>
+
+<div class="quickArrow">
+›
+</div>
 
 </div>
 
@@ -802,9 +1266,12 @@ onclick="openView('help')">
 
 <div class="wrap">
 
-<button class="back"
+<button
+class="back"
 onclick="goHome()">
+
 ← Home
+
 </button>
 
 <h2 class="title">
@@ -819,74 +1286,116 @@ onclick="goHome()">
 <div class="grid classgrid">
 
 
-<div class="card"
+<div
+class="card"
 onclick="openClass(9)">
 
-<div class="num">৯</div>
+<div class="num">
+৯
+</div>
 
-<h3>নবম শ্রেণি</h3>
+<h3>
+নবম শ্রেণি
+</h3>
 
-<p>WBBSE</p>
+<p>
+WBBSE • বাংলা
+</p>
 
 </div>
 
 
-<div class="card"
+<div
+class="card o"
 onclick="openClass(10)">
 
-<div class="num">১০</div>
+<div class="num">
+১০
+</div>
 
-<h3>দশম শ্রেণি</h3>
+<h3>
+দশম শ্রেণি
+</h3>
 
-<p>WBBSE • মাধ্যমিক</p>
+<p>
+WBBSE • মাধ্যমিক
+</p>
 
 </div>
 
 
-<div class="card"
+<div
+class="card p"
 onclick="openClass(11)">
 
-<div class="num">১১</div>
+<div class="num">
+১১
+</div>
 
-<h3>একাদশ — সেমিস্টার ১</h3>
+<h3>
+একাদশ — সেমিস্টার ১
+</h3>
 
-<p>WBCHSE • Bengali-A</p>
+<p>
+WBCHSE • Bengali-A
+</p>
 
 </div>
 
 
-<div class="card"
+<div
+class="card p"
 onclick="openClass(11,'২য় সেমিস্টার')">
 
-<div class="num">১১</div>
+<div class="num">
+১১
+</div>
 
-<h3>একাদশ — সেমিস্টার ২</h3>
+<h3>
+একাদশ — সেমিস্টার ২
+</h3>
 
-<p>WBCHSE • Bengali-A</p>
+<p>
+WBCHSE • Bengali-A
+</p>
 
 </div>
 
 
-<div class="card"
+<div
+class="card t"
 onclick="openClass(12,'৩য় সেমিস্টার')">
 
-<div class="num">১২</div>
+<div class="num">
+১২
+</div>
 
-<h3>দ্বাদশ — সেমিস্টার ৩</h3>
+<h3>
+দ্বাদশ — সেমিস্টার ৩
+</h3>
 
-<p>WBCHSE • Bengali-A</p>
+<p>
+WBCHSE • Bengali-A
+</p>
 
 </div>
 
 
-<div class="card"
+<div
+class="card t"
 onclick="openClass(12,'৪র্থ সেমিস্টার')">
 
-<div class="num">১২</div>
+<div class="num">
+১২
+</div>
 
-<h3>দ্বাদশ — সেমিস্টার ৪</h3>
+<h3>
+দ্বাদশ — সেমিস্টার ৪
+</h3>
 
-<p>WBCHSE • Bengali-A</p>
+<p>
+WBCHSE • Bengali-A
+</p>
 
 </div>
 
@@ -900,20 +1409,29 @@ onclick="openClass(12,'৪র্থ সেমিস্টার')">
 
 <!-- PERIODS -->
 
-<section id="periods" class="view">
+<section
+id="periods"
+class="view">
 
 <div class="wrap">
 
-<button class="back"
+<button
+class="back"
 onclick="openView('classes')">
+
 ← শ্রেণি নির্বাচন
+
 </button>
 
-<h2 id="periodTitle"
-class="title"></h2>
+<h2
+id="periodTitle"
+class="title">
+</h2>
 
-<div id="periodList"
-class="list"></div>
+<div
+id="periodList"
+class="list">
+</div>
 
 </div>
 
@@ -922,38 +1440,55 @@ class="list"></div>
 
 <!-- CHAPTER -->
 
-<section id="chapter" class="view">
+<section
+id="chapter"
+class="view">
 
 <div class="wrap">
 
-<button class="back"
+<button
+class="back"
 onclick="backPeriod()">
-← পিছনে
+
+← অধ্যায়ে ফিরুন
+
 </button>
 
-<h2 id="chapterTitle"
-class="title"></h2>
+<h2
+id="chapterTitle"
+class="title">
+</h2>
 
 
 <div class="item">
 
-<h3>📚 Study Material</h3>
+<h3>
+📚 Study Material
+</h3>
 
-<p id="chapterNote"
+<p
+id="chapterNote"
 class="muted">
+
 এই অধ্যায়ের নোট এখানে থাকবে।
+
 </p>
 
-<div id="chapterResources"></div>
+<div
+id="chapterResources">
+</div>
 
 </div>
 
 
 <div class="item">
 
-<h3>🎥 ভিডিও ক্লাস</h3>
+<h3>
+🎥 ভিডিও ক্লাস
+</h3>
 
-<div id="chapterVideo"
+<div
+id="chapterVideo"
 class="muted">
 
 অ্যাডমিন ভিডিও লিঙ্ক যোগ করলে এখানে দেখা যাবে।
@@ -965,15 +1500,18 @@ class="muted">
 
 <div class="item">
 
-<h3>📝 অধ্যায়ভিত্তিক Mock Test</h3>
+<h3>
+📝 অধ্যায়ভিত্তিক Mock Test
+</h3>
 
 <p class="muted">
 
-এই অধ্যায়ের জন্য আপনার নিজস্ব প্রশ্ন বসিয়ে পরীক্ষা নেওয়া যাবে।
+এই অধ্যায়ের জন্য আপনার নিজের প্রশ্ন বসিয়ে পরীক্ষা নেওয়া যাবে।
 
 </p>
 
-<button class="btn purple"
+<button
+class="btn purple"
 onclick="startChapterTest()">
 
 মক টেস্ট শুরু
@@ -989,13 +1527,18 @@ onclick="startChapterTest()">
 
 <!-- MODEL SET -->
 
-<section id="models" class="view">
+<section
+id="models"
+class="view">
 
 <div class="wrap">
 
-<button class="back"
+<button
+class="back"
 onclick="goHome()">
+
 ← Home
+
 </button>
 
 <h2 class="title">
@@ -1004,13 +1547,15 @@ onclick="goHome()">
 
 <p class="sub">
 
-প্রতিটি বিভাগের জন্য ১৫টি করে Set।
+প্রতি বিভাগে ১৫টি করে Model Set।
 প্রশ্ন আপনি নিজেই বসাবেন।
 
 </p>
 
-<div id="modelList"
-class="grid"></div>
+<div
+id="modelList"
+class="grid">
+</div>
 
 </div>
 
@@ -1019,32 +1564,42 @@ class="grid"></div>
 
 <!-- MODEL TEST -->
 
-<section id="modelTest" class="view">
+<section
+id="modelTest"
+class="view">
 
 <div class="wrap">
 
-<button class="back"
+<button
+class="back"
 onclick="openView('models')">
 
 ← Model Set
 
 </button>
 
-<h2 id="modelTitle"
-class="title"></h2>
+<h2
+id="modelTitle"
+class="title">
+</h2>
 
-<div id="modelBody"
-class="testbox"></div>
+<div
+id="modelBody"
+class="testbox">
+</div>
 
-<button class="btn purple"
-style="width:100%;margin-top:12px"
+<button
+class="btn purple"
+style="width:100%;margin-top:11px"
 onclick="submitTest()">
 
 ✅ পরীক্ষা জমা দিন
 
 </button>
 
-<div id="modelResult"></div>
+<div
+id="modelResult">
+</div>
 
 </div>
 
@@ -1053,21 +1608,32 @@ onclick="submitTest()">
 
 <!-- GRAMMAR -->
 
-<section id="grammar" class="view">
+<section
+id="grammar"
+class="view">
 
 <div class="wrap">
 
-<button class="back"
+<button
+class="back"
 onclick="goHome()">
+
 ← Home
+
 </button>
 
 <h2 class="title">
 📘 বাংলা ব্যাকরণ
 </h2>
 
-<div id="grammarList"
-class="list"></div>
+<p class="sub">
+নবম ও দশম শ্রেণির ব্যাকরণ ও নির্মিতি আলাদা করে সাজানো থাকবে।
+</p>
+
+<div
+id="grammarList"
+class="list">
+</div>
 
 </div>
 
@@ -1076,13 +1642,18 @@ class="list"></div>
 
 <!-- COLLEGE -->
 
-<section id="college" class="view">
+<section
+id="college"
+class="view">
 
 <div class="wrap">
 
-<button class="back"
+<button
+class="back"
 onclick="goHome()">
+
 ← Home
+
 </button>
 
 <h2 class="title">
@@ -1090,11 +1661,13 @@ onclick="goHome()">
 </h2>
 
 <p class="sub">
-কলেজের জন্য আলাদা নোট, ভিডিও ও প্রশ্নের বিভাগ।
+কলেজের জন্য আলাদা নোট, ভিডিও ও Mock Test-এর বিভাগ।
 </p>
 
-<div id="collegeList"
-class="list"></div>
+<div
+id="collegeList"
+class="list">
+</div>
 
 </div>
 
@@ -1103,21 +1676,28 @@ class="list"></div>
 
 <!-- NOTICE -->
 
-<section id="notice" class="view">
+<section
+id="notice"
+class="view">
 
 <div class="wrap">
 
-<button class="back"
+<button
+class="back"
 onclick="goHome()">
+
 ← Home
+
 </button>
 
 <h2 class="title">
 📢 Notice Board
 </h2>
 
-<div id="noticeList"
-class="list"></div>
+<div
+id="noticeList"
+class="list">
+</div>
 
 </div>
 
@@ -1126,44 +1706,28 @@ class="list"></div>
 
 <!-- FREE CLASS -->
 
-<section id="freeclass" class="view">
+<section
+id="freeclass"
+class="view">
 
 <div class="wrap">
 
-<button class="back"
+<button
+class="back"
 onclick="goHome()">
+
 ← Home
+
 </button>
 
 <h2 class="title">
 💻 Free Class
 </h2>
 
-<div id="freeClassList"
-class="list"></div>
-
+<div
+id="freeClassList"
+class="list">
 </div>
-
-</section>
-
-
-<!-- PDF -->
-
-<section id="pdf" class="view">
-
-<div class="wrap">
-
-<button class="back"
-onclick="goHome()">
-← Home
-</button>
-
-<h2 class="title">
-📄 Free PDF / Study Material
-</h2>
-
-<div id="pdfList"
-class="list"></div>
 
 </div>
 
@@ -1172,21 +1736,77 @@ class="list"></div>
 
 <!-- LINKS -->
 
-<section id="links" class="view">
+<section
+id="links"
+class="view">
 
 <div class="wrap">
 
-<button class="back"
+<button
+class="back"
 onclick="goHome()">
+
 ← Home
+
 </button>
 
 <h2 class="title">
 🔗 Important Links
 </h2>
 
-<div id="linkList"
-class="list"></div>
+<div
+id="linkList"
+class="list">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section
+id="contact"
+class="view">
+
+<div class="wrap">
+
+<button
+class="back"
+onclick="goHome()">
+
+← Home
+
+</button>
+
+<h2 class="title">
+💬 অনলাইন ও অফলাইন ক্লাস
+</h2>
+
+<div class="item">
+
+<h3>
+📱 যোগাযোগ করুন
+</h3>
+
+<p class="muted">
+
+অনলাইন ও অফলাইন বাংলা ক্লাসের জন্য
+WhatsApp-এ যোগাযোগ করুন।
+
+</p>
+
+<a
+id="waContact"
+class="btn green"
+target="_blank">
+
+WhatsApp-এ যোগাযোগ
+
+</a>
+
+</div>
 
 </div>
 
@@ -1195,13 +1815,18 @@ class="list"></div>
 
 <!-- HELP -->
 
-<section id="help" class="view">
+<section
+id="help"
+class="view">
 
 <div class="wrap">
 
-<button class="back"
+<button
+class="back"
 onclick="goHome()">
+
 ← Home
+
 </button>
 
 <h2 class="title">
@@ -1212,29 +1837,14 @@ onclick="goHome()">
 
 <p>
 
-অধ্যায় খুলে Video, Study Material ও Mock Test ব্যবহার করুন।
-সমস্যা হলে নিচের যোগাযোগ ব্যবহার করুন।
+প্রথমে শ্রেণি নির্বাচন করুন →
+সেমিস্টার/পর্যায় নির্বাচন করুন →
+অধ্যায় খুলুন।
+
+প্রতিটি অধ্যায়ে ভিডিও,
+Study Material এবং Mock Test থাকবে।
 
 </p>
-
-<div class="actions">
-
-<a class="btn green"
-href="https://wa.me/91XXXXXXXXXX"
-target="_blank">
-
-WhatsApp
-
-</a>
-
-<a class="btn"
-href="mailto:">
-
-Email
-
-</a>
-
-</div>
 
 </div>
 
@@ -1245,13 +1855,18 @@ Email
 
 <!-- ADMIN -->
 
-<section id="admin" class="view">
+<section
+id="admin"
+class="view">
 
 <div class="wrap">
 
-<button class="back"
+<button
+class="back"
 onclick="goHome()">
+
 ← Home
+
 </button>
 
 <h2 class="title">
@@ -1259,11 +1874,9 @@ onclick="goHome()">
 </h2>
 
 <p class="sub">
-শুধু আপনি কনটেন্ট যোগ/পরিবর্তন করবেন।
+এখান থেকে আপনার নিজের content বসাতে পারবেন।
 </p>
 
-
-<!-- BANNER -->
 
 <div class="adminbox">
 
@@ -1285,15 +1898,43 @@ Banner সংরক্ষণ
 
 </button>
 
+<button
+class="btn gray"
+onclick="resetBanner()">
+
+Default Banner
+
+</button>
+
 </div>
 
-
-<!-- NOTICE -->
 
 <div class="adminbox">
 
 <h3>
-📢 Notice যোগ করুন
+📱 WhatsApp নম্বর
+</h3>
+
+<input
+id="waNumber"
+class="field"
+placeholder="91XXXXXXXXXX">
+
+<button
+class="btn green"
+onclick="saveWA()">
+
+সংরক্ষণ
+
+</button>
+
+</div>
+
+
+<div class="adminbox">
+
+<h3>
+📢 Notice
 </h3>
 
 <input
@@ -1311,8 +1952,6 @@ onclick="addNotice()">
 
 </div>
 
-
-<!-- CHAPTER CONTENT -->
 
 <div class="adminbox">
 
@@ -1339,18 +1978,18 @@ placeholder="অধ্যায়ের নাম">
 <input
 id="adminVideo"
 class="field"
-placeholder="YouTube/ভিডিও URL">
+placeholder="YouTube / Video URL">
 
 <input
 id="adminPdf"
 class="field"
-placeholder="PDF/Study Material URL">
+placeholder="PDF URL">
 
 <textarea
 id="adminNote"
 class="field"
 rows="4"
-placeholder="অধ্যায়ের নোট/বিবরণ">
+placeholder="Study Material / Note">
 </textarea>
 
 <button
@@ -1363,8 +2002,6 @@ Content সংরক্ষণ
 
 </div>
 
-
-<!-- MODEL QUESTIONS -->
 
 <div class="adminbox">
 
@@ -1381,8 +2018,7 @@ class="field">
 id="adminQuestions"
 class="field"
 rows="10"
-placeholder='প্রশ্ন JSON বসাতে পারেন।
-উদাহরণ:
+placeholder='উদাহরণ:
 [
 {"q":"প্রশ্ন?","a":["ক","খ","গ","ঘ"],"correct":0}
 ]'>
@@ -1392,29 +2028,28 @@ placeholder='প্রশ্ন JSON বসাতে পারেন।
 class="btn purple"
 onclick="saveModelQuestions()">
 
-Model প্রশ্ন সংরক্ষণ
+প্রশ্ন সংরক্ষণ
 
 </button>
 
 </div>
 
 
-<!-- SECURITY -->
-
 <div class="adminbox">
 
 <h3>
-🔐 নিরাপত্তা
+🔐 Content Protection
 </h3>
 
 <p class="danger">
 
-ওয়েব অ্যাপে JavaScript দিয়ে screenshot/recording
-১০০% বন্ধ করা যায় না। এখানে text selection,
-context menu, long-press এবং print সীমিত করা হয়েছে।
+ওয়েব ব্রাউজারে screenshot ১০০% বন্ধ করা সম্ভব নয়।
+এখানে text selection, copy, context menu ও print সীমিত করা হয়েছে।
 
-PDF-এ আসল password protection দিতে হলে
-server-side/PDF encryption দরকার।
+PDF viewer-এ watermark overlay থাকবে।
+
+আসল PDF-তে স্থায়ী watermark/password দিতে
+PDF processing/backend প্রয়োজন।
 
 </p>
 
@@ -1424,10 +2059,8 @@ server-side/PDF encryption দরকার।
 
 </section>
 
-</div>
 
-
-<!-- BOTTOM NAV -->
+<!-- BOTTOM -->
 
 <nav class="bottom">
 
@@ -1446,7 +2079,7 @@ Help
 Courses
 </button>
 
-<button onclick="location.href='https://wa.me/91XXXXXXXXXX'">
+<button onclick="openWA()">
 <span>💬</span>
 WhatsApp
 </button>
@@ -1466,10 +2099,12 @@ Chat
 
 <!-- DRAWER -->
 
-<div id="drawer"
+<div
+id="drawer"
 class="drawer">
 
-<div class="shade"
+<div
+class="shade"
 onclick="closeDrawer()">
 </div>
 
@@ -1479,35 +2114,48 @@ onclick="closeDrawer()">
 ☰ বাংলা পাঠশালা
 </h2>
 
-<button onclick="openView('classes');closeDrawer()">
+<button
+onclick="openView('classes');closeDrawer()">
 📚 All Courses
 </button>
 
-<button onclick="openView('models');closeDrawer()">
+<button
+onclick="openView('models');closeDrawer()">
 📑 Model Set
 </button>
 
-<button onclick="openView('grammar');closeDrawer()">
+<button
+onclick="openView('grammar');closeDrawer()">
 📘 বাংলা ব্যাকরণ
 </button>
 
-<button onclick="openView('college');closeDrawer()">
+<button
+onclick="openView('college');closeDrawer()">
 🏫 College Bengali
 </button>
 
-<button onclick="openView('notice');closeDrawer()">
+<button
+onclick="openView('notice');closeDrawer()">
 📢 Notice Board
 </button>
 
-<button onclick="openView('pdf');closeDrawer()">
-📄 Free PDF
+<button
+onclick="openView('freeclass');closeDrawer()">
+💻 Free Class
 </button>
 
-<button onclick="openView('help');closeDrawer()">
+<button
+onclick="openView('contact');closeDrawer()">
+💬 Online / Offline Class
+</button>
+
+<button
+onclick="openView('help');closeDrawer()">
 ❓ Help
 </button>
 
-<button onclick="adminLogin();closeDrawer()">
+<button
+onclick="adminLogin();closeDrawer()">
 ⚙️ Admin Panel
 </button>
 
@@ -1518,247 +2166,148 @@ onclick="closeDrawer()">
 
 <script>
 
-/* =========================================
-   বাংলা পাঠশালা — COURSE DATA
-========================================= */
+const WA_DEFAULT="91XXXXXXXXXX";
 
 const DATA={
 
 9:{
 
 "১ম পর্যায়ক্রমিক মূল্যায়ন":[
-
-"পদ্য → কলিঙ্গদেশে ঝড়-বৃষ্টি — মুকুন্দরাম চক্রবর্তী",
-
-"গদ্য → ধীবর-বৃত্তান্ত — কালিদাস",
-
-"গদ্য → ইলিয়াস — লিও তলস্তয়",
-
-"গদ্য → দাম — নারায়ণ বন্দ্যোপাধ্যায়",
-
-"পদ্য → নোঙর — অজিত দত্ত",
-
-"সহায়ক পাঠ → প্রফেসর শঙ্কুর ডায়রি : ব্যোমযাত্রীর ডায়রি",
-
+"গদ্য → ইলিয়াস",
+"গদ্য → দাম",
+"পদ্য → কলিঙ্গদেশে ঝড়-বৃষ্টি",
+"নাটক → ধীবর-বৃত্তান্ত",
+"সহায়ক পাঠ → ব্যোমযাত্রীর ডায়রি",
 "ব্যাকরণ → ধ্বনি ও ধ্বনি পরিবর্তন",
-
-"শব্দ গঠন → উপসর্গ ও অনুসর্গ, ধাতু ও প্রত্যয়",
-
 "নির্মিতি → ভাবসম্প্রসারণ"
-
 ],
 
 "২য় পর্যায়ক্রমিক মূল্যায়ন":[
-
 "গদ্য → নব নব সৃষ্টি",
-
-"পদ্য → আকাশে সাতটি তারা",
-
-"গদ্য → চিঠি",
-
-"পদ্য → আবহমান",
-
 "গদ্য → রাধারাণী",
-
-"সহায়ক পাঠ → প্রফেসর শঙ্কুর ডায়রি : কর্ভাস",
-
+"গদ্য → চিঠি",
+"পদ্য → আকাশে সাতটি তারা",
+"পদ্য → আবহমান",
+"সহায়ক পাঠ → কর্ভাস",
 "ব্যাকরণ → বাংলা শব্দভাণ্ডার",
-
 "ব্যাকরণ → শব্দ ও পদ",
-
 "ব্যাকরণ → বিশেষ্য, বিশেষণ ও সর্বনাম",
-
 "নির্মিতি → ভাবার্থ",
-
 "নির্মিতি → সারাংশ"
-
 ],
 
 "৩য় পর্যায়ক্রমিক / নির্বাচনী মূল্যায়ন":[
-
-"গদ্য → হিমালয় দর্শন",
-
-"পদ্য → খেয়া",
-
-"পদ্য → নিন্দুকেরা",
-
-"পদ্য → ভাঙার গান",
-
-"পদ্য → ছন্দপাঠ",
-
-"গদ্য → আমরা",
-
-"সহায়ক পাঠ → প্রফেসর শঙ্কুর ডায়রি",
-
-"প্রথম ও দ্বিতীয় পর্যায়ের নির্ধারিত পাঠ",
-
-"প্রথম ও দ্বিতীয় পর্যায়ের নির্ধারিত ব্যাকরণ ও নির্মিতি"
-
+"গদ্য → নির্ধারিত পূর্ণ পাঠ",
+"পদ্য → নির্ধারিত পূর্ণ পাঠ",
+"সহায়ক পাঠ → নির্ধারিত পাঠ",
+"ব্যাকরণ → নির্ধারিত ব্যাকরণ",
+"নির্মিতি → প্রবন্ধ রচনা",
+"নির্মিতি → গল্পলিখন",
+"নির্মিতি → সারাংশ",
+"নির্মিতি → ভাবসম্প্রসারণ"
 ]
 
 },
-
 
 10:{
 
 "১ম পর্যায়ক্রমিক মূল্যায়ন":[
-
-"গল্প → জ্ঞানচক্ষু — আশাপূর্ণা দেবী",
-
-"কবিতা → অসুখী একজন — পাবলো নেরুদা",
-
-"কবিতা → আয় আরো বেঁধে বেঁধে থাকি — শঙ্খ ঘোষ",
-
-"কবিতা → আফ্রিকা — রবীন্দ্রনাথ ঠাকুর",
-
-"প্রবন্ধ → হারিয়ে যাওয়া কালি কলম — শ্রীপান্থ",
-
-"সহায়ক পাঠ → কোনি — ১–৩১ পৃষ্ঠা"
-
+"গল্প → জ্ঞানচক্ষু",
+"কবিতা → অসুখী একজন",
+"কবিতা → আয় আরো বেঁধে বেঁধে থাকি",
+"কবিতা → আফ্রিকা",
+"প্রবন্ধ → হারিয়ে যাওয়া কালি কলম",
+"সহায়ক পাঠ → কোনি",
+"ব্যাকরণ → কারক ও অকারক সম্পর্ক",
+"নির্মিতি → প্রবন্ধ রচনা",
+"নির্মিতি → অনুবাদ",
+"নির্মিতি → সংলাপ / প্রতিবেদন"
 ],
 
 "২য় পর্যায়ক্রমিক মূল্যায়ন":[
-
-"গল্প → বহুরূপী — সুবোধ ঘোষ",
-
-"গল্প → পথের দাবী — শরৎচন্দ্র চট্টোপাধ্যায়",
-
-"কবিতা → অভিষেক — মাইকেল মধুসূদন দত্ত",
-
-"কবিতা → প্রলয়োল্লাস — কাজী নজরুল ইসলাম",
-
+"গল্প → বহুরূপী",
+"গল্প → পথের দাবী",
+"কবিতা → অভিষেক",
+"কবিতা → প্রলয়োল্লাস",
 "নাটক → সিরাজদ্দৌলা",
-
-"সহায়ক পাঠ → কোনি — ৩২–৫০ পৃষ্ঠা"
-
+"সহায়ক পাঠ → কোনি",
+"ব্যাকরণ → সমাস",
+"ব্যাকরণ → বাক্য",
+"নির্মিতি → প্রবন্ধ রচনা",
+"নির্মিতি → অনুবাদ",
+"নির্মিতি → সংলাপ / প্রতিবেদন"
 ],
 
 "৩য় পর্যায়ক্রমিক / নির্বাচনী মূল্যায়ন":[
-
-"গল্প → অদলবদল — পান্নালাল প্যাটেল",
-
-"গল্প → নদীর বিদ্রোহ — মানিক বন্দ্যোপাধ্যায়",
-
-"কবিতা → সিন্ধুতীরে — সৈয়দ আলাওল",
-
-"কবিতা → অস্ত্রের বিরুদ্ধে গান — জয় গোস্বামী",
-
-"প্রবন্ধ → বাংলা ভাষায় বিজ্ঞান — রাজশেখর বসু",
-
-"সহায়ক পাঠ → কোনি — সম্পূর্ণ বই"
-
+"গল্প → অদলবদল",
+"গল্প → নদীর বিদ্রোহ",
+"কবিতা → সিন্ধুতীরে",
+"কবিতা → অস্ত্রের বিরুদ্ধে গান",
+"প্রবন্ধ → বাংলা ভাষায় বিজ্ঞান",
+"সহায়ক পাঠ → কোনি — সম্পূর্ণ",
+"ব্যাকরণ → বাচ্য",
+"নির্মিতি → বঙ্গানুবাদ",
+"নির্মিতি → সংলাপ",
+"নির্মিতি → প্রতিবেদন",
+"নির্মিতি → প্রবন্ধ রচনা"
 ]
 
 },
-
 
 11:{
 
 "১ম সেমিস্টার":[
-
-"গল্প → পুঁইমাচা — বিভূতিভূষণ বন্দ্যোপাধ্যায়",
-
-"প্রবন্ধ → বিড়াল — বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
-
-"কবিতা → ঈশ্বরচন্দ্র বিদ্যাসাগর — মাইকেল মধুসূদন দত্ত",
-
-"কবিতা → সাম্যবাদী — কাজী নজরুল ইসলাম",
-
-"আন্তর্জাতিক গল্প → বিশাল ডানাওয়ালা এক থুরথুরে বুড়ো — গ্যাব্রিয়েল গার্সিয়া মার্কেজ",
-
-"ভারতীয় কবিতা → চারণ কবি — ভারভারা রাও",
-
+"গল্প → পুঁইমাচা",
+"প্রবন্ধ → বিড়াল",
+"কবিতা → ঈশ্বরচন্দ্র বিদ্যাসাগর",
+"কবিতা → সাম্যবাদী",
+"আন্তর্জাতিক গল্প → বিশাল ডানাওয়ালা এক থুরথুরে বুড়ো",
+"ভারতীয় কবিতা → চারণ কবি",
 "ভাষা → বিশ্বের ভাষা ও ভাষা পরিবার",
-
 "ভাষা → বাংলা ভাষার উদ্ভব ও ক্রমবিকাশ",
-
-"ভাষা → ভারতে প্রচলিত ভাষা পরিবার",
-
 "ভাষা → বাংলা ভাষার বৈচিত্র্য",
-
-"বাংলা শিল্প-সাহিত্য ও সংস্কৃতির ইতিহাস → পর্ব ১",
-
-"বাংলা শিল্প-সাহিত্য ও সংস্কৃতির ইতিহাস → পর্ব ২"
-
+"বাংলা শিল্প-সাহিত্য ও সংস্কৃতির ইতিহাস → নির্ধারিত অংশ"
 ],
 
 "২য় সেমিস্টার":[
-
-"গল্প → ছুটি — রবীন্দ্রনাথ ঠাকুর",
-
-"গল্প → তেলেনাপোতা আবিষ্কার — প্রেমেন্দ্র মিত্র",
-
-"কবিতা → ভাব সম্মিলন — বিদ্যাপতি",
-
-"কবিতা → লালনশাহ ফকিরের গান — লালনশাহ",
-
-"কবিতা → নুন — জয় গোস্বামী",
-
-"নাটক → আষাঢ় — বিজন ভট্টাচার্য",
-
-"পূর্ণাঙ্গ সহায়ক গ্রন্থ → পঞ্চতন্ত্র — সৈয়দ মুজতবা আলি",
-
-"পূর্ণাঙ্গ সহায়ক গ্রন্থ → বই কেনা"
-
+"গল্প → ছুটি",
+"গল্প → তেলেনাপোতা আবিষ্কার",
+"কবিতা → ভাব সম্মিলন",
+"কবিতা → লালনশাহ ফকিরের গান",
+"কবিতা → নুন",
+"নাটক → আষাঢ়",
+"সহায়ক গ্রন্থ → পঞ্চতন্ত্র",
+"সহায়ক গ্রন্থ → বই কেনা"
 ]
 
 },
 
-
 12:{
 
 "৩য় সেমিস্টার":[
-
-"গল্প → ক্ষুধিত পাষাণ — রবীন্দ্রনাথ ঠাকুর",
-
-"গল্প → শ্রীচরণেষু — বনফুল",
-
-"কবিতা → নরকবাস — সুনীল গঙ্গোপাধ্যায়",
-
-"কবিতা → অন্ধকার লেখাগুচ্ছ — শ্রীজাত",
-
-"কবিতা → দ্বিধাগ্রস্ত রূপকথা — নবনীতা দেবসেন",
-
-"প্রবন্ধ → বাংলা ভাষা — স্বামী বিবেকানন্দ",
-
-"ভারতীয় গল্প → পোস্টার — শঙ্কর রাও খারাত",
-
-"আন্তর্জাতিক কবিতা → তার সঙ্গে — পাবলো নেরুদা",
-
+"গল্প → ক্ষুধিত পাষাণ",
+"গল্প → শ্রীচরণেষু",
+"কবিতা → নরকবাস",
+"কবিতা → অন্ধকার লেখাগুচ্ছ",
+"কবিতা → দ্বিধাগ্রস্ত রূপকথা",
+"প্রবন্ধ → বাংলা ভাষা",
+"ভারতীয় গল্প → পোস্টার",
+"আন্তর্জাতিক কবিতা → তার সঙ্গে",
 "ভাষা → ভাষাবিজ্ঞান ও তার শাখা-প্রশাখা",
-
 "ভাষা → ধ্বনিতত্ত্ব",
-
 "ভাষা → শব্দার্থতত্ত্ব",
-
-"বাংলা ভাষা ও সংস্কৃতি → বাঙালিদের ইতিহাস",
-
-"বাংলা ভাষা ও সংস্কৃতি → বাঙালির বিজ্ঞানচর্চা",
-
-"বাংলা ভাষা ও সংস্কৃতি → বাঙালির ক্রীড়া সংস্কৃতি"
-
+"বাংলা ভাষা ও সংস্কৃতি → নির্ধারিত অংশ"
 ],
 
 "৪র্থ সেমিস্টার":[
-
-"গল্প → হলুদ পোড়া — মানিক বন্দ্যোপাধ্যায়",
-
-"গল্প → হারুন সালেমের মাসি — মহাশ্বেতা দেবী",
-
-"কবিতা → প্রার্থনা — রবীন্দ্রনাথ ঠাকুর",
-
-"কবিতা → তিমির হননের গান — জীবনানন্দ দাশ",
-
-"কবিতা → কেন এল না — সুভাষ মুখোপাধ্যায়",
-
-"নাটক → নানা রঙের দিন — অজিতেশ বন্দ্যোপাধ্যায়",
-
-"পূর্ণাঙ্গ সহায়ক গ্রন্থ → ডাকঘর — রবীন্দ্রনাথ ঠাকুর",
-
-"বাংলা ভাষা ও সংস্কৃতি → বাংলা চিত্রকলার ইতিহাস",
-
-"বাংলা ভাষা ও সংস্কৃতি → বাঙালির চলচ্চিত্রের ইতিহাস"
-
+"গল্প → হলুদ পোড়া",
+"গল্প → হারুন সালেমের মাসি",
+"কবিতা → প্রার্থনা",
+"কবিতা → তিমির হননের গান",
+"কবিতা → কেন এল না",
+"নাটক → নানা রঙের দিন",
+"সহায়ক গ্রন্থ → ডাকঘর",
+"বাংলা ভাষা ও সংস্কৃতি → নির্ধারিত অংশ"
 ]
 
 }
@@ -1766,103 +2315,104 @@ const DATA={
 };
 
 
-/* =========================================
-   OTHER SECTIONS
-========================================= */
+/* নির্মিতি */
 
-const GRAM=[
-
-"ধ্বনি ও ধ্বনি পরিবর্তন",
-
-"শব্দ ও পদ",
-
-"উপসর্গ ও অনুসর্গ",
-
-"ধাতু ও প্রত্যয়",
-
-"সন্ধি",
-
-"সমাস",
-
-"কারক ও বিভক্তি",
-
-"বিশেষ্য, বিশেষণ ও সর্বনাম",
-
-"বাক্য পরিবর্তন",
-
-"শব্দভাণ্ডার",
-
+const NIRMITI9=[
+"প্রবন্ধ রচনা",
 "ভাবসম্প্রসারণ",
+"ভাবার্থ",
+"সারাংশ",
+"গল্পলিখন"
+];
 
-"সারাংশ ও সারমর্ম"
-
+const NIRMITI10=[
+"প্রবন্ধ রচনা",
+"বঙ্গানুবাদ",
+"সংলাপ রচনা",
+"প্রতিবেদন রচনা"
 ];
 
 
+/* GRAMMAR */
+
+const GRAM=[
+"ধ্বনি ও ধ্বনি পরিবর্তন",
+"শব্দ ও পদ",
+"উপসর্গ ও অনুসর্গ",
+"ধাতু ও প্রত্যয়",
+"সন্ধি",
+"সমাস",
+"কারক ও অকারক সম্পর্ক",
+"বাক্য",
+"বাচ্য",
+"বিশেষ্য, বিশেষণ ও সর্বনাম",
+"বাংলা শব্দভাণ্ডার",
+"নির্মিতি: প্রবন্ধ রচনা",
+"নির্মিতি: বঙ্গানুবাদ",
+"নির্মিতি: সংলাপ / প্রতিবেদন",
+"নির্মিতি: ভাবসম্প্রসারণ",
+"নির্মিতি: সারাংশ"
+];
+
+
+/* COLLEGE */
+
 const COL=[
-
-"বাংলা সাহিত্য — উপন্যাস",
-
-"বাংলা সাহিত্য — ছোটগল্প",
-
 "বাংলা সাহিত্য — কবিতা",
-
+"বাংলা সাহিত্য — গল্প",
+"বাংলা সাহিত্য — উপন্যাস",
 "বাংলা সাহিত্য — প্রবন্ধ",
-
-"নাটক",
-
-"কলেজ সাজেশন",
-
+"বাংলা সাহিত্য — নাটক",
 "কলেজ নোট",
-
+"কলেজ সাজেশন",
 "কলেজ Mock Test"
-
 ];
 
 
 let state={
-
 cls:9,
 period:"",
 topic:"",
+model:"",
 questions:[],
-answers:[],
-model:""
-
+answers:[]
 };
 
 
-const key="bp_final_1";
+const STORE="bangla_pathshala_v4";
 
 let store=
-JSON.parse(localStorage.getItem(key)||"{}");
+JSON.parse(
+localStorage.getItem(STORE)||"{}"
+);
 
 
 function save(){
 
 localStorage.setItem(
-key,
+STORE,
 JSON.stringify(store)
 );
 
 }
 
 
-/* =========================================
-   VIEW
-========================================= */
+/* VIEW */
 
 function openView(id){
 
 document
 .querySelectorAll(".view")
-.forEach(x=>
-x.classList.remove("active")
+.forEach(v=>
+v.classList.remove("active")
 );
 
-document
-.getElementById(id)
-.classList.add("active");
+let x=
+document.getElementById(id);
+
+if(!x)return;
+
+x.classList.add("active");
 
 window.scrollTo(0,0);
 
@@ -1877,6 +2427,8 @@ openView("home");
 
 }
 
+
+/* DRAWER */
 
 function openDrawer(){
 
@@ -1896,9 +2448,7 @@ document
 }
 
 
-/* =========================================
-   RENDER
-========================================= */
+/* RENDER */
 
 function render(id){
 
@@ -1922,13 +2472,6 @@ COL,
 if(id==="notice")
 renderNotices();
 
-if(id==="pdf")
-renderLinks(
-"pdfList",
-store.pdf||[],
-"📄"
-);
-
 if(id==="freeclass")
 renderLinks(
 "freeClassList",
@@ -1943,14 +2486,19 @@ store.links||[],
 "🔗"
 );
 
+applyWA();
+
+applyBanner();
+
 }
 
 
-/* =========================================
-   CLASS
-========================================= */
+/* CLASS */
 
-function openClass(cls,period){
+function openClass(
+cls,
+period
+){
 
 state.cls=cls;
 
@@ -1963,8 +2511,6 @@ showTopics();
 return;
 
 }
-
-const d=DATA[cls];
 
 document
 .getElementById("periodTitle")
@@ -1983,13 +2529,19 @@ document
 .getElementById("periodList")
 .innerHTML=
 
-Object.keys(d)
-.map(p=>`
+Object
+.keys(DATA[cls])
+.map(
+p=>
+`
 
-<div class="item oval"
+<div
+class="item"
 onclick="state.period='${p}';showTopics()">
 
-<h3>📚 ${p}</h3>
+<h3>
+📚 ${p}
+</h3>
 
 <p class="muted">
 এই অংশের অধ্যায় দেখুন →
@@ -1997,7 +2549,8 @@ onclick="state.period='${p}';showTopics()">
 
 </div>
 
-`)
+`
+)
 .join("");
 
 
@@ -2006,14 +2559,13 @@ openView("periods");
 }
 
 
-/* =========================================
-   TOPICS
-========================================= */
+/* TOPICS */
 
 function showTopics(){
 
-const arr=
+let arr=
 DATA[state.cls][state.period]||[];
+
 
 document
 .getElementById("periodTitle")
@@ -2034,7 +2586,9 @@ document
 .innerHTML=
 
 arr
-.map(t=>`
+.map(
+t=>
+`
 
 <div class="item">
 
@@ -2056,7 +2610,8 @@ onclick='openChapter(${JSON.stringify(t)})'>
 
 </div>
 
-`)
+`
+)
 .join("");
 
 
@@ -2075,9 +2630,7 @@ state.period
 }
 
 
-/* =========================================
-   CHAPTER
-========================================= */
+/* CHAPTER */
 
 function openChapter(t){
 
@@ -2088,7 +2641,7 @@ document
 .textContent=t;
 
 
-const c=
+let c=
 store.chapters?.[t]||{};
 
 
@@ -2096,7 +2649,7 @@ document
 .getElementById("chapterNote")
 .textContent=
 c.note||
-"অ্যাডমিন এখানে এই অধ্যায়ের নোট যোগ করতে পারবেন।";
+"এই অধ্যায়ের Study Material এখানে থাকবে।";
 
 
 document
@@ -2106,14 +2659,15 @@ document
 c.pdf?
 
 `
-<a
+
+<button
 class="btn"
-target="_blank"
-href="${c.pdf}">
+onclick='openProtectedPDF(${JSON.stringify(c.pdf)})'>
 
-📄 Study Material / PDF
+📄 Protected Study Material
 
-</a>
+</button>
+
 `
 
 :"";
@@ -2126,6 +2680,7 @@ document
 c.video?
 
 `
+
 <a
 class="btn green"
 target="_blank"
@@ -2134,9 +2689,11 @@ href="${c.video}">
 ▶️ ভিডিও দেখুন
 
 </a>
+
 `
 
 :
+
 "অ্যাডমিন ভিডিও লিঙ্ক যোগ করলে এখানে দেখা যাবে।";
 
 
@@ -2145,22 +2702,21 @@ openView("chapter");
 }
 
 
-/* =========================================
-   CHAPTER TEST
-========================================= */
+/* CHAPTER TEST */
 
 function startChapterTest(){
 
 state.model=
 "chapter:"+state.topic;
 
-state.questions=
+let q=
 store.questions?.[state.model]||[];
 
-if(!state.questions.length){
+
+if(!q.length){
 
 alert(
-"এই অধ্যায়ের Mock Test-এ এখনো প্রশ্ন বসানো হয়নি।\n\nAdmin Panel থেকে প্রশ্ন বসান।"
+"এই অধ্যায়ের Mock Test-এ এখনো প্রশ্ন বসানো হয়নি। Admin Panel থেকে প্রশ্ন বসান।"
 );
 
 return;
@@ -2168,40 +2724,24 @@ return;
 }
 
 startQuestions(
-state.questions,
+q,
 state.topic+" • Mock Test"
 );
 
 }
 
 
-/* =========================================
-   MODEL SET
-========================================= */
-
-function getQ(id){
-
-return store.questions?.[id]||[];
-
-}
-
+/* MODELS */
 
 function renderModels(){
 
-const groups=[
-
-["নবম শ্রেণি",9],
-
-["দশম শ্রেণি",10],
-
+let groups=[
+["নবম শ্রেণি","9"],
+["দশম শ্রেণি","10"],
 ["একাদশ • ১ম সেমিস্টার","11-1"],
-
 ["একাদশ • ২য় সেমিস্টার","11-2"],
-
 ["দ্বাদশ • ৩য় সেমিস্টার","12-3"],
-
 ["দ্বাদশ • ৪র্থ সেমিস্টার","12-4"]
-
 ];
 
 
@@ -2210,7 +2750,8 @@ document
 .innerHTML=
 
 groups
-.map(g=>
+.map(
+(g,k)=>
 
 Array
 .from(
@@ -2224,16 +2765,20 @@ return`
 
 <div
 class="card model ${
-i%3===0?
+k%4===0?
 "p":
-i%3===1?
+k%4===1?
 "o":
-"g"
+k%4===2?
+"g":
+"t"
 }"
-onclick="openModel(
-'${id}',
-'${g[0]} — Model Set ${i+1}'
-)">
+onclick='openModel(
+${JSON.stringify(id)},
+${JSON.stringify(
+g[0]+" — Model Set "+(i+1)
+)}
+)'>
 
 <div class="ico">
 📝
@@ -2265,27 +2810,30 @@ Model Set ${i+1}
 }
 
 
-/* =========================================
-   OPEN MODEL
-========================================= */
+/* OPEN MODEL */
 
-function openModel(id,title){
+function openModel(
+id,
+title
+){
 
 state.model=id;
 
-state.questions=
-getQ(id);
+let q=
+store.questions?.[id]||[];
+
+
+if(!q.length){
 
 document
 .getElementById("modelTitle")
 .textContent=title;
 
-
-if(!state.questions.length){
-
 document
 .getElementById("modelBody")
-.innerHTML=`
+.innerHTML=
+
+`
 
 <div class="item">
 
@@ -2294,9 +2842,7 @@ document
 </h3>
 
 <p class="muted">
-
 আপনি Admin Panel থেকে নিজের প্রশ্ন বসাবেন।
-
 </p>
 
 </div>
@@ -2313,20 +2859,20 @@ return;
 
 }
 
-
 startQuestions(
-state.questions,
+q,
 title
 );
 
 }
 
 
-/* =========================================
-   QUESTIONS
-========================================= */
+/* QUESTIONS */
 
-function startQuestions(qs,title){
+function startQuestions(
+qs,
+title
+){
 
 state.questions=qs;
 
@@ -2342,7 +2888,10 @@ document
 .innerHTML=
 
 qs
-.map((q,i)=>`
+.map(
+(q,i)=>
+
+`
 
 <div class="q">
 
@@ -2353,6 +2902,7 @@ ${i+1}. ${q.q}
 ${q.a
 .map(
 (a,j)=>
+
 `
 
 <button
@@ -2373,7 +2923,8 @@ ${a}
 
 </div>
 
-`)
+`
+)
 .join("");
 
 
@@ -2387,17 +2938,20 @@ openView("modelTest");
 }
 
 
-/* =========================================
-   ANSWER
-========================================= */
+/* ANSWER */
 
-function answer(i,j,b){
+function answer(
+i,
+j,
+b
+){
 
 state.answers[i]=j;
 
 b.parentElement
 .querySelectorAll(".opt")
-.forEach(x=>
+.forEach(
+x=>
 x.classList.remove("sel")
 );
 
@@ -2406,15 +2960,12 @@ b.classList.add("sel");
 }
 
 
-/* =========================================
-   SUBMIT
-========================================= */
+/* SUBMIT */
 
 function submitTest(){
 
 if(!state.questions.length)
 return;
-
 
 let s=
 state.questions
@@ -2432,7 +2983,9 @@ state.answers[i]===q.correct?
 
 document
 .getElementById("modelResult")
-.innerHTML=`
+.innerHTML=
+
+`
 
 <div class="score">
 
@@ -2457,18 +3010,22 @@ s/state.questions.length*100
 }
 
 
-/* =========================================
-   SIMPLE SECTIONS
-========================================= */
+/* SIMPLE */
 
-function renderSimple(id,arr,icon){
+function renderSimple(
+id,
+arr,
+icon
+){
 
 document
 .getElementById(id)
 .innerHTML=
 
 arr
-.map(x=>`
+.map(
+x=>
+`
 
 <div class="item">
 
@@ -2482,19 +3039,18 @@ ${icon} ${x}
 
 </div>
 
-`)
+`
+)
 .join("");
 
 }
 
 
-/* =========================================
-   NOTICE
-========================================= */
+/* NOTICE */
 
 function renderNotices(){
 
-const a=
+let a=
 store.notices||
 [
 "পরীক্ষার রুটিন ও গুরুত্বপূর্ণ আপডেট এখানে প্রকাশিত হবে।"
@@ -2506,7 +3062,9 @@ document
 .innerHTML=
 
 a
-.map(x=>`
+.map(
+x=>
+`
 
 <div class="item">
 
@@ -2515,22 +3073,25 @@ a
 </h3>
 
 <p>
-${x}
+${escapeHTML(x)}
 </p>
 
 </div>
 
-`)
+`
+)
 .join("");
 
 }
 
 
-/* =========================================
-   LINKS
-========================================= */
+/* LINKS */
 
-function renderLinks(id,a,icon){
+function renderLinks(
+id,
+a,
+icon
+){
 
 document
 .getElementById(id)
@@ -2539,23 +3100,30 @@ document
 a.length?
 
 a
-.map(x=>`
+.map(
+x=>
+`
 
 <div class="item">
 
 <h3>
 ${icon}
-${x.title||"Content"}
+${escapeHTML(
+x.title||"Content"
+)}
 </h3>
 
 <p class="muted">
-${x.desc||""}
+${escapeHTML(
+x.desc||""
+)}
 </p>
 
 ${
 x.url?
 
 `
+
 <a
 class="btn"
 target="_blank"
@@ -2564,6 +3132,7 @@ href="${x.url}">
 খুলুন →
 
 </a>
+
 `
 
 :""
@@ -2571,7 +3140,8 @@ href="${x.url}">
 
 </div>
 
-`)
+`
+)
 .join("")
 
 :
@@ -2581,7 +3151,9 @@ href="${x.url}">
 <div class="item">
 
 <p class="muted">
+
 অ্যাডমিন এখনো কিছু যোগ করেননি।
+
 </p>
 
 </div>
@@ -2591,14 +3163,32 @@ href="${x.url}">
 }
 
 
-/* =========================================
-   ADMIN
-========================================= */
+function escapeHTML(s){
+
+return String(s)
+.replace(
+/[&<>"']/g,
+m=>
+({
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+"\"":"&quot;",
+"'":"&#39;"
+}[m])
+);
+
+}
+
+
+/* ADMIN */
 
 function adminLogin(){
 
 let p=
-prompt("Admin Password দিন");
+prompt(
+"Admin Password দিন"
+);
 
 
 if(p==="admin123"){
@@ -2620,15 +3210,13 @@ alert(
 }
 
 
-/* =========================================
-   ADMIN SETUP
-========================================= */
-
 function fillAdmin(){
 
 document
 .getElementById("adminClass")
-.innerHTML=`
+.innerHTML=
+
+`
 
 <option value="9">
 নবম
@@ -2670,14 +3258,12 @@ Array
 .from(
 {length:15},
 (_,i)=>
+
 `
 
 <option value="${g}-${i+1}">
 
-${g}
-•
-Model Set
-${i+1}
+${g} • Model Set ${i+1}
 
 </option>
 
@@ -2686,12 +3272,14 @@ ${i+1}
 )
 .join("");
 
+
+document
+.getElementById("waNumber")
+.value=
+store.wa||WA_DEFAULT;
+
 }
 
-
-/* =========================================
-   ADMIN PERIOD
-========================================= */
 
 function fillAdminPeriods(){
 
@@ -2710,6 +3298,7 @@ Object
 .map(
 x=>
 `
+
 <option>
 ${x}
 </option>
@@ -2720,9 +3309,7 @@ ${x}
 }
 
 
-/* =========================================
-   BANNER
-========================================= */
+/* BANNER */
 
 function saveBanner(){
 
@@ -2767,13 +3354,37 @@ r.readAsDataURL(f);
 }
 
 
+function resetBanner(){
+
+delete store.banner;
+
+save();
+
+applyBanner();
+
+}
+
+
+/* DEFAULT BANNER */
+
+const DEFAULT_BANNER=
+document
+.querySelector("#home .banner svg")
+?.outerHTML||"";
+
+
 function applyBanner(){
+
+let b=
+document.getElementById("banner");
+
+if(!b)
+return;
+
 
 if(store.banner){
 
-document
-.getElementById("banner")
-.innerHTML=
+b.innerHTML=
 
 `
 
@@ -2785,15 +3396,90 @@ alt="বাংলা পাঠশালা ব্যানার">
 
 }
 
+else if(
+!b.querySelector("svg")
+){
+
+b.innerHTML=
+DEFAULT_BANNER;
+
+}
+
 }
 
 
-applyBanner();
+/* WHATSAPP */
+
+function saveWA(){
+
+let n=
+document
+.getElementById("waNumber")
+.value
+.replace(/\D/g,"");
 
 
-/* =========================================
-   NOTICE ADD
-========================================= */
+if(!n){
+
+alert(
+"WhatsApp নম্বর দিন"
+);
+
+return;
+
+}
+
+
+store.wa=n;
+
+save();
+
+applyWA();
+
+alert(
+"WhatsApp নম্বর সংরক্ষিত হয়েছে।"
+);
+
+}
+
+
+function applyWA(){
+
+let n=
+store.wa||WA_DEFAULT;
+
+let a=
+document.getElementById("waContact");
+
+if(a)
+a.href=
+"https://wa.me/"+n;
+
+}
+
+
+function openWA(){
+
+let n=
+store.wa||WA_DEFAULT;
+
+if(
+n==="91XXXXXXXXXX"
+){
+
+openView("contact");
+
+return;
+
+}
+
+location.href=
+"https://wa.me/"+n;
+
+}
+
+
+/* NOTICE ADD */
 
 function addNotice(){
 
@@ -2829,9 +3515,7 @@ alert(
 }
 
 
-/* =========================================
-   CHAPTER CONTENT
-========================================= */
+/* CHAPTER CONTENT */
 
 function saveChapterContent(){
 
@@ -2890,9 +3574,7 @@ alert(
 }
 
 
-/* =========================================
-   MODEL QUESTION SAVE
-========================================= */
+/* MODEL QUESTION */
 
 function saveModelQuestions(){
 
@@ -2937,7 +3619,7 @@ alert(
 catch(e){
 
 alert(
-"JSON format সঠিক নয়।\n\nউদাহরণটি অনুসরণ করুন।"
+"JSON format সঠিক নয়। উদাহরণ অনুসরণ করুন।"
 );
 
 }
@@ -2945,31 +3627,128 @@ alert(
 }
 
 
-/* =========================================
-   BASIC PROTECTION
-========================================= */
+/* PROTECTED PDF VIEWER */
+
+function openProtectedPDF(url){
+
+let old=
+document.getElementById("pdfModal");
+
+if(old)
+old.remove();
+
+
+let d=
+document.createElement("div");
+
+
+d.id="pdfModal";
+
+d.style=
+"position:fixed;inset:0;background:#001c35e8;z-index:500;padding:18px";
+
+
+d.innerHTML=
+
+`
+
+<div
+style="
+max-width:900px;
+margin:auto;
+height:100%;
+background:#fff;
+border-radius:22px;
+overflow:hidden;
+position:relative">
+
+<button
+onclick="
+document.getElementById('pdfModal').remove()
+"
+style="
+position:absolute;
+right:10px;
+top:10px;
+z-index:3;
+border:0;
+border-radius:999px;
+padding:9px 13px;
+background:#df3151;
+color:white;
+font-weight:900">
+
+বন্ধ করুন ×
+
+</button>
+
+<div
+class="protected"
+style="height:100%">
+
+<iframe
+src="${url}"
+title="Protected Study Material">
+</iframe>
+
+<div class="water">
+
+BANGLA PATHSHALA • ASHIS HAIT
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+
+document
+.body
+.appendChild(d);
+
+}
+
+
+/* COPY / PRINT LIMITS */
 
 document.addEventListener(
 "contextmenu",
-e=>e.preventDefault()
+e=>
+e.preventDefault()
 );
 
 
 document.addEventListener(
 "selectstart",
-e=>e.preventDefault()
-);
+e=>{
+
+if(
+!["INPUT","TEXTAREA"]
+.includes(e.target.tagName)
+){
+
+e.preventDefault();
+
+}
+
+});
 
 
 document.addEventListener(
 "dragstart",
-e=>e.preventDefault()
+e=>
+e.preventDefault()
 );
 
 
 document.addEventListener(
 "keydown",
 e=>{
+
+let k=
+e.key.toLowerCase();
 
 if(
 (e.ctrlKey||e.metaKey)&&
@@ -2980,9 +3759,7 @@ if(
 "p",
 "a"
 ]
-.includes(
-e.key.toLowerCase()
-)
+.includes(k)
 ){
 
 e.preventDefault();
@@ -2991,6 +3768,28 @@ e.preventDefault();
 
 });
 
+
+/* START */
+
+renderModels();
+
+renderSimple(
+"grammarList",
+GRAM,
+"📘"
+);
+
+renderSimple(
+"collegeList",
+COL,
+"🏫"
+);
+
+renderNotices();
+
+applyWA();
+
+applyBanner();
 
 </script>
 
