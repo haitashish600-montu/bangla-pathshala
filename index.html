@@ -784,7 +784,7 @@ display:none!important
 <button class="login" onclick="adminLogin()">
 👤 Login
 </button>
-<button onclick="showStudentLogin()" style="
+<button onclick="openStudentLogin()" style="
 background:#ff9800;
 color:white;
 border:0;
@@ -4823,7 +4823,7 @@ function(url){
      document.addEventListener("DOMContentLoaded", function () {
   if (localStorage.getItem("studentLoggedIn") !== "yes") {
     setTimeout(function () {
-      showStudentLogin();
+      openStudentLogin();
     }, 300);
   }
 });
