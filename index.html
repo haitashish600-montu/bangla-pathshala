@@ -3376,38 +3376,33 @@ const DEFAULT_BANNER = `
 
 function applyBanner(){
 
-let b=
-document.getElementById("banner");
+  let b = document.getElementById("banner");
 
-if(!b)
-return;
+  if(!b) return;
 
+  if(store.banner){
 
-if(store.banner){
+    b.innerHTML = `
+      <img
+        src="${store.banner}"
+        alt="বাংলা পাঠশালা ব্যানার"
+        style="width:100%;height:auto;display:block;border-radius:24px;"
+      >
+    `;
 
-b.innerHTML=
+  }else{
 
-`
+    b.innerHTML = `
+      <img
+        src="banner.png"
+        alt="বাংলা পাঠশালা ব্যানার"
+        style="width:100%;height:auto;display:block;border-radius:24px;"
+      >
+    `;
 
-<img
-src="${store.banner}"
-alt="বাংলা পাঠশালা ব্যানার">
-
-`;
-
-}
-
-else if(
-!b.querySelector("svg")
-){
-
-b.innerHTML=
-DEFAULT_BANNER;
+  }
 
 }
-
-}
-
 
 /* WHATSAPP */
 
