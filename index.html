@@ -3196,13 +3196,24 @@ m=>
 
 function adminLogin(){
 
+if(localStorage.getItem("adminLoggedIn")==="yes"){
+
+openView("admin");
+
+fillAdmin();
+
+return;
+
+}
+
 let p=
 prompt(
 "Admin Password দিন"
 );
 
-
 if(p==="Ashish@1992"){
+
+localStorage.setItem("adminLoggedIn","yes");
 
 openView("admin");
 
@@ -3219,7 +3230,6 @@ alert(
 }
 
 }
-
 
 function fillAdmin(){
 
