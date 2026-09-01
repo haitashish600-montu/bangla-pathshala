@@ -3200,9 +3200,27 @@ m=>
 
 /* ADMIN */
 
-function adminLogin(){
+async function adminLogin(){
 
-if(localStorage.getItem("adminLoggedIn")==="yes"){
+if(!window.bpSupabase){
+
+alert("Supabase সংযোগ পাওয়া যায়নি");
+
+return;
+
+}
+
+const {
+data: { session }
+} =
+await window.bpSupabase.auth.getSession();
+
+if(session){
+
+localStorage.setItem(
+"adminLoggedIn",
+"yes"
+);
 
 openView("admin");
 
@@ -3212,28 +3230,47 @@ return;
 
 }
 
-let p=
+let email =
+prompt(
+"Admin Email দিন"
+);
+
+if(email===null)return;
+
+let password =
 prompt(
 "Admin Password দিন"
 );
 
-if(p==="Ashish@1992"){
+if(password===null)return;
 
-localStorage.setItem("adminLoggedIn","yes");
+const { data, error } =
+await window.bpSupabase.auth.signInWithPassword({
+
+email: email.trim(),
+
+password: password
+
+});
+
+if(error){
+
+alert(
+"Admin Login ব্যর্থ হয়েছে। Email অথবা Password সঠিক নয়।"
+);
+
+return;
+
+}
+
+localStorage.setItem(
+"adminLoggedIn",
+"yes"
+);
 
 openView("admin");
 
 fillAdmin();
-
-}
-
-else if(p!==null){
-
-alert(
-"Password সঠিক নয়।"
-);
-
-}
 
 }
 
