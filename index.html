@@ -4742,10 +4742,14 @@ function(url){
   }
 
   window.showStudentLogin = function () {
-    document.getElementById("studentRegister").style.display = "none";
-    document.getElementById("studentLogin").style.display = "block";
-    document.getElementById("studentMsg").innerHTML = "";
-  };
+  if (!document.getElementById("studentAuthBox")) {
+    studentAuth();
+  }
+
+  document.getElementById("studentRegister").style.display = "none";
+  document.getElementById("studentLogin").style.display = "block";
+  document.getElementById("studentMsg").innerHTML = "";
+};
 
   window.showStudentRegister = function () {
     document.getElementById("studentLogin").style.display = "none";
