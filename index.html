@@ -4817,7 +4817,12 @@ function(url){
     }
   };
 
-  window.openStudentLogin = studentAuth;
+ window.openStudentLogin = function () {
+  studentAuth();
+  setTimeout(function () {
+    showStudentLogin();
+  }, 50);
+};
 
 })();
      document.addEventListener("DOMContentLoaded", function () {
