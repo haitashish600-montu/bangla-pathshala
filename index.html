@@ -2628,10 +2628,12 @@ window.openView = function(id){
   window.scrollTo(0,0);
 
   try{
+  if(typeof render==="function"){
     render(id);
-  }catch(e){
-    console.error("Render error:",e);
   }
+}catch(e){
+  console.error(e);
+     }
 
 }
 
