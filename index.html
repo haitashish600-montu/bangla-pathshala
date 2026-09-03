@@ -2747,13 +2747,224 @@ render(id);
 }
 
 
+
 function goHome(){
 
 openView("home");
 
 }
 
+/* CHAT FUNCTIONS */
 
+function filterChats(){
+
+const input =
+document.getElementById("chatSearchInput");
+
+const search =
+(input.value || "").toLowerCase();
+
+document
+.querySelectorAll(".chatItem")
+.forEach(function(item){
+
+const text =
+item.innerText.toLowerCase();
+
+item.style.display =
+text.includes(search)
+? "flex"
+: "none";
+
+});
+
+}
+
+
+function chatTab(type,btn){
+
+document
+.querySelectorAll(".chatTab")
+.forEach(function(b){
+b.classList.remove("active");
+});
+
+if(btn){
+btn.classList.add("active");
+}
+
+document
+.querySelectorAll(".chatItem")
+.forEach(function(item){
+
+if(type==="all" ||
+item.dataset.type===type){
+
+item.style.display="flex";
+
+}else{
+
+item.style.display="none";
+
+}
+
+});
+
+}
+
+
+function openChatMessage(name,type){
+
+const oldChat =
+document.getElementById("chatConversation");
+
+if(oldChat){
+oldChat.remove();
+}
+
+const box =
+document.createElement("div");
+
+box.id="chatConversation";
+
+box.style.position="fixed";
+box.style.inset="0";
+box.style.background="#f1f6fc";
+box.style.zIndex="1000";
+box.style.display="flex";
+box.style.flexDirection="column";
+
+box.innerHTML=`
+
+<div style="
+background:#07508c;
+color:white;
+padding:18px;
+display:flex;
+align-items:center;
+gap:15px;
+font-size:20px;
+font-weight:800;
+">
+
+<button
+onclick="document.getElementById('chatConversation').remove()"
+style="
+background:white;
+border:0;
+border-radius:50%;
+width:42px;
+height:42px;
+font-size:22px;
+">
+←
+</button>
+
+<div>
+<div>${name}</div>
+<div style="
+font-size:13px;
+font-weight:400;
+opacity:.85;
+">
+${type}
+</div>
+</div>
+
+</div>
+
+
+<div style="
+flex:1;
+padding:20px;
+overflow:auto;
+">
+
+<div style="
+background:white;
+padding:14px 16px;
+border-radius:18px 18px 18px 4px;
+max-width:80%;
+box-shadow:0 3px 10px rgba(0,0,0,.08);
+margin-bottom:12px;
+">
+
+👋 স্বাগতম!
+
+<br><br>
+
+এই Chat-এর মাধ্যমে
+গুরুত্বপূর্ণ বার্তা, প্রশ্ন ও
+পড়াশোনা সংক্রান্ত আলোচনা
+করা যাবে।
+
+</div>
+
+</div>
+
+
+<div style="
+background:white;
+padding:10px;
+display:flex;
+gap:8px;
+border-top:1px solid #dce6f1;
+">
+
+<input
+id="chatMessageInput"
+placeholder="✍️ আপনার বার্তা লিখুন..."
+style="
+flex:1;
+padding:13px;
+border:1px solid #dce6f1;
+border-radius:25px;
+font-size:15px;
+outline:none;
+">
+
+<button
+onclick="sendChatMessage()"
+style="
+background:#1670e8;
+color:white;
+border:0;
+border-radius:50%;
+width:48px;
+height:48px;
+font-size:22px;
+">
+➤
+</button>
+
+</div>
+`;
+
+document.body.appendChild(box);
+
+}
+
+
+function sendChatMessage(){
+
+const input =
+document.getElementById("chatMessageInput");
+
+const message =
+(input.value || "").trim();
+
+if(!message)return;
+
+alert(
+"আপনার বার্তা লেখা হয়েছে:\n\n" +
+message +
+"\n\nChat messaging-এর পরের ধাপে online করা হবে।"
+);
+
+input.value="";
+
+}
+/* DRAWER */
 /* DRAWER */
 
 function openDrawer(){
