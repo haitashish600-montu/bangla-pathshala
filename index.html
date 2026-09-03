@@ -2591,12 +2591,16 @@ answers:[]
 
 const STORE="bangla_pathshala_v4";
 
-let store=
-JSON.parse(
-localStorage.getItem(STORE)||"{}"
-);
+let store={};
 
-
+try{
+  store=JSON.parse(
+    localStorage.getItem(STORE)||"{}"
+  );
+}catch(e){
+  store={};
+  localStorage.removeItem(STORE);
+}
 function save(){
 
 localStorage.setItem(
