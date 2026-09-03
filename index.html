@@ -5377,5 +5377,60 @@ window.fixStudentLogin = async function(){
   }
 };
      </script>
+     <script>
+window.adminLogin = async function(){
+
+  if(!window.bpFirebaseAuth){
+
+    alert("Firebase এখনও প্রস্তুত হচ্ছে। 2 সেকেন্ড পরে আবার Login চাপুন।");
+
+    return;
+  }
+
+  const user = window.bpFirebaseAuth.currentUser;
+
+  if(user){
+
+    openView("admin");
+
+    if(typeof fillAdmin === "function"){
+      fillAdmin();
+    }
+
+    return;
+  }
+
+  const email = prompt("Admin Email দিন");
+
+  if(email === null) return;
+
+  const password = prompt("Admin Password দিন");
+
+  if(password === null) return;
+
+  try{
+
+    await window.firebaseSignIn(
+      email.trim(),
+      password
+    );
+
+    openView("admin");
+
+    if(typeof fillAdmin === "function"){
+      fillAdmin();
+    }
+
+  }catch(error){
+
+    alert(
+      "Admin Login ব্যর্থ: " +
+      (error.code || error.message)
+    );
+
+  }
+
+};
+     </script>
 </body>
 </html>
