@@ -1823,7 +1823,203 @@ WhatsApp-এ যোগাযোগ
 
 </section>
 
+<!-- CHAT -->
+<section
+id="chat"
+class="view">
 
+<div class="wrap">
+
+<button
+class="back"
+onclick="goHome()">
+← Home
+</button>
+
+<h2 class="title">
+💬 Chat
+</h2>
+
+<div class="chatSearch">
+<input
+type="text"
+id="chatSearchInput"
+placeholder="🔍 খুঁজুন..."
+oninput="filterChats()">
+</div>
+
+<div class="chatTabs">
+
+<button
+class="chatTab active"
+onclick="chatTab('all',this)">
+সব Chat
+</button>
+
+<button
+class="chatTab"
+onclick="chatTab('teacher',this)">
+শিক্ষক
+</button>
+
+<button
+class="chatTab"
+onclick="chatTab('notice',this)">
+ঘোষণা
+</button>
+
+<button
+class="chatTab"
+onclick="chatTab('support',this)">
+সাপোর্ট
+</button>
+
+</div>
+
+<div id="chatList">
+
+<div
+class="chatItem"
+data-type="notice"
+onclick="openChatMessage('বাংলা পাঠশালা','ঘোষণা')">
+
+<div class="chatAvatar">
+📢
+</div>
+
+<div class="chatInfo">
+
+<h3>
+বাংলা পাঠশালা
+</h3>
+
+<p>
+গুরুত্বপূর্ণ ঘোষণা ও আপডেট
+</p>
+
+</div>
+
+<span class="chatBadge">
+3
+</span>
+
+</div>
+
+
+<div
+class="chatItem"
+data-type="teacher"
+onclick="openChatMessage('আশিস হাইত স্যার','শিক্ষক')">
+
+<div class="chatAvatar">
+👨‍🏫
+</div>
+
+<div class="chatInfo">
+
+<h3>
+আশিস হাইত স্যার
+</h3>
+
+<p>
+ক্লাস ও পড়াশোনা সংক্রান্ত বার্তা
+</p>
+
+</div>
+
+<span class="chatBadge">
+2
+</span>
+
+</div>
+
+
+<div
+class="chatItem"
+data-type="support"
+onclick="openChatMessage('সাপোর্ট টিম','সাপোর্ট')">
+
+<div class="chatAvatar">
+🧑‍💻
+</div>
+
+<div class="chatInfo">
+
+<h3>
+সাপোর্ট টিম
+</h3>
+
+<p>
+রেজিস্ট্রেশন ও অ্যাপ সংক্রান্ত সাহায্য
+</p>
+
+</div>
+
+</div>
+
+
+<div
+class="chatItem"
+data-type="teacher"
+onclick="openChatMessage('দ্বিতীয় সেমিস্টার','শিক্ষক')">
+
+<div class="chatAvatar">
+👥
+</div>
+
+<div class="chatInfo">
+
+<h3>
+দ্বিতীয় সেমিস্টার
+</h3>
+
+<p>
+ক্লাসের গুরুত্বপূর্ণ আলোচনা
+</p>
+
+</div>
+
+<span class="chatBadge">
+8
+</span>
+
+</div>
+
+
+<div
+class="chatItem"
+data-type="teacher"
+onclick="openChatMessage('শিক্ষার্থী Chat','শিক্ষক')">
+
+<div class="chatAvatar">
+💬
+</div>
+
+<div class="chatInfo">
+
+<h3>
+শিক্ষার্থী Chat
+</h3>
+
+<p>
+প্রশ্ন করুন ও সাহায্য নিন
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div
+class="chatAdd"
+onclick="openChatMessage('নতুন Chat','সাপোর্ট')">
++
+</div>
+
+</div>
+
+</section>
 <!-- HELP -->
 
 <section
