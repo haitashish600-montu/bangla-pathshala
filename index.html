@@ -1620,7 +1620,76 @@ onclick="startChapterTest()">
 
 </section>
 
+<!-- MCQ MOCK TEST -->
 
+<section
+id="mcqMock"
+class="view">
+
+<div class="wrap">
+
+<button
+class="back"
+onclick="goHome()">
+← Home
+</button>
+
+<h2 class="title">
+📝 MCQ Mock Test
+</h2>
+
+<p class="sub">
+প্রতিটি Mock Test ৪০ নম্বর। প্রশ্নগুলো প্রতিবার এলোমেলোভাবে আসবে।
+</p>
+
+<div
+id="mcqMockList"
+class="grid">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FULL MOCK TEST -->
+
+<section
+id="fullMockTest"
+class="view">
+
+<div class="wrap">
+
+<button
+class="back"
+onclick="openView('mcqMock')">
+← Mock Test
+</button>
+
+<h2
+id="fullMockTitle"
+class="title">
+</h2>
+
+<div
+id="fullMockBody"
+class="testbox">
+</div>
+
+<button
+class="btn purple"
+style="width:100%;margin-top:11px"
+onclick="submitFullMock()">
+✅ পরীক্ষা জমা দিন
+</button>
+
+<div
+id="fullMockResult">
+</div>
+
+</div>
+
+</section>
 <!-- MODEL SET -->
 
 <section
