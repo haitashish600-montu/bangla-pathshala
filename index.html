@@ -4641,9 +4641,14 @@ function(url){
   );
 
 };
-/* ===== STUDENT REGISTER + LOGIN ===== */
+/* ===== STUDENT REGISTER + LOGIN — FIREBASE ===== */
 
 (function () {
+
+  function studentEmailFromMobile(mobile){
+    const clean = mobile.replace(/\D/g,"");
+    return clean + "@students.banglapathshala.app";
+  }
 
   function studentAuth() {
 
@@ -4664,6 +4669,7 @@ function(url){
         justify-content:center;
         padding:20px;
       ">
+
         <div style="
           background:#fff;
           width:100%;
@@ -4677,7 +4683,10 @@ function(url){
             text-align:right;
             font-size:25px;
             cursor:pointer;
-          " onclick="document.getElementById('studentAuthBox').remove()">✕</div>
+          "
+          onclick="document.getElementById('studentAuthBox').remove()">
+          ✕
+          </div>
 
           <h2 style="text-align:center;color:#064b80;">
             🎓 ছাত্র-ছাত্রী লগইন
@@ -4687,23 +4696,42 @@ function(url){
 
             <input id="studentName"
               placeholder="ছাত্র/ছাত্রীর নাম"
-              style="width:100%;padding:13px;margin:7px 0;
-              box-sizing:border-box;border:1px solid #ccc;
-              border-radius:10px;font-size:16px;">
+              style="
+                width:100%;
+                padding:13px;
+                margin:7px 0;
+                box-sizing:border-box;
+                border:1px solid #ccc;
+                border-radius:10px;
+                font-size:16px;
+              ">
 
             <input id="studentMobile"
               placeholder="মোবাইল নম্বর"
               type="tel"
-              style="width:100%;padding:13px;margin:7px 0;
-              box-sizing:border-box;border:1px solid #ccc;
-              border-radius:10px;font-size:16px;">
+              inputmode="numeric"
+              style="
+                width:100%;
+                padding:13px;
+                margin:7px 0;
+                box-sizing:border-box;
+                border:1px solid #ccc;
+                border-radius:10px;
+                font-size:16px;
+              ">
 
             <input id="studentPassword"
-              placeholder="পাসওয়ার্ড তৈরি করুন"
+              placeholder="পাসওয়ার্ড তৈরি করুন (কমপক্ষে ৬ অক্ষর)"
               type="password"
-              style="width:100%;padding:13px;margin:7px 0;
-              box-sizing:border-box;border:1px solid #ccc;
-              border-radius:10px;font-size:16px;">
+              style="
+                width:100%;
+                padding:13px;
+                margin:7px 0;
+                box-sizing:border-box;
+                border:1px solid #ccc;
+                border-radius:10px;
+                font-size:16px;
+              ">
 
             <button onclick="studentRegister()" style="
               width:100%;
@@ -4715,7 +4743,9 @@ function(url){
               color:white;
               font-size:17px;
               font-weight:bold;
-            ">রেজিস্টার করুন</button>
+            ">
+              রেজিস্টার করুন
+            </button>
 
             <p style="text-align:center;">
               আগে রেজিস্টার করেছেন?
@@ -4723,7 +4753,9 @@ function(url){
                 color:#087ffc;
                 cursor:pointer;
                 font-weight:bold;
-              ">লগইন করুন</span>
+              ">
+                লগইন করুন
+              </span>
             </p>
 
           </div>
@@ -4733,16 +4765,29 @@ function(url){
             <input id="loginMobile"
               placeholder="মোবাইল নম্বর"
               type="tel"
-              style="width:100%;padding:13px;margin:7px 0;
-              box-sizing:border-box;border:1px solid #ccc;
-              border-radius:10px;font-size:16px;">
+              inputmode="numeric"
+              style="
+                width:100%;
+                padding:13px;
+                margin:7px 0;
+                box-sizing:border-box;
+                border:1px solid #ccc;
+                border-radius:10px;
+                font-size:16px;
+              ">
 
             <input id="loginPassword"
               placeholder="পাসওয়ার্ড"
               type="password"
-              style="width:100%;padding:13px;margin:7px 0;
-              box-sizing:border-box;border:1px solid #ccc;
-              border-radius:10px;font-size:16px;">
+              style="
+                width:100%;
+                padding:13px;
+                margin:7px 0;
+                box-sizing:border-box;
+                border:1px solid #ccc;
+                border-radius:10px;
+                font-size:16px;
+              ">
 
             <button onclick="studentLogin()" style="
               width:100%;
@@ -4754,7 +4799,9 @@ function(url){
               color:white;
               font-size:17px;
               font-weight:bold;
-            ">লগইন করুন</button>
+            ">
+              লগইন করুন
+            </button>
 
             <p style="text-align:center;">
               নতুন ছাত্র/ছাত্রী?
@@ -4762,116 +4809,15 @@ function(url){
                 color:#087ffc;
                 cursor:pointer;
                 font-weight:bold;
-              ">রেজিস্টার করুন</span>
+              ">
+                রেজিস্টার করুন
+              </span>
             </p>
 
           </div>
 
-          <p id="studentMsg"
-             style="text-align:center;font-weight:bold;"></p>
+          <p id="
 
-        </div>
-      </div>
-    `;
-
-    document.body.appendChild(box);
-  }
-
-  window.showStudentLogin = function () {
-  if (!document.getElementById("studentAuthBox")) {
-    studentAuth();
-  }
-
-  document.getElementById("studentRegister").style.display = "none";
-  document.getElementById("studentLogin").style.display = "block";
-  document.getElementById("studentMsg").innerHTML = "";
-};
-
-  window.showStudentRegister = function () {
-    document.getElementById("studentLogin").style.display = "none";
-    document.getElementById("studentRegister").style.display = "block";
-    document.getElementById("studentMsg").innerHTML = "";
-  };
-
-  window.studentRegister = function () {
-
-    const name = document.getElementById("studentName").value.trim();
-    const mobile = document.getElementById("studentMobile").value.trim();
-    const password = document.getElementById("studentPassword").value;
-
-    const msg = document.getElementById("studentMsg");
-
-    if (!name || !mobile || !password) {
-      msg.style.color = "red";
-      msg.innerHTML = "সব তথ্য পূরণ করুন।";
-      return;
-    }
-
-    localStorage.setItem("studentAccount", JSON.stringify({
-      name: name,
-      mobile: mobile,
-      password: password
-    }));
-
-    msg.style.color = "green";
-    msg.innerHTML = "রেজিস্ট্রেশন সফল হয়েছে। এখন লগইন করুন।";
-
-    setTimeout(showStudentLogin, 800);
-  };
-
-  window.studentLogin = function () {
-
-    const mobile = document.getElementById("loginMobile").value.trim();
-    const password = document.getElementById("loginPassword").value;
-
-    const account = JSON.parse(
-      localStorage.getItem("studentAccount") || "null"
-    );
-
-    const msg = document.getElementById("studentMsg");
-
-    if (!account) {
-      msg.style.color = "red";
-      msg.innerHTML = "আগে রেজিস্টার করুন।";
-      return;
-    }
-
-    if (
-      mobile === account.mobile &&
-      password === account.password
-    ) {
-
-      localStorage.setItem("studentLoggedIn", "yes");
-
-      msg.style.color = "green";
-      msg.innerHTML = "লগইন সফল হয়েছে।";
-
-      setTimeout(function () {
-        document.getElementById("studentAuthBox").remove();
-      }, 700);
-
-    } else {
-
-      msg.style.color = "red";
-      msg.innerHTML = "মোবাইল নম্বর অথবা পাসওয়ার্ড ভুল।";
-    }
-  };
-
- window.openStudentLogin = function () {
-  studentAuth();
-  setTimeout(function () {
-    showStudentLogin();
-  }, 50);
-};
-
-})();
-     document.addEventListener("DOMContentLoaded", function () {
-  if (localStorage.getItem("studentLoggedIn") !== "yes") {
-    setTimeout(function () {
-      openStudentLogin();
-    }, 300);
-  }
-});
                              </script>
      <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
