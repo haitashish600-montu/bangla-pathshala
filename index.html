@@ -3256,11 +3256,10 @@ password: password
 if(error){
 
 alert(
-"Admin Login ব্যর্থ হয়েছে। Email অথবা Password সঠিক নয়।"
+"Supabase Error: " + error.message
 );
 
 return;
-
 }
 
 localStorage.setItem(
