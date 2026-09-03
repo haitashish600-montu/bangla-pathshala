@@ -2615,27 +2615,29 @@ JSON.stringify(store)
 
 window.openView = function(id){
 
-  const x = document.getElementById(id);
-
-  if(!x) return;
-
   document.querySelectorAll(".view").forEach(function(v){
+    v.style.display = "none";
     v.classList.remove("active");
   });
 
-  x.classList.add("active");
+  const page = document.getElementById(id);
+
+  if(!page) return;
+
+  page.style.display = "block";
+  page.classList.add("active");
 
   window.scrollTo(0,0);
 
-  try{
-  if(typeof render==="function"){
-    render(id);
+  if(typeof render === "function"){
+    try{
+      render(id);
+    }catch(e){
+      console.error(e);
+    }
   }
-}catch(e){
-  console.error(e);
-     }
 
-}
+};
 
 
 function goHome(){
