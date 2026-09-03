@@ -2611,25 +2611,25 @@ JSON.stringify(store)
 
 function openView(id){
 
-document
-.querySelectorAll(".view")
-.forEach(v=>
-v.classList.remove("active")
-);
+  const x = document.getElementById(id);
 
-let x=
-document.getElementById(id);
+  if(!x) return;
 
-if(!x)return;
+  document.querySelectorAll(".view").forEach(function(v){
+    v.classList.remove("active");
+  });
 
-x.classList.add("active");
+  x.classList.add("active");
 
-window.scrollTo(0,0);
+  window.scrollTo(0,0);
 
-render(id);
+  try{
+    render(id);
+  }catch(e){
+    console.error("Render error:",e);
+  }
 
 }
-
 
 
 function goHome(){
