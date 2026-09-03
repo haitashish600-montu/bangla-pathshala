@@ -2620,30 +2620,7 @@ window.openView = function(id){
   page.classList.add("active");
   window.scrollTo(0,0);
 };
-  document.querySelectorAll(".view").forEach(function(v){
-    v.style.display = "none";
-    v.classList.remove("active");
-  });
-
-  const page = document.getElementById(id);
-
-  if(!page) return;
-
-  page.style.display = "block";
-  page.classList.add("active");
-
-  window.scrollTo(0,0);
-
-  if(typeof render === "function"){
-    try{
-      render(id);
-    }catch(e){
-      console.error(e);
-    }
-  }
-
-};
-
+  
 
 function goHome(){
 
