@@ -3104,7 +3104,372 @@ state.topic+" • Mock Test"
 
 }
 
+/* FULL SYLLABUS MCQ MOCK TEST */
 
+const FULL_MOCK_SETS = [
+
+  {
+    group:"নবম শ্রেণি",
+    prefix:"full-9",
+    count:5
+  },
+
+  {
+    group:"দশম শ্রেণি",
+    prefix:"full-10",
+    count:10
+  },
+
+  {
+    group:"একাদশ শ্রেণি — ১ম সেমিস্টার",
+    prefix:"full-11-1",
+    count:10
+  },
+
+  {
+    group:"দ্বাদশ শ্রেণি — ৩য় সেমিস্টার",
+    prefix:"full-12-3",
+    count:10
+  },
+
+  {
+    group:"বাংলা ব্যাকরণ — নবম শ্রেণি",
+    prefix:"grammar-9",
+    count:5
+  },
+
+  {
+    group:"বাংলা ব্যাকরণ — দশম শ্রেণি",
+    prefix:"grammar-10",
+    count:5
+  }
+
+];
+
+
+let fullMockQuestions=[];
+
+let fullMockAnswers=[];
+
+let fullMockTitle="";
+
+let fullMockId="";
+
+
+function renderFullMockTests(){
+
+  const box =
+    document.getElementById("mcqMockList");
+
+  if(!box)return;
+
+  let html="";
+
+  FULL_MOCK_SETS.forEach(function(group){
+
+    html += `
+      <div style="
+        grid-column:1/-1;
+        margin-top:10px;
+      ">
+        <h3 style="
+          margin:8px 4px;
+          color:#063d75;
+        ">
+          ${group.group}
+        </h3>
+      </div>
+    `;
+
+    for(let i=1;i<=group.count;i++){
+
+      const id =
+        group.prefix+"-"+i;
+
+      html += `
+        <div
+          class="card model"
+          onclick='startFullMock(
+            ${JSON.stringify(id)},
+            ${JSON.stringify(group.group+" — Mock Test "+i)}
+          )'>
+
+          <div class="ico">
+            📝
+          </div>
+
+          <h3>
+            ${group.group}
+          </h3>
+
+          <p>
+            Mock Test ${i} • ৪০ নম্বর
+          </p>
+
+          <div class="arrow">
+            ›
+          </div>
+
+        </div>
+      `;
+    }
+
+  });
+
+  box.innerHTML=html;
+
+}
+
+
+function shuffleArray(arr){
+
+  const a=[...arr];
+
+  for(
+    let i=a.length-1;
+    i>0;
+    i--
+  ){
+
+    const j=
+      Math.floor(
+        Math.random()*(i+1)
+      );
+
+    [a[i],a[j]]=
+      [a[j],a[i]];
+
+  }
+
+  return a;
+
+}
+
+
+function startFullMock(id,title){
+
+  const original =
+    store.questions?.[id] || [];
+
+  if(!original.length){
+
+    alert(
+      "এই Mock Test-এর প্রশ্ন এখনো যোগ করা হয়নি। Admin Panel থেকে প্রশ্ন বসান।"
+    );
+
+    return;
+  }
+
+  if(original.length < 40){
+
+    alert(
+      "এই Mock Test-এর জন্য ৪০টি প্রশ্ন প্রয়োজন। এখনো "+original.length+"টি প্রশ্ন আছে।"
+    );
+
+    return;
+  }
+
+  fullMockQuestions =
+    shuffleArray(original).slice(0,40);
+
+  fullMockAnswers=[];
+
+  fullMockTitle=title;
+
+  fullMockId=id;
+
+  document
+    .getElementById("fullMockTitle")
+    .textContent=
+    title+" • ৪০ নম্বর";
+
+  document
+    .getElementById("fullMockResult")
+    .innerHTML="";
+
+  document
+    .getElementById("fullMockBody")
+    .innerHTML=
+
+    fullMockQuestions
+    .map(function(q,i){
+
+      return `
+        <div
+          class="q"
+          id="full-q-${i}">
+
+          <h3>
+            ${i+1}. ${q.q}
+          </h3>
+
+          ${
+            q.a.map(function(a,j){
+
+              return `
+                <button
+                  class="opt"
+                  onclick="answerFullMock(
+                    ${i},
+                    ${j},
+                    this
+                  )">
+
+                  ${a}
+
+                </button>
+              `;
+
+            }).join("")
+          }
+
+        </div>
+      `;
+
+    })
+    .join("");
+
+  openView("fullMockTest");
+
+}
+
+
+function answerFullMock(i,j,b){
+
+  fullMockAnswers[i]=j;
+
+  b.parentElement
+    .querySelectorAll(".opt")
+    .forEach(function(x){
+
+      x.classList.remove("sel");
+
+    });
+
+  b.classList.add("sel");
+
+}
+
+
+function submitFullMock(){
+
+  if(
+    fullMockQuestions.length!==40
+  ){
+
+    return;
+
+  }
+
+  let score=0;
+
+  fullMockQuestions.forEach(
+    function(q,i){
+
+      if(
+        fullMockAnswers[i]===q.correct
+      ){
+
+        score++;
+
+      }
+
+    }
+  );
+
+
+  fullMockQuestions.forEach(
+    function(q,i){
+
+      const box =
+        document.getElementById(
+          "full-q-"+i
+        );
+
+      if(!box)return;
+
+      const buttons =
+        box.querySelectorAll(".opt");
+
+      buttons.forEach(
+        function(btn,j){
+
+          btn.disabled=true;
+
+          if(j===q.correct){
+
+            btn.innerHTML += " ✅";
+
+          }
+
+          if(
+            fullMockAnswers[i]===j &&
+            j!==q.correct
+          ){
+
+            btn.innerHTML += " ❌";
+
+          }
+
+        }
+      );
+
+
+      const answerBox =
+        document.createElement("div");
+
+      answerBox.className=
+        "fullCorrectAnswer";
+
+      answerBox.style.cssText=
+        "margin-top:10px;padding:10px;border-radius:12px;background:#eefaf3;color:#087a45;font-weight:800;";
+
+      answerBox.innerHTML=
+        "সঠিক উত্তর: "+q.a[q.correct];
+
+      box.appendChild(answerBox);
+
+    }
+  );
+
+
+  document
+    .getElementById("fullMockResult")
+    .innerHTML=`
+
+      <div class="score">
+
+        ফলাফল
+
+        <br>
+
+        <strong>
+          ${score}/40
+        </strong>
+
+        <br>
+
+        ${Math.round(score/40*100)}%
+
+        <br><br>
+
+        <button
+          class="btn"
+          onclick='startFullMock(
+            ${JSON.stringify(fullMockId)},
+            ${JSON.stringify(fullMockTitle)}
+          )'
+          style="background:#fff;color:#063d75">
+
+          🔀 আবার পরীক্ষা দিন
+
+        </button>
+
+      </div>
+
+  `;
+
+}
 /* MODELS */
 
 function renderModels(){
