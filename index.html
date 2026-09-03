@@ -2614,11 +2614,27 @@ JSON.stringify(store)
 /* VIEW */
 
 window.openView = function(id){
-  document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
+
+  document.querySelectorAll(".view").forEach(v =>
+    v.classList.remove("active")
+  );
+
   const page = document.getElementById(id);
+
   if (!page) return;
+
   page.classList.add("active");
-  window.scrollTo({top:0,left:0,behavior:"auto"});
+
+  if (typeof render === "function") {
+    render(id);
+  }
+
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "auto"
+  });
+
 };
   
 
