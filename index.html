@@ -3202,25 +3202,18 @@ m=>
 
 async function adminLogin(){
 
-if(!window.bpSupabase){
+if(!window.bpFirebaseAuth){
 
-alert("Supabase সংযোগ পাওয়া যায়নি");
+alert("Firebase সংযোগ পাওয়া যায়নি।");
 
 return;
 
 }
 
-const {
-data: { session }
-} =
-await window.bpSupabase.auth.getSession();
+const user =
+window.bpFirebaseAuth.currentUser;
 
-if(session){
-
-localStorage.setItem(
-"adminLoggedIn",
-"yes"
-);
+if(user){
 
 openView("admin");
 
@@ -3231,47 +3224,38 @@ return;
 }
 
 let email =
-prompt(
-"Admin Email দিন"
-);
+prompt("Admin Email দিন");
 
 if(email===null)return;
 
 let password =
-prompt(
-"Admin Password দিন"
-);
+prompt("Admin Password দিন");
 
 if(password===null)return;
 
-const { data, error } =
-await window.bpSupabase.auth.signInWithPassword({
+try{
 
-email: email.trim(),
-
-password: password
-
-});
-
-if(error){
-
-alert(
-"Supabase Error: " + error.message
-);
-
-return;
-}
-
-localStorage.setItem(
-"adminLoggedIn",
-"yes"
+await window.firebaseSignIn(
+email.trim(),
+password
 );
 
 openView("admin");
 
 fillAdmin();
 
+}catch(error){
+
+alert(
+"Login ব্যর্থ হয়েছে: " +
+(error.code || error.message)
+);
+
 }
+
+}
+
+function fillAdmin(){
 
 function fillAdmin(){
 
