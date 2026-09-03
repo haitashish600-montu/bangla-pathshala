@@ -2620,6 +2620,29 @@ window.openView = function(id){
     v.classList.remove("active");
   });
 
+  var page = document.getElementById(id);
+
+  if(!page) return;
+
+  page.style.display = "block";
+  page.classList.add("active");
+
+  window.scrollTo(0,0);
+
+  try{
+    if(typeof render === "function"){
+      render(id);
+    }
+  }catch(e){
+    console.error(e);
+  }
+};
+
+  document.querySelectorAll(".view").forEach(function(v){
+    v.style.display = "none";
+    v.classList.remove("active");
+  });
+
   const page = document.getElementById(id);
 
   if(!page) return;
