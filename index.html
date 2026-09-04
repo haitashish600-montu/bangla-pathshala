@@ -1491,7 +1491,7 @@ class="view">
 
 <button
 class="back"
-onclick="openView('classes')">
+onclick="state.period ? (state.period='', openClass(state.cls)) : openView('classes')"
 
 ← শ্রেণি নির্বাচন
 
