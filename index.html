@@ -5614,6 +5614,27 @@ const messaging =
 window.bpFirebaseMessaging = messaging;
           const VAPID_KEY =
   "BP1a-rPglsNRQzyYCYJDNh73c8KIxpRf1Kpqs8_2gQ7cVIHSDbIy2gfs5fKHptVdTmIQy-cCTT7sS-Z27r9SnAE";
+          async function enablePushNotifications(){
+
+  if(!("Notification" in window)) return;
+
+  const permission =
+    await Notification.requestPermission();
+
+  if(permission !== "granted") return;
+
+  const token = await getToken(
+    messaging,
+    {vapidKey: VAPID_KEY}
+  );
+
+  if(token){
+    localStorage.setItem(
+      "studentPushToken",
+      token
+    );
+  }
+          }
   const auth =
     getAuth(firebaseApp);
 
