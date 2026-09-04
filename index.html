@@ -5582,7 +5582,11 @@ window.addEventListener("load",function(){openStudentLogin();});
 </script>
      <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-
+import {
+  getMessaging,
+  getToken,
+  onMessage
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-messaging.js";
   import {
     getAuth,
     signInWithEmailAndPassword,
