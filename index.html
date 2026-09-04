@@ -3809,10 +3809,18 @@ document
 
 arr
 .map(
-x=>
-`
+x=>{
+let action="";
 
-<div class="item">
+if(id==="collegeList"){
+action=
+" onclick='openChapter("
++JSON.stringify(x)
++");document.getElementById(\"chapter\").querySelector(\".back\").onclick=function(){openView(\"college\")}'";
+}
+
+return `
+<div class="item"${action}>
 
 <h3>
 ${icon} ${x}
@@ -3823,8 +3831,8 @@ ${icon} ${x}
 </p>
 
 </div>
-
-`
+`;
+}
 )
 .join("");
 
