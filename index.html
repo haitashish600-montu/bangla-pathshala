@@ -3803,29 +3803,7 @@ id,
 arr,
 icon
 ){
-document
-.getElementById(id)
-.innerHTML=
-arr
-.map(
-x=>
-`
-<div
-class="item"
-${id==="collegeList"
-?`onclick='openChapter(${JSON.stringify(x)});document.querySelector("#chapter .back").setAttribute("onclick","openView(\"college\")")'`
-:""}>
-<h3>
-${icon} ${x}
-</h3>
-<p class="muted">
-নোট • ভিডিও • অনুশীলন
-</p>
-</div>
-`
-)
-.join("");
-}
+
 document
 .getElementById(id)
 .innerHTML=
@@ -3852,8 +3830,6 @@ ${icon} ${x}
 .join("");
 
 }
-
-
 /* NOTICE */
 
 function renderNotices(){
