@@ -766,8 +766,7 @@ body>*{
 display:none!important
 }
 }
-
-/* CHAT PAGE */
+     /* CHAT PAGE */
 
 .chatSearch{
 margin:10px 0 14px;
@@ -898,7 +897,6 @@ z-index:50;
 <button class="login" onclick="adminLogin()">
 👤 Login
 </button>
-
 <button onclick="openStudentLogin()" style="
 background:#ff9800;
 color:white;
@@ -911,7 +909,6 @@ margin-left:6px;
 ">
 🎓 Student Login
 </button>
-
 </header>
 
 
@@ -1403,7 +1400,7 @@ WBBSE • মাধ্যমিক
 
 <div
 class="card p"
-onclick="openClass(11,'১ম সেমিস্টার')">
+onclick="openPeriod(11,'১ম সেমিস্টার')">
 
 <div class="num">
 ১১
@@ -1422,7 +1419,7 @@ WBCHSE • Bengali-A
 
 <div
 class="card p"
-onclick="openClass(11,'২য় সেমিস্টার')">
+onclick="openPeriod(11,'২য় সেমিস্টার')">
 
 <div class="num">
 ১১
@@ -1441,7 +1438,7 @@ WBCHSE • Bengali-A
 
 <div
 class="card t"
-onclick="openClass(12,'৩য় সেমিস্টার')">
+onclick="openPeriod(12,'৩য় সেমিস্টার')">
 
 <div class="num">
 ১২
@@ -1460,7 +1457,7 @@ WBCHSE • Bengali-A
 
 <div
 class="card t"
-onclick="openClass(12,'৪র্থ সেমিস্টার')">
+onclick="openPeriod(12,'৪র্থ সেমিস্টার')">
 
 <div class="num">
 ১২
@@ -1512,10 +1509,8 @@ class="list">
 
 </div>
 
-</section>
-
-
-<!-- CHAPTER -->
+ </section>
+ <!-- CHAPTER -->
 
 <section
 id="chapter"
@@ -1942,940 +1937,747 @@ onclick="goHome()">
 
 <p class="muted">
 
-অনলাইন ও 
-}
- 
-/* CHAPTER */
+অনলাইন ও অফলাইন বাংলা ক্লাসের জন্য
+WhatsApp-এ যোগাযোগ করুন।
 
-window.openChapter = function(t){
+</p>
 
-state.topic=t;
+<a
+id="waContact"
+class="btn green"
+target="_blank">
 
-const data =
-(store.chapters?.[t]) || {};
+WhatsApp-এ যোগাযোগ
 
-document.getElementById("chapterTitle").textContent =
-t;
+</a>
 
-document.getElementById("chapterNote").textContent =
-data.note ||
-"এই অধ্যায়ের নোট এখানে থাকবে।";
+</div>
+
+</div>
+
+</section>
 
 
-const res =
-document.getElementById("chapterResources");
+<!-- CHAT -->
 
-if(data.resources){
+<section
+id="chat"
+class="view">
 
-res.innerHTML =
-data.resources
-.map(function(r){
+<div class="wrap">
 
-return `
+<button
+class="back"
+onclick="goHome()">
+← Home
+</button>
+
+<h2 class="title">
+💬 Community Chat
+</h2>
+
+<div class="chatSearch">
+<input
+type="text"
+id="chatSearchInput"
+placeholder="🔍 মেসেজ খুঁজুন..."
+oninput="filterChats()">
+</div>
+
+<div class="chatTabs">
+
+<button
+class="chatTab active"
+onclick="setChatTab(this,'community')">
+👥 Community
+</button>
+
+<button
+class="chatTab"
+onclick="setChatTab(this,'teacher')">
+👨‍🏫 Teacher
+</button>
+
+<button
+class="chatTab"
+onclick="setChatTab(this,'student')">
+🎓 Students
+</button>
+
+</div>
+
+<div id="chatList">
+
+<div
+class="chatItem"
+data-type="community"
+onclick="openChatMessage('বাংলা পাঠশালা Community','কমিউনিটি')">
+
+<div class="chatAvatar">
+👥
+</div>
+
+<div class="chatInfo">
+
+<h3>
+বাংলা পাঠশালা Community
+</h3>
+
+<p>
+সবাই প্রশ্ন ও মেসেজ করতে পারবে • স্যার উত্তর দেবেন
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div
+class="chatAdd"
+onclick="openChatMessage('বাংলা পাঠশালা Community','কমিউনিটি')">
++
+</div>
+
+</div>
+
+</section>
+
+
+<!-- HELP -->
+
+<section
+id="help"
+class="view">
+
+<div class="wrap">
+
+<button
+class="back"
+onclick="goHome()">
+
+← Home
+
+</button>
+
+<h2 class="title">
+❓ Help
+</h2>
+
+<div class="item">
+
+<p>
+
+প্রথমে শ্রেণি নির্বাচন করুন →
+সেমিস্টার/পর্যায় নির্বাচন করুন →
+অধ্যায় খুলুন।
+
+প্রতিটি অধ্যায়ে ভিডিও,
+Study Material এবং Mock Test থাকবে।
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ADMIN -->
+
+<section
+id="admin"
+class="view">
+
+<div class="wrap">
+
+<button
+class="back"
+onclick="goHome()">
+
+← Home
+
+</button>
+
+<h2 class="title">
+⚙️ Admin Panel
+</h2>
+
+<p class="sub">
+এখান থেকে আপনার নিজের content বসাতে পারবেন।
+</p>
+
+
+<div class="adminbox">
+
+<h3>
+🖼️ Banner
+</h3>
+
+<input
+id="bannerFile"
+class="field"
+type="file"
+accept="image/*">
+
+<button
+class="btn"
+onclick="saveBanner()">
+
+Banner সংরক্ষণ
+
+</button>
+
+<button
+class="btn gray"
+onclick="resetBanner()">
+
+Default Banner
+
+</button>
+
+</div>
+
+
+<div class="adminbox">
+
+<h3>
+📱 WhatsApp নম্বর
+</h3>
+
+<input
+id="waNumber"
+class="field"
+placeholder="91XXXXXXXXXX">
+
+<button
+class="btn green"
+onclick="saveWA()">
+
+সংরক্ষণ
+
+</button>
+
+</div>
+
+
+<div class="adminbox">
+
+<h3>
+📢 Notice
+</h3>
+
+<input
+id="noticeText"
+class="field"
+placeholder="নোটিশ লিখুন">
+
+<button
+class="btn"
+onclick="addNotice()">
+
+যোগ করুন
+
+</button>
+
+</div>
+
+
+<div class="adminbox">
+
+<h3>
+📚 অধ্যায়ের Content
+</h3>
+
+<select
+id="adminClass"
+class="field"
+onchange="fillAdminPeriods()">
+</select>
+
+<select
+id="adminPeriod"
+class="field">
+</select>
+
+<input
+id="adminTopic"
+class="field"
+placeholder="অধ্যায়ের নাম">
+
+<input
+id="adminVideo"
+class="field"
+placeholder="YouTube / Video URL">
+
+<input
+id="adminPdf"
+class="field"
+type="url"
+placeholder="PDF URL এখানে দিন">
+
+<div id="pdfUploadStatus"
+style="font-size:13px;margin:6px 0;color:#555;">
+PDF নির্বাচন করুন
+</div>
+
+<textarea
+id="adminNote"
+class="field"
+rows="4"
+placeholder="Study Material / Note">
+</textarea>
+
+<button
+class="btn green"
+onclick="saveChapterContent()">
+
+Content সংরক্ষণ
+
+</button>
+
+</div>
+
+
+<div class="adminbox">
+
+<h3>
+📝 Model Set প্রশ্ন
+</h3>
+
+<select
+id="adminModel"
+class="field">
+</select>
+
+<textarea
+id="adminQuestions"
+class="field"
+rows="10"
+placeholder='উদাহরণ:
+[
+{"q":"প্রশ্ন?","a":["ক","খ","গ","ঘ"],"correct":0}
+]'>
+</textarea>
+
+<button
+class="btn purple"
+onclick="saveModelQuestions()">
+
+প্রশ্ন সংরক্ষণ
+
+</button>
+
+</div>
+
+
+<div class="adminbox">
+
+<h3>
+🔐 Content Protection
+</h3>
+
+<p class="danger">
+
+ওয়েব ব্রাউজারে screenshot ১০০% বন্ধ করা সম্ভব নয়।
+এখানে text selection, copy, context menu ও print সীমিত করা হয়েছে।
+
+PDF viewer-এ watermark overlay থাকবে।
+
+আসল PDF-তে স্থায়ী watermark/password দিতে
+PDF processing/backend প্রয়োজন।
+
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- BOTTOM -->
+
+<nav class="bottom">
+
+<button onclick="goHome()">
+<span>🏠</span>
+Home
+</button>
+
+<button onclick="openView('help')">
+<span>❓</span>
+Help
+</button>
+
+<button onclick="openView('classes')">
+<span>📖</span>
+Courses
+</button>
+
+<button onclick="openWA()">
+<span>💬</span>
+WhatsApp
+</button>
+
+<button onclick="location.href='mailto:'">
+<span>✉️</span>
+Email
+</button>
+
+<button onclick="openView('chat')">
+<span>💭</span>
+Chat
+</button>
+
+</nav>
+
+
+<!-- DRAWER -->
+
+<div
+id="drawer"
+class="drawer">
+
+<div
+class="shade"
+onclick="closeDrawer()">
+</div>
+
+<aside class="panel">
+
+<h2>
+☰ বাংলা পাঠশালা
+</h2>
+
+<button
+onclick="openView('classes');closeDrawer()">
+📚 All Courses
+</button>
+
+<button
+onclick="openView('models');closeDrawer()">
+📑 Model Set
+</button>
+
+<button
+onclick="openView('grammar');closeDrawer()">
+📘 বাংলা ব্যাকরণ
+</button>
+
+<button
+onclick="openView('college');closeDrawer()">
+🏫 College Bengali
+</button>
+
+<button
+onclick="openView('notice');closeDrawer()">
+📢 Notice Board
+</button>
+
+<button
+onclick="openView('freeclass');closeDrawer()">
+💻 Free Class
+</button>
+
+<button
+onclick="openView('contact');closeDrawer()">
+💬 Online / Offline Class
+</button>
+
+<button
+onclick="openView('help');closeDrawer()">
+❓ Help
+</button>
+
+<button
+onclick="adminLogin();closeDrawer()">
+⚙️ Admin Panel
+</button>
+
+</aside>
+
+</div>
+document
+.getElementById("chapterResources")
+.innerHTML=
+
+c.pdf?
+`
 <a
 class="btn"
-href="${r.url}"
+href="${c.pdf}"
 target="_blank"
-style="margin:4px"
 >
-${r.title || "Study Material"}
+📄 PDF খুলুন
 </a>
-`;
+`
+:
+"";
 
-})
-.join("");
+if(c.video){
 
-}else{
-
-res.innerHTML="";
-
-}
-
-
-const video =
-document.getElementById("chapterVideo");
-
-if(data.video){
-
-video.innerHTML=`
-
+document
+.getElementById("chapterVideo")
+.innerHTML=
+`
 <a
 class="btn red"
-href="${data.video}"
+href="${c.video}"
 target="_blank"
 >
 ▶️ ভিডিও দেখুন
 </a>
-
 `;
 
 }else{
 
-video.textContent =
+document
+.getElementById("chapterVideo")
+.innerHTML=
 "অ্যাডমিন ভিডিও লিঙ্ক যোগ করলে এখানে দেখা যাবে।";
 
 }
-
 
 openView("chapter");
 
 };
 
 
-function startChapterTest(){
-
-if(!state.topic){
-
-alert("প্রথমে একটি অধ্যায় নির্বাচন করুন।");
-
-return;
-
-}
-
-const data =
-store.chapters?.[state.topic];
-
-const questions =
-data?.questions || [];
-
-if(!questions.length){
-
-alert(
-"এই অধ্যায়ের জন্য এখনো Mock Test প্রশ্ন যোগ করা হয়নি।"
-);
-
-return;
-
-}
-
-state.questions =
-questions.slice();
-
-state.answers =
-new Array(state.questions.length)
-.fill(null);
-
-renderChapterTest();
-
-openView("modelTest");
-
-}
-
-
-function renderChapterTest(){
-
-document.getElementById("modelTitle").textContent =
-state.topic + " • Mock Test";
-
-const body =
-document.getElementById("modelBody");
-
-body.innerHTML =
-state.questions
-.map(function(q,i){
-
-return `
-
-<div class="q">
-
-<h3>
-${i+1}. ${q.q}
-</h3>
-
-${(q.a||[])
-.map(function(opt,j){
-
-return `
-
-<button
-class="opt"
-onclick="selectChapterAnswer(${i},${j},this)"
->
-${String.fromCharCode(2453+j)}.
-${opt}
-</button>
-
-`;
-
-})
-.join("")}
-
-</div>
-
-`;
-
-})
-.join("");
-
-document.getElementById("modelResult").innerHTML="";
-
-}
-
-
-function selectChapterAnswer(i,j,btn){
-
-state.answers[i]=j;
-
-const parent =
-btn.parentElement;
-
-parent
-.querySelectorAll(".opt")
-.forEach(function(b){
-
-b.classList.remove("sel");
-
-});
-
-btn.classList.add("sel");
-
-}
-
-
-function submitChapterTest(){
-
-let score=0;
-
-state.questions
-.forEach(function(q,i){
-
-if(state.answers[i]===q.correct){
-
-score++;
-
-}
-
-});
-
-const total =
-state.questions.length;
-
-document.getElementById("modelResult").innerHTML=`
-
-<div class="score">
-
-<div>আপনার স্কোর</div>
-
-<strong>
-${score} / ${total}
-</strong>
-
-<div>
-${total ? Math.round(score/total*100) : 0}%
-</div>
-
-</div>
-
-`;
-
-}
-
-
-/* MODEL SET */
-
-const MODEL_COUNT=15;
-
-function renderModels(){
-
-const list =
-document.getElementById("modelList");
-
-const models=[];
-
-for(let i=1;i<=MODEL_COUNT;i++){
-
-models.push(
-"Model Set "+i
-);
-
-}
-
-list.innerHTML =
-models
-.map(function(m){
-
-return `
-
-<div
-class="item model"
-onclick='openModel(${JSON.stringify(m)})'
-style="cursor:pointer"
->
-
-<div class="ico">
-📝
-</div>
-
-<h3>
-${m}
-</h3>
-
-<p class="muted">
-৪০ নম্বরের Mock Test
-</p>
-
-</div>
-
-`;
-
-})
-.join("");
-
-}
-
-
-window.openModel=function(model){
-
-state.model=model;
-
-const questions =
-(store.models?.[model]) || [];
-
-state.questions =
-questions.slice();
-
-state.answers =
-new Array(state.questions.length)
-.fill(null);
-
-document.getElementById("modelTitle").textContent =
-model;
-
-renderModelQuestions();
-
-openView("modelTest");
-
+/* CLASS + PERIOD + TOPICS */
+
+window.openClass = function(cls){
+
+  state.cls = Number(cls);
+  state.period = "";
+
+  const title =
+    state.cls === 11 ? "একাদশ শ্রেণি" :
+    state.cls === 12 ? "দ্বাদশ শ্রেণি" :
+    state.cls + " শ্রেণি";
+
+  document.getElementById("periodTitle").textContent =
+    title + " • বাংলা";
+
+  const list = document.getElementById("periodList");
+  const periods = DATA[state.cls] || {};
+
+  list.innerHTML =
+    Object.keys(periods).map(function(p){
+      return `
+        <div class="item"
+          onclick='openPeriod(${JSON.stringify(state.cls)},${JSON.stringify(p)})'
+          style="cursor:pointer">
+          <h3>📚 ${p}</h3>
+          <p class="muted">এই অংশের অধ্যায় দেখুন →</p>
+        </div>
+      `;
+    }).join("");
+
+  openView("periods");
 };
 
 
-function renderModelQuestions(){
+window.openPeriod = function(cls, period){
 
-const body =
-document.getElementById("modelBody");
+  state.cls = Number(cls);
+  state.period = period;
 
-if(!state.questions.length){
-
-body.innerHTML=`
-
-<div class="item">
-
-<h3>
-📝 প্রশ্ন এখনো যোগ করা হয়নি
-</h3>
-
-<p class="muted">
-
-Admin Panel থেকে এই Model Set-এ
-প্রশ্ন যোগ করুন।
-
-</p>
-
-</div>
-
-`;
-
-return;
-
-}
+  showTopics();
+};
 
 
-body.innerHTML =
-state.questions
-.map(function(q,i){
+function showTopics(){
 
-return `
+  const arr =
+    (DATA[state.cls] && DATA[state.cls][state.period]) || [];
 
-<div class="q">
+  const title =
+    state.cls === 11 ? "একাদশ শ্রেণি" :
+    state.cls === 12 ? "দ্বাদশ শ্রেণি" :
+    state.cls + " শ্রেণি";
 
-<h3>
-${i+1}. ${q.q}
-</h3>
+  document.getElementById("periodTitle").textContent =
+    title + " • " + state.period;
 
-${(q.a||[])
-.map(function(opt,j){
+  const list = document.getElementById("periodList");
 
-return `
+  list.innerHTML =
+    arr.map(function(t){
+      return `
+        <div class="item">
+          <h3>📖 ${t}</h3>
+          <p class="muted">ভিডিও • Study Material • Mock Test</p>
+          <button class="btn purple"
+            onclick='window.openChapter(${JSON.stringify(t)})'>
+            অধ্যায় খুলুন
+          </button>
+        </div>
+      `;
+    }).join("");
 
-<button
-class="opt"
-onclick="selectModelAnswer(${i},${j},this)"
->
-${String.fromCharCode(2453+j)}.
-${opt}
-</button>
+  openView("periods");
+};
 
-`;
 
-})
-.join("")}
+function backPeriod(){
 
-</div>
-
-`;
-
-})
-.join("");
-
-document.getElementById("modelResult").innerHTML="";
+  state.period = "";
+  window.openClass(state.cls);
 
 }
 
 
-function selectModelAnswer(i,j,btn){
+/* DATA RENDER HELPERS */
 
-state.answers[i]=j;
+function render(id){
 
-btn
-.parentElement
-.querySelectorAll(".opt")
-.forEach(function(b){
+if(id==="mcqMock")
+renderFullMockTests();
 
-b.classList.remove("sel");
+if(id==="models")
+renderModels();
 
-});
-
-btn.classList.add("sel");
-
-}
-
-
-function submitTest(){
-
-let score=0;
-
-state.questions
-.forEach(function(q,i){
-
-if(state.answers[i]===q.correct){
-
-score++;
-
-}
-
-});
-
-const total =
-state.questions.length;
-
-document.getElementById("modelResult").innerHTML=`
-
-<div class="score">
-
-<div>
-আপনার স্কোর
-</div>
-
-<strong>
-${score} / ${total}
-</strong>
-
-<div>
-${total ? Math.round(score/total*100) : 0}%
-</div>
-
-</div>
-
-`;
-
-}
-
-
-/* FULL MOCK TEST */
-
-function renderFullMockTests(){
-
-const list =
-document.getElementById("mcqMockList");
-
-if(!list)return;
-
-const tests=[];
-
-for(let i=1;i<=15;i++){
-
-tests.push(
-"Full Mock Test "+i
+if(id==="grammar")
+renderSimple(
+"grammarList",
+GRAM,
+"📘"
 );
 
-}
+if(id==="college")
+renderSimple(
+"collegeList",
+COL,
+"🏫"
+);
 
-list.innerHTML =
-tests
-.map(function(t){
+if(id==="notice")
+renderNotices();
 
-return `
+if(id==="freeclass")
+renderLinks(
+"freeClassList",
+store.videos||[],
+"🎥"
+);
 
-<div
-class="item"
-onclick='openFullMock(${JSON.stringify(t)})'
-style="cursor:pointer"
->
+if(id==="links")
+renderLinks(
+"linkList",
+store.links||[],
+"🔗"
+);
 
-<h3>
-📝 ${t}
-</h3>
-
-<p class="muted">
-৪০ নম্বর • ৪০টি প্রশ্ন
-</p>
-
-</div>
-
-`;
-
-})
-.join("");
+applyWA();
+applyBanner();
 
 }
 
 
-function openFullMock(test){
+/* HOME */
 
-state.model=test;
+function goHome(){
 
-const allQuestions =
-store.fullMocks?.[test] || [];
-
-state.questions =
-allQuestions.slice();
-
-state.answers =
-new Array(state.questions.length)
-.fill(null);
-
-document.getElementById("fullMockTitle").textContent =
-test;
-
-renderFullMockQuestions();
-
-openView("fullMockTest");
+openView("home");
 
 }
 
 
-function renderFullMockQuestions(){
+/* DRAWER */
 
-const body =
-document.getElementById("fullMockBody");
-
-if(!state.questions.length){
-
-body.innerHTML=`
-
-<div class="item">
-
-<h3>
-📝 প্রশ্ন এখনো যোগ করা হয়নি
-</h3>
-
-<p class="muted">
-Admin Panel থেকে প্রশ্ন যোগ করুন।
-</p>
-
-</div>
-
-`;
-
-return;
-
-}
-
-
-body.innerHTML =
-state.questions
-.map(function(q,i){
-
-return `
-
-<div class="q">
-
-<h3>
-${i+1}. ${q.q}
-</h3>
-
-${(q.a||[])
-.map(function(opt,j){
-
-return `
-
-<button
-class="opt"
-onclick="selectFullMockAnswer(${i},${j},this)"
->
-${String.fromCharCode(2453+j)}.
-${opt}
-</button>
-
-`;
-
-})
-.join("")}
-
-</div>
-
-`;
-
-})
-.join("");
-
-document.getElementById("fullMockResult").innerHTML="";
-
-}
-
-
-function selectFullMockAnswer(i,j,btn){
-
-state.answers[i]=j;
-
-btn
-.parentElement
-.querySelectorAll(".opt")
-.forEach(function(b){
-
-b.classList.remove("sel");
-
-});
-
-btn.classList.add("sel");
-
-}
-
-
-function submitFullMock(){
-
-let score=0;
-
-state.questions
-.forEach(function(q,i){
-
-if(state.answers[i]===q.correct){
-
-score++;
-
-}
-
-});
-
-const total =
-state.questions.length;
-
-document.getElementById("fullMockResult").innerHTML=`
-
-<div class="score">
-
-<div>
-আপনার স্কোর
-</div>
-
-<strong>
-${score} / ${total}
-</strong>
-
-<div>
-${total ? Math.round(score/total*100) : 0}%
-</div>
-
-</div>
-
-`;
-
-}
-
-
-/* SIMPLE LIST */
-
-function renderSimple(
-id,
-arr,
-icon
-){
+function openDrawer(){
 
 document
-.getElementById(id)
-.innerHTML=
-
-arr
-.map(
-x=>{
-let action="";
-
-if(id==="collegeList"){
-action=
-" onclick='openChapter("
-+JSON.stringify(x)
-+");document.getElementById(\"chapter\").querySelector(\".back\").onclick=function(){openView(\"college\")}'";
-}
-
-return `
-<div class="item"${action}>
-
-<h3>
-${icon} ${x}
-</h3>
-
-<p class="muted">
-নোট • ভিডিও • অনুশীলন
-</p>
-
-</div>
-`;
-}
-)
-.join("");
+.getElementById("drawer")
+.classList
+.add("on");
 
 }
 
 
-/* LINKS */
+function closeDrawer(){
 
-function renderLinks(
-id,
-arr,
-icon
-){
-
-const list =
-document.getElementById(id);
-
-if(!list)return;
-
-if(!arr.length){
-
-list.innerHTML=`
-
-<div class="item">
-
-<h3>
-${icon} এখনো কিছু যোগ করা হয়নি
-</h3>
-
-<p class="muted">
-Admin Panel থেকে content যোগ করুন।
-</p>
-
-</div>
-
-`;
-
-return;
-
-}
-
-list.innerHTML =
-arr
-.map(function(x){
-
-if(typeof x==="string"){
-
-return `
-
-<div class="item">
-
-<h3>
-${icon} ${x}
-</h3>
-
-</div>
-
-`;
-
-}
-
-return `
-
-<div class="item">
-
-<h3>
-${icon} ${x.title || "Link"}
-</h3>
-
-${x.url ? `
-
-<a
-class="btn"
-href="${x.url}"
-target="_blank"
->
-খুলুন →
-</a>
-
-` : ""}
-
-</div>
-
-`;
-
-})
-.join("");
+document
+.getElementById("drawer")
+.classList
+.remove("on");
 
 }
 
 
-/* NOTICE */
+/* CHAT */
 
-function renderNotices(){
+function filterChats(){
 
-const list =
-document.getElementById("noticeList");
+const input =
+document
+.getElementById("chatSearchInput");
 
-const notices =
-store.notices || [];
+if(!input)return;
 
-if(!notices.length){
+const term =
+input.value
+.toLowerCase()
+.trim();
 
-list.innerHTML=`
+document
+.querySelectorAll(".chatItem")
+.forEach(function(item){
 
-<div class="item">
+const text =
+item.textContent
+.toLowerCase();
 
-<h3>
-📢 কোনো নতুন নোটিশ নেই
-</h3>
+item.style.display =
+!term || text.includes(term)
+?
+"flex"
+:
+"none";
 
-<p class="muted">
-গুরুত্বপূর্ণ নোটিশ এখানে দেখা যাবে।
-</p>
-
-</div>
-
-`;
-
-return;
-
-}
-
-list.innerHTML =
-notices
-.map(function(n){
-
-return `
-
-<div class="item">
-
-<h3>
-📢 ${n.text || n}
-</h3>
-
-${n.date ? `
-<p class="muted">
-${n.date}
-</p>
-` : ""}
-
-</div>
-
-`;
-
-})
-.join("");
+});
 
 }
 
 
-/* WHATSAPP */
+function setChatTab(btn,type){
 
-function applyWA(){
+document
+.querySelectorAll(".chatTab")
+.forEach(function(b){
 
-const number =
-store.wa || WA_DEFAULT;
+b.classList.remove("active");
 
-const clean =
-String(number)
-.replace(/\D/g,"");
+});
 
-const url =
-"https://wa.me/"+clean;
+btn.classList.add("active");
 
-const a =
-document.getElementById("waContact");
+document
+.querySelectorAll(".chatItem")
+.forEach(function(item){
 
-if(a){
+const itemType =
+item.dataset.type;
 
-a.href=url;
+item.style.display =
+(type==="all" || itemType===type)
+?
+"flex"
+:
+"none";
 
-}
-
-}
-
-
-function openWA(){
-
-const number =
-store.wa || WA_DEFAULT;
-
-const clean =
-String(number)
-.replace(/\D/g,"");
-
-window.open(
-"https://wa.me/"+clean,
-"_blank"
-);
+});
 
 }
 
 
-/* BANNER */
-
-function applyBanner(){
-
-const banner =
-document.getElementById("banner");
-
-if(!banner)return;
-
-if(store.banner){
-
-banner.innerHTML=`
-
-<img
-src="${store.banner}"
-alt="বাংলা পাঠশালা Banner"
->
-
-<div class="banner-note">
-বাংলা পাঠশালা
-</div>
-
-`;
-
-}
-
-}
-
-
-/* ADMIN LOGIN */
-
-function adminLogin(){
-
-const pass =
-prompt("Admin Password লিখুন:");
-
-if(pass==="1234"){
-
-openView("admin");
-
-fillAdminClasses();
-fillAdminModels();
-
-}else{
-
-if(pass!==null){
-
-alert("ভুল Password");
-
-}
-
-}
-
-}
-
-
-/* STUDENT LOGIN */
-
-function openStudentLogin(){
+function openChatMessage(title,type){
 
 const old =
-document.getElementById("studentLoginBox");
+document.getElementById("chatMessageBox");
 
 if(old){
 
@@ -2886,59 +2688,421 @@ old.remove();
 const box =
 document.createElement("div");
 
-box.id="studentLoginBox";
+box.id="chatMessageBox";
 
 box.style.position="fixed";
 box.style.inset="0";
 box.style.background="#0008";
 box.style.zIndex="2000";
 box.style.display="flex";
-box.style.alignItems="center";
+box.style.alignItems="flex-end";
 box.style.justifyContent="center";
-box.style.padding="20px";
 
 box.innerHTML=`
 
 <div style="
 background:white;
 width:100%;
-max-width:380px;
-border-radius:25px;
-padding:22px;
+max-width:650px;
+border-radius:25px 25px 0 0;
+padding:18px;
 ">
 
-<h2 style="margin-top:0;color:#063d75">
-🎓 Student Login
-</h2>
+<h3 style="
+margin:0 0 10px;
+color:#063d75;
+">
+${title}
+</h3>
 
-<input
-id="studentName"
+<textarea
+id="chatMessageText"
 class="field"
-placeholder="আপনার নাম"
->
-
-<input
-id="studentMobile"
-class="field"
-placeholder="মোবাইল নম্বর"
-inputmode="numeric"
->
+rows="4"
+placeholder="আপনার মেসেজ লিখুন..."
+></textarea>
 
 <button
 class="btn"
-style="width:100%"
-onclick="studentLoginSubmit()"
->
-Login
+onclick="sendChatMessage('${type}')">
+মেসেজ পাঠান
 </button>
 
 <button
 class="btn gray"
-style="width:100%;margin-top:8px"
-onclick="document.getElementById('studentLoginBox').remove()"
->
+onclick="document.getElementById('chatMessageBox').remove()">
 বন্ধ করুন
 </button>
+
+</div>
+`;
+
+document.body.appendChild(box);
+
+}
+
+
+function sendChatMessage(type){
+
+const text =
+(document
+.getElementById("chatMessageText")
+.value||"")
+.trim();
+
+if(!text){
+
+alert("মেসেজ লিখুন।");
+
+return;
+
+}
+
+if(!store.chat){
+
+store.chat=[];
+
+}
+
+store.chat.push({
+
+type:type,
+
+text:text,
+
+date:new Date().toISOString()
+
+});
+
+save();
+
+document
+.getElementById("chatMessageBox")
+.remove();
+
+alert("মেসেজ সংরক্ষণ হয়েছে।");
+
+}
+
+
+/* LOCAL STORAGE */
+
+const STORE_KEY =
+"bangla_pathshala_store_v1";
+
+
+let store =
+JSON.parse(
+localStorage.getItem(STORE_KEY)||"{}"
+);
+
+
+function save(){
+
+localStorage.setItem(
+STORE_KEY,
+JSON.stringify(store)
+);
+
+}
+
+
+/* DEFAULT WHATSAPP */
+
+const WA_DEFAULT =
+"919XXXXXXXXX";
+
+
+/* DATA */
+
+const DATA={
+
+9:{
+
+"১ম পর্যায়ক্রমিক মূল্যায়ন":[
+
+"বাংলা সাহিত্যের পরিচয়",
+"বর্ণপরিচয় ও ভাষা",
+"কবিতা পাঠ",
+"গদ্য পাঠ"
+
+],
+
+"২য় পর্যায়ক্রমিক মূল্যায়ন":[
+
+"কবিতা ও ছন্দ",
+"গল্প",
+"প্রবন্ধ",
+"ভাষা ও ব্যাকরণ"
+
+],
+
+"৩য় পর্যায়ক্রমিক / নির্বাচনী মূল্যায়ন":[
+
+"নাটক",
+"উপন্যাস",
+"সাহিত্য ইতিহাস",
+"সম্পূর্ণ পাঠ পুনরাবৃত্তি"
+
+]
+
+},
+
+
+10:{
+
+"১ম পর্যায়ক্রমিক মূল্যায়ন":[
+
+"কবিতা",
+"গদ্য",
+"ভাষা ও ব্যাকরণ"
+
+],
+
+"২য় পর্যায়ক্রমিক মূল্যায়ন":[
+
+"কবিতা ও গদ্য",
+"নির্মিতি",
+"ব্যাকরণ"
+
+],
+
+"৩য় পর্যায়ক্রমিক / নির্বাচনী মূল্যায়ন":[
+
+"সম্পূর্ণ পাঠ",
+"মডেল প্রশ্ন",
+"পরীক্ষা প্রস্তুতি"
+
+]
+
+},
+
+
+11:{
+
+"১ম সেমিস্টার":[
+
+"বাংলা সাহিত্যের ইতিহাস",
+"কবিতা",
+"গদ্য",
+"নাটক"
+
+],
+
+"২য় সেমিস্টার":[
+
+"প্রবন্ধ",
+"কথাসাহিত্য",
+"ভাষাতত্ত্ব",
+"ব্যাকরণ ও নির্মিতি"
+
+]
+
+},
+
+
+12:{
+
+"৩য় সেমিস্টার":[
+
+"কবিতা",
+"গদ্য",
+"প্রবন্ধ",
+"নাটক"
+
+],
+
+"৪র্থ সেমিস্টার":[
+
+"কথাসাহিত্য",
+"ভাষা ও সংস্কৃতি",
+"ব্যাকরণ",
+"সম্পূর্ণ পুনরাবৃত্তি"
+
+]
+
+}
+
+};
+
+
+/* GRAMMAR */
+
+const GRAM=[
+
+"নবম শ্রেণির বাংলা ব্যাকরণ",
+
+"দশম শ্রেণির বাংলা ব্যাকরণ",
+
+"সন্ধি",
+
+"সমাস",
+
+"কারক ও বিভক্তি",
+
+"বাচ্য",
+
+"পদ প্রকরণ",
+
+"বাক্য পরিবর্তন",
+
+"শুদ্ধ বানান",
+
+"প্রতিবেদন রচনা",
+
+"প্রবন্ধ রচনা"
+
+];
+
+
+/* COLLEGE */
+
+const COL=[
+
+"বাংলা সাহিত্য",
+
+"বাংলা ভাষাতত্ত্ব",
+
+"বাংলা কবিতা",
+
+"বাংলা গদ্য",
+
+"বাংলা নাটক",
+
+"বাংলা উপন্যাস",
+
+"বাংলা প্রবন্ধ"
+
+];
+
+
+/* OPEN VIEW */
+
+window.openView = function(id){
+
+  document.querySelectorAll(".view").forEach(v =>
+    v.classList.remove("active")
+  );
+
+  const page = document.getElementById(id);
+
+  if (!page) return;
+
+  page.classList.add("active");
+
+  if (typeof render === "function") {
+    render(id);
+  }
+
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+  window.scrollTo(0,0);
+
+};
+
+
+/* ADMIN DATA */
+
+if(!store.chapters){
+
+store.chapters={};
+
+}
+
+if(!store.models){
+
+store.models={};
+
+}
+
+if(!store.fullMocks){
+
+store.fullMocks={};
+
+}
+
+if(!store.notices){
+
+store.notices=[];
+
+}
+
+if(!store.videos){
+
+store.videos=[];
+
+}
+
+if(!store.links){
+
+store.links=[];
+
+}
+
+
+/* CHAPTER DATA */
+
+function getChapterData(topic){
+
+return store.chapters?.[topic] || {};
+
+}
+
+
+/* PDF */
+
+function openPDF(url,title){
+
+if(!url)return;
+
+const box =
+document.createElement("div");
+
+box.style.position="fixed";
+box.style.inset="0";
+box.style.background="#fff";
+box.style.zIndex="3000";
+box.style.overflow="auto";
+
+box.innerHTML=`
+
+<div style="
+position:sticky;
+top:0;
+background:#063d75;
+color:white;
+padding:14px;
+z-index:2;
+">
+
+<button
+style="
+background:white;
+border:0;
+border-radius:999px;
+padding:8px 14px;
+font-weight:900;
+"
+onclick="this.closest('div[style*=fixed]').remove()">
+← বন্ধ
+</button>
+
+<b style="margin-left:8px">
+${title||"PDF"}
+</b>
+
+</div>
+
+<div class="protected">
+
+<iframe
+src="${url}"
+title="${title||"PDF"}">
+</iframe>
+
+<div class="water">
+বাংলা পাঠশালা
+</div>
 
 </div>
 
@@ -2949,400 +3113,447 @@ document.body.appendChild(box);
 }
 
 
-function studentLoginSubmit(){
+/* SECURITY */
 
-const name =
-(document.getElementById("studentName").value||"")
-.trim();
+document.addEventListener(
+"contextmenu",
+function(e){
 
-const mobile =
-(document.getElementById("studentMobile").value||"")
-.trim();
+e.preventDefault();
 
-if(!name || !mobile){
+}
+);
 
-alert("নাম ও মোবাইল নম্বর দিন।");
 
-return;
+document.addEventListener(
+"copy",
+function(e){
+
+e.preventDefault();
+
+}
+);
+
+
+document.addEventListener(
+"cut",
+function(e){
+
+e.preventDefault();
+
+}
+);
+
+
+document.addEventListener(
+"dragstart",
+function(e){
+
+e.preventDefault();
+
+}
+);
+
+
+/* KEYBOARD */
+
+document.addEventListener(
+"keydown",
+function(e){
+
+if(
+(e.ctrlKey||e.metaKey) &&
+[
+"c",
+"x",
+"u",
+"s",
+"p"
+]
+.includes(e.key.toLowerCase())
+){
+
+e.preventDefault();
 
 }
 
-store.student={
-name:name,
-mobile:mobile,
-loginAt:new Date().toISOString()
-};
+if(e.key==="PrintScreen"){
 
-save();
+try{
+navigator.clipboard.writeText("");
+}catch(err){}
 
-document
-.getElementById("studentLoginBox")
-.remove();
+}
 
-alert(
-"স্বাগতম, "+name+"!"
+}
+);
+
+
+/* PREVENT LONG PRESS */
+
+let pressTimer;
+
+document.addEventListener(
+"touchstart",
+function(e){
+
+pressTimer =
+setTimeout(function(){
+
+},500);
+
+},
+{passive:true}
+);
+
+document.addEventListener(
+"touchend",
+function(){
+
+clearTimeout(pressTimer);
+
+},
+{passive:true}
+);
+
+
+/* PDF UPLOAD STATUS */
+
+const pdfInput =
+document.getElementById("adminPdf");
+
+if(pdfInput){
+
+pdfInput.addEventListener(
+"input",
+function(){
+
+const status =
+document.getElementById("pdfUploadStatus");
+
+if(status){
+
+status.textContent =
+this.value
+?
+"PDF URL দেওয়া হয়েছে"
+:
+"PDF নির্বাচন করুন";
+
+}
+
+}
 );
 
 }
 
 
-/* ADMIN CLASS SELECT */
-
-function fillAdminClasses(){
-
-const select =
-document.getElementById("adminClass");
-
-if(!select)return;
-
-select.innerHTML="";
-
-[9,10,11,12]
-.forEach(function(cls){
-
-const opt =
-document.createElement("option");
-
-opt.value=cls;
-
-opt.textContent =
-cls===11
-? "একাদশ শ্রেণি"
-:
-cls===12
-? "দ্বাদশ শ্রেণি"
-:
-cls+" শ্রেণি";
-
-select.appendChild(opt);
-
-});
-
-fillAdminPeriods();
-
-}
-
-
-function fillAdminPeriods(){
-
-const cls =
-Number(
-document.getElementById("adminClass").value
-);
-
-const select =
-document.getElementById("adminPeriod");
-
-if(!select)return;
-
-const periods =
-DATA[cls] || {};
-
-select.innerHTML =
-Object.keys(periods)
-.map(function(p){
-
-return `
-
-<option value="${p}">
-${p}
-</option>
-
-`;
-
-})
-.join("");
-
-}
-
-
-function fillAdminModels(){
-
-const select =
-document.getElementById("adminModel");
-
-if(!select)return;
-
-select.innerHTML="";
-
-for(let i=1;i<=15;i++){
-
-const opt =
-document.createElement("option");
-
-opt.value="Model Set "+i;
-
-opt.textContent=
-"Model Set "+i;
-
-select.appendChild(opt);
-
-}
-
-}
-
-
-/* SAVE BANNER */
-
-function saveBanner(){
-
-const file =
-document.getElementById("bannerFile")
-.files[0];
-
-if(!file){
-
-alert("আগে একটি ছবি নির্বাচন করুন।");
-
-return;
-
-}
-
-const reader =
-new FileReader();
-
-reader.onload=function(e){
-
-store.banner=e.target.result;
-
-save();
-
-applyBanner();
-
-alert("Banner সংরক্ষণ হয়েছে।");
-
-};
-
-reader.readAsDataURL(file);
-
-}
-
-
-function resetBanner(){
-
-delete store.banner;
-
-save();
-
-location.reload();
-
-}
-
-
-/* SAVE WHATSAPP */
-
-function saveWA(){
-
-const value =
-(document.getElementById("waNumber").value||"")
-.trim();
-
-if(!value){
-
-alert("WhatsApp নম্বর দিন।");
-
-return;
-
-}
-
-store.wa=value;
-
-save();
+/* INIT */
+
+document.addEventListener(
+"DOMContentLoaded",
+function(){
 
 applyWA();
-
-alert("WhatsApp নম্বর সংরক্ষণ হয়েছে।");
-
-}
-
-
-/* ADD NOTICE */
-
-function addNotice(){
-
-const input =
-document.getElementById("noticeText");
-
-const text =
-(input.value||"").trim();
-
-if(!text){
-
-alert("নোটিশ লিখুন।");
-
-return;
+applyBanner();
 
 }
+);
 
-if(!store.notices){
 
-store.notices=[];
+/* GLOBAL ERROR HANDLER */
+
+window.addEventListener(
+"error",
+function(e){
+
+console.error(
+"Bangla Pathshala Error:",
+e.error || e.message
+);
 
 }
+);
 
-store.notices.unshift({
 
-text:text,
+/* SERVICE WORKER */
 
-date:new Date()
-.toLocaleDateString("bn-BD")
+if(
+"serviceWorker" in navigator
+){
+
+window.addEventListener(
+"load",
+function(){
+
+navigator.serviceWorker
+.register("./sw.js")
+.catch(function(){
 
 });
 
-save();
-
-input.value="";
-
-renderNotices();
-
-alert("নোটিশ যোগ হয়েছে।");
-
 }
-
-
-/* SAVE CHAPTER */
-
-function saveChapterContent(){
-
-const cls =
-Number(
-document.getElementById("adminClass").value
 );
 
-const period =
-document.getElementById("adminPeriod").value;
-
-const topic =
-(document.getElementById("adminTopic").value||"")
-.trim();
-
-const video =
-(document.getElementById("adminVideo").value||"")
-.trim();
-
-const pdf =
-(document.getElementById("adminPdf").value||"")
-.trim();
-
-const note =
-(document.getElementById("adminNote").value||"")
-.trim();
-
-if(!topic){
-
-alert("অধ্যায়ের নাম লিখুন।");
-
-return;
-
 }
 
-if(!store.chapters){
 
-store.chapters={};
+/* END SCRIPT */
+ <script type="module">
 
+/* Firebase */
+
+import {
+initializeApp
 }
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
-store.chapters[topic]={
-
-class:cls,
-
-period:period,
-
-video:video,
-
-note:note,
-
-resources:
-pdf
-?
-[
-{
-title:"📄 PDF / Study Material",
-url:pdf
+import {
+getAnalytics
 }
-]
-:
-[]
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
+
+
+const firebaseConfig={
+
+apiKey:"",
+
+authDomain:"",
+
+projectId:"",
+
+storageBucket:"",
+
+messagingSenderId:"",
+
+appId:""
 
 };
 
-save();
-
-alert("অধ্যায়ের Content সংরক্ষণ হয়েছে।");
-
-}
-
-
-/* SAVE MODEL QUESTIONS */
-
-function saveModelQuestions(){
-
-const model =
-document.getElementById("adminModel").value;
-
-const text =
-(document.getElementById("adminQuestions").value||"")
-.trim();
-
-if(!text){
-
-alert("প্রশ্নের JSON লিখুন।");
-
-return;
-
-}
-
-let questions;
 
 try{
 
-questions=
-JSON.parse(text);
+const app=
+initializeApp(firebaseConfig);
+
+try{
+
+getAnalytics(app);
+
+}catch(e){}
 
 }catch(e){
 
-alert(
-"JSON format ভুল হয়েছে।"
-);
-
-return;
-
-}
-
-if(!Array.isArray(questions)){
-
-alert(
-"প্রশ্ন অবশ্যই Array হতে হবে।"
-);
-
-return;
-
-}
-
-if(!store.models){
-
-store.models={};
-
-}
-
-store.models[model]=questions;
-
-save();
-
-alert(
-model+"-এর প্রশ্ন সংরক্ষণ হয়েছে।"
+console.log(
+"Firebase not configured"
 );
 
 }
 
 
-/* INITIAL */
+/* FIREBASE READY */
+
+</script>
+
+
+<script>
+
+/* FINAL INITIALIZATION */
+
+(function(){
+
+try{
 
 applyWA();
+
+}catch(e){}
+
+try{
+
 applyBanner();
+
+}catch(e){}
+
+try{
+
+if(
+typeof renderFullMockTests==="function"
+){
+
+renderFullMockTests();
+
+}
+
+}catch(e){}
+
+try{
+
+if(
+typeof renderModels==="function"
+){
+
+renderModels();
+
+}
+
+}catch(e){}
+
+})();
+
+
+/* STUDENT LOGIN STATE */
+
+function updateStudentLogin(){
+
+const student =
+store.student;
+
+if(!student)return;
+
+const buttons =
+document.querySelectorAll(".login");
+
+buttons.forEach(function(btn){
+
+if(
+btn.textContent.includes("Login")
+){
+
+btn.textContent =
+"👤 "+student.name;
+
+}
+
+});
+
+}
+
+
+/* CHAT SEARCH */
+
+window.filterChats =
+filterChats;
+
+
+/* CHAT TAB */
+
+window.setChatTab =
+setChatTab;
+
+
+/* CHAT OPEN */
+
+window.openChatMessage =
+openChatMessage;
+
+
+/* STUDENT LOGIN */
+
+window.openStudentLogin =
+openStudentLogin;
+
+window.studentLoginSubmit =
+studentLoginSubmit;
+
+
+/* ADMIN */
+
+window.adminLogin =
+adminLogin;
+
+window.saveBanner =
+saveBanner;
+
+window.resetBanner =
+resetBanner;
+
+window.saveWA =
+saveWA;
+
+window.addNotice =
+addNotice;
+
+window.saveChapterContent =
+saveChapterContent;
+
+window.saveModelQuestions =
+saveModelQuestions;
+
+
+/* MODEL */
+
+window.openModel =
+openModel;
+
+window.submitTest =
+submitTest;
+
+
+/* MOCK */
+
+window.openFullMock =
+openFullMock;
+
+window.submitFullMock =
+submitFullMock;
+
+
+/* CHAPTER */
+
+window.startChapterTest =
+startChapterTest;
+
+window.submitChapterTest =
+submitChapterTest;
+
+
+/* NAVIGATION */
+
+window.goHome =
+goHome;
+
+window.openDrawer =
+openDrawer;
+
+window.closeDrawer =
+closeDrawer;
+
+
+/* INIT STUDENT */
+
+try{
+
+updateStudentLogin();
+
+}catch(e){}
+
+
+/* SERVICE WORKER FALLBACK */
+
+if(
+"serviceWorker" in navigator
+){
+
+try{
+
+navigator.serviceWorker
+.register("sw.js")
+.catch(function(){});
+
+}catch(e){}
+
+}
+
+
+/* FINAL */
+
+console.log(
+"বাংলা পাঠশালা loaded successfully"
+);
 
 </script>
 
 </body>
 </html>
-  
