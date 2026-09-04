@@ -3049,9 +3049,10 @@ openView("periods");
 
 function backPeriod(){
 
-state.period="";
-
-openClass(state.cls);
+openClass(
+state.cls,
+state.period
+);
 
 }
 /* CHAPTER */
