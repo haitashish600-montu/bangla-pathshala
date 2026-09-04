@@ -4671,5 +4671,200 @@ window.adminLogin = async function(){
 
 };
      </script>
+     <script>
+window.openStudentLogin = function(){
+
+  let old = document.getElementById("studentLoginModal");
+  if(old) old.remove();
+
+  let d = document.createElement("div");
+
+  d.id = "studentLoginModal";
+
+  d.style.cssText = `
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    z-index:99999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:18px;
+  `;
+
+  d.innerHTML = `
+    <div style="
+      width:100%;
+      max-width:620px;
+      background:white;
+      border-radius:30px;
+      padding:28px 24px;
+      position:relative;
+      box-sizing:border-box;
+    ">
+
+      <button
+        onclick="document.getElementById('studentLoginModal').remove()"
+        style="
+          position:absolute;
+          right:18px;
+          top:14px;
+          border:0;
+          background:none;
+          font-size:38px;
+          color:#063d75;
+          cursor:pointer;
+        ">
+        ×
+      </button>
+
+      <h2 style="
+        color:#07508c;
+        text-align:center;
+        margin:8px 0 28px;
+        font-size:28px;
+      ">
+        🎓 ছাত্র-ছাত্রী Login
+      </h2>
+
+      <input
+        id="studentMobile"
+        type="text"
+        inputmode="numeric"
+        placeholder="মোবাইল নম্বর"
+        style="
+          width:100%;
+          box-sizing:border-box;
+          padding:16px;
+          margin:8px 0;
+          border:1px solid #ccc;
+          border-radius:15px;
+          font-size:17px;
+        "
+      >
+
+      <input
+        id="studentPassword"
+        type="password"
+        placeholder="Password"
+        style="
+          width:100%;
+          box-sizing:border-box;
+          padding:16px;
+          margin:8px 0 18px;
+          border:1px solid #ccc;
+          border-radius:15px;
+          font-size:17px;
+        "
+      >
+
+      <button
+        onclick="studentDoLogin()"
+        style="
+          width:100%;
+          border:0;
+          border-radius:15px;
+          padding:16px;
+          background:#ff9800;
+          color:white;
+          font-size:19px;
+          font-weight:bold;
+          cursor:pointer;
+        ">
+        Login করুন
+      </button>
+
+      <p id="studentLoginMsg"
+         style="
+           text-align:center;
+           margin:16px 0 0;
+           font-size:15px;
+         ">
+      </p>
+
+    </div>
+  `;
+
+  document.body.appendChild(d);
+};
+
+
+window.studentDoLogin = async function(){
+
+  const mobile =
+    document.getElementById("studentMobile").value
+    .replace(/\D/g,"");
+
+  const password =
+    document.getElementById("studentPassword").value;
+
+  const msg =
+    document.getElementById("studentLoginMsg");
+
+  if(!mobile || !password){
+    msg.style.color="red";
+    msg.innerHTML="মোবাইল নম্বর ও Password দিন।";
+    return;
+  }
+
+  if(mobile.length !== 10){
+    msg.style.color="red";
+    msg.innerHTML="সঠিক 10 সংখ্যার মোবাইল নম্বর দিন।";
+    return;
+  }
+
+  if(!window.firebaseSignIn){
+    msg.style.color="red";
+    msg.innerHTML="Firebase সংযোগ পাওয়া যায়নি।";
+    return;
+  }
+
+  msg.style.color="#555";
+  msg.innerHTML="Login হচ্ছে...";
+
+  try{
+
+    const email =
+      mobile + "@students.banglapathshala.app";
+
+    const result =
+      await window.firebaseSignIn(email,password);
+
+    localStorage.setItem(
+      "studentLoggedIn",
+      "yes"
+    );
+
+    localStorage.setItem(
+      "studentName",
+      result.user.displayName || ""
+    );
+
+    msg.style.color="green";
+    msg.innerHTML="Login সফল হয়েছে।";
+
+    setTimeout(function(){
+
+      const modal =
+        document.getElementById(
+          "studentLoginModal"
+        );
+
+      if(modal) modal.remove();
+
+    },800);
+
+  }catch(error){
+
+    msg.style.color="red";
+
+    msg.innerHTML =
+      "Login ব্যর্থ: " +
+      (error.code || error.message);
+
+  }
+
+};
+     </script>
 </body>
 </html>
