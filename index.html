@@ -5103,7 +5103,9 @@ import {
   getAuth,
   setPersistence,
   browserLocalPersistence,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  updateProfile
 }
 from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
@@ -5144,7 +5146,24 @@ window.firebaseSignIn = function(email,password){
   );
 
 };
+window.firebaseSignUp = async function(email,password,name){
 
+  const result =
+    await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+  await updateProfile(
+    result.user,
+    {
+      displayName:name
+    }
+  );
+
+  return result;
+};
      </script>
 </body>
 </html>
