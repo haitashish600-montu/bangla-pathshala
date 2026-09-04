@@ -2949,10 +2949,11 @@ window.openClass = function(cls, period){
       return `
         <div
           class="item"
-          onclick='window.openClass(${JSON.stringify(cls)},${JSON.stringify(p)})'
+          onclick='openClass(${JSON.stringify(cls)},${JSON.stringify(p)})'
           style="cursor:pointer"
         >
           <h3>📚 ${p}</h3>
+
           <p class="muted">
             এই অংশের অধ্যায় দেখুন →
           </p>
@@ -3007,7 +3008,7 @@ function showTopics(){
     }).join("");
 
   openView("periods");
-}
+};
 
 
 function backPeriod(){
@@ -3018,62 +3019,7 @@ function backPeriod(){
 
 }
 
-/* TOPICS */
-
-function showTopics(){
-
-  const arr =
-    (DATA[state.cls] && DATA[state.cls][state.period]) || [];
-
-  const title =
-    state.cls === 11 ? "একাদশ শ্রেণি" :
-    state.cls === 12 ? "দ্বাদশ শ্রেণি" :
-    state.cls + " শ্রেণি";
-
-  document.getElementById("periodTitle").textContent =
-    title + " • " + state.period;
-
-  const list = document.getElementById("periodList");
-
-  list.innerHTML =
-    arr.map(function(t){
-
-      return `
-        <div class="item">
-
-          <h3>
-            📖 ${t}
-          </h3>
-
-          <p class="muted">
-            ভিডিও • Study Material • Mock Test
-          </p>
-
-          <button
-            class="btn purple"
-            onclick="window.openChapter(${JSON.stringify(t)})"
-          >
-            অধ্যায় খুলুন
-          </button>
-
-        </div>
-      `;
-
-    }).join("");
-
-  /* একই periods view-তে অধ্যায়গুলোর তালিকা দেখাবে */
-  openView("periods");
-}
-
-
-/* BACK */
-
-function backPeriod(){
-
-  state.period = "";
-
-  window.openClass(state.cls);
-}
+/* CHAPTER */
 
 /* CHAPTER */
 
