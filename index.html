@@ -5608,7 +5608,10 @@ import {
 
   const firebaseApp =
     initializeApp(firebaseConfig);
+const messaging =
+  getMessaging(firebaseApp);
 
+window.bpFirebaseMessaging = messaging;
   const auth =
     getAuth(firebaseApp);
 
