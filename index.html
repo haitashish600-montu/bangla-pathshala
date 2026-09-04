@@ -2628,11 +2628,15 @@ window.openView = function(id){
     render(id);
   }
 
+  setTimeout(function(){
+
   window.scrollTo({
     top: 0,
     left: 0,
     behavior: "auto"
   });
+
+}, 100);
 
 };
   
