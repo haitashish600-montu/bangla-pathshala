@@ -1943,3 +1943,1406 @@ onclick="goHome()">
 <p class="muted">
 
 অনলাইন ও 
+}
+ 
+/* CHAPTER */
+
+window.openChapter = function(t){
+
+state.topic=t;
+
+const data =
+(store.chapters?.[t]) || {};
+
+document.getElementById("chapterTitle").textContent =
+t;
+
+document.getElementById("chapterNote").textContent =
+data.note ||
+"এই অধ্যায়ের নোট এখানে থাকবে।";
+
+
+const res =
+document.getElementById("chapterResources");
+
+if(data.resources){
+
+res.innerHTML =
+data.resources
+.map(function(r){
+
+return `
+<a
+class="btn"
+href="${r.url}"
+target="_blank"
+style="margin:4px"
+>
+${r.title || "Study Material"}
+</a>
+`;
+
+})
+.join("");
+
+}else{
+
+res.innerHTML="";
+
+}
+
+
+const video =
+document.getElementById("chapterVideo");
+
+if(data.video){
+
+video.innerHTML=`
+
+<a
+class="btn red"
+href="${data.video}"
+target="_blank"
+>
+▶️ ভিডিও দেখুন
+</a>
+
+`;
+
+}else{
+
+video.textContent =
+"অ্যাডমিন ভিডিও লিঙ্ক যোগ করলে এখানে দেখা যাবে।";
+
+}
+
+
+openView("chapter");
+
+};
+
+
+function startChapterTest(){
+
+if(!state.topic){
+
+alert("প্রথমে একটি অধ্যায় নির্বাচন করুন।");
+
+return;
+
+}
+
+const data =
+store.chapters?.[state.topic];
+
+const questions =
+data?.questions || [];
+
+if(!questions.length){
+
+alert(
+"এই অধ্যায়ের জন্য এখনো Mock Test প্রশ্ন যোগ করা হয়নি।"
+);
+
+return;
+
+}
+
+state.questions =
+questions.slice();
+
+state.answers =
+new Array(state.questions.length)
+.fill(null);
+
+renderChapterTest();
+
+openView("modelTest");
+
+}
+
+
+function renderChapterTest(){
+
+document.getElementById("modelTitle").textContent =
+state.topic + " • Mock Test";
+
+const body =
+document.getElementById("modelBody");
+
+body.innerHTML =
+state.questions
+.map(function(q,i){
+
+return `
+
+<div class="q">
+
+<h3>
+${i+1}. ${q.q}
+</h3>
+
+${(q.a||[])
+.map(function(opt,j){
+
+return `
+
+<button
+class="opt"
+onclick="selectChapterAnswer(${i},${j},this)"
+>
+${String.fromCharCode(2453+j)}.
+${opt}
+</button>
+
+`;
+
+})
+.join("")}
+
+</div>
+
+`;
+
+})
+.join("");
+
+document.getElementById("modelResult").innerHTML="";
+
+}
+
+
+function selectChapterAnswer(i,j,btn){
+
+state.answers[i]=j;
+
+const parent =
+btn.parentElement;
+
+parent
+.querySelectorAll(".opt")
+.forEach(function(b){
+
+b.classList.remove("sel");
+
+});
+
+btn.classList.add("sel");
+
+}
+
+
+function submitChapterTest(){
+
+let score=0;
+
+state.questions
+.forEach(function(q,i){
+
+if(state.answers[i]===q.correct){
+
+score++;
+
+}
+
+});
+
+const total =
+state.questions.length;
+
+document.getElementById("modelResult").innerHTML=`
+
+<div class="score">
+
+<div>আপনার স্কোর</div>
+
+<strong>
+${score} / ${total}
+</strong>
+
+<div>
+${total ? Math.round(score/total*100) : 0}%
+</div>
+
+</div>
+
+`;
+
+}
+
+
+/* MODEL SET */
+
+const MODEL_COUNT=15;
+
+function renderModels(){
+
+const list =
+document.getElementById("modelList");
+
+const models=[];
+
+for(let i=1;i<=MODEL_COUNT;i++){
+
+models.push(
+"Model Set "+i
+);
+
+}
+
+list.innerHTML =
+models
+.map(function(m){
+
+return `
+
+<div
+class="item model"
+onclick='openModel(${JSON.stringify(m)})'
+style="cursor:pointer"
+>
+
+<div class="ico">
+📝
+</div>
+
+<h3>
+${m}
+</h3>
+
+<p class="muted">
+৪০ নম্বরের Mock Test
+</p>
+
+</div>
+
+`;
+
+})
+.join("");
+
+}
+
+
+window.openModel=function(model){
+
+state.model=model;
+
+const questions =
+(store.models?.[model]) || [];
+
+state.questions =
+questions.slice();
+
+state.answers =
+new Array(state.questions.length)
+.fill(null);
+
+document.getElementById("modelTitle").textContent =
+model;
+
+renderModelQuestions();
+
+openView("modelTest");
+
+};
+
+
+function renderModelQuestions(){
+
+const body =
+document.getElementById("modelBody");
+
+if(!state.questions.length){
+
+body.innerHTML=`
+
+<div class="item">
+
+<h3>
+📝 প্রশ্ন এখনো যোগ করা হয়নি
+</h3>
+
+<p class="muted">
+
+Admin Panel থেকে এই Model Set-এ
+প্রশ্ন যোগ করুন।
+
+</p>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+body.innerHTML =
+state.questions
+.map(function(q,i){
+
+return `
+
+<div class="q">
+
+<h3>
+${i+1}. ${q.q}
+</h3>
+
+${(q.a||[])
+.map(function(opt,j){
+
+return `
+
+<button
+class="opt"
+onclick="selectModelAnswer(${i},${j},this)"
+>
+${String.fromCharCode(2453+j)}.
+${opt}
+</button>
+
+`;
+
+})
+.join("")}
+
+</div>
+
+`;
+
+})
+.join("");
+
+document.getElementById("modelResult").innerHTML="";
+
+}
+
+
+function selectModelAnswer(i,j,btn){
+
+state.answers[i]=j;
+
+btn
+.parentElement
+.querySelectorAll(".opt")
+.forEach(function(b){
+
+b.classList.remove("sel");
+
+});
+
+btn.classList.add("sel");
+
+}
+
+
+function submitTest(){
+
+let score=0;
+
+state.questions
+.forEach(function(q,i){
+
+if(state.answers[i]===q.correct){
+
+score++;
+
+}
+
+});
+
+const total =
+state.questions.length;
+
+document.getElementById("modelResult").innerHTML=`
+
+<div class="score">
+
+<div>
+আপনার স্কোর
+</div>
+
+<strong>
+${score} / ${total}
+</strong>
+
+<div>
+${total ? Math.round(score/total*100) : 0}%
+</div>
+
+</div>
+
+`;
+
+}
+
+
+/* FULL MOCK TEST */
+
+function renderFullMockTests(){
+
+const list =
+document.getElementById("mcqMockList");
+
+if(!list)return;
+
+const tests=[];
+
+for(let i=1;i<=15;i++){
+
+tests.push(
+"Full Mock Test "+i
+);
+
+}
+
+list.innerHTML =
+tests
+.map(function(t){
+
+return `
+
+<div
+class="item"
+onclick='openFullMock(${JSON.stringify(t)})'
+style="cursor:pointer"
+>
+
+<h3>
+📝 ${t}
+</h3>
+
+<p class="muted">
+৪০ নম্বর • ৪০টি প্রশ্ন
+</p>
+
+</div>
+
+`;
+
+})
+.join("");
+
+}
+
+
+function openFullMock(test){
+
+state.model=test;
+
+const allQuestions =
+store.fullMocks?.[test] || [];
+
+state.questions =
+allQuestions.slice();
+
+state.answers =
+new Array(state.questions.length)
+.fill(null);
+
+document.getElementById("fullMockTitle").textContent =
+test;
+
+renderFullMockQuestions();
+
+openView("fullMockTest");
+
+}
+
+
+function renderFullMockQuestions(){
+
+const body =
+document.getElementById("fullMockBody");
+
+if(!state.questions.length){
+
+body.innerHTML=`
+
+<div class="item">
+
+<h3>
+📝 প্রশ্ন এখনো যোগ করা হয়নি
+</h3>
+
+<p class="muted">
+Admin Panel থেকে প্রশ্ন যোগ করুন।
+</p>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+body.innerHTML =
+state.questions
+.map(function(q,i){
+
+return `
+
+<div class="q">
+
+<h3>
+${i+1}. ${q.q}
+</h3>
+
+${(q.a||[])
+.map(function(opt,j){
+
+return `
+
+<button
+class="opt"
+onclick="selectFullMockAnswer(${i},${j},this)"
+>
+${String.fromCharCode(2453+j)}.
+${opt}
+</button>
+
+`;
+
+})
+.join("")}
+
+</div>
+
+`;
+
+})
+.join("");
+
+document.getElementById("fullMockResult").innerHTML="";
+
+}
+
+
+function selectFullMockAnswer(i,j,btn){
+
+state.answers[i]=j;
+
+btn
+.parentElement
+.querySelectorAll(".opt")
+.forEach(function(b){
+
+b.classList.remove("sel");
+
+});
+
+btn.classList.add("sel");
+
+}
+
+
+function submitFullMock(){
+
+let score=0;
+
+state.questions
+.forEach(function(q,i){
+
+if(state.answers[i]===q.correct){
+
+score++;
+
+}
+
+});
+
+const total =
+state.questions.length;
+
+document.getElementById("fullMockResult").innerHTML=`
+
+<div class="score">
+
+<div>
+আপনার স্কোর
+</div>
+
+<strong>
+${score} / ${total}
+</strong>
+
+<div>
+${total ? Math.round(score/total*100) : 0}%
+</div>
+
+</div>
+
+`;
+
+}
+
+
+/* SIMPLE LIST */
+
+function renderSimple(
+id,
+arr,
+icon
+){
+
+document
+.getElementById(id)
+.innerHTML=
+
+arr
+.map(
+x=>{
+let action="";
+
+if(id==="collegeList"){
+action=
+" onclick='openChapter("
++JSON.stringify(x)
++");document.getElementById(\"chapter\").querySelector(\".back\").onclick=function(){openView(\"college\")}'";
+}
+
+return `
+<div class="item"${action}>
+
+<h3>
+${icon} ${x}
+</h3>
+
+<p class="muted">
+নোট • ভিডিও • অনুশীলন
+</p>
+
+</div>
+`;
+}
+)
+.join("");
+
+}
+
+
+/* LINKS */
+
+function renderLinks(
+id,
+arr,
+icon
+){
+
+const list =
+document.getElementById(id);
+
+if(!list)return;
+
+if(!arr.length){
+
+list.innerHTML=`
+
+<div class="item">
+
+<h3>
+${icon} এখনো কিছু যোগ করা হয়নি
+</h3>
+
+<p class="muted">
+Admin Panel থেকে content যোগ করুন।
+</p>
+
+</div>
+
+`;
+
+return;
+
+}
+
+list.innerHTML =
+arr
+.map(function(x){
+
+if(typeof x==="string"){
+
+return `
+
+<div class="item">
+
+<h3>
+${icon} ${x}
+</h3>
+
+</div>
+
+`;
+
+}
+
+return `
+
+<div class="item">
+
+<h3>
+${icon} ${x.title || "Link"}
+</h3>
+
+${x.url ? `
+
+<a
+class="btn"
+href="${x.url}"
+target="_blank"
+>
+খুলুন →
+</a>
+
+` : ""}
+
+</div>
+
+`;
+
+})
+.join("");
+
+}
+
+
+/* NOTICE */
+
+function renderNotices(){
+
+const list =
+document.getElementById("noticeList");
+
+const notices =
+store.notices || [];
+
+if(!notices.length){
+
+list.innerHTML=`
+
+<div class="item">
+
+<h3>
+📢 কোনো নতুন নোটিশ নেই
+</h3>
+
+<p class="muted">
+গুরুত্বপূর্ণ নোটিশ এখানে দেখা যাবে।
+</p>
+
+</div>
+
+`;
+
+return;
+
+}
+
+list.innerHTML =
+notices
+.map(function(n){
+
+return `
+
+<div class="item">
+
+<h3>
+📢 ${n.text || n}
+</h3>
+
+${n.date ? `
+<p class="muted">
+${n.date}
+</p>
+` : ""}
+
+</div>
+
+`;
+
+})
+.join("");
+
+}
+
+
+/* WHATSAPP */
+
+function applyWA(){
+
+const number =
+store.wa || WA_DEFAULT;
+
+const clean =
+String(number)
+.replace(/\D/g,"");
+
+const url =
+"https://wa.me/"+clean;
+
+const a =
+document.getElementById("waContact");
+
+if(a){
+
+a.href=url;
+
+}
+
+}
+
+
+function openWA(){
+
+const number =
+store.wa || WA_DEFAULT;
+
+const clean =
+String(number)
+.replace(/\D/g,"");
+
+window.open(
+"https://wa.me/"+clean,
+"_blank"
+);
+
+}
+
+
+/* BANNER */
+
+function applyBanner(){
+
+const banner =
+document.getElementById("banner");
+
+if(!banner)return;
+
+if(store.banner){
+
+banner.innerHTML=`
+
+<img
+src="${store.banner}"
+alt="বাংলা পাঠশালা Banner"
+>
+
+<div class="banner-note">
+বাংলা পাঠশালা
+</div>
+
+`;
+
+}
+
+}
+
+
+/* ADMIN LOGIN */
+
+function adminLogin(){
+
+const pass =
+prompt("Admin Password লিখুন:");
+
+if(pass==="1234"){
+
+openView("admin");
+
+fillAdminClasses();
+fillAdminModels();
+
+}else{
+
+if(pass!==null){
+
+alert("ভুল Password");
+
+}
+
+}
+
+}
+
+
+/* STUDENT LOGIN */
+
+function openStudentLogin(){
+
+const old =
+document.getElementById("studentLoginBox");
+
+if(old){
+
+old.remove();
+
+}
+
+const box =
+document.createElement("div");
+
+box.id="studentLoginBox";
+
+box.style.position="fixed";
+box.style.inset="0";
+box.style.background="#0008";
+box.style.zIndex="2000";
+box.style.display="flex";
+box.style.alignItems="center";
+box.style.justifyContent="center";
+box.style.padding="20px";
+
+box.innerHTML=`
+
+<div style="
+background:white;
+width:100%;
+max-width:380px;
+border-radius:25px;
+padding:22px;
+">
+
+<h2 style="margin-top:0;color:#063d75">
+🎓 Student Login
+</h2>
+
+<input
+id="studentName"
+class="field"
+placeholder="আপনার নাম"
+>
+
+<input
+id="studentMobile"
+class="field"
+placeholder="মোবাইল নম্বর"
+inputmode="numeric"
+>
+
+<button
+class="btn"
+style="width:100%"
+onclick="studentLoginSubmit()"
+>
+Login
+</button>
+
+<button
+class="btn gray"
+style="width:100%;margin-top:8px"
+onclick="document.getElementById('studentLoginBox').remove()"
+>
+বন্ধ করুন
+</button>
+
+</div>
+
+`;
+
+document.body.appendChild(box);
+
+}
+
+
+function studentLoginSubmit(){
+
+const name =
+(document.getElementById("studentName").value||"")
+.trim();
+
+const mobile =
+(document.getElementById("studentMobile").value||"")
+.trim();
+
+if(!name || !mobile){
+
+alert("নাম ও মোবাইল নম্বর দিন।");
+
+return;
+
+}
+
+store.student={
+name:name,
+mobile:mobile,
+loginAt:new Date().toISOString()
+};
+
+save();
+
+document
+.getElementById("studentLoginBox")
+.remove();
+
+alert(
+"স্বাগতম, "+name+"!"
+);
+
+}
+
+
+/* ADMIN CLASS SELECT */
+
+function fillAdminClasses(){
+
+const select =
+document.getElementById("adminClass");
+
+if(!select)return;
+
+select.innerHTML="";
+
+[9,10,11,12]
+.forEach(function(cls){
+
+const opt =
+document.createElement("option");
+
+opt.value=cls;
+
+opt.textContent =
+cls===11
+? "একাদশ শ্রেণি"
+:
+cls===12
+? "দ্বাদশ শ্রেণি"
+:
+cls+" শ্রেণি";
+
+select.appendChild(opt);
+
+});
+
+fillAdminPeriods();
+
+}
+
+
+function fillAdminPeriods(){
+
+const cls =
+Number(
+document.getElementById("adminClass").value
+);
+
+const select =
+document.getElementById("adminPeriod");
+
+if(!select)return;
+
+const periods =
+DATA[cls] || {};
+
+select.innerHTML =
+Object.keys(periods)
+.map(function(p){
+
+return `
+
+<option value="${p}">
+${p}
+</option>
+
+`;
+
+})
+.join("");
+
+}
+
+
+function fillAdminModels(){
+
+const select =
+document.getElementById("adminModel");
+
+if(!select)return;
+
+select.innerHTML="";
+
+for(let i=1;i<=15;i++){
+
+const opt =
+document.createElement("option");
+
+opt.value="Model Set "+i;
+
+opt.textContent=
+"Model Set "+i;
+
+select.appendChild(opt);
+
+}
+
+}
+
+
+/* SAVE BANNER */
+
+function saveBanner(){
+
+const file =
+document.getElementById("bannerFile")
+.files[0];
+
+if(!file){
+
+alert("আগে একটি ছবি নির্বাচন করুন।");
+
+return;
+
+}
+
+const reader =
+new FileReader();
+
+reader.onload=function(e){
+
+store.banner=e.target.result;
+
+save();
+
+applyBanner();
+
+alert("Banner সংরক্ষণ হয়েছে।");
+
+};
+
+reader.readAsDataURL(file);
+
+}
+
+
+function resetBanner(){
+
+delete store.banner;
+
+save();
+
+location.reload();
+
+}
+
+
+/* SAVE WHATSAPP */
+
+function saveWA(){
+
+const value =
+(document.getElementById("waNumber").value||"")
+.trim();
+
+if(!value){
+
+alert("WhatsApp নম্বর দিন।");
+
+return;
+
+}
+
+store.wa=value;
+
+save();
+
+applyWA();
+
+alert("WhatsApp নম্বর সংরক্ষণ হয়েছে।");
+
+}
+
+
+/* ADD NOTICE */
+
+function addNotice(){
+
+const input =
+document.getElementById("noticeText");
+
+const text =
+(input.value||"").trim();
+
+if(!text){
+
+alert("নোটিশ লিখুন।");
+
+return;
+
+}
+
+if(!store.notices){
+
+store.notices=[];
+
+}
+
+store.notices.unshift({
+
+text:text,
+
+date:new Date()
+.toLocaleDateString("bn-BD")
+
+});
+
+save();
+
+input.value="";
+
+renderNotices();
+
+alert("নোটিশ যোগ হয়েছে।");
+
+}
+
+
+/* SAVE CHAPTER */
+
+function saveChapterContent(){
+
+const cls =
+Number(
+document.getElementById("adminClass").value
+);
+
+const period =
+document.getElementById("adminPeriod").value;
+
+const topic =
+(document.getElementById("adminTopic").value||"")
+.trim();
+
+const video =
+(document.getElementById("adminVideo").value||"")
+.trim();
+
+const pdf =
+(document.getElementById("adminPdf").value||"")
+.trim();
+
+const note =
+(document.getElementById("adminNote").value||"")
+.trim();
+
+if(!topic){
+
+alert("অধ্যায়ের নাম লিখুন।");
+
+return;
+
+}
+
+if(!store.chapters){
+
+store.chapters={};
+
+}
+
+store.chapters[topic]={
+
+class:cls,
+
+period:period,
+
+video:video,
+
+note:note,
+
+resources:
+pdf
+?
+[
+{
+title:"📄 PDF / Study Material",
+url:pdf
+}
+]
+:
+[]
+
+};
+
+save();
+
+alert("অধ্যায়ের Content সংরক্ষণ হয়েছে।");
+
+}
+
+
+/* SAVE MODEL QUESTIONS */
+
+function saveModelQuestions(){
+
+const model =
+document.getElementById("adminModel").value;
+
+const text =
+(document.getElementById("adminQuestions").value||"")
+.trim();
+
+if(!text){
+
+alert("প্রশ্নের JSON লিখুন।");
+
+return;
+
+}
+
+let questions;
+
+try{
+
+questions=
+JSON.parse(text);
+
+}catch(e){
+
+alert(
+"JSON format ভুল হয়েছে।"
+);
+
+return;
+
+}
+
+if(!Array.isArray(questions)){
+
+alert(
+"প্রশ্ন অবশ্যই Array হতে হবে।"
+);
+
+return;
+
+}
+
+if(!store.models){
+
+store.models={};
+
+}
+
+store.models[model]=questions;
+
+save();
+
+alert(
+model+"-এর প্রশ্ন সংরক্ষণ হয়েছে।"
+);
+
+}
+
+
+/* INITIAL */
+
+applyWA();
+applyBanner();
+
+</script>
+
+</body>
+</html>
+  
