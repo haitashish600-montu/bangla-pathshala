@@ -5636,10 +5636,13 @@ window.bpFirebaseMessaging = messaging;
   );
 
   if(token){
-    localStorage.setItem(
-      "studentPushToken",
-      token
-    );
+    await setDoc(
+  doc(db, "studentPushTokens", token),
+  {
+    token: token,
+    createdAt: serverTimestamp()
+  }
+);
   }
           }
 enablePushNotifications();
