@@ -2923,7 +2923,6 @@ window.openClass = function(cls, period){
 
   state.cls = cls;
 
-  /* যদি সরাসরি নির্দিষ্ট সেমিস্টার/পর্যায় দেওয়া হয় */
   if(period){
     state.period = period;
     showTopics();
@@ -2942,17 +2941,18 @@ window.openClass = function(cls, period){
 
   const list = document.getElementById("periodList");
 
+  const periods = DATA[cls] || {};
+
   list.innerHTML =
-    Object.keys(DATA[cls] || {}).map(function(p){
+    Object.keys(periods).map(function(p){
 
       return `
         <div
           class="item"
-          onclick="window.openClass(${JSON.stringify(cls)},${JSON.stringify(p)})"
+          onclick='window.openClass(${JSON.stringify(cls)},${JSON.stringify(p)})'
           style="cursor:pointer"
         >
           <h3>📚 ${p}</h3>
-
           <p class="muted">
             এই অংশের অধ্যায় দেখুন →
           </p>
@@ -2964,6 +2964,59 @@ window.openClass = function(cls, period){
   openView("periods");
 };
 
+
+function showTopics(){
+
+  const arr =
+    (DATA[state.cls] &&
+     DATA[state.cls][state.period]) || [];
+
+  const title =
+    state.cls === 11 ? "একাদশ শ্রেণি" :
+    state.cls === 12 ? "দ্বাদশ শ্রেণি" :
+    state.cls + " শ্রেণি";
+
+  document.getElementById("periodTitle").textContent =
+    title + " • " + state.period;
+
+  const list =
+    document.getElementById("periodList");
+
+  list.innerHTML =
+    arr.map(function(t){
+
+      return `
+        <div class="item">
+
+          <h3>📖 ${t}</h3>
+
+          <p class="muted">
+            ভিডিও • Study Material • Mock Test
+          </p>
+
+          <button
+            class="btn purple"
+            onclick='window.openChapter(${JSON.stringify(t)})'
+          >
+            অধ্যায় খুলুন
+          </button>
+
+        </div>
+      `;
+
+    }).join("");
+
+  openView("periods");
+}
+
+
+function backPeriod(){
+
+  state.period = "";
+
+  window.openClass(state.cls);
+
+}
 
 /* TOPICS */
 
