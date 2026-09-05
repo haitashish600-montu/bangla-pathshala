@@ -5153,6 +5153,24 @@ try {
   const auth = getAuth(app);
 const db = getFirestore(app);
 window.bpFirestore = db;
+     window.bpSaveBanner = async function(bannerData){
+
+  if(!window.bpFirestore){
+    throw new Error("Firestore প্রস্তুত নয়");
+  }
+
+  await setDoc(
+    doc(
+      window.bpFirestore,
+      "siteSettings",
+      "banner"
+    ),
+    {
+      data: bannerData
+    }
+  );
+
+};
   await setPersistence(
     auth,
     browserLocalPersistence
