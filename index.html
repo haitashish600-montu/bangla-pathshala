@@ -5129,7 +5129,7 @@ await setPersistence(
   auth,
   browserLocalPersistence
 );
-
+window.firebaseReady = Promise.resolve();
 
 /* GLOBAL AUTH */
 window.bpFirebaseAuth = auth;
