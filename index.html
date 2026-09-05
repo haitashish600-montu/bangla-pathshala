@@ -5200,6 +5200,8 @@ try {
   const auth = getAuth(app);
 const db = getFirestore(app);
 window.bpFirestore = db;
+     window.bpGetDoc = getDoc;
+window.bpDoc = doc;
      window.bpSaveBanner = async function(bannerData){
 
   if(!window.bpFirestore){
