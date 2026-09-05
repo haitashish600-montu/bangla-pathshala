@@ -4216,46 +4216,63 @@ ${x}
 
 function saveBanner(){
 
-let f=
-document
-.getElementById("bannerFile")
-.files[0];
+  let f =
+    document
+    .getElementById("bannerFile")
+    .files[0];
 
+  if(!f){
+    alert("Banner image নির্বাচন করুন");
+    return;
+  }
 
-if(!f){
+  let r = new FileReader();
 
-alert(
-"Banner image নির্বাচন করুন"
-);
+  r.onload = function(){
 
-return;
+    let img = new Image();
+
+    img.onload = function(){
+
+      let canvas = document.createElement("canvas");
+
+      let maxWidth = 1000;
+      let scale = Math.min(1, maxWidth / img.width);
+
+      canvas.width = Math.round(img.width * scale);
+      canvas.height = Math.round(img.height * scale);
+
+      let ctx = canvas.getContext("2d");
+
+      ctx.drawImage(
+        img,
+        0,
+        0,
+        canvas.width,
+        canvas.height
+      );
+
+      let bannerData =
+        canvas.toDataURL("image/jpeg",0.75);
+
+      localStorage.setItem(
+        "bangla_pathshala_banner",
+        bannerData
+      );
+
+      applyBanner();
+
+      alert("Banner সংরক্ষিত হয়েছে।");
+
+    };
+
+    img.src = r.result;
+
+  };
+
+  r.readAsDataURL(f);
 
 }
-
-
-let r=
-new FileReader();
-
-
-r.onload=()=>{
-
-store.banner=r.result;
-
-save();
-
-applyBanner();
-
-alert(
-"Banner সংরক্ষিত হয়েছে।"
-);
-
-};
-
-
-r.readAsDataURL(f);
-
-}
-
 
 function resetBanner(){
 
