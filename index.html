@@ -4287,17 +4287,37 @@ applyBanner();
 
 function applyBanner(){
 
-  let b = document.getElementById("banner");
+  let b =
+    document.getElementById("banner");
 
   if(!b) return;
 
-  b.innerHTML = `
-    <img
-      src="./banner-new.png"
-      alt="বাংলা পাঠশালা ব্যানার"
-      style="width:100%;height:auto;display:block;border-radius:24px;"
-    >
-  `;
+  let savedBanner =
+    localStorage.getItem(
+      "bangla_pathshala_banner"
+    );
+
+  if(savedBanner){
+
+    b.innerHTML = `
+      <img
+        src="${savedBanner}"
+        alt="বাংলা পাঠশালা ব্যানার"
+        style="width:100%;height:auto;display:block;border-radius:24px;"
+      >
+    `;
+
+  }else{
+
+    b.innerHTML = `
+      <img
+        src="./banner-new.png"
+        alt="বাংলা পাঠশালা ব্যানার"
+        style="width:100%;height:auto;display:block;border-radius:24px;"
+      >
+    `;
+
+  }
 
 }
 
