@@ -3147,7 +3147,16 @@ function backPeriod(){
   }
 
 }
+function backChapter(){
 
+  if(state.period){
+    showTopics();
+    return;
+  }
+
+  backPeriod();
+
+}
 /* CHAPTER */
 
 function openChapter(t){
