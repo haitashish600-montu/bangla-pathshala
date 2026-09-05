@@ -5093,7 +5093,7 @@ window.studentDoLogin = async function(){
 };
 
 </script>
-     <script type="module">
+<script type="module">
 
 import { initializeApp }
 from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
@@ -5108,7 +5108,6 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
-
 const firebaseConfig = {
   apiKey: "AIzaSyDhpZJ1z2j74khtWMo9hIpo1WHgAaFzwCc",
   authDomain: "bangla-pathsala.firebaseapp.com",
@@ -5119,50 +5118,65 @@ const firebaseConfig = {
   measurementId: "G-JT3VQMMNQ7"
 };
 
-const app = initializeApp(firebaseConfig);
+let firebaseInitResolve;
 
-const auth = getAuth(app);
+window.firebaseReady = new Promise(function(resolve){
+  firebaseInitResolve = resolve;
+});
 
+try {
 
-/* LOGIN একই ব্রাউজারে মনে রাখবে */
-await setPersistence(
-  auth,
-  browserLocalPersistence
-);
-window.firebaseReady = Promise.resolve();
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
 
-/* GLOBAL AUTH */
-window.bpFirebaseAuth = auth;
-
-
-/* GLOBAL LOGIN FUNCTION */
-window.firebaseSignIn = function(email,password){
-
-  return signInWithEmailAndPassword(
+  await setPersistence(
     auth,
-    email,
-    password
+    browserLocalPersistence
   );
 
-};
-window.firebaseSignUp = async function(email,password,name){
+  window.bpFirebaseAuth = auth;
 
-  const result =
-    await createUserWithEmailAndPassword(
+  window.firebaseSignIn = async function(email,password){
+    return await signInWithEmailAndPassword(
       auth,
       email,
       password
     );
+  };
 
-  await updateProfile(
-    result.user,
-    {
-      displayName:name
-    }
+  window.firebaseSignUp = async function(email,password,name){
+
+    const result =
+      await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+    await updateProfile(
+      result.user,
+      {
+        displayName:name
+      }
+    );
+
+    return result;
+  };
+
+  firebaseInitResolve();
+
+} catch(error) {
+
+  console.error(
+    "Firebase initialization error:",
+    error
   );
 
-  return result;
-};
-     </script>
+  window.firebaseError = error;
+  firebaseInitResolve();
+
+}
+
+</script>
 </body>
 </html>
