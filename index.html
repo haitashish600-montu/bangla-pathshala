@@ -3017,7 +3017,9 @@ period
 ){
 
 state.cls=cls;
-
+if(!period){
+  state.period="";
+}
 if(period){
 
 state.period=period;
