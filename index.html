@@ -3033,7 +3033,14 @@ return;
 document
 .getElementById("periodTitle")
 .textContent=
-     +" • বাংলা";
+(
+  cls===11?
+  "একাদশ":
+  cls===12?
+  "দ্বাদশ":
+  cls
+)
++" শ্রেণি • বাংলা";
 
 
 document
