@@ -4989,7 +4989,7 @@ window.studentRegister = async function(){
 ========================= */
 
 window.studentDoLogin = async function(){
-
+  await window.firebaseReady;
   const mobile =
     document.getElementById("studentMobile")
     .value.replace(/\D/g,"");
