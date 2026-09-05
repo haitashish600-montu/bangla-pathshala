@@ -5124,6 +5124,13 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc
+}
+from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 const firebaseConfig = {
   apiKey: "AIzaSyDhpZJ1z2j74khtWMo9hIpo1WHgAaFzwCc",
   authDomain: "bangla-pathsala.firebaseapp.com",
@@ -5144,7 +5151,8 @@ try {
 
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
-
+const db = getFirestore(app);
+window.bpFirestore = db;
   await setPersistence(
     auth,
     browserLocalPersistence
