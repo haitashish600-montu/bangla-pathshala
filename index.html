@@ -4331,28 +4331,35 @@ applyBanner();
 
 async function applyBanner(){
 
-  let b =
-    document.getElementById("banner");
+  const b = document.getElementById("banner");
 
   if(!b) return;
 
+  /* আগে default banner দেখাও */
+  b.innerHTML = `
+    <img
+      src="./banner-new.png"
+      alt="বাংলা পাঠশালা ব্যানার"
+      style="width:100%;height:auto;display:block;border-radius:24px;"
+    >
+  `;
+
+  /* তারপর Admin-এর saved banner থাকলে সেটি দেখাও */
   try{
 
-    if(window.bpFirestore){
+    if(window.bpFirestore && window.bpGetDoc && window.bpDoc){
 
-      let snap =
-        await window.bpGetDoc(
-          window.bpDoc(
-            window.bpFirestore,
-            "siteSettings",
-            "banner"
-          )
-        );
+      const snap = await window.bpGetDoc(
+        window.bpDoc(
+          window.bpFirestore,
+          "siteSettings",
+          "banner"
+        )
+      );
 
       if(snap.exists()){
 
-        let data =
-          snap.data().data;
+        const data = snap.data().data;
 
         if(data){
 
@@ -4364,27 +4371,17 @@ async function applyBanner(){
             >
           `;
 
-          return;
         }
+
       }
+
     }
 
   }catch(error){
 
-    console.error(
-      "Banner load error:",
-      error
-    );
+    console.error("Banner load error:",error);
 
   }
-
-  b.innerHTML = `
-    <img
-      src="./banner-new.png"
-      alt="বাংলা পাঠশালা ব্যানার"
-      style="width:100%;height:auto;display:block;border-radius:24px;"
-    >
-  `;
 
 }
 /* WHATSAPP */
