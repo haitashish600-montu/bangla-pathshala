@@ -5220,6 +5220,26 @@ window.bpDoc = doc;
   );
 
 };
+
+
+window.bpSaveChapter = async function(chapterId, chapterData){
+
+  if(!window.bpFirestore){
+    throw new Error("Firestore প্রস্তুত নয়");
+  }
+
+  await setDoc(
+    doc(
+      window.bpFirestore,
+      "chapterContents",
+      chapterId
+    ),
+    chapterData
+  );
+
+};
+
+
   await setPersistence(
     auth,
     browserLocalPersistence
