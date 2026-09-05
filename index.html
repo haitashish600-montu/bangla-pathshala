@@ -4322,8 +4322,8 @@ async function applyBanner(){
     if(window.bpFirestore){
 
       let snap =
-        await getDoc(
-          doc(
+        await window.bpGetDoc(
+          window.bpDoc(
             window.bpFirestore,
             "siteSettings",
             "banner"
