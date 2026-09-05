@@ -3133,10 +3133,13 @@ openView("periods");
 
 function backPeriod(){
 
-  openClass(state.cls);
+  if(state.period){
+    openClass(state.cls);
+  }else{
+    openView("classes");
+  }
 
-     }
-
+}
 
 /* CHAPTER */
 
