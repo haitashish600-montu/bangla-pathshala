@@ -4869,7 +4869,7 @@ window.openStudentLogin = function(){
 ========================= */
 
 window.studentRegister = async function(){
-
+  await window.firebaseReady;
   const name =
     document.getElementById("studentName").value.trim();
 
