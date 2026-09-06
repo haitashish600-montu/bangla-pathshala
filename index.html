@@ -4969,35 +4969,33 @@ window.adminLogin = async function(){
 
 function closeStudentLoginModal(){
 
-  /* Student popup: Student Login/Account তৈরি না হওয়া পর্যন্ত
-     বন্ধ করা যাবে না। Admin Login করা থাকলে Admin বন্ধ করতে পারবেন। */
   const adminLoggedIn =
     localStorage.getItem("adminLoggedIn") === "yes";
 
   const studentLoggedIn =
     localStorage.getItem("studentLoggedIn") === "yes";
 
-  const user =
-    window.bpFirebaseAuth &&
-    window.bpFirebaseAuth.currentUser;
+  /*
+    Admin Login অথবা Student Login/Account না হওয়া পর্যন্ত
+    Student Login popup বন্ধ করা যাবে না।
+  */
 
-  const email =
-    user && String(user.email || "").toLowerCase();
+  if(adminLoggedIn || studentLoggedIn){
 
-  const firebaseStudent =
-    !!user && email.endsWith("@students.banglapathshala.app");
-
-  if(adminLoggedIn || studentLoggedIn || firebaseStudent){
     const modal =
       document.getElementById("studentLoginModal");
 
-    if(modal) modal.remove();
+    if(modal){
+      modal.remove();
+    }
+
     return;
   }
 
-  alert("আগে Student Login করুন অথবা Account তৈরি করুন।");
+  alert(
+    "Student Login অথবা Account তৈরি না করা পর্যন্ত এই উইন্ডো বন্ধ করা যাবে না।"
+  );
 }
-
 
 window.openStudentLogin = function(){
 
