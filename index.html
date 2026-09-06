@@ -5150,7 +5150,24 @@ window.adminLogin = async function(){
      <script>
 
 window.openStudentLogin = function(){
+<script>
+function closeStudentLoginModal(){
 
+  const user =
+    window.bpFirebaseAuth &&
+    window.bpFirebaseAuth.currentUser;
+
+  if(!user){
+    alert("আগে Login করুন অথবা Account তৈরি করুন।");
+    return;
+  }
+
+  const modal =
+    document.getElementById("studentLoginModal");
+
+  if(modal) modal.remove();
+}
+</script>
   let old = document.getElementById("studentLoginModal");
   if(old) old.remove();
 
@@ -5183,7 +5200,7 @@ window.openStudentLogin = function(){
     ">
 
       <button
-        onclick="document.getElementById('studentLoginModal').remove()"
+        onclick="closeStudentLoginModal()"
         style="
           position:absolute;
           right:18px;
