@@ -7157,7 +7157,10 @@ window.firebaseAuthStateReadyPromise = new Promise(function(resolve){
     const firebaseAuthModule = await import(
       "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js"
     );
-
+const firebaseAppCheckModule = await import(
+  "https://www.gstatic.com/firebasejs/12.18.0/firebase-app-check.js"
+);
+     const { initializeAppCheck, ReCaptchaEnterpriseProvider } = firebaseAppCheckModule;
     const { initializeApp } = firebaseAppModule;
     const {
       getAuth,
@@ -7184,6 +7187,10 @@ window.firebaseAuthStateReadyPromise = new Promise(function(resolve){
     };
 
     const app = initializeApp(firebaseConfig);
+     initializeAppCheck(app, {
+  provider: new ReCaptchaEnterpriseProvider("6LeQuPMtAAAAAB9QhNpMAaTYTrsDks5muBne04w9"),
+  isTokenAutoRefreshEnabled: true
+});
     const auth = getAuth(app);
     window.bpFirebaseAuth = auth;
 
